@@ -1,0 +1,70 @@
+{
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "180dp"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 6,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_skin_": "s1d16922fabf441390a807830762c8f9",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "allboxes": [],
+    "autogrowmode": 0,
+    "canUpdateUI": true,
+    "children": [
+        "imgMoviePoster",
+        "lblMovieTitle",
+        "lblMovieDescription",
+        "btnDeleteMoviFromList"
+    ],
+    "clipbounds": true,
+    "containerId": true,
+    "containerweight": 100,
+    "controllerInfo": {
+        "default": {
+            "channel": "mobile",
+            "name": "favouritRowController"
+        }
+    },
+    "enablescrolling": true,
+    "id": "favouritRow",
+    "info": null,
+    "isTemplate": true,
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "a573645b055c4475945b4e79f1bbbb6c",
+    "layouttype": 2,
+    "name": "kony.ui.FlexContainer",
+    "parent": "FavouriteRowTemplate",
+    "pf": "FavouriteRowTemplate",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "wType": "FlexContainer",
+    "widgetalignment": 1
+}
