@@ -21,7 +21,7 @@
         0,
         0
     ],
-    "_placeholder_": "",
+    "_placeholder_": "Username",
     "_skin_": "sb2fe2e2364742dba984057ccebc1652",
     "_text_": "",
     "_top_": {
@@ -32,6 +32,7 @@
         "type": "string",
         "value": "300dp"
     },
+    "android": {},
     "autocapitalize": "none",
     "autocomplete": false,
     "autocorrect": false,
@@ -53,7 +54,7 @@
     "name": "kony.ui.TextBox2",
     "parent": "frmAuthentication",
     "pf": "frmAuthentication",
-    "placeholderskin": "secff3a508fb4d82ab6a08d0e2048493",
+    "placeholderskin": "scbf2221cc0b4111a5fcc8552811377f",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "securetextentry": false,
