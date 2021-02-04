@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "60dp"
+        "value": "260dp"
     },
     "_margin_": [
         6,
@@ -21,29 +21,29 @@
         0,
         0
     ],
-    "_skin_": "s36c5183d44940ba8d38f8cc9480595c",
+    "_skin_": "s90d17b5ab6f4b758d8bed6f4503ab07",
     "_text_": "Log in",
     "_top_": {
         "type": "string",
-        "value": "380dp"
+        "value": "620dp"
     },
     "_width_": {
         "type": "string",
-        "value": "300dp"
+        "value": "100dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "se4b6df9df7446ec8372ad70f28fbe5c",
-    "id": "btnLogin",
+    "focusskin": "s73382fe3dc94d9cb946018d4861fc3c",
+    "id": "btnBackToLogin",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "j11a7052287a4d5db5e36732a11cba89",
+    "kuid": "aade78d1ba7d490bb4305708dfed9bc3",
     "name": "kony.ui.Button",
-    "parent": "frmAuthentication",
-    "pf": "frmAuthentication",
+    "parent": "frmRegistration",
+    "pf": "frmRegistration",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",
