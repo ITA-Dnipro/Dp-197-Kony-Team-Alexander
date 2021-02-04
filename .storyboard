@@ -5,11 +5,27 @@
             "linkDataArray": [],
             "nodeDataArray": [
                 {
+                    "formKUID": "je23acaff2fe4b5ba13c0586dee6f6c1",
+                    "formName": "frmAuthentication",
+                    "isStartupForm": false,
+                    "key": "je23acaff2fe4b5ba13c0586dee6f6c1",
+                    "loc": "188 184.845263671875",
+                    "thumbnailURL": null
+                },
+                {
                     "formKUID": "d90406b7c4f549dca86192d9f42c675d",
-                    "formName": "Form1",
-                    "isStartupForm": true,
+                    "formName": "frmFavouriteList",
+                    "isStartupForm": false,
                     "key": "d90406b7c4f549dca86192d9f42c675d",
                     "loc": "8 24.845263671875003",
+                    "thumbnailURL": null
+                },
+                {
+                    "formKUID": "d5af17e1fb4a4ee1ad29eb6c69cae32e",
+                    "formName": "frmRegistration",
+                    "isStartupForm": true,
+                    "key": "d5af17e1fb4a4ee1ad29eb6c69cae32e",
+                    "loc": "8 624.845263671875",
                     "thumbnailURL": null
                 }
             ]
