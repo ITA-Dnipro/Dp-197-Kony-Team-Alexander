@@ -19,7 +19,7 @@
       "gradientType": "toRight",
       "gt": "linear"
     },
-    "border_style": "rc",
+    "border_style": "plain",
     "border_type": 1,
     "border_width": 2,
     "font_color": "ffffffff",
@@ -47,7 +47,7 @@
       "gradientType": "toRight",
       "gt": "linear"
     },
-    "border_style": "rc",
+    "border_style": "plain",
     "border_type": 1,
     "border_width": 2,
     "font_color": "ffffffff",
@@ -111,7 +111,7 @@
       "gradientType": "toRight",
       "gt": "linear"
     },
-    "border_style": "rc",
+    "border_style": "plain",
     "border_type": 1,
     "border_width": 2,
     "font_color": "ffffffff",
@@ -139,7 +139,7 @@
       "gradientType": "toRight",
       "gt": "linear"
     },
-    "border_style": "rc",
+    "border_style": "plain",
     "border_type": 1,
     "border_width": 2,
     "font_color": "ffffffff",
@@ -168,7 +168,7 @@
       "gradientType": "toRight",
       "gt": "linear"
     },
-    "border_style": "rc",
+    "border_style": "plain",
     "border_type": 1,
     "border_width": 2,
     "font_color": "ffffffff",
@@ -341,7 +341,7 @@
       "gradientType": "toRight",
       "gt": "linear"
     },
-    "border_style": "rc",
+    "border_style": "plain",
     "border_type": 1,
     "border_width": 2,
     "font_color": "ffffffff",
@@ -375,7 +375,7 @@
       "gradientType": "toRight",
       "gt": "linear"
     },
-    "border_style": "rc",
+    "border_style": "plain",
     "border_type": 1,
     "border_width": 2,
     "font_color": "ffffffff",
@@ -403,7 +403,7 @@
       "gradientType": "toRight",
       "gt": "linear"
     },
-    "border_style": "rc",
+    "border_style": "plain",
     "border_type": 1,
     "border_width": 2,
     "font_color": "ffffffff",

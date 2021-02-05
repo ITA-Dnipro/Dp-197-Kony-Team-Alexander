@@ -1,5 +1,6 @@
 define({ 
-
- //Type your controller code here 
+	onInitialize: function() {
+		this.view.btnRegister.onClick = Utility.navigateTo.bind(null, "frmRegistration"); 
+	}
 
  });
