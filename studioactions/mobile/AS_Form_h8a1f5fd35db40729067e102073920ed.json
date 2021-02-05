@@ -1,0 +1,18 @@
+{
+    "AS_Form_h8a1f5fd35db40729067e102073920ed": {
+        "id": "AS_Form_h8a1f5fd35db40729067e102073920ed",
+        "type": "ACTION_SEQUENCE",
+        "params": [{
+            "datatype": "collection",
+            "name": "eventobject"
+        }],
+        "contextObj": {
+            "name": "frmMovieList",
+            "type": "forms",
+            "platform": "",
+            "KUID": "a13d0bf851e142c29748ef19b63af965"
+        },
+        "language": "js",
+        "actions": []
+    }
+}

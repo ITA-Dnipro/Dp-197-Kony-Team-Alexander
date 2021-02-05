@@ -15,7 +15,7 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s64a1832a1ea44b9bd16cca72c04a2a6",
+    "_skin_": "sf4e890e1a014adfa66d2be1408baecf",
     "_title_": null,
     "addWidgetsdone": false,
     "allboxes": [],
@@ -30,30 +30,26 @@
     },
     "canUpdateUI": true,
     "children": [
-        "lblAuth",
-        "inpUserLogin",
-        "inpFullName",
-        "inpPassword",
-        "inpPasswordConfirm",
-        "btnCreateAccount",
-        "btnBackToLogin",
-        "lblRegistretionBack"
+        "flxHeader",
+        "lstMovies",
+        "flxNavContainer"
     ],
     "containerweight": 100,
     "controllerInfo": {
         "default": {
             "channel": "mobile",
-            "name": "frmRegistrationController"
+            "name": "frmMovieListController"
         }
     },
     "currentLocale": "default",
     "desktopweb": {
         "needAppMenu": false
     },
-    "device": "GalaxyNote9",
+    "device": "iPhone11",
     "displayorientation": 1,
     "enabledforidletimeout": false,
-    "id": "frmRegistration",
+    "id": "frmMovieList",
+    "ide_init": "AS_Form_h8a1f5fd35db40729067e102073920ed",
     "info": null,
     "initdone": false,
     "inputaccessoryviewtype": 4,
@@ -71,7 +67,7 @@
             "titleBarAttributes": {
                 "barStyle": 0,
                 "hidesBackButton": false,
-                "kuid": "h5968f62c3ca4afcaa1bff29a278a660",
+                "kuid": "e14c535cf551448aa1c18d4d86f904a8",
                 "leftBarButtonItems": [],
                 "leftItemsSupplementBackButton": true,
                 "prompt": "",
@@ -82,7 +78,7 @@
                         "info": {
                             "title": "Edit"
                         },
-                        "kuid": "g9bd7138a8ec4cdeb6581a3cf318be15",
+                        "kuid": "e95fd23187b44fc5bf649beb9bf9f267",
                         "style": 0,
                         "tintColor": "4b88f100",
                         "type": 1
@@ -99,18 +95,18 @@
     "kiosk": {
         "needAppMenu": false
     },
-    "kuid": "d5af17e1fb4a4ee1ad29eb6c69cae32e",
+    "kuid": "a13d0bf851e142c29748ef19b63af965",
     "layouttype": 2,
     "name": "kony.ui.Form2",
     "needappmenu": false,
     "paddinginpixel": false,
-    "platform": "android",
-    "prevDevice": "Pixel3",
+    "platform": "iphone",
+    "prevDevice": "iPhone11",
     "prevPlatform": "iphone",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainscrollposition": false,
-    "shellCSS": "and_GalaxyNote9",
+    "shellCSS": "iOS_iPhoneXR",
     "snapgridsize": 10,
     "snaptogrid": true,
     "spaan": {
