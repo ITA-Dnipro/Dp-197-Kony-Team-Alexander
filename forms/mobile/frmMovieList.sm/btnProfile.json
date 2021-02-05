@@ -5,10 +5,6 @@
         "type": "string",
         "value": "50dp"
     },
-    "_left_": {
-        "type": "string",
-        "value": "345dp"
-    },
     "_margin_": [
         6,
         6,
@@ -21,11 +17,15 @@
         0,
         0
     ],
+    "_right_": {
+        "type": "string",
+        "value": "10dp"
+    },
     "_skin_": "s6198266184e4feab1a160b6be637b4c",
     "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "15dp"
+        "value": "10dp"
     },
     "_width_": {
         "type": "string",

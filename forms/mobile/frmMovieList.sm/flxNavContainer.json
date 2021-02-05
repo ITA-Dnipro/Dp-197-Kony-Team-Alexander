@@ -1,8 +1,12 @@
 {
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "0dp"
+    },
     "_height_": {
         "type": "string",
-        "value": "48dp"
+        "value": "70dp"
     },
     "_left_": {
         "type": "string",
@@ -23,10 +27,6 @@
     ],
     "_percent_": true,
     "_skin_": "s76eb47ca2b149bdabc0a625e94b9cf6",
-    "_top_": {
-        "type": "string",
-        "value": "760dp"
-    },
     "_width_": {
         "type": "string",
         "value": "100%"
@@ -48,7 +48,7 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "ce32d24ff5ec41dbbe043b40703e524a",
-    "layouttype": 2,
+    "layouttype": 3,
     "name": "kony.ui.FlexContainer",
     "parent": "frmMovieList",
     "pf": "frmMovieList",

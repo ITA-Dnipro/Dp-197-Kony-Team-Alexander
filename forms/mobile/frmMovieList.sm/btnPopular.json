@@ -2,12 +2,12 @@
     "@class": "com.kony.gen.viz.model.component.KVizButton",
     "DNDConfig": null,
     "_bottom_": {
-        "type": "number",
-        "value": "0"
+        "type": "string",
+        "value": "0dp"
     },
     "_height_": {
         "type": "string",
-        "value": "50dp"
+        "value": "70dp"
     },
     "_left_": {
         "type": "string",

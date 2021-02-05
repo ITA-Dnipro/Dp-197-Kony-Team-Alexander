@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "15dp"
+        "value": "10dp"
     },
     "_margin_": [
         6,
@@ -25,7 +25,7 @@
     "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "15dp"
+        "value": "10dp"
     },
     "_width_": {
         "type": "string",

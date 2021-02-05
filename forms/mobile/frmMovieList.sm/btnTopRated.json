@@ -7,11 +7,11 @@
     },
     "_height_": {
         "type": "string",
-        "value": "50dp"
+        "value": "70dp"
     },
     "_left_": {
-        "type": "string",
-        "value": "103dp"
+        "type": "number",
+        "value": "0"
     },
     "_margin_": [
         6,
@@ -38,6 +38,12 @@
     "focusskin": "s13fb70f60444470ad40243457d097d5",
     "id": "btnTopRated",
     "info": null,
+    "iphone": {
+        "bottom": {
+            "type": "string",
+            "value": "0dp"
+        }
+    },
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "c812ea1f550743beb704e599d73f55cd",
