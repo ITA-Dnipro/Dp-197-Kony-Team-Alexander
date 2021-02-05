@@ -21,11 +21,11 @@
     "isForked": false
   },
   "fontSizeInPx": false,
-  "font_color": "ffffffff",
-  "font_name": "iphoneSystem",
+  "font_color": "a8a8a8ff",
+  "font_name": "Helvetica",
   "font_size": 135,
   "font_style": "normal",
-  "font_weight": "bold",
+  "font_weight": "normal",
   "ipad": {
     "font_name": "System",
     "font_size": 135,
@@ -42,7 +42,7 @@
     "font_size": 135,
     "isForked": false
   },
-  "kuid": "sc61f6bcab404cb5833d37847af60c7e",
+  "kuid": "s7768e2aed3544f4a68e12fc220445cc",
   "spaan": {
     "font_name": "Helvetica",
     "font_size": 135,

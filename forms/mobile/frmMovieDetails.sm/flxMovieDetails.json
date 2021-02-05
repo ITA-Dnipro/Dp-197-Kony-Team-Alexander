@@ -1,12 +1,12 @@
 {
     "DNDConfig": null,
     "_height_": {
-        "type": "string",
-        "value": "100%"
+        "type": "ref",
+        "value": "preferred"
     },
     "_left_": {
         "type": "string",
-        "value": "0dp"
+        "value": "15dp"
     },
     "_margin_": [
         0,
@@ -22,51 +22,47 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "sb213c56a6984faaa98c67c079ac462c",
+    "_right_": {
+        "type": "string",
+        "value": "10dp"
+    },
+    "_skin_": "s76eb47ca2b149bdabc0a625e94b9cf6",
     "_top_": {
         "type": "string",
         "value": "0dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "95%"
     },
     "allboxes": [],
-    "allowhorizontalbounce": false,
-    "allowverticalbounce": true,
-    "bounces": true,
+    "autogrowmode": 1,
     "canUpdateUI": true,
     "children": [
-        "flxMovieDetailsHeader",
-        "flxMovieDetails",
-        "lblTitleSimilar",
-        "similarMovieList"
+        "flxDetailsItem1",
+        "flxDetailsItem2",
+        "flxDetailsItem3",
+        "flxDetailsItem4",
+        "flxDetailsItem5"
     ],
     "clipbounds": true,
     "containerweight": 100,
-    "decelerat": false,
-    "dragg": false,
     "enablescrolling": true,
-    "horizontalscrollindicator": true,
-    "id": "flxMainScroll",
+    "id": "flxMovieDetails",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "e9341c9366484ed1a5808f111ada76f1",
+    "kuid": "a67dde0c1dc74eae81613a591d304af5",
     "layouttype": 4,
-    "name": "kony.ui.FlexScrollContainer",
-    "pagingenabled": false,
-    "parent": "frmMovieDetails",
+    "name": "kony.ui.FlexContainer",
+    "parent": "flxMainScroll",
     "pf": "frmMovieDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
-    "scrolldirection": 2,
     "snapgridsize": 10,
     "snaptogrid": true,
-    "track": false,
-    "verticalscrollindicator": true,
-    "wType": "FlexScrollContainer",
+    "wType": "FlexContainer",
     "widgetalignment": 1,
-    "zindex": 1
+    "zindex": 2
 }

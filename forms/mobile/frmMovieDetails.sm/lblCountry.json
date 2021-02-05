@@ -3,11 +3,11 @@
     "DNDConfig": null,
     "_bottom_": {
         "type": "string",
-        "value": "10dp"
+        "value": "0dp"
     },
     "_left_": {
         "type": "string",
-        "value": "170dp"
+        "value": "0dp"
     },
     "_margin_": [
         1,
@@ -21,15 +21,15 @@
         0,
         0
     ],
-    "_right_": {
-        "type": "string",
-        "value": "10dp"
-    },
-    "_skin_": "sf8f1592d90748c9bde223608494b972",
-    "_text_": "Label",
+    "_skin_": "sc61f6bcab404cb5833d37847af60c7e",
+    "_text_": "Country",
     "_top_": {
         "type": "string",
-        "value": "10dp"
+        "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "120dp"
     },
     "_wrapping_": 2,
     "android": {
@@ -39,10 +39,9 @@
         }
     },
     "canUpdateUI": true,
-    "containerId": true,
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lblMovieDetailInfo",
+    "id": "lblCountry",
     "info": null,
     "ipad": {
         "psp": {
@@ -56,10 +55,10 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "gd9bdd0923074cf5898d5b735c3d74a3",
+    "kuid": "g609cb7bf01b469aa76ee020aa88ea3e",
     "name": "kony.ui.Label",
-    "parent": "movieDetailRow",
-    "pf": "MovieDetailsRowTemplate",
+    "parent": "flxDetailsItem1",
+    "pf": "frmMovieDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},

@@ -116,6 +116,12 @@ define({
            lblMovieDetailInfo: movieData[detail],
          };
        });
+       
+       this.view.lblCountryInfo.text = "US, GB";
+       this.view.lblDurationInfo.text = String(movieData.runtime);
+       this.view.lblReleasedInfo.text = movieData.release_date;
+       this.view.lblGenresInfo.text = "Thriller, Action, Science Fiction";
+       this.view.lblDescriptionInfo.text = movieData.overview;
           
        this.view.lblMovieRating.text = movieData.vote_average;
        this.view.imgMoviePoster.src = "https://image.tmdb.org/t/p/w200/" + movieData.poster_path;
