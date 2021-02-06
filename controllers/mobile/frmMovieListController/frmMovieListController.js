@@ -1,10 +1,6 @@
 define({
   onInitialize: function() {
     this.view.postShow = this.onFormShowed.bind(this);
-    this.view.btnBack.onClick = function () {
-      var navigation = new kony.mvc.Navigation(kony.application.getPreviousForm().id);
-      navigation.navigate();
-    }.bind(this);
   },
   
   onFormShowed: function() {
@@ -36,7 +32,7 @@ define({
     var listData = movieData.results.map(function(m) {
       return {
         lblMovieTitle: m.title,
-        lblDescription: m.overview,
+        lblMovieDescription: m.overview,
         imgMoviePoster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
       };
     });

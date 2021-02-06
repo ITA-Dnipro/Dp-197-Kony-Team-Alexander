@@ -4,11 +4,11 @@
     "_base64_": null,
     "_height_": {
         "type": "string",
-        "value": "65dp"
+        "value": "160dp"
     },
     "_left_": {
         "type": "string",
-        "value": "15dp"
+        "value": "10dp"
     },
     "_margin_": [
         0,
@@ -26,11 +26,11 @@
     "_src_": "imagedrag.png",
     "_top_": {
         "type": "string",
-        "value": "9dp"
+        "value": "10dp"
     },
     "_width_": {
         "type": "string",
-        "value": "85dp"
+        "value": "100dp"
     },
     "canUpdateUI": true,
     "containerId": true,
@@ -40,9 +40,9 @@
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "if822bedfbe94b31980cc21e1aa3ca4e",
+    "kuid": "g51813c03aa54272989e239d1fc6143e",
     "name": "kony.ui.Image2",
-    "parent": "flxRowTemplateMovie",
+    "parent": "MovieRow",
     "pf": "MovieRowTemplate",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

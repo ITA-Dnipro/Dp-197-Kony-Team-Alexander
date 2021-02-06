@@ -21,12 +21,12 @@
     "allboxes": [],
     "canUpdateUI": true,
     "children": [
-        "flxRowTemplateMovie"
+        "MovieRow"
     ],
     "containerId": true,
     "containerweight": 100,
     "currentLocale": "default",
-    "device": "iPhone11",
+    "device": "Pixel3",
     "displayorientation": 3,
     "enabledforidletimeout": false,
     "id": "MovieRowTemplate",
@@ -38,20 +38,20 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "j1bbbedf2eff4b438f242aa855525201",
+    "kuid": "eff9748c148944d3a2cf6cae4764c314",
     "name": "kony.ui.Form2",
     "needappmenu": true,
     "outtransitionconfig": {
         "formTransition": "None"
     },
     "paddinginpixel": false,
-    "platform": "iphone",
+    "platform": "android",
     "prevDevice": "iPhone11",
     "prevPlatform": "iphone",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainscrollposition": false,
-    "shellCSS": "iOS_iPhoneXR",
+    "shellCSS": "and_Pixel3",
     "titlebar": true,
     "type": 3,
     "wType": "Form"
