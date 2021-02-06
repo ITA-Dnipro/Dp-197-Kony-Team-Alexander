@@ -21,9 +21,17 @@
                     "thumbnailURL": null
                 },
                 {
+                    "formKUID": "a13d0bf851e142c29748ef19b63af965",
+                    "formName": "frmMovieList",
+                    "isStartupForm": true,
+                    "key": "a13d0bf851e142c29748ef19b63af965",
+                    "loc": "8 1224.845263671875",
+                    "thumbnailURL": null
+                },
+                {
                     "formKUID": "d5af17e1fb4a4ee1ad29eb6c69cae32e",
                     "formName": "frmRegistration",
-                    "isStartupForm": true,
+                    "isStartupForm": false,
                     "key": "d5af17e1fb4a4ee1ad29eb6c69cae32e",
                     "loc": "8 624.845263671875",
                     "thumbnailURL": null
