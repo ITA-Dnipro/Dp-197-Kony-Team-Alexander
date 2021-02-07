@@ -1,20 +1,20 @@
 {
-    "AS_Form_h8a1f5fd35db40729067e102073920ed": {
-        "id": "AS_Form_h8a1f5fd35db40729067e102073920ed",
+    "AS_Form_cc0b999171484da28a53aecb743d9108": {
+        "id": "AS_Form_cc0b999171484da28a53aecb743d9108",
         "type": "ACTION_SEQUENCE",
         "params": [{
             "datatype": "collection",
             "name": "eventobject"
         }],
         "contextObj": {
-            "name": "frmMovieList",
+            "name": "frmRegistration",
             "type": "forms",
             "platform": "",
-            "KUID": "a13d0bf851e142c29748ef19b63af965"
+            "KUID": "d5af17e1fb4a4ee1ad29eb6c69cae32e"
         },
         "language": "js",
         "actions": [{
-            "id": "INVOKE_FUNCTION__efd036a89e1f4d27b8affc1ae304d677",
+            "id": "INVOKE_FUNCTION__d3e052aef3004bd9844f65b74d11a846",
             "type": "INVOKE_FUNCTION",
             "sequenceKUID": "onInitialize",
             "display": "onInitialize",
