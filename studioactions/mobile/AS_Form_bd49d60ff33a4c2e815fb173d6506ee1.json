@@ -1,0 +1,27 @@
+{
+    "AS_Form_bd49d60ff33a4c2e815fb173d6506ee1": {
+        "id": "AS_Form_bd49d60ff33a4c2e815fb173d6506ee1",
+        "type": "ACTION_SEQUENCE",
+        "params": [{
+            "datatype": "collection",
+            "name": "eventobject"
+        }],
+        "contextObj": {
+            "name": "frmAuthentication",
+            "type": "forms",
+            "platform": "",
+            "KUID": "je23acaff2fe4b5ba13c0586dee6f6c1"
+        },
+        "language": "js",
+        "actions": [{
+            "id": "INVOKE_FUNCTION__cf4cf8ced159473fa79903a391927329",
+            "type": "INVOKE_FUNCTION",
+            "display": "<>",
+            "inputparams": [],
+            "parentId": null,
+            "callbackType": null,
+            "disabled": null,
+            "source": "module"
+        }]
+    }
+}

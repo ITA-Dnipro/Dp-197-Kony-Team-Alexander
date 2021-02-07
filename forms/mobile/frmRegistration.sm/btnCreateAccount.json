@@ -21,15 +21,15 @@
         0,
         0
     ],
+    "_right_": {
+        "type": "string",
+        "value": "60dp"
+    },
     "_skin_": "s36c5183d44940ba8d38f8cc9480595c",
     "_text_": "Create account",
     "_top_": {
         "type": "string",
         "value": "500dp"
-    },
-    "_width_": {
-        "type": "string",
-        "value": "300dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,
