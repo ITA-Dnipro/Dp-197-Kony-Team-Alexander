@@ -1,10 +1,7 @@
 define({ 
 
   onInitialize: function() {
-    this.view.btnBack.onClick = function() {
-      var navigation = new kony.mvc.Navigation(kony.application.getPreviousForm().id);
-      navigation.navigate();
-    };
+    this.view.btnBack.onClick = Utility.goBack;
     this.view.postShow = this.onFormShowed.bind(this);
   },
   
