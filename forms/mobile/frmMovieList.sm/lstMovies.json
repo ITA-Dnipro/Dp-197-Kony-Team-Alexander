@@ -3,11 +3,15 @@
     "DNDConfig": null,
     "_data_": [
         {
+            "btnDeleteMoviFromList": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": ""
+            },
             "imgMoviePoster": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": ""
+                "src": "imagedrag.png"
             },
-            "lblDescription": {
+            "lblMovieDescription": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
                 "text": ""
             },
@@ -83,11 +87,11 @@
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainselection": false,
-    "rowTemplateId": "j1bbbedf2eff4b438f242aa855525201",
+    "rowTemplateId": "eff9748c148944d3a2cf6cae4764c314",
     "rowcounter": 0,
     "rowfocusskin": "s6e752e59eba428eacd51b1841f1d35b",
-    "rowskin": "s9501f97f5314fad82e11a368a1c159b",
-    "rowtemplate": "flxRowTemplateMovie",
+    "rowskin": "s7474346e4ef44899ee9403e46f57028",
+    "rowtemplate": "MovieRow",
     "screenlevelwidget": false,
     "seccounter": 0,
     "sectionheaderskin": "sda2044e3a144e2c852fa1cc8e91bf0c",
@@ -107,9 +111,10 @@
     "wType": "Segment",
     "widgetalignment": 5,
     "widgetdatamap": {
-        "flxRowTemplateMovie": "flxRowTemplateMovie",
+        "MovieRow": "MovieRow",
+        "btnDeleteMoviFromList": "btnDeleteMoviFromList",
         "imgMoviePoster": "imgMoviePoster",
-        "lblDescription": "lblDescription",
+        "lblMovieDescription": "lblMovieDescription",
         "lblMovieTitle": "lblMovieTitle"
     },
     "zindex": 1

@@ -38,7 +38,7 @@ define({
 		var listData = movieData.results.map(function(m) {
 			return {
 				lblMovieTitle: m.title,
-				lblDescription: m.overview,
+        lblMovieDescription: m.overview,
 				imgMoviePoster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
 			};
 		});
