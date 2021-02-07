@@ -2,12 +2,12 @@
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "50dp"
     },
     "_left_": {
         "type": "string",
-        "value": "113dp"
+        "value": "120dp"
     },
     "_margin_": [
         1,
@@ -21,11 +21,15 @@
         0,
         0
     ],
-    "_skin_": "se3c5119e94d43ea8aa5f13e8e145c86",
-    "_text_": "Label",
+    "_right_": {
+        "type": "number",
+        "value": "51"
+    },
+    "_skin_": "s61964816e054e76bd3ede8872dc4c13",
+    "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "5dp"
+        "value": "10dp"
     },
     "_width_": {
         "type": "ref",
@@ -56,13 +60,15 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "e5c121da12dc41c190cbb3b7f8cefdb0",
+    "kuid": "b804f4fd500a4b0fbcc4b55032bf6903",
+    "maxnumberoflines": 1,
     "name": "kony.ui.Label",
-    "parent": "flxRowTemplateMovie",
+    "parent": "MovieRow",
     "pf": "MovieRowTemplate",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},
+    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label",
     "zindex": 1

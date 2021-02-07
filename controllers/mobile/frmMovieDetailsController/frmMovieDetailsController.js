@@ -69,8 +69,8 @@ define({
 				//         this.view.imgMoviePoster.src = listData[1].imgMovie;
 				//         this.view.imgBackground.src = listData[1].imgBack;
 				//         this.view.lblMovieTitle.text = listData[1].lblMovieTitle;
-				this.loadMovieDetails(listData[1].id);
-				this.loadSimilarMovieList(listData[1].id);
+				this.loadMovieDetails(listData[2].id);
+				this.loadSimilarMovieList(listData[2].id);
 				kony.application.dismissLoadingScreen();
 			} 
 		}
@@ -117,7 +117,13 @@ define({
 			this.view.lblCountryInfo.text = "US, GB";
 			this.view.lblDurationInfo.text = String(movieData.runtime);
 			this.view.lblReleasedInfo.text = movieData.release_date;
-			this.view.lblGenresInfo.text = "Thriller, Action, Science Fiction";
+			
+			var genresList = movieData.genres.map(function(g) {
+				return g.name;
+			});
+			
+			this.view.lblGenresInfo.text = genresList.join(', ');
+			// this.view.lblGenresInfo.text = "Thriller, Action, Science Fiction";
 			this.view.lblDescriptionInfo.text = movieData.overview;
 
 			this.view.lblMovieRating.text = movieData.vote_average;
