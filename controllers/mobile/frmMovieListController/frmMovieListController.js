@@ -1,12 +1,14 @@
 define({
   onInitialize: function() {
     this.view.postShow = this.onFormShowed.bind(this);
-    this.view.btnBack.onClick = function () {
-      var navigation = new kony.mvc.Navigation(kony.application.getPreviousForm().id);
-      navigation.navigate();
-    }.bind(this);
+	this.view.lstMovies.onRowClick = Utility.navigateTo.bind(null, "frmMovieDetails");
+	this.view.btnProfile.onClick = Utility.navigateTo.bind(null, "frmAuthentication");
   },
   
+// 	onRowClicked: function(widgetRef, sectionIndex, rowIndex, selectedState) {
+// 		Utility.navigateTo.bind(null, "frmMovieDetails");
+// 	},
+	
   onFormShowed: function() {
     this.loadMovieList();
   },
