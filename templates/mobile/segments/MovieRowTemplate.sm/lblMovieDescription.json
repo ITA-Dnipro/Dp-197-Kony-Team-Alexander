@@ -2,12 +2,12 @@
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "110dp"
     },
     "_left_": {
         "type": "string",
-        "value": "118dp"
+        "value": "120dp"
     },
     "_margin_": [
         1,
@@ -21,11 +21,15 @@
         0,
         0
     ],
-    "_skin_": "s75d38934ca74897bc99c5b4270ed150",
-    "_text_": "Label",
+    "_right_": {
+        "type": "number",
+        "value": "10"
+    },
+    "_skin_": "sbe6324bdf7841038571d0a8b3f73495",
+    "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "40dp"
+        "value": "70dp"
     },
     "_width_": {
         "type": "ref",
@@ -41,8 +45,8 @@
     "canUpdateUI": true,
     "containerId": true,
     "containerweight": 100,
-    "contentalignment": 4,
-    "id": "lblDescription",
+    "contentalignment": 1,
+    "id": "lblMovieDescription",
     "info": null,
     "ipad": {
         "psp": {
@@ -56,13 +60,15 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "af94dee671fd46d9a3c47609406d8c6e",
+    "kuid": "j381464eb3974ceb90c4d78dcd72add5",
+    "maxnumberoflines": 4,
     "name": "kony.ui.Label",
-    "parent": "flxRowTemplateMovie",
+    "parent": "MovieRow",
     "pf": "MovieRowTemplate",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},
+    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label",
     "zindex": 1

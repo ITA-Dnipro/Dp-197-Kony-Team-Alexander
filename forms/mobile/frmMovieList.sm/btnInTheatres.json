@@ -10,8 +10,8 @@
         "value": "70dp"
     },
     "_left_": {
-        "type": "string",
-        "value": "0dp"
+        "type": "number",
+        "value": "0"
     },
     "_margin_": [
         6,
@@ -26,7 +26,7 @@
         0
     ],
     "_skin_": "sd86a5ebc0f0478d85a27fb92b4234a3",
-    "_text_": "In Theatres",
+    "_text_": "In Cinema",
     "_width_": {
         "type": "string",
         "value": "25%"

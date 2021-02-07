@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "80dp"
+        "value": "180dp"
     },
     "_left_": {
         "type": "string",
@@ -22,7 +22,7 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s76eb47ca2b149bdabc0a625e94b9cf6",
+    "_skin_": "s1d16922fabf441390a807830762c8f9",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -32,11 +32,13 @@
         "value": "100%"
     },
     "allboxes": [],
+    "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
         "imgMoviePoster",
         "lblMovieTitle",
-        "lblDescription"
+        "lblMovieDescription",
+        "btnDeleteMoviFromList"
     ],
     "clipbounds": true,
     "containerId": true,
@@ -44,16 +46,16 @@
     "controllerInfo": {
         "default": {
             "channel": "mobile",
-            "name": "flxRowTemplateMovieController"
+            "name": "MovieRowController"
         }
     },
     "enablescrolling": true,
-    "id": "flxRowTemplateMovie",
+    "id": "MovieRow",
     "info": null,
     "isTemplate": true,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "ba7440031e9547fb846f1c4558dc9343",
+    "kuid": "g913caf750c541d7a25b9425e6b7823e",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
     "parent": "MovieRowTemplate",
