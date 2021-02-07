@@ -5,4 +5,4 @@ define({
 		this.view.btnRegister.onClick = Utility.navigateTo.bind(null,"frmRegistration");
 	}
 
- });
+});
