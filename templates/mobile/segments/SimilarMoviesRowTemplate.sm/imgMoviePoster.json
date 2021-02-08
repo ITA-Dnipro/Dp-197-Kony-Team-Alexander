@@ -4,7 +4,7 @@
     "_base64_": null,
     "_height_": {
         "type": "string",
-        "value": "80dp"
+        "value": "160dp"
     },
     "_left_": {
         "type": "string",
@@ -30,20 +30,20 @@
     },
     "_width_": {
         "type": "string",
-        "value": "80dp"
+        "value": "100dp"
     },
     "canUpdateUI": true,
     "containerId": true,
     "containerweight": 100,
     "id": "imgMoviePoster",
-    "imagescalemode": 0,
+    "imagescalemode": 1,
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "e8bb004b173741518fb2fdb65d3bf8a6",
+    "kuid": "ied549e84a3e45fabc3e145f4b3b4a57",
     "name": "kony.ui.Image2",
-    "parent": "similarMovieRow",
-    "pf": "SimilarMovieRowTemplate",
+    "parent": "SimilarMoviesRow",
+    "pf": "SimilarMoviesRowTemplate",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "srcType": 1,

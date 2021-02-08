@@ -1,13 +1,14 @@
 define({
 	onInitialize: function() {
 		this.view.postShow = this.onFormShowed.bind(this);
-		this.view.lstMovies.onRowClick = Utility.navigateTo.bind(null, "frmMovieDetails");
+		this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
+// 		this.view.lstMovies.onRowClick = Utility.navigateTo.bind(null, "frmMovieDetails");
 		this.view.btnProfile.onClick = Utility.navigateTo.bind(null, "frmAuthentication");
 	},
 
-// 	onRowClicked: function(widgetRef, sectionIndex, rowIndex, selectedState) {
-// 		Utility.navigateTo.bind(null, "frmMovieDetails");
-// 	},
+	onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
+		Utility.navigateTo("frmMovieDetails", widgetRef.data[rowIndex].id);
+	},
 
 	onFormShowed: function() {
 		this.loadMovieList();
@@ -37,8 +38,9 @@ define({
 		var movieData = httpClient.response;
 		var listData = movieData.results.map(function(m) {
 			return {
+				id: m.id,
 				lblMovieTitle: m.title,
-        lblMovieDescription: m.overview,
+				lblMovieDescription: m.overview,
 				imgMoviePoster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
 			};
 		});

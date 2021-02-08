@@ -7,7 +7,7 @@
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
                 "src": ""
             },
-            "lblDescription": {
+            "lblMovieDescription": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
                 "text": ""
             },
@@ -55,7 +55,7 @@
     "focuseditem": null,
     "groupcells": false,
     "hasSections": false,
-    "id": "similarMovieList",
+    "id": "lstSimilarMovies",
     "info": null,
     "ipad": {
         "psp": {
@@ -84,11 +84,11 @@
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainselection": false,
-    "rowTemplateId": "fd971e9bce024a46a38f18a951417e63",
+    "rowTemplateId": "ea9fc1b967024b529e582c400353a9ed",
     "rowcounter": 0,
     "rowfocusskin": "s6e752e59eba428eacd51b1841f1d35b",
     "rowskin": "s9501f97f5314fad82e11a368a1c159b",
-    "rowtemplate": "similarMovieRow",
+    "rowtemplate": "SimilarMoviesRow",
     "screenlevelwidget": false,
     "seccounter": 0,
     "sectionheaderskin": "sda2044e3a144e2c852fa1cc8e91bf0c",
@@ -97,7 +97,7 @@
     "selectedindex": null,
     "selectedindices": null,
     "selecteditems": null,
-    "selectedsectionindex": 0,
+    "selectedsectionindex": null,
     "selectionbehavior": "default",
     "separatorcolor": "aaaaaa00",
     "separatorrequired": true,
@@ -108,10 +108,10 @@
     "wType": "Segment",
     "widgetalignment": 5,
     "widgetdatamap": {
+        "SimilarMoviesRow": "SimilarMoviesRow",
         "imgMoviePoster": "imgMoviePoster",
-        "lblDescription": "lblDescription",
-        "lblMovieTitle": "lblMovieTitle",
-        "similarMovieRow": "similarMovieRow"
+        "lblMovieDescription": "lblMovieDescription",
+        "lblMovieTitle": "lblMovieTitle"
     },
     "zindex": 2
 }
