@@ -71,7 +71,7 @@
     "androidscreenresizeable": "false",
     "androidscreensmall": "true",
     "androidwear_allowselfsignedcertificates": "None",
-    "andtargetsdkkey": "10.0 (29)",
+    "andtargetsdkkey": "9.0 (28)",
     "andwearapppackagekey": "com.orgname.ApplicationTMDB",
     "andwearappversioncode": "1",
     "andwearmaxsdkkey": "None",
