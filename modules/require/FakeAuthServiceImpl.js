@@ -31,7 +31,7 @@ define(function () {
 		}
 
 		var matchedUsers = users.filter(function(u) { 
-			return u.login === login && u.password === password;  
+			return u.login === login;  
 		});
 		var callback = null;
 		

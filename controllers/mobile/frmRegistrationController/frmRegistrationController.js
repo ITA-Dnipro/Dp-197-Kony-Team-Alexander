@@ -12,7 +12,7 @@ define(["FakeAuthService"], function(authUser) {
 														this.view.inpPasswordConfirm.text,
 														Utility.navigateTo.bind(null,"frmAuthentication"),
 														function() {
-															alert("A user with the same name already exists");
+															alert("A user with the same username already exists");
 														});
 		}
 	};
