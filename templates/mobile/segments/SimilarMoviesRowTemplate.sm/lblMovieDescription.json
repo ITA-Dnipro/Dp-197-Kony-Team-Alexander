@@ -1,17 +1,13 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
-    "_bottom_": {
-        "type": "string",
-        "value": "10dp"
-    },
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "110dp"
     },
     "_left_": {
         "type": "string",
-        "value": "100dp"
+        "value": "120dp"
     },
     "_margin_": [
         1,
@@ -26,14 +22,14 @@
         0
     ],
     "_right_": {
-        "type": "string",
-        "value": "10dp"
+        "type": "number",
+        "value": "10"
     },
-    "_skin_": "s9105534b63041dca7481f93be5cfcb3",
-    "_text_": "Description",
+    "_skin_": "sbe6324bdf7841038571d0a8b3f73495",
+    "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "40dp"
+        "value": "70dp"
     },
     "_width_": {
         "type": "ref",
@@ -49,8 +45,8 @@
     "canUpdateUI": true,
     "containerId": true,
     "containerweight": 100,
-    "contentalignment": 4,
-    "id": "lblDescription",
+    "contentalignment": 1,
+    "id": "lblMovieDescription",
     "info": null,
     "ipad": {
         "psp": {
@@ -64,13 +60,15 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "ief46d972543442482ffa0567238028d",
+    "kuid": "a970823a7b2c4c5585aa61ef1d9fd56b",
+    "maxnumberoflines": 4,
     "name": "kony.ui.Label",
-    "parent": "similarMovieRow",
-    "pf": "SimilarMovieRowTemplate",
+    "parent": "SimilarMoviesRow",
+    "pf": "SimilarMoviesRowTemplate",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},
+    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label",
     "zindex": 1

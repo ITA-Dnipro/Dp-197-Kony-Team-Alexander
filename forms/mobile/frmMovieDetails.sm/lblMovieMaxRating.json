@@ -5,10 +5,6 @@
         "type": "string",
         "value": "0dp"
     },
-    "_height_": {
-        "type": "ref",
-        "value": "preferred"
-    },
     "_margin_": [
         1,
         1,
@@ -23,7 +19,7 @@
     ],
     "_right_": {
         "type": "string",
-        "value": "0dp"
+        "value": "5dp"
     },
     "_skin_": "s78c5b632aba4e3cb10ef67155e97f52",
     "_text_": "/10",
@@ -33,7 +29,7 @@
     },
     "_width_": {
         "type": "string",
-        "value": "48dp"
+        "value": "50dp"
     },
     "_wrapping_": 2,
     "android": {

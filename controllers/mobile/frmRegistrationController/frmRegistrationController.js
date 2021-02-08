@@ -5,4 +5,4 @@ define({
 		this.view.btnBackToLogin.onClick = Utility.goBack;
 	}
 
- });
+});
