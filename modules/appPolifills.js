@@ -2,7 +2,7 @@ if (!Array.prototype.filter){
   Array.prototype.filter = function(func, thisArg) {
     'use strict';
     if ( ! ((typeof func === 'function' || typeof func === 'function') && this) )
-        throw new TypeError();
+      throw new TypeError();
 
     var len = this.length >>> 0,
         res = new Array(len), // preallocate array
