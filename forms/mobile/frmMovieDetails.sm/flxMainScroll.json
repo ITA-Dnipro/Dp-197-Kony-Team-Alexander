@@ -40,7 +40,7 @@
         "flxMovieDetailsHeader",
         "flxMovieDetails",
         "lblTitleSimilar",
-        "similarMovieList"
+        "lstSimilarMovies"
     ],
     "clipbounds": true,
     "containerweight": 100,

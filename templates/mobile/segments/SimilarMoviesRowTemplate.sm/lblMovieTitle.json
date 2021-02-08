@@ -2,12 +2,12 @@
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "50dp"
     },
     "_left_": {
         "type": "string",
-        "value": "100dp"
+        "value": "120dp"
     },
     "_margin_": [
         1,
@@ -22,11 +22,11 @@
         0
     ],
     "_right_": {
-        "type": "string",
-        "value": "10dp"
+        "type": "number",
+        "value": "51"
     },
-    "_skin_": "s31cfb9496d74c1ebe0f11f898f6a7ec",
-    "_text_": "Movie Title",
+    "_skin_": "s61964816e054e76bd3ede8872dc4c13",
+    "_text_": "",
     "_top_": {
         "type": "string",
         "value": "10dp"
@@ -60,13 +60,15 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "a198eeda22274d5c9d261df0f91889cc",
+    "kuid": "c8e5d1424d724ed8a3d29c0ff5249294",
+    "maxnumberoflines": 1,
     "name": "kony.ui.Label",
-    "parent": "similarMovieRow",
-    "pf": "SimilarMovieRowTemplate",
+    "parent": "SimilarMoviesRow",
+    "pf": "SimilarMoviesRowTemplate",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},
+    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label",
     "zindex": 1

@@ -5,10 +5,6 @@
         "type": "string",
         "value": "50dp"
     },
-    "_left_": {
-        "type": "string",
-        "value": "300dp"
-    },
     "_margin_": [
         1,
         1,
@@ -21,6 +17,10 @@
         0,
         0
     ],
+    "_right_": {
+        "type": "string",
+        "value": "60dp"
+    },
     "_skin_": "s96e5ba143304be3a61cbcd5452d2b2e",
     "_text_": "",
     "_top_": {
@@ -40,7 +40,7 @@
     },
     "canUpdateUI": true,
     "containerweight": 100,
-    "contentalignment": 6,
+    "contentalignment": 5,
     "id": "lblPassworIcon",
     "info": null,
     "ipad": {

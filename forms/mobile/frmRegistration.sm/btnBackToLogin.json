@@ -5,10 +5,6 @@
         "type": "string",
         "value": "50dp"
     },
-    "_left_": {
-        "type": "string",
-        "value": "260dp"
-    },
     "_margin_": [
         6,
         6,
@@ -21,6 +17,10 @@
         0,
         0
     ],
+    "_right_": {
+        "type": "string",
+        "value": "60dp"
+    },
     "_skin_": "s90d17b5ab6f4b758d8bed6f4503ab07",
     "_text_": "Log in",
     "_top_": {
@@ -29,7 +29,7 @@
     },
     "_width_": {
         "type": "string",
-        "value": "100dp"
+        "value": "80dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,

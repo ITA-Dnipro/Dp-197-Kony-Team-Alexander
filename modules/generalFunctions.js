@@ -4,8 +4,10 @@ var Utility = {
 		navigation.navigate();
 	},
 
-	navigateTo: function(frmName) {
+	navigateTo: function(frmName, data) {
 		var navigation = new kony.mvc.Navigation(frmName);
-		navigation.navigate();
+		
+		var dataToForm = { id: data };
+		navigation.navigate(dataToForm);
 	}
 }
