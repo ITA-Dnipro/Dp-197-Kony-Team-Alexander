@@ -5,7 +5,7 @@
         {
             "imgMoviePoster": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imagedrag.png"
+                "src": ""
             },
             "lblMovieDescription": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
