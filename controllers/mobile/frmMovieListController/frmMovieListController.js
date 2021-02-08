@@ -1,6 +1,6 @@
 define({
   onInitialize: function() {
-    this.view.postShow = this.onFormShowed.bind(this);
+//     this.view.postShow = this.onFormShowed.bind(this);
 //  this.view.lstMovies.onRowClick = Utility.navigateTo.bind(null, "frmMovieDetails");
     this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
     this.view.btnProfile.onClick = Utility.navigateTo.bind(null, "frmAuthentication");
@@ -10,13 +10,17 @@ define({
     this.view.btnUpcoming.onClick = this.loadMovieList.bind(this, "upcoming");
   },
   
+	onNavigate: function() {
+		this.loadMovieList("popular");
+  },
+	
   onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
     Utility.navigateTo("frmMovieDetails", widgetRef.data[rowIndex].id);
   },
   
-  onFormShowed: function() {
-    this.loadMovieList.bind(null, "popular");
-  },
+//   onFormShowed: function() {
+//     this.loadMovieList.bind(this, "popular");
+//   },
   
   loadMovieList: function(url) {
     kony.application.showLoadingScreen();
