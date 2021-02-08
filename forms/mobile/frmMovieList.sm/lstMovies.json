@@ -11,7 +11,7 @@
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
                 "src": "imagedrag.png"
             },
-            "lblMovieDescription": {
+            "lblMovieGenres": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
                 "text": ""
             },
@@ -109,7 +109,7 @@
     "widgetdatamap": {
         "MovieRow": "MovieRow",
         "imgMoviePoster": "imgMoviePoster",
-        "lblMovieDescription": "lblMovieDescription",
+        "lblMovieGenres": "lblMovieGenres",
         "lblMovieTitle": "lblMovieTitle"
     },
     "zindex": 1
