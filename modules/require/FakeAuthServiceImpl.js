@@ -2,11 +2,16 @@ define(function () {
 	var checkUser = function(login, password, successCB, errorCB) {
 // 		var testUser = JSON.stringify([{login: 'test', password: 'test'}]);
 // 		kony.store.setItem("users", testUser);
-
-		var users = JSON.parse(kony.store.getItem("users"));
+		var users = [];
+		
+		if (JSON.parse(kony.store.getItem("users"))) {
+			users = JSON.parse(kony.store.getItem("users"));
+		}
+		
 		var matchedUsers = users.filter(function(u) { 
 			return u.login === login && u.password === password; 
 		});
+		
 		var callback = null;
 
 		if (matchedUsers.length > 0) {
@@ -20,7 +25,11 @@ define(function () {
 	};
 
 	var registerUser = function(fullName, login, password, cnPassword, successCB, errorCB) {
-		var users = JSON.parse(kony.store.getItem("users"));
+		var users = [];
+		if (JSON.parse(kony.store.getItem("users"))) {
+			users = JSON.parse(kony.store.getItem("users"));
+		}
+
 		var matchedUsers = users.filter(function(u) { 
 			return u.login === login && u.password === password;  
 		});
