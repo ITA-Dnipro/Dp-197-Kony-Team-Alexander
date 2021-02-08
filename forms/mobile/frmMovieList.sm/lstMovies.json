@@ -1,12 +1,12 @@
 {
     "@class": "com.kony.gen.viz.model.container.KVizSegment2",
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "number",
+        "value": "70"
+    },
     "_data_": [
         {
-            "btnDeleteMoviFromList": {
-                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
-                "text": ""
-            },
             "imgMoviePoster": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
                 "src": "imagedrag.png"
@@ -21,10 +21,6 @@
             }
         }
     ],
-    "_height_": {
-        "type": "string",
-        "value": "670dp"
-    },
     "_indicator_": "none",
     "_left_": {
         "type": "string",
@@ -112,7 +108,6 @@
     "widgetalignment": 5,
     "widgetdatamap": {
         "MovieRow": "MovieRow",
-        "btnDeleteMoviFromList": "btnDeleteMoviFromList",
         "imgMoviePoster": "imgMoviePoster",
         "lblMovieDescription": "lblMovieDescription",
         "lblMovieTitle": "lblMovieTitle"
