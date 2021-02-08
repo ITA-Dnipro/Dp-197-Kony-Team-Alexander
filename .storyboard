@@ -7,10 +7,10 @@
                 {
                     "formKUID": "je23acaff2fe4b5ba13c0586dee6f6c1",
                     "formName": "frmAuthentication",
-                    "isStartupForm": false,
+                    "isStartupForm": true,
                     "key": "je23acaff2fe4b5ba13c0586dee6f6c1",
                     "loc": "188 184.845263671875",
-                    "thumbnailURL": null
+                    "thumbnailURL": "/assets/Alexander/forms/mobile/frmAuthentication.sm/.thumbs/default.jpeg?"
                 },
                 {
                     "formKUID": "d90406b7c4f549dca86192d9f42c675d",
@@ -18,12 +18,20 @@
                     "isStartupForm": false,
                     "key": "d90406b7c4f549dca86192d9f42c675d",
                     "loc": "8 24.845263671875003",
+                    "thumbnailURL": "/assets/Alexander/forms/mobile/frmFavouriteList.sm/.thumbs/default.jpeg?"
+                },
+                {
+                    "formKUID": "c6d20ea061bf4d53a7c054d91e850c09",
+                    "formName": "frmMovieDetails",
+                    "isStartupForm": false,
+                    "key": "c6d20ea061bf4d53a7c054d91e850c09",
+                    "loc": "368 354.845263671875",
                     "thumbnailURL": null
                 },
                 {
                     "formKUID": "a13d0bf851e142c29748ef19b63af965",
                     "formName": "frmMovieList",
-                    "isStartupForm": true,
+                    "isStartupForm": false,
                     "key": "a13d0bf851e142c29748ef19b63af965",
                     "loc": "8 1224.845263671875",
                     "thumbnailURL": null
@@ -34,7 +42,7 @@
                     "isStartupForm": false,
                     "key": "d5af17e1fb4a4ee1ad29eb6c69cae32e",
                     "loc": "8 624.845263671875",
-                    "thumbnailURL": null
+                    "thumbnailURL": "/assets/Alexander/forms/mobile/frmRegistration.sm/.thumbs/default.jpeg?"
                 }
             ]
         }

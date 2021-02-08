@@ -37,8 +37,7 @@
     "children": [
         "imgMoviePoster",
         "lblMovieTitle",
-        "lblMovieDescription",
-        "btnDeleteMoviFromList"
+        "lblMovieDescription"
     ],
     "clipbounds": true,
     "containerId": true,
