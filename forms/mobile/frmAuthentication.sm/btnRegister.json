@@ -21,15 +21,15 @@
         0,
         0
     ],
+    "_right_": {
+        "type": "number",
+        "value": "60"
+    },
     "_skin_": "s90d17b5ab6f4b758d8bed6f4503ab07",
     "_text_": "Register",
     "_top_": {
         "type": "string",
         "value": "460dp"
-    },
-    "_width_": {
-        "type": "string",
-        "value": "300dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,

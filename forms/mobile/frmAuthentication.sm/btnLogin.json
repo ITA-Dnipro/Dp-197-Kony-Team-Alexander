@@ -21,15 +21,15 @@
         0,
         0
     ],
+    "_right_": {
+        "type": "number",
+        "value": "60"
+    },
     "_skin_": "s36c5183d44940ba8d38f8cc9480595c",
     "_text_": "Log in",
     "_top_": {
         "type": "string",
         "value": "380dp"
-    },
-    "_width_": {
-        "type": "string",
-        "value": "300dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,
