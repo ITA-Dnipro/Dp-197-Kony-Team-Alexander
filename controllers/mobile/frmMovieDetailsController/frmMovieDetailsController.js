@@ -23,7 +23,7 @@ define(["MovieService"], function(movieService){
       movieService.getSimilarMovieList(function(movieList) {
         this.onSimilarMovieListReceived(movieList);
       }.bind(this), function() {
-        alert("Error while retrieving movie details");
+        alert("Error while retrieving similar movie list");
         kony.application.dismissLoadingScreen();
       }, movieId.id);
 
@@ -40,7 +40,7 @@ define(["MovieService"], function(movieService){
       movieService.getSimilarMovieList(function(movieList) {
         this.onSimilarMovieListReceived(movieList);
       }.bind(this), function() {
-        alert("Error while retrieving movie details");
+        alert("Error while retrieving similar movie list");
         kony.application.dismissLoadingScreen();
       }, widgetRef.data[rowIndex].id);
 
@@ -72,7 +72,6 @@ define(["MovieService"], function(movieService){
     },
 
     onMovieDetailsReceived: function(movieData) {
-      kony.print("Movie List Received " + movieData.title);
     
       this.view.lblCountryInfo.text = movieData.countriesList.join(', ');
       this.view.lblDurationInfo.text = movieData.duration;

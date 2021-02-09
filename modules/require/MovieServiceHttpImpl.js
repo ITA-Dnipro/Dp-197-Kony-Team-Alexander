@@ -55,7 +55,7 @@ define(function () {
             m.id,
             m.title, 
             m.overview, 
-            m.genres, 
+            m.genre_ids, 
             m.poster_path,
             m.vote_average, 
           ); 
@@ -65,9 +65,61 @@ define(function () {
       }
     }, errorCallback);  
   };
+      
+  var loadGenreList = function(successCallback, errorCallback) {
+    var GENRE_URL = "https://api.themoviedb.org/3/genre/movie/list?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
+    
+     makeHttpRequest(GENRE_URL, function(genresList) {
+      if (genresList.genres && Array.isArray(genresList.genres)) {
+        successCallback(genresList.genres);
+      }      
+     }, errorCallback);
+  };
+ 
+  var getGenreNameById = function(allGenreList, currGenreList) {
+    var currGenres = allGenreList.filter(function(obj){
+      return currGenreList.indexOf(obj.id) !== -1;
+    });
+    
+    return currGenres.map(function(obj){
+      return obj.name;
+    });
+  };
+      
+  var getMovieList = function(successCallback, errorCallback, url) {
+    var MOVIE_LIST_URL = MOVIE_BASE_URL + url + "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
+    
+    loadGenreList(function(genreData){
+      if (genreData && Array.isArray(genreData)) {
+        makeHttpRequest(MOVIE_LIST_URL, function(movies) {
+          if (movies.results && Array.isArray(movies.results)) {
+
+            var movieList = movies.results.map(function(m) {
+              return new MovieData(
+                m.id,
+                m.title, 
+                m.overview, 
+                m.genre_ids, 
+                m.poster_path,
+                m.vote_average,
+                getGenreNameById(genreData, m.genre_ids)
+              ); 
+            });
+
+            successCallback(movieList);
+          }
+        }, errorCallback); 
+      }      
+    }, function(){
+      alert("Error while retrieving genres list");
+    });
+    
+     
+  };
    
   return {
     getMovieDetails: getMovieDetails,
-    getSimilarMovieList: getSimilarMovieList,        
+    getSimilarMovieList: getSimilarMovieList,   
+    getMovieList: getMovieList
   };
 });
