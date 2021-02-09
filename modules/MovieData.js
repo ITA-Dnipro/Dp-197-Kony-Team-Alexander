@@ -1,4 +1,4 @@
-function MovieData(id, title, description, genresId, posterPath, voteAvg) {
+function MovieData(id, title, description, genresId, posterPath, voteAvg, genreNamesList) {
   var poster = "https://image.tmdb.org/t/p/w200/" + posterPath;
   
   this.id = id || 0;
@@ -7,4 +7,5 @@ function MovieData(id, title, description, genresId, posterPath, voteAvg) {
   this.genresList = genresId || 0;
   this.voteAvg = voteAvg || 0;
   this.poster = poster || 0;
+  this.genreNamesList = genreNamesList || 0;
 }

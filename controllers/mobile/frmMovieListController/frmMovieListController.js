@@ -1,79 +1,48 @@
-define({
-  onInitialize: function() {
-//     this.view.postShow = this.onFormShowed.bind(this);
-//  this.view.lstMovies.onRowClick = Utility.navigateTo.bind(null, "frmMovieDetails");
-    this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
-    this.view.btnProfile.onClick = Utility.navigateTo.bind(null, "frmAuthentication");
-    this.view.btnPopular.onClick = this.loadGenreList.bind(this, "popular");
-    this.view.btnTopRated.onClick = this.loadGenreList.bind(this, "top_rated");
-    this.view.btnInTheatres.onClick = this.loadGenreList.bind(this, "now_playing");
-    this.view.btnUpcoming.onClick = this.loadGenreList.bind(this, "upcoming");
-    
-  },
-  
-	onNavigate: function() {
-		this.loadGenreList("popular");
-  },
-	
-  onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-    Utility.navigateTo("frmMovieDetails", widgetRef.data[rowIndex].id);
-  },
-  
-  loadGenreList: function(url) {
-    var genreHttpClient = new kony.net.HttpRequest();
-    genreHttpClient.open(constants.HTTP_METHOD_GET, "https://api.themoviedb.org/3/genre/movie/list?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US");
-    genreHttpClient.onReadyStateChange = this.onGenreListReceived.bind(this, genreHttpClient, url);
-    genreHttpClient.send();
-//     this.view[btn].skin = "sknBtnNavigateActive";
-  },
-  
-   loadMovieList: function(url, genreData) {
-    kony.application.showLoadingScreen();
-    var httpClient = new kony.net.HttpRequest();
-    httpClient.open(constants.HTTP_METHOD_GET, "https://api.themoviedb.org/3/movie/" + url +"?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1");
-    httpClient.onReadyStateChange = this.onMovieListReceived.bind(this, httpClient, genreData);
-    httpClient.send();
-//     this.view[btn].skin = "sknBtnNavigateActive";
-  },
-  
-  onMovieListReceived: function(httpClient, genreData) {
+define(["MovieService"], function(movieService){
+  return {
+    onInitialize: function() {
+      this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
+      this.view.btnProfile.onClick = Utility.navigateTo.bind(null, "frmAuthentication");
+      this.view.btnPopular.onClick = this.loadMovieList.bind(this, "popular");
+      this.view.btnTopRated.onClick = this.loadMovieList.bind(this, "top_rated");
+      this.view.btnInTheatres.onClick = this.loadMovieList.bind(this, "now_playing");
+      this.view.btnUpcoming.onClick = this.loadMovieList.bind(this, "upcoming");
+    },
 
-    if(httpClient.readyState !== constants.HTTP_READY_STATE_DONE) {
-      return;
-    }
+    onNavigate: function() {      
+      movieService.getMovieList(function(movieList) {
+        this.onMovieListReceived(movieList);
+      }.bind(this), function() {
+        alert("Error while retrieving movie list");
+        kony.application.dismissLoadingScreen();
+      }, "popular");
+    },
     
-    var movieData = httpClient.response;
-    var listData = movieData.results.map(function(m) {
-      var genres = m.genre_ids.map(function(g) {
-        var genre = genreData.find(function(elem){
-          return elem.id === g;
-        });
-        if(genre){
-          return genre.name;
-        }
-        return '';
+    loadMovieList: function(url) {      
+      movieService.getMovieList(function(movieList) {
+        this.onMovieListReceived(movieList);
+      }.bind(this), function() {
+        alert("Error while retrieving movie list");
+        kony.application.dismissLoadingScreen();
+      }, url);
+    },
+
+    onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
+      Utility.navigateTo("frmMovieDetails", widgetRef.data[rowIndex].id);
+    },
+
+    onMovieListReceived: function(movieList) {
+      var movieListData = movieList.map(function(m) {
+        return {
+          lblMovieTitle: m.title,
+          lblMovieGenres: m.genreNamesList.join(', '),
+          imgMoviePoster: m.poster,
+          id: m.id,
+        };
       });
-      var genresToString = genres.join(', ');
-      return {
-        id: m.id,
-        lblMovieTitle: m.title,
-        lblMovieGenres: genresToString,
-        imgMoviePoster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
-      };
-    });
-
-    this.view.lstMovies.setData(listData);
-    kony.application.dismissLoadingScreen();
-
-  },
   
-  onGenreListReceived: function(genreHttpClient, url) {
-    if(genreHttpClient.readyState !== constants.HTTP_READY_STATE_DONE) {
-      return;
+      this.view.lstMovies.setData(movieListData);
+      kony.application.dismissLoadingScreen();
     }
-    
-    var genreData = genreHttpClient.response;
-    this.loadMovieList(url, genreData.genres);
   }
-
 });
