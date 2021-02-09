@@ -8,11 +8,12 @@ define({
     this.view.btnTopRated.onClick = this.loadMovieList.bind(this, "top_rated");
     this.view.btnInTheatres.onClick = this.loadMovieList.bind(this, "now_playing");
     this.view.btnUpcoming.onClick = this.loadMovieList.bind(this, "upcoming");
+    
   },
   
-	onNavigate: function() {
-		this.loadMovieList("popular");
-  },
+// 	onNavigate: function() {
+// 		this.loadMovieList("popular");
+//   },
 	
   onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
     Utility.navigateTo("frmMovieDetails", widgetRef.data[rowIndex].id);
@@ -47,18 +48,18 @@ define({
     var listData = movieData.results.map(function(m) {
       var genres = m.genre_ids.map(function(g) {
         var genre = genreData.find(function(elem){
-          return elem.id === g.id;
+          return elem.id === g;
         });
         if(genre){
           return genre.name;
         }
         return '';
       });
-      
+      var genresToString = genres.join(' ');
       return {
         id: m.id,
         lblMovieTitle: m.title,
-        lblMovieGenres: genres.join(' '),
+        lblMovieGenres: genresToString,
         imgMoviePoster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
       };
     });
