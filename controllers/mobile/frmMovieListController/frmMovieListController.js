@@ -18,8 +18,7 @@ define(["MovieService"], function(movieService){
       }, "popular");
     },
     
-    loadMovieList: function(url, btn) {     
-      alert(btn);
+    loadMovieList: function(url, btn) {  
       movieService.getMovieList(function(movieList) {
         this.onMovieListReceived(movieList);
       }.bind(this), function() {
