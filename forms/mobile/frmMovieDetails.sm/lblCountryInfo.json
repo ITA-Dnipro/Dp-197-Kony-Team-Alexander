@@ -5,6 +5,10 @@
         "type": "string",
         "value": "0dp"
     },
+    "_height_": {
+        "type": "ref",
+        "value": "preferred"
+    },
     "_left_": {
         "type": "string",
         "value": "120dp"
