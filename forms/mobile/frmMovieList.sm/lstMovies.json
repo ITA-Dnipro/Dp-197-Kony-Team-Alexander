@@ -18,6 +18,10 @@
             "lblMovieTitle": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
                 "text": ""
+            },
+            "lblMovieYear": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": ""
             }
         }
     ],
@@ -110,7 +114,8 @@
         "MovieRow": "MovieRow",
         "imgMoviePoster": "imgMoviePoster",
         "lblMovieGenres": "lblMovieGenres",
-        "lblMovieTitle": "lblMovieTitle"
+        "lblMovieTitle": "lblMovieTitle",
+        "lblMovieYear": "lblMovieYear"
     },
     "zindex": 1
 }
