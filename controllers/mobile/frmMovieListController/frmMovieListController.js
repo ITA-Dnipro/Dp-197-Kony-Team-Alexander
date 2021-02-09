@@ -42,7 +42,7 @@ define(["MovieService"], function(movieService){
         return {
           lblMovieTitle: m.title,
           lblMovieGenres: m.genreNamesList.join(', '),
-          lblMovieYear: m.year,
+          lblMovieYear: String(m.year),
           imgMoviePoster: m.poster,
           id: m.id,
         };
@@ -52,5 +52,5 @@ define(["MovieService"], function(movieService){
       kony.application.dismissLoadingScreen();
       
     }
-  }
+  };
 });

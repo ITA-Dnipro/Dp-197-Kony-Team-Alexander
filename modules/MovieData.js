@@ -1,6 +1,6 @@
-function MovieData(id, title, description, genresId, posterPath, voteAvg, release_date, genreNamesList) {
+function MovieData(id, title, description, genresId, posterPath, voteAvg, released, genreNamesList) {
   var poster = "https://image.tmdb.org/t/p/w200/" + posterPath;
-  var year = release_date.slice(0,4);
+  var year = (new Date(released)).getFullYear();
   
   this.id = id || 0;
   this.title = title || 0;
