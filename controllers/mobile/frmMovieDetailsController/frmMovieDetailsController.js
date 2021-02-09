@@ -1,27 +1,43 @@
 define(["MovieService"], function(movieService){ 
+  this.id = 508442;
   
   return {
     onInitialize: function() {
       this.view.btnBack.onClick = Utility.goBack;
       this.view.lstSimilarMovies.onRowClick = this.onRowClicked.bind(this);
+      this.view.btnFavorite.onClick = this.onbtnFavoriteClicked.bind(this);
     },
     
-   
-
-    onNavigate: function(movieId) {
-      this.view.lblMovieTitle.text = movieId.id;
+    onbtnFavoriteClicked: function() {
       movieService.getMovieDetails(function(movieDetails) {
-        alert(JSON.stringify(movieDetails));
+//         alert(JSON.stringify(movieDetails));
 //         alert(this);
 //         alert(this.view);
 //         this.view.lblMovieTitle.text = movieDetails.title;
-//         this.onMovieDetailsReceived(movieDetails);
-        alert("success");
+        this.onMovieDetailsReceived(movieDetails);
+//         alert("success");
         kony.application.dismissLoadingScreen();
-      }, function() {
+      }.bind(this), function() {
         alert("Error while retrieving movie details");
         kony.application.dismissLoadingScreen();
-      });
+      }.bind(this), 508442);
+    },
+   
+
+    onNavigate: function(movieId) {
+//       this.view.lblMovieTitle.text = movieId.id;
+      movieService.getMovieDetails(function(movieDetails) {
+//         alert(JSON.stringify(movieDetails));
+//         alert(this);
+//         alert(this.view);
+//         this.view.lblMovieTitle.text = movieDetails.title;
+        this.onMovieDetailsReceived(movieDetails);
+//         alert("success");
+        kony.application.dismissLoadingScreen();
+      }.bind(this), function() {
+        alert("Error while retrieving movie details");
+        kony.application.dismissLoadingScreen();
+      }, movieId.id);
       
 //       movieService.getSimilarMovieList(movieId);
 //       this.loadMovieDetails(movieId);
@@ -90,7 +106,7 @@ define(["MovieService"], function(movieService){
     onMovieDetailsReceived: function(movieData) {
       kony.print("Movie List Received " + movieData.title);
     
-      this.view.lblCountry.text = movieData.countriesList.join(', ');
+      this.view.lblCountryInfo.text = movieData.countriesList.join(', ');
       this.view.lblDurationInfo.text = movieData.duration;
       this.view.lblReleasedInfo.text = String(movieData.released);	
       this.view.lblGenresInfo.text = movieData.genresList.join(', ');

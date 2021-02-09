@@ -1,6 +1,6 @@
-define(function (movieId) {
+define(function () {
   var MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
-  var MOVIE_DETAILS_URL = MOVIE_BASE_URL + "508442" +  "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
+//   var MOVIE_DETAILS_URL = MOVIE_BASE_URL + "508442" +  "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
 //   var MOVIE_DETAILS_URL = MOVIE_BASE_URL + movieId +  "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
   var SIMILAR_MOVIE_URL = MOVIE_BASE_URL + "508442" +  "/similar?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
 //   var SIMILAR_MOVIE_URL = MOVIE_BASE_URL + movieId +  "/similar?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
@@ -28,8 +28,10 @@ define(function (movieId) {
   
   var movieDetails = {};
   
-  var getMovieDetails = function(successCallback, errorCallback) {
-      makeHttpRequest(MOVIE_DETAILS_URL, function(m) {
+  var getMovieDetails = function(successCallback, errorCallback, id) {
+//     alert(movieId);
+    var MOVIE_DETAILS_URL = MOVIE_BASE_URL + String(id) +  "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
+    makeHttpRequest(MOVIE_DETAILS_URL, function(m) {
       if (m) {
         // title, description, countriesList, duration, released, genresList, voteAvg, poster, backdrop
         movieDetails = new MovieDetailsData(
@@ -42,7 +44,7 @@ define(function (movieId) {
           m.vote_average, 
           m.poster_path,
           m.backdrop_path);   
-        alert("success service \n" + JSON.stringify(movieDetails));
+        alert("success service \n" + id);
         successCallback(movieDetails);
       }
     }, errorCallback);    
