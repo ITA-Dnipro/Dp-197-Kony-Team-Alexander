@@ -102,6 +102,7 @@ define(function () {
                 m.genre_ids, 
                 m.poster_path,
                 m.vote_average,
+                m.release_date,
                 getGenreNameById(genreData, m.genre_ids)
               ); 
             });

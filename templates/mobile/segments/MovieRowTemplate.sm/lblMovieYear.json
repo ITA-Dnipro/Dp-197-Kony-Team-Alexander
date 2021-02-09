@@ -1,9 +1,13 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "20dp"
+    },
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "42dp"
     },
     "_left_": {
         "type": "string",
@@ -23,14 +27,10 @@
     ],
     "_right_": {
         "type": "number",
-        "value": "10"
+        "value": "131"
     },
-    "_skin_": "sbe6324bdf7841038571d0a8b3f73495",
+    "_skin_": "s084ab045f89455eb5f68cbdead67b76",
     "_text_": "",
-    "_top_": {
-        "type": "string",
-        "value": "50dp"
-    },
     "_width_": {
         "type": "ref",
         "value": "preferred"
@@ -46,7 +46,7 @@
     "containerId": true,
     "containerweight": 100,
     "contentalignment": 1,
-    "id": "lblMovieGenres",
+    "id": "lblMovieYear",
     "info": null,
     "ipad": {
         "psp": {
@@ -60,7 +60,7 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "j381464eb3974ceb90c4d78dcd72add5",
+    "kuid": "fb57a5bc050a4d0a9113bbc4506f09a0",
     "maxnumberoflines": 4,
     "name": "kony.ui.Label",
     "parent": "MovieRow",
