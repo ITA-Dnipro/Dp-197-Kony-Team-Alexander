@@ -1,13 +1,9 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
-    "_bottom_": {
-        "type": "string",
-        "value": "20dp"
-    },
     "_height_": {
         "type": "string",
-        "value": "42dp"
+        "value": "40dp"
     },
     "_left_": {
         "type": "string",
@@ -31,6 +27,10 @@
     },
     "_skin_": "s084ab045f89455eb5f68cbdead67b76",
     "_text_": "",
+    "_top_": {
+        "type": "string",
+        "value": "60dp"
+    },
     "_width_": {
         "type": "ref",
         "value": "preferred"
