@@ -16,6 +16,10 @@ define(["MovieService"], function(movieService){
         alert("Error while retrieving movie list");
         kony.application.dismissLoadingScreen();
       }, "popular");
+      this.view.btnPopular.skin = "sknBtnNavigateActive";
+      this.view.btnTopRated.skin = "sknBtnNavigateInActive";
+      this.view.btnInTheatres.skin = "sknBtnNavigateInActive";
+      this.view.btnUpcoming.skin = "sknBtnNavigateInActive";
     },
     
     loadMovieList: function(url, btn) {  
