@@ -37,7 +37,7 @@ define(["MovieService"], function(movieService){
     },
 
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-      Utility.navigateTo("frmMovieDetails", widgetRef.data[rowIndex].id);
+      Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id});
     },
 
     onMovieListReceived: function(movieList) {

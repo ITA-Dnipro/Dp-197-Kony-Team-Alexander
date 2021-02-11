@@ -7,7 +7,6 @@ var Utility = {
   navigateTo: function(frmName, data) {
     var navigation = new kony.mvc.Navigation(frmName);
 
-    var dataToForm = { id: data };
-    navigation.navigate(dataToForm);
+    navigation.navigate(data);
   }
 }
