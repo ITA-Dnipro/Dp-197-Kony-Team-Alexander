@@ -9,7 +9,9 @@ define(["MovieService"], function(movieService){
       this.view.btnUpcoming.onClick = this.loadMovieList.bind(this, "upcoming", this.view.btnUpcoming);
     },
 
-    onNavigate: function() {      
+    onNavigate: function() {  
+      kony.application.showLoadingScreen();
+      
       movieService.getMovieList(function(movieList) {
         this.onMovieListReceived(movieList);
       }.bind(this), function() {
@@ -23,6 +25,8 @@ define(["MovieService"], function(movieService){
     },
     
     loadMovieList: function(url, btn) {  
+      kony.application.showLoadingScreen();
+      
       movieService.getMovieList(function(movieList) {
         this.onMovieListReceived(movieList);
       }.bind(this), function() {
@@ -53,7 +57,6 @@ define(["MovieService"], function(movieService){
   
       this.view.lstMovies.setData(movieListData);
       kony.application.dismissLoadingScreen();
-      
     }
   };
 });

@@ -2,7 +2,6 @@ define(function () {
   var MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
 
   var makeHttpRequest = function(url, successCallback, errorCallback) {
-    kony.application.showLoadingScreen();
     
     var httpClient = new kony.net.HttpRequest();
     
