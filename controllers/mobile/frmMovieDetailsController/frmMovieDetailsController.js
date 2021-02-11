@@ -73,7 +73,7 @@ define(["MovieService"], function(movieService){
       this.view.lblCountryInfo.text = movieData.countriesList.join(', ');
       this.view.lblDurationInfo.text = movieData.duration;
       this.view.lblReleasedInfo.text = String(movieData.released);	
-      this.view.lblGenresInfo.text = movieData.genresList.join(', ');
+      this.view.lblGenresInfo.text = movieData.genreNamesList.join(', ');
       this.view.lblDescriptionInfo.text = movieData.description;
       this.view.lblMovieRating.text = movieData.voteAvg;
       this.view.imgMoviePoster.src = movieData.poster;
