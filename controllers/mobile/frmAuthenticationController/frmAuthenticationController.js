@@ -1,4 +1,4 @@
-define(["FakeAuthService"], function(authUser) {
+define(["AuthenticationService"], function(authUser) {
   return { 
     onInitialize: function() {
       this.view.btnLogin.onClick = this.onBtnLoginClicked.bind(this);
