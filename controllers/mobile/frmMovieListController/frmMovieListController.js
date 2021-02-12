@@ -9,7 +9,9 @@ define(["MovieService"], function(movieService){
       this.view.btnUpcoming.onClick = this.loadMovieList.bind(this, "upcoming", this.view.btnUpcoming);
     },
 
-    onNavigate: function() {      
+    onNavigate: function() {  
+      kony.application.showLoadingScreen();
+      
       movieService.getMovieList(function(movieList) {
         this.onMovieListReceived(movieList);
       }.bind(this), function() {
@@ -23,6 +25,8 @@ define(["MovieService"], function(movieService){
     },
     
     loadMovieList: function(url, btn) {  
+      kony.application.showLoadingScreen();
+      
       movieService.getMovieList(function(movieList) {
         this.onMovieListReceived(movieList);
       }.bind(this), function() {
@@ -37,7 +41,7 @@ define(["MovieService"], function(movieService){
     },
 
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-      Utility.navigateTo("frmMovieDetails", widgetRef.data[rowIndex].id);
+      Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id});
     },
 
     onMovieListReceived: function(movieList) {
@@ -45,7 +49,7 @@ define(["MovieService"], function(movieService){
         return {
           lblMovieTitle: m.title,
           lblMovieGenres: m.genreNamesList.join(', '),
-          lblMovieYear: String(m.year),
+          lblMovieYear: String(m.released),
           imgMoviePoster: m.poster,
           id: m.id,
         };
@@ -53,7 +57,6 @@ define(["MovieService"], function(movieService){
   
       this.view.lstMovies.setData(movieListData);
       kony.application.dismissLoadingScreen();
-      
     }
   };
 });

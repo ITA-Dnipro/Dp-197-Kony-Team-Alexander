@@ -2,7 +2,6 @@ define(function () {
   var MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
 
   var makeHttpRequest = function(url, successCallback, errorCallback) {
-    kony.application.showLoadingScreen();
     
     var httpClient = new kony.net.HttpRequest();
     
@@ -28,17 +27,18 @@ define(function () {
     
     makeHttpRequest(MOVIE_DETAILS_URL, function(m) {
       if (m) {
-        var movieDetails = new MovieDetailsData(
-          m.title, 
-          m.overview, 
-          m.production_countries, 
-          m.runtime, 
-          m.release_date, 
-          m.genres, 
-          m.vote_average, 
-          m.poster_path,
-          m.backdrop_path
-        );   
+        var movieDetails = new MovieData({
+          title: m.title, 
+          description: m.overview, 
+          countries: m.production_countries, 
+          duration: m.runtime, 
+          released: m.release_date, 
+          genresId: m.genres.map(function(g) { return g.id; }),
+          genreNamesList: m.genres.map(function(g) { return g.name; }),
+          voteAvg: m.vote_average, 
+          posterPath: m.poster_path,
+          backdropPath: m.backdrop_path
+        });   
 
         successCallback(movieDetails);
       }
@@ -51,14 +51,15 @@ define(function () {
     makeHttpRequest(SIMILAR_MOVIE_URL, function(movies) {
       if (movies.results && Array.isArray(movies.results)) {
         var movieList = movies.results.map(function(m) {
-          return new MovieData(
-            m.id,
-            m.title, 
-            m.overview, 
-            m.genre_ids, 
-            m.poster_path,
-            m.vote_average, 
-          ); 
+          return new MovieData({
+            id: m.id,
+            title: m.title, 
+            description: m.overview, 
+            genresId: m.genre_ids, 
+            posterPath: m.poster_path,
+            voteAvg: m.vote_average,
+            released: m.release_date,
+          }); 
         });
          
         successCallback(movieList);
@@ -95,16 +96,17 @@ define(function () {
           if (movies.results && Array.isArray(movies.results)) {
 
             var movieList = movies.results.map(function(m) {
-              return new MovieData(
-                m.id,
-                m.title, 
-                m.overview, 
-                m.genre_ids, 
-                m.poster_path,
-                m.vote_average,
-                m.release_date,
-                getGenreNameById(genreData, m.genre_ids)
-              ); 
+              // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
+              return new MovieData({
+                id: m.id,
+                title: m.title, 
+                description: m.overview, 
+                genresId: m.genre_ids, 
+                posterPath: m.poster_path,
+                voteAvg: m.vote_average,
+                released: m.release_date,
+                genreNamesList: getGenreNameById(genreData, m.genre_ids)
+              }); 
             });
 
             successCallback(movieList);
