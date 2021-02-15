@@ -23,5 +23,4 @@ function MovieData(d) {
   this.backdrop = backdrop || 0;
   this.genreNamesList = d.genreNamesList || 0;
   this.released = year || 0;  
-  
 }

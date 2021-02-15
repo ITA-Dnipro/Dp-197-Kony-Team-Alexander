@@ -1,4 +1,4 @@
-define(["MovieService"], function(movieService){ 
+define(["MovieService", "AuthenticationService"], function(movieService, dbService){ 
   
   return {
     onInitialize: function() {
@@ -8,10 +8,16 @@ define(["MovieService"], function(movieService){
     },
     
     onbtnFavoriteClicked: function() {
+      this.view.btnFavorite.skin === "sknBtnFavorite" ?
+        this.view.btnFavorite.skin = "sknBtnFavoriteActive" :
+        this.view.btnFavorite.skin = "sknBtnFavorite";
 
+      dbService.addDeleteMovieFavorites(this.movieId);
     },
 
     onNavigate: function(movieId) {
+      this.movieId = movieId.id;
+
       kony.application.showLoadingScreen();
 
       movieService.getMovieDetails(function(movieDetails) {
@@ -32,6 +38,7 @@ define(["MovieService"], function(movieService){
     },
 
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
+      this.movieId = widgetRef.data[rowIndex].id;
       
       movieService.getMovieDetails(function(movieDetails) {
         this.onMovieDetailsReceived(movieDetails);
@@ -69,7 +76,14 @@ define(["MovieService"], function(movieService){
       }			
     },
 
-    onMovieDetailsReceived: function(movieData) {    
+    onMovieDetailsReceived: function(movieData) {  
+
+      if (dbService.isMovieInFavoriteList(movieData.id)) {
+        this.view.btnFavorite.skin = "sknBtnFavoriteActive";
+      } else {
+        this.view.btnFavorite.skin = "sknBtnFavorite";        
+      }
+            
       this.view.lblCountryInfo.text = movieData.countriesList.join(', ');
       this.view.lblDurationInfo.text = movieData.duration;
       this.view.lblReleasedInfo.text = String(movieData.released);	
