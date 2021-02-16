@@ -1,0 +1,51 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizButton",
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "70dp"
+    },
+    "_margin_": [
+        6,
+        6,
+        6,
+        6
+    ],
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_right_": {
+        "type": "string",
+        "value": "70dp"
+    },
+    "_skin_": "s4015fdea16c4ae09a697f2db70e0734",
+    "_text_": "",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "40dp"
+    },
+    "canUpdateUI": true,
+    "containerweight": 100,
+    "contentalignment": 5,
+    "displaytext": true,
+    "focusskin": "s84b861a921544519885977ef6f044d1",
+    "id": "btnDeleteText",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": false,
+    "kuid": "b08d937cbc87469399a2c3f12e90924f",
+    "name": "kony.ui.Button",
+    "parent": "flxHeader",
+    "pf": "frmMovieSearch",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "wType": "Button",
+    "zindex": 1
+}

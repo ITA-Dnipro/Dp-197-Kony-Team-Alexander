@@ -1,5 +1,8 @@
 define(function () {
   var MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
+  var SEARCH_BASE_URL = "https://api.themoviedb.org/3/search/movie";
+  var API_KEY = "?api_key=69f776e126f6211fe76798c6c4b786f9";
+
 
   var makeHttpRequest = function(url, successCallback, errorCallback) {
     
@@ -119,9 +122,41 @@ define(function () {
     });     
   };
    
+  var searchMovie = function(successCallback, errorCallback, string) {
+    string = string.replace(/\s+/g, " ").replace(/\s+/g, "%20");
+    var SEARCH_MOVIE_URL = SEARCH_BASE_URL + API_KEY + "&language=en-US&query=" + string + "&page=1";
+    
+    loadGenreList(function(genreData){
+      if (genreData && Array.isArray(genreData)) {
+        makeHttpRequest(SEARCH_MOVIE_URL, function(movies) {
+          if (movies.results && Array.isArray(movies.results)) {
+
+            var movieList = movies.results.map(function(m) {
+              // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
+              return new MovieData({
+                id: m.id,
+                title: m.title, 
+                description: m.overview, 
+                genresId: m.genre_ids, 
+                posterPath: m.poster_path,
+                voteAvg: m.vote_average,
+                released: m.release_date,
+                genreNamesList: getGenreNameById(genreData, m.genre_ids)
+              }); 
+            });
+
+            successCallback(movieList);
+          }
+        }, errorCallback); 
+      }      
+    }, function(){
+      alert("Error while retrieving genres list");
+    });     
+  };
   return {
     getMovieDetails: getMovieDetails,
     getSimilarMovieList: getSimilarMovieList,   
-    getMovieList: getMovieList
+    getMovieList: getMovieList,
+    searchMovie: searchMovie
   };
 });
