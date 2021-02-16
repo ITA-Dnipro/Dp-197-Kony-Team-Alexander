@@ -48,6 +48,7 @@
     "displayorientation": 1,
     "enabledforidletimeout": false,
     "id": "frmFavouriteList",
+    "ide_init": "AS_Form_b58272d7037249e39a72aed17f1f3a44",
     "info": null,
     "initdone": false,
     "inputaccessoryviewtype": 4,

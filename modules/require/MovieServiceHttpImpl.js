@@ -124,6 +124,7 @@ define(function () {
    
   var searchMovie = function(successCallback, errorCallback, string) {
     string = string.replace(/\s+/g, " ").replace(/\s+/g, "%20");
+    
     var SEARCH_MOVIE_URL = SEARCH_BASE_URL + API_KEY + "&language=en-US&query=" + string + "&page=1";
     
     loadGenreList(function(genreData){
