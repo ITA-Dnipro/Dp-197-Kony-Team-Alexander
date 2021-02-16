@@ -4,5 +4,6 @@ define(["MovieServiceHttpImpl"], function (concreteImpl) {
       getMovieDetails: concreteImpl.getMovieDetails,
       getSimilarMovieList: concreteImpl.getSimilarMovieList,
       getMovieList: concreteImpl.getMovieList,
+      searchMovie: concreteImpl.searchMovie
     };
 });

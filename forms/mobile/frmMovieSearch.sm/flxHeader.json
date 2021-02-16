@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "180dp"
+        "value": "70dp"
     },
     "_left_": {
         "type": "string",
@@ -35,36 +35,29 @@
     "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "imgMoviePoster",
-        "lblMovieTitle",
-        "lblMovieYear",
-        "lblMovieGenres"
+        "btnBack",
+        "inpSearchMovie",
+        "btnDeleteText",
+        "btnSearch"
     ],
     "clipbounds": true,
-    "containerId": true,
     "containerweight": 100,
-    "controllerInfo": {
-        "default": {
-            "channel": "mobile",
-            "name": "MovieRowController"
-        }
-    },
     "enablescrolling": true,
-    "id": "MovieRow",
+    "id": "flxHeader",
     "info": null,
-    "isTemplate": true,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "g913caf750c541d7a25b9425e6b7823e",
+    "kuid": "dc6f65ae38024ef78c6c647d161dbb32",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "MovieRowTemplate",
-    "pf": "MovieRowTemplate",
+    "parent": "frmMovieSearch",
+    "pf": "frmMovieSearch",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
     "snapgridsize": 10,
     "snaptogrid": true,
     "wType": "FlexContainer",
-    "widgetalignment": 1
+    "widgetalignment": 1,
+    "zindex": 1
 }
