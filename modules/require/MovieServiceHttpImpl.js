@@ -19,7 +19,7 @@ define(function () {
     };
 
     httpClient.send();
-  }
+  };
   
   var getMovieDetails = function(successCallback, errorCallback, id) {
     
@@ -28,6 +28,7 @@ define(function () {
     makeHttpRequest(MOVIE_DETAILS_URL, function(m) {
       if (m) {
         var movieDetails = new MovieData({
+          id: m.id,
           title: m.title, 
           description: m.overview, 
           countries: m.production_countries, 
@@ -115,9 +116,7 @@ define(function () {
       }      
     }, function(){
       alert("Error while retrieving genres list");
-    });
-    
-     
+    });     
   };
    
   return {
