@@ -3,7 +3,7 @@ define(["MovieService"], function(movieService){
     onInitialize: function() {
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
       this.view.btnSearch.onClick = this.loadMovieList.bind(this);
-      this.view.btnBack.onClick = Utility.goBack;
+      this.view.btnBack.onClick = Utility.navigateTo.bind(null, "frmMovieList");
       this.view.btnDeleteText.onClick = this.onBtnDeleteTextClicked.bind(this);
       this.view.inpSearchMovie.onBeginEditing = this.showBtnDeleteText.bind(this);
       this.view.inpSearchMovie.onEndEditing = this.hideBtnDeleteText.bind(this);
@@ -17,6 +17,9 @@ define(["MovieService"], function(movieService){
     },
     
     loadMovieList: function() { 
+      if (this.view.inpSearchMovie.text.trim().length < 1) {
+        return;
+      }
       kony.application.showLoadingScreen();
       this.view.lstMovies.isVisible = true;
       
