@@ -9,4 +9,4 @@ var Utility = {
 
     navigation.navigate(data);
   }
-}
+};
