@@ -7,6 +7,8 @@ define(["MovieService"], function(movieService){
       this.view.btnDeleteText.onClick = this.onBtnDeleteTextClicked.bind(this);
       this.view.inpSearchMovie.onBeginEditing = this.showBtnDeleteText.bind(this);
       this.view.inpSearchMovie.onEndEditing = this.hideBtnDeleteText.bind(this);
+      this.view.inpSearchMovie.onDone = this.loadMovieList.bind(this);
+      this.view.inpSearchMovie.keyboardActionLabel = constants.TEXTBOX_KEYBOARD_LABEL_SEARCH;
       
 //       this.view.btnUpcoming.onClick = this.loadMovieList.bind(this, "upcoming", this.view.btnUpcoming);
     },
