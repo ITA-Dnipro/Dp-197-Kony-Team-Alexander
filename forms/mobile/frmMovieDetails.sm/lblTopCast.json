@@ -22,7 +22,7 @@
         0
     ],
     "_skin_": "sc61f6bcab404cb5833d37847af60c7e",
-    "_text_": "Similar Movies",
+    "_text_": "Top Billed Cast",
     "_top_": {
         "type": "string",
         "value": "10dp"
@@ -41,7 +41,7 @@
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lblTitleSimilar",
+    "id": "lblTopCast",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,7 +55,7 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "dceecf67c53d43458e3d8d6af9509047",
+    "kuid": "a2647ff50d474c9a9741afed122539a5",
     "name": "kony.ui.Label",
     "parent": "flxMainScroll",
     "pf": "frmMovieDetails",

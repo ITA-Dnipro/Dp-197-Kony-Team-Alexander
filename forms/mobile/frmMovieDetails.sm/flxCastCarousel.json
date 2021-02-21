@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "100%"
+        "value": "220dp"
     },
     "_left_": {
         "type": "string",
@@ -22,10 +22,14 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "sb213c56a6984faaa98c67c079ac462c",
-    "_top_": {
+    "_right_": {
         "type": "string",
         "value": "0dp"
+    },
+    "_skin_": "s5a3b26806ce4e16b9b2702f3d9faaa9",
+    "_top_": {
+        "type": "string",
+        "value": "10dp"
     },
     "_width_": {
         "type": "string",
@@ -36,39 +40,32 @@
     "allowverticalbounce": true,
     "bounces": true,
     "canUpdateUI": true,
-    "children": [
-        "flxMovieDetailsHeader",
-        "flxMovieDetails",
-        "lblTopCast",
-        "flxCastCarousel",
-        "lblTitleSimilar",
-        "lstSimilarMovies"
-    ],
+    "children": [],
     "clipbounds": true,
     "containerweight": 100,
     "decelerat": false,
     "dragg": false,
     "enablescrolling": true,
     "horizontalscrollindicator": true,
-    "id": "flxMainScroll",
+    "id": "flxCastCarousel",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "e9341c9366484ed1a5808f111ada76f1",
-    "layouttype": 4,
+    "kuid": "cad52728e5df47b7bd11b0a625728364",
+    "layouttype": 3,
     "name": "kony.ui.FlexScrollContainer",
     "pagingenabled": false,
-    "parent": "frmMovieDetails",
+    "parent": "flxMainScroll",
     "pf": "frmMovieDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
-    "scrolldirection": 2,
+    "scrolldirection": 1,
     "snapgridsize": 10,
     "snaptogrid": true,
     "track": false,
     "verticalscrollindicator": true,
     "wType": "FlexScrollContainer",
     "widgetalignment": 1,
-    "zindex": 1
+    "zindex": 2
 }

@@ -154,10 +154,43 @@ define(function () {
       alert("Error while retrieving genres list");
     });     
   };
+  
+  var getMovieCredits = function(successCallback, errorCallback, movieId) {
+    var MOVIE_CREDITS_URL = MOVIE_BASE_URL + String(movieId) + "/credits?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
+    
+    makeHttpRequest(MOVIE_CREDITS_URL, function(credits) {
+      if (credits.cast && credits.crew && Array.isArray(credits.cast) && Array.isArray(credits.crew)) {
+        var castList = credits.cast.map(function(c) {
+          return {
+            id: c.id,
+            name: c.original_name, 
+            img: "https://image.tmdb.org/t/p/w200/" + c.profile_path, 
+            character: c.character, 
+          }
+        });
+          
+        var director = credits.crew.filter(function(c) {
+          if (c.job === "Director") {
+            return {
+              id: c.id,
+              name: c.name
+            }
+          }
+        });
+         
+        successCallback({
+          cast: castList,
+          director: director
+        });
+      }
+    }, errorCallback);  
+  };
+  
   return {
     getMovieDetails: getMovieDetails,
     getSimilarMovieList: getSimilarMovieList,   
     getMovieList: getMovieList,
-    searchMovie: searchMovie
+    searchMovie: searchMovie,
+    getMovieCredits: getMovieCredits
   };
 });
