@@ -18,6 +18,8 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     onNavigate: function(movieId) {
       this.movieId = movieId.id;
 
+      alert(movieId);
+
       kony.application.showLoadingScreen();
 
       movieService.getMovieDetails(function(movieDetails) {
@@ -46,6 +48,8 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     },
 
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
+      alert(widgetRef.data[rowIndex].id);
+
       this.movieId = widgetRef.data[rowIndex].id;
 
       movieService.getMovieDetails(function(movieDetails) {
@@ -72,7 +76,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         "x": "0dp",
         "y": "0dp"
       }, false);
-      
+
       this.view.flxCastCarousel.setContentOffset({
         "x": "0dp",
         "y": "0dp"
@@ -119,16 +123,16 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     onMovieCreditsReceived: function(creditsList) {
       this.view.flxCastCarousel.removeAll();
 
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < creditsList.cast.length; i++) {
         var flexCast = new kony.ui.FlexContainer({
           id: "flxCast" + i,
           top: "0dp",
           left: "5dp",
           width: "130dp",
           height: kony.flex.USE_PREFERRED_SIZE,
-//           onClick: function(){
-//             alert("container ");
-//           },
+          //           onClick: function(){
+          //             alert("container ");
+          //           },
           //           onClick: this.onPeopleClicked.bind(null, creditsList.cast[i].id),
           layoutType: kony.flex.FLOW_VERTICAL
         });
@@ -145,11 +149,11 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
           //           } 
         });
 
-//         imgCast.addGestureRecognizer(1, { fingers: 1, taps: 1 }, onActorImageTap);
+        //         imgCast.addGestureRecognizer(1, { fingers: 1, taps: 1 }, onActorImageTap);
 
-//         var onActorImageTap = function() {
-//           alert("img tap " + creditsList.cast[i].id);
-//         };
+        //         var onActorImageTap = function() {
+        //           alert("img tap " + creditsList.cast[i].id);
+        //         };
 
         var btnName = new kony.ui.Button({
           id: "lblCastName" + i,
@@ -167,33 +171,19 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
           contentAlignment: constants.CONTENT_ALIGN_CENTER,
         });
 
-        var btnChar = new kony.ui.Button({
+        var lblChar = new kony.ui.Label({
           id: "lblCastCharacter" + i,
           text: creditsList.cast[i].character,
+          skin: "sknCastCharacter",
           top: "5dp",
           left: "0dp",
           width: "100%",
           height: kony.flex.USE_PREFERRED_SIZE,
-          isVisible: true,
-          skin: "sknCastBtnChar"
-        }, {
-          padding: [0,0,0,0],
-          margin: [0,0,0,0],
           contentAlignment: constants.CONTENT_ALIGN_CENTER,
+          wrapping: constants.WIDGET_TEXT_WORD_WRAP
         });
 
-        //         var lblChar = new kony.ui.Label({
-        //           id: "lblCastCharacter" + i,
-        //           text: creditsList.cast[i].character,
-        //           skin: "sknCastCharacter",
-        //           top: "10dp",
-        //           left: "0dp",
-        //           height: kony.flex.USE_PREFERRED_SIZE,
-        //           contentAlignment: constants.CONTENT_ALIGN_CENTER,
-        //           wrapping: constants.WIDGET_TEXT_WORD_WRAP
-        //         });
-
-        flexCast.add(imgCast, btnName, btnChar);
+        flexCast.add(imgCast, btnName, lblChar);
 
         this.view.flxCastCarousel.add(flexCast);
       }		
