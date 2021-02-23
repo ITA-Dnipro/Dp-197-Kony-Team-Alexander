@@ -43,7 +43,6 @@ define(["MovieService"], function(movieService){
         return {
           lblMovieTitle: m.title,
           lblMovieGenres: m.genreNamesList.join(', '),
-//           lblMovieGenres: "unknown",
           lblMovieYear: String(m.released),
           imgMoviePoster: m.poster,
           id: m.id,

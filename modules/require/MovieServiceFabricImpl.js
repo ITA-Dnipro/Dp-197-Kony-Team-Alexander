@@ -1,13 +1,18 @@
 define(function () {
-  var loadGenreList = function() {
+  var loadGenreList = function(successCallback, errorCallback) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = {};
     AlexanderMovieListService.invokeOperation("getGenreList", headers, body, function(response) {
-      kony.print("Integration Service Response is: " + JSON.stringify(response));
-      var genres = response.genres;
-      return genres;
+      if (successCallback) {
+        successCallback(response.genres);
+      }
+    }, function(error) {
+
+      if (errorCallback) {
+        errorCallback(error);
+      }
     });
   };
 
@@ -25,32 +30,33 @@ define(function () {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
-    var body = {query: url};
-    AlexanderMovieListService.invokeOperation("getMovieList", headers, body, function(response) {
-      kony.print("Integration Service Response is: " + JSON.stringify(response));
-      
-       if (successCallback) {
-        var movieList = response.results.map(function(m) {
-          return new MovieData({
-            id: m.id,
-            title: m.title, 
-            description: m.overview, 
-            genresId: m.genre_ids, 
-            posterPath: m.poster_path,
-            voteAvg: m.vote_average,
-            released: m.release_date,
-            genreNamesList: getGenreNameById(loadGenreList(), m.genre_ids)
-          }); 
-        });
-        successCallback(movieList);
-      }
-    }, function(error) {
-      kony.print("Integration Service Failure:" + JSON.stringify(error));
-      
-      if (errorCallback) {
-        errorCallback(error);
-      }
-    });
+    var body = {category: url};
+    loadGenreList(function(genreData){
+      AlexanderMovieListService.invokeOperation("getMovieList", headers, body, function(response) {
+
+        if (successCallback) {
+          var movieList = response.results.map(function(m) {
+            return new MovieData({
+              id: m.id,
+              title: m.title, 
+              description: m.overview, 
+              genresId: m.genre_ids, 
+              posterPath: m.poster_path,
+              voteAvg: m.vote_average,
+              released: m.release_date,
+              genreNamesList: getGenreNameById(genreData, m.genre_ids)
+            }); 
+          });
+          successCallback(movieList);
+        }
+      }, function(error) {
+        if (errorCallback) {
+          errorCallback(error);
+        }
+      });
+    }, function(){
+      alert("Error while retrieving genres list");
+    });   
   };
   
   var searchMovie = function(successCallback, errorCallback, string) {
@@ -60,31 +66,33 @@ define(function () {
     var body = {
       query: string
     };
-    AlexanderMovieListService.invokeOperation("searchMovie", headers, body, function(response) {
-      kony.print("Integration Service Response is: " + JSON.stringify(response));
+    loadGenreList(function(genreData){
+      AlexanderMovieListService.invokeOperation("searchMovie", headers, body, function(response) {
 
-      if (successCallback) {
-        var movieList = response.results.map(function(m) {
-          return new MovieData({
-            id: m.id,
-            title: m.title, 
-            description: m.overview, 
-            genresId: m.genre_ids, 
-            posterPath: m.poster_path,
-            voteAvg: m.vote_average,
-            released: m.release_date,
-            genreNamesList: getGenreNameById(loadGenreList(), m.genre_ids)
-          }); 
-        });
-        successCallback(movieList);
-      }
-    }, function(error) {
-      kony.print("Integration Service Failure:" + JSON.stringify(error));
+        if (successCallback) {
+          var movieList = response.results.map(function(m) {
+            return new MovieData({
+              id: m.id,
+              title: m.title, 
+              description: m.overview, 
+              genresId: m.genre_ids, 
+              posterPath: m.poster_path,
+              voteAvg: m.vote_average,
+              released: m.release_date,
+              genreNamesList: getGenreNameById(genreData, m.genre_ids)
+            }); 
+          });
+          successCallback(movieList);
+        }
+      }, function(error) {
 
-      if (errorCallback) {
-        errorCallback(error);
-      }
-    });
+        if (errorCallback) {
+          errorCallback(error);
+        }
+      });
+    }, function(){
+      alert("Error while retrieving genres list");
+    });   
   };
 
   return {
