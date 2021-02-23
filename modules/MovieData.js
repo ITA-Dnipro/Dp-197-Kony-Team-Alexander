@@ -6,21 +6,29 @@ function MovieData(d) {
   if (d.duration) {
     var movieDurationHours = Math.trunc(d.duration / 60);
     var movieDurationMinutes = d.duration % 60;
-    this.duration = movieDurationHours + "h " + movieDurationMinutes + "m" || 0;
+    var duration;
+    
+    movieDurationHours > 0 ?
+      duration = movieDurationHours + "h " + movieDurationMinutes + "m" :
+      duration = movieDurationMinutes + "m";
+    
+    this.duration = duration;
+  } else {
+    this.duration = "unknown";
   }
-  
+
   if (d.countries) {
     var countriesList = d.countries.map(function(c) { return c.name; });
-    this.countriesList = countriesList || 0;
+    this.countriesList = countriesList.length > 0 ? countriesList : ["unknown"];
   }
  
-  this.id = d.id || 0;
-  this.title = d.title || 0;
-  this.description = d.description || 0;
-  this.genresList = d.genresId || 0;
+  this.id = d.id || "unknown";
+  this.title = d.title || "unknown";
+  this.description = d.description || "unknown";
+  this.genresList = d.genresId || ["unknown"];
   this.voteAvg = d.voteAvg || 0;
-  this.poster = poster || 0;
-  this.backdrop = backdrop || 0;
-  this.genreNamesList = d.genreNamesList || 0;
-  this.released = year || 0;  
+  this.poster = poster;
+  this.backdrop = backdrop;
+  this.genreNamesList = d.genreNamesList || ["unknown"];
+  this.released = year || "unknown";  
 }

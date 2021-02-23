@@ -55,7 +55,7 @@
     "focuseditem": null,
     "groupcells": false,
     "hasSections": false,
-    "id": "lstSimilarMovies",
+    "id": "lstRecommendedMovies",
     "info": null,
     "ipad": {
         "psp": {
@@ -70,7 +70,7 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "h5c2a037fe8042318d86aa00d3dca573",
+    "kuid": "a483f0f2ae01425095262de0523be6da",
     "masterdata": {},
     "name": "kony.ui.SegmentedUI2",
     "needpageindicator": true,

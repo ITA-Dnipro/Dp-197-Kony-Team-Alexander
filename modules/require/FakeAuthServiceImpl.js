@@ -51,7 +51,7 @@ define(function () {
 
   };
   
-  var addDeleteMovieFavorites = function(movieId) {
+  var toggleMovieFavorites = function(movieId) {
     
     var indexMovieInFavorite = database.map(function(m){
       return m.movieId;
@@ -80,7 +80,7 @@ define(function () {
   return {
     checkUser: checkUser,
     registerUser: registerUser,
-    addDeleteMovieFavorites: addDeleteMovieFavorites,
+    toggleMovieFavorites: toggleMovieFavorites,
     isMovieInFavoriteList: isMovieInFavoriteList
   };
 });
