@@ -41,7 +41,9 @@
         "flxMovieDetails",
         "lblTopCast",
         "flxCastCarousel",
-        "lblTitleSimilar",
+        "btnShowRecommendations",
+        "lstRecommendedMovies",
+        "btnShowSimilarMovie",
         "lstSimilarMovies"
     ],
     "clipbounds": true,

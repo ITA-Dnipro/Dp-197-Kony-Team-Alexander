@@ -70,6 +70,28 @@ define(function () {
       }
     }, errorCallback);  
   };
+  
+   var getRecommendedMovieList = function(successCallback, errorCallback, mId) {
+    var SIMILAR_MOVIE_URL = MOVIE_BASE_URL + String(mId) + "/recommendations?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
+    
+    makeHttpRequest(SIMILAR_MOVIE_URL, function(movies) {
+      if (movies.results && Array.isArray(movies.results)) {
+        var movieList = movies.results.map(function(m) {
+          return new MovieData({
+            id: m.id,
+            title: m.title, 
+            description: m.overview, 
+            genresId: m.genre_ids, 
+            posterPath: m.poster_path,
+            voteAvg: m.vote_average,
+            released: m.release_date,
+          }); 
+        });
+         
+        successCallback(movieList);
+      }
+    }, errorCallback);  
+  };
       
   var loadGenreList = function(successCallback, errorCallback) {
     var GENRE_URL = "https://api.themoviedb.org/3/genre/movie/list?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
@@ -188,7 +210,8 @@ define(function () {
   
   return {
     getMovieDetails: getMovieDetails,
-    getSimilarMovieList: getSimilarMovieList,   
+    getSimilarMovieList: getSimilarMovieList,  
+    getRecommendedMovieList: getRecommendedMovieList,
     getMovieList: getMovieList,
     searchMovie: searchMovie,
     getMovieCredits: getMovieCredits

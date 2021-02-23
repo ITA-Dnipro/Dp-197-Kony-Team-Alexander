@@ -4,7 +4,10 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     onInitialize: function() {
       this.view.btnBack.onClick = Utility.goBack;
       this.view.lstSimilarMovies.onRowClick = this.onSimilarMoviesRowClicked.bind(this);
+      this.view.lstRecommendedMovies.onRowClick = this.onSimilarMoviesRowClicked.bind(this);
       this.view.btnFavorite.onClick = this.onbtnFavoriteClicked.bind(this);
+      this.view.btnShowRecommendations.onClick = this.onBtnShowRecommendationsClicked.bind(this);
+      this.view.btnShowSimilarMovie.onClick = this.onBtnShowSimilarMovieClicked.bind(this);
     },
 
     onbtnFavoriteClicked: function() {
@@ -12,10 +15,43 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         this.view.btnFavorite.skin = "sknBtnFavoriteActive" :
         this.view.btnFavorite.skin = "sknBtnFavorite";
 
-      dbService.addDeleteMovieFavorites(this.movieId);
+      dbService.toggleMovieFavorites(this.movieId);
+    },
+
+    onBtnShowRecommendationsClicked: function() {
+      this.view.btnShowRecommendations.skin === "sknBtnRecommendedMovie" ?
+        this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovieActive" :
+        this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
+        
+      var isVisible = this.view.lstRecommendedMovies.isVisible;
+      this.view.lstRecommendedMovies.isVisible = !isVisible;
+      
+      var y = this.view.flxMainScroll.contentOffsetMeasured.y + 130;      
+      this.view.flxMainScroll.setContentOffset({
+//         "x": "0dp",
+        "y": y + "dp"
+      }, true);
+    },
+    
+    onBtnShowSimilarMovieClicked: function() {
+      this.view.btnShowSimilarMovie.skin === "sknBtnRecommendedMovie" ?
+        this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovieActive" :
+        this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
+      
+      var isVisible = this.view.lstSimilarMovies.isVisible;
+      this.view.lstSimilarMovies.isVisible = !isVisible;
+      
+      var y = this.view.flxMainScroll.contentOffsetMeasured.y + 130;      
+      this.view.flxMainScroll.setContentOffset({
+//         "x": "0dp",
+        "y": y + "dp"
+      }, true);
     },
 
     onNavigate: function(movieId) {
+      this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
+      this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
+      
       this.movieId = movieId.id;
 
       alert(movieId);
@@ -37,6 +73,14 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         alert("Error while retrieving similar movie list");
         kony.application.dismissLoadingScreen();
       }, movieId.id);
+      
+      movieService.getRecommendedMovieList(function(movieList) {
+        this.onRecommendedMovieListReceived(movieList);
+        kony.application.dismissLoadingScreen();
+      }.bind(this), function() {
+        alert("Error while retrieving recommended movie list");
+        kony.application.dismissLoadingScreen();
+      }, movieId.id);
 
       movieService.getMovieCredits(function(creditsList) {
         this.onMovieCreditsReceived(creditsList);
@@ -51,6 +95,9 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       alert(widgetRef.data[rowIndex].id);
 
       this.movieId = widgetRef.data[rowIndex].id;
+      
+      this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
+      this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
 
       movieService.getMovieDetails(function(movieDetails) {
         this.onMovieDetailsReceived(movieDetails);
@@ -62,6 +109,14 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         this.onSimilarMovieListReceived(movieList);
       }.bind(this), function() {
         alert("Error while retrieving similar movie list");
+      }, widgetRef.data[rowIndex].id);
+      
+       movieService.getRecommendedMovieList(function(movieList) {
+        this.onRecommendedMovieListReceived(movieList);
+        kony.application.dismissLoadingScreen();
+      }.bind(this), function() {
+        alert("Error while retrieving recommended movie list");
+        kony.application.dismissLoadingScreen();
       }, widgetRef.data[rowIndex].id);
 
       movieService.getMovieCredits(function(creditsList) {
@@ -85,7 +140,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
 
     onSimilarMovieListReceived: function(movieList) {
       if (movieList.length === 0) {
-        this.view.lblTitleSimilar.opacity = 0;
+        this.view.btnShowSimilarMovie.isVisible = false;
         this.view.lstSimilarMovies.setData({});
       } else {
         var similarListData = movieList.map(function(m) {
@@ -96,8 +151,29 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
             id: m.id,
           };
         });
-        this.view.lblTitleSimilar.opacity = 1;
+        this.view.btnShowSimilarMovie.isVisible = true;
         this.view.lstSimilarMovies.setData(similarListData);
+        this.view.lstSimilarMovies.isVisible = false;
+      }			
+    },
+    
+    onRecommendedMovieListReceived: function(movieList) {
+    
+      if (movieList.length === 0) {
+        this.view.btnShowRecommendations.isVisible = false;
+        this.view.lstRecommendedMovies.setData({});
+      } else {
+        var recommendedListData = movieList.map(function(m) {
+          return {
+            lblMovieTitle: m.title,
+            lblMovieDescription: m.description,
+            imgMoviePoster: m.poster,
+            id: m.id,
+          };
+        });
+        this.view.btnShowRecommendations.isVisible = true;
+        this.view.lstRecommendedMovies.setData(recommendedListData);
+        this.view.lstRecommendedMovies.isVisible = false;
       }			
     },
 
@@ -108,8 +184,8 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       } else {
         this.view.btnFavorite.skin = "sknBtnFavorite";        
       }
-      
-//       alert('country ' + movieData.countriesList);
+
+      //       alert('country ' + movieData.countriesList);
 
       this.view.lblCountryInfo.text = movieData.countriesList.join(', ');
       this.view.lblDurationInfo.text = movieData.duration;
@@ -125,9 +201,9 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     onMovieCreditsReceived: function(creditsList) {
       this.view.lblDirectorInfo.text = creditsList.director.map(function(d){ return d.name; }).join(", ");
       this.view.flxCastCarousel.removeAll();
-      
 
-//       alert('cast ' + creditsList.cast.length);
+
+      //       alert('cast ' + creditsList.cast.length);
 
       if (creditsList.cast.length === 0) {
         this.view.flxCastCarousel.isVisible = false;
@@ -202,8 +278,8 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
           this.view.flxCastCarousel.add(flexCast);
         }		
       }
-      
-      
+
+
     },
 
     onPeopleClicked: function(id) {
