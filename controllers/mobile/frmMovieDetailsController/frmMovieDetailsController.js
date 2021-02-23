@@ -108,6 +108,8 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       } else {
         this.view.btnFavorite.skin = "sknBtnFavorite";        
       }
+      
+//       alert('country ' + movieData.countriesList);
 
       this.view.lblCountryInfo.text = movieData.countriesList.join(', ');
       this.view.lblDurationInfo.text = movieData.duration;
@@ -123,7 +125,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     onMovieCreditsReceived: function(creditsList) {
       this.view.flxCastCarousel.removeAll();
 
-      alert('cast ' + creditsList.cast.length);
+//       alert('cast ' + creditsList.cast.length);
 
       if (creditsList.cast.length === 0) {
         this.view.flxCastCarousel.isVisible = false;
