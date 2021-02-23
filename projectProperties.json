@@ -59,7 +59,7 @@
     "andminsdkkey": "5.0 (21)",
     "androidInstallLocation": "Auto",
     "androidInstallLocnPref": "false",
-    "android_allowselfsignedcertificates": "None",
+    "android_allowselfsignedcertificates": "All",
     "androidloadindicatorkey": "true",
     "androidmapkey": "",
     "androidmapkey2": "",
@@ -324,6 +324,9 @@
     "hybridaddrkey": "",
     "hybridhttpsportkey": "",
     "hybridportkey": "",
+    "ide_appEvents": {
+        "mobile": {}
+    },
     "imagewhendownloading": "",
     "initialRotationPreferenceKey": "landscape",
     "inputaccessoryviewtype": "nextprevtoolbar",
@@ -372,6 +375,14 @@
     "keyStoreFilePath": "",
     "keyStoreFilePathandwear": "",
     "keyStorePassword": "",
+    "kfAppInfo": {
+        "02929e1c-8185-4ab7-9252-ec5df2b6538c": {
+            "appName": "Alexander",
+            "baseId": "cf40225c-cf81-4e6c-9331-354b8d6672b9",
+            "id": "cf40225c-cf81-4e6c-9331-354b8d6672b9",
+            "version": "1.0"
+        }
+    },
     "konyVizVersion": "9.1.15",
     "lastmodifiedtime": "1612350061650",
     "location": "false",
