@@ -57,7 +57,7 @@
     "isvisible": true,
     "kuid": "j7ffa24eb6fb4c00811f4104209f2efc",
     "name": "kony.ui.Label",
-    "parent": "flxDetailsItem5",
+    "parent": "flxDetailsItem6",
     "pf": "frmMovieDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

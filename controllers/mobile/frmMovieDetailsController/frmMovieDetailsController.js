@@ -123,7 +123,9 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     },
 
     onMovieCreditsReceived: function(creditsList) {
+      this.view.lblDirectorInfo.text = creditsList.director.map(function(d){ return d.name; }).join(", ");
       this.view.flxCastCarousel.removeAll();
+      
 
 //       alert('cast ' + creditsList.cast.length);
 
@@ -200,6 +202,8 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
           this.view.flxCastCarousel.add(flexCast);
         }		
       }
+      
+      
     },
 
     onPeopleClicked: function(id) {

@@ -180,7 +180,7 @@ define(function () {
          
         successCallback({
           cast: castList,
-          director: director
+          director: director.length > 0 ? director : ["unknown"] 
         });
       }
     }, errorCallback);  

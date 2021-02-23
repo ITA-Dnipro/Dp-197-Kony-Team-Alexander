@@ -1,9 +1,13 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "0dp"
+    },
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "35dp"
     },
     "_left_": {
         "type": "string",
@@ -21,15 +25,15 @@
         0,
         0
     ],
-    "_skin_": "s7768e2aed3544f4a68e12fc220445cc",
-    "_text_": "Label",
+    "_skin_": "sc61f6bcab404cb5833d37847af60c7e",
+    "_text_": "Director(s)",
     "_top_": {
         "type": "string",
-        "value": "3dp"
+        "value": "0dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "120dp"
     },
     "_wrapping_": 2,
     "android": {
@@ -41,7 +45,7 @@
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lblDescriptionInfo",
+    "id": "lblDirector",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,9 +59,9 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "adb6f61dd79f4c26a89dd6a8ce8843e8",
+    "kuid": "ab5812033af94c38b422ba591d236ef4",
     "name": "kony.ui.Label",
-    "parent": "flxDetailsItem6",
+    "parent": "flxDetailsItem5",
     "pf": "frmMovieDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
