@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "200dp"
+        "value": "245dp"
     },
     "_left_": {
         "type": "string",
@@ -37,7 +37,8 @@
     "children": [
         "flxImgBorder",
         "lblMovieTitle",
-        "btnFavorite"
+        "btnFavorite",
+        "flxMovieRating"
     ],
     "clipbounds": true,
     "containerweight": 100,

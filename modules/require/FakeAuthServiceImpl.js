@@ -50,9 +50,37 @@ define(function () {
     return callback();
 
   };
+  
+  var toggleMovieFavorites = function(movieId) {
+    
+    var indexMovieInFavorite = database.map(function(m){
+      return m.movieId;
+    }).indexOf(movieId);  
+
+    if (indexMovieInFavorite !== -1) {
+      var firstArr = database.slice(0, indexMovieInFavorite);
+      var secondArr = database.slice(indexMovieInFavorite - 1, database.length - 1);
+      database = firstArr.concat(secondArr);
+    } else {
+      database.push({
+        userId: 22,
+        movieId: movieId
+      });    
+    }
+  };
+  
+  var isMovieInFavoriteList = function(movieId, callback) {
+    var movieInFavorite = database.find(function(m) {
+        return Number(movieId) === Number(m.movieId); 
+    });
+    
+    return Boolean(movieInFavorite);
+  };
 
   return {
     checkUser: checkUser,
-    registerUser: registerUser
+    registerUser: registerUser,
+    toggleMovieFavorites: toggleMovieFavorites,
+    isMovieInFavoriteList: isMovieInFavoriteList
   };
 });

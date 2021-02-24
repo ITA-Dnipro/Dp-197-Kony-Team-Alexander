@@ -1,13 +1,34 @@
-function MovieData(id, title, description, genresId, posterPath, voteAvg, released, genreNamesList) {
-  var poster = "https://image.tmdb.org/t/p/w200/" + posterPath;
-  var year = (new Date(released)).getFullYear();
+function MovieData(d) {
+  var poster = "https://image.tmdb.org/t/p/w200/" + d.posterPath;
+  var backdrop = "https://image.tmdb.org/t/p/w200/" + d.backdropPath;
+  var year = (new Date(d.released)).getFullYear();
   
-  this.id = id || 0;
-  this.title = title || 0;
-  this.description = description || 0;
-  this.genresList = genresId || 0;
-  this.voteAvg = voteAvg || 0;
-  this.poster = poster || 0;
-  this.year = year || 0;
-  this.genreNamesList = genreNamesList || 0;
+  if (d.duration) {
+    var movieDurationHours = Math.trunc(d.duration / 60);
+    var movieDurationMinutes = d.duration % 60;
+    var duration;
+    
+    movieDurationHours > 0 ?
+      duration = movieDurationHours + "h " + movieDurationMinutes + "m" :
+      duration = movieDurationMinutes + "m";
+    
+    this.duration = duration;
+  } else {
+    this.duration = "unknown";
+  }
+
+  if (d.countries) {
+    var countriesList = d.countries.map(function(c) { return c.name; });
+    this.countriesList = countriesList.length > 0 ? countriesList : ["unknown"];
+  }
+ 
+  this.id = d.id || "unknown";
+  this.title = d.title || "unknown";
+  this.description = d.description || "unknown";
+  this.genresList = d.genresId || ["unknown"];
+  this.voteAvg = d.voteAvg || 0;
+  this.poster = poster;
+  this.backdrop = backdrop;
+  this.genreNamesList = d.genreNamesList || ["unknown"];
+  this.released = year || "unknown";  
 }

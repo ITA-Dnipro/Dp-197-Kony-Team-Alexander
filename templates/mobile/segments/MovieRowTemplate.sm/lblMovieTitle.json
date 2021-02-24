@@ -22,8 +22,8 @@
         0
     ],
     "_right_": {
-        "type": "number",
-        "value": "51"
+        "type": "string",
+        "value": "10dp"
     },
     "_skin_": "s61964816e054e76bd3ede8872dc4c13",
     "_text_": "",

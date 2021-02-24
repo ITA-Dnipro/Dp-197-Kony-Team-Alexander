@@ -22,7 +22,7 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s1d16922fabf441390a807830762c8f9",
+    "_skin_": "s195c51097b945dd945847dfab5d9066",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -37,8 +37,8 @@
     "children": [
         "imgMoviePoster",
         "lblMovieTitle",
-        "lblMovieGenres",
-        "lblMovieYear"
+        "lblMovieYear",
+        "lblMovieGenres"
     ],
     "clipbounds": true,
     "containerId": true,

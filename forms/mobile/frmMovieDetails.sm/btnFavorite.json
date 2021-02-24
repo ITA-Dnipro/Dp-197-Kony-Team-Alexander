@@ -3,7 +3,7 @@
     "DNDConfig": null,
     "_bottom_": {
         "type": "string",
-        "value": "17dp"
+        "value": "40dp"
     },
     "_height_": {
         "type": "string",
@@ -35,7 +35,7 @@
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "s78b6daad1af4226ad6415f0c1a4d516",
+    "focusskin": "s1fb83b9ff46480eb723e0a30db0d2d2",
     "id": "btnFavorite",
     "info": null,
     "iscustomlayout": false,

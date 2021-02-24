@@ -39,7 +39,11 @@
     "children": [
         "flxMovieDetailsHeader",
         "flxMovieDetails",
-        "lblTitleSimilar",
+        "lblTopCast",
+        "flxCastCarousel",
+        "btnShowRecommendations",
+        "lstRecommendedMovies",
+        "btnShowSimilarMovie",
         "lstSimilarMovies"
     ],
     "clipbounds": true,
