@@ -331,6 +331,9 @@
     "hybridaddrkey": "",
     "hybridhttpsportkey": "",
     "hybridportkey": "",
+    "ide_appEvents": {
+        "mobile": {}
+    },
     "imagewhendownloading": "",
     "initialRotationPreferenceKey": "landscape",
     "inputaccessoryviewtype": "nextprevtoolbar",
@@ -380,6 +383,14 @@
     "keyStoreFilePath": "",
     "keyStoreFilePathandwear": "",
     "keyStorePassword": "",
+    "kfAppInfo": {
+        "02929e1c-8185-4ab7-9252-ec5df2b6538c": {
+            "appName": "Alexander",
+            "baseId": "cf40225c-cf81-4e6c-9331-354b8d6672b9",
+            "id": "cf40225c-cf81-4e6c-9331-354b8d6672b9",
+            "version": "1.0"
+        }
+    },
     "konyVizVersion": "9.1.15",
     "lastmodifiedtime": "1612350061650",
     "location": "false",
@@ -691,7 +702,7 @@
     "spawindows480basefontsize": "12",
     "spawindowstabbasefontsize": "17",
     "splashlogokey": "",
-    "startupformkey": "a13d0bf851e142c29748ef19b63af965",
+    "startupformkey": "je23acaff2fe4b5ba13c0586dee6f6c1",
     "statusBarHidden": "false",
     "statusBarStyle": "STATUS_BAR_STYLE_DEFAULT",
     "support32bit": "false",
