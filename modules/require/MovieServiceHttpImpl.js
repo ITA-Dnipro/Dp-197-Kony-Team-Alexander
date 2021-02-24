@@ -188,7 +188,7 @@ define(function () {
             name: c.original_name, 
             img: "https://image.tmdb.org/t/p/w200/" + c.profile_path, 
             character: c.character, 
-          }
+          };
         });
           
         var director = credits.crew.filter(function(c) {
@@ -196,7 +196,7 @@ define(function () {
             return {
               id: c.id,
               name: c.name
-            }
+            };
           }
         });
          

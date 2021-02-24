@@ -1,14 +1,12 @@
-define(["MovieServiceHttpImpl", "MovieServiceFabricImpl"], function (httpImpl, fabricImpl) {
+define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl, httpImpl) {
   
-  var concreteImpl = httpImpl;
-  
-//   var concreteImpl = fabricImpl;
-//   alert(JSON.stringify(concreteImpl));
+//   var concreteImpl = httpImpl;
     return {
       getMovieDetails: fabricImpl.getMovieDetails,
-      getSimilarMovieList: httpImpl.getSimilarMovieList,
-      getRecommendedMovieList: concreteImpl.getRecommendedMovieList,
+      getSimilarMovieList: fabricImpl.getSimilarMovieList,
+      getMovieList: fabricImpl.getMovieList,
+      getRecommendedMovieList: fabricImpl.getRecommendedMovieList,
       searchMovie: fabricImpl.searchMovie,
-      getMovieCredits: httpImpl.getMovieCredits
+      getMovieCredits: fabricImpl.getMovieCredits
     };
 });
