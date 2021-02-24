@@ -31,11 +31,12 @@
     "canUpdateUI": true,
     "children": [
         "imgProfilePage",
-        "inpUserLogin",
         "inpPassword",
         "inpPasswordConfirm",
-        "TextField0a4b62c0507ac47",
-        "Label0d2082d6f2d3547"
+        "impProfileName",
+        "impProfileLogin",
+        "lblChangePassword",
+        "Button0ad2cd504f9cf47"
     ],
     "containerweight": 100,
     "controllerInfo": {
