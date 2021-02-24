@@ -22,14 +22,10 @@
         0
     ],
     "_percent_": true,
-    "_right_": {
-        "type": "string",
-        "value": "0dp"
-    },
     "_skin_": "s76eb47ca2b149bdabc0a625e94b9cf6",
     "_top_": {
         "type": "string",
-        "value": "3dp"
+        "value": "5dp"
     },
     "_width_": {
         "type": "string",
@@ -39,18 +35,18 @@
     "autogrowmode": 1,
     "canUpdateUI": true,
     "children": [
-        "lblDirector",
-        "lblDirectorInfo"
+        "lblDescription",
+        "lblDescriptionInfo"
     ],
     "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxDetailsItem5",
+    "id": "flxDetailsItem6",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "be7a08a2cee3459ca879a39916955754",
-    "layouttype": 2,
+    "kuid": "eca776323aee48458d9f54063072419a",
+    "layouttype": 4,
     "name": "kony.ui.FlexContainer",
     "parent": "flxMovieDetails",
     "pf": "frmMovieDetails",
