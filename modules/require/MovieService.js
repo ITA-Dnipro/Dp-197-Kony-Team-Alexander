@@ -3,7 +3,7 @@ define(["MovieServiceHttpImpl", "MovieServiceFabricImpl"], function (httpImpl, f
 //   var concreteImpl = fabricImpl;
 //   alert(JSON.stringify(concreteImpl));
     return {
-      getMovieDetails: httpImpl.getMovieDetails,
+      getMovieDetails: fabricImpl.getMovieDetails,
       getSimilarMovieList: httpImpl.getSimilarMovieList,
       getMovieList: fabricImpl.getMovieList,
       searchMovie: fabricImpl.searchMovie,
