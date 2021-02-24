@@ -5,6 +5,10 @@
         "type": "ref",
         "value": "preferred"
     },
+    "_left_": {
+        "type": "string",
+        "value": "60dp"
+    },
     "_margin_": [
         1,
         1,
@@ -17,11 +21,11 @@
         0,
         0
     ],
-    "_skin_": "s2349ecd81944f4b931c13ea3b9cb16d",
-    "_text_": "Viktoria Kuprienko",
+    "_skin_": "sbe6324bdf7841038571d0a8b3f73495",
+    "_text_": "Change password",
     "_top_": {
         "type": "string",
-        "value": "300dp"
+        "value": "420dp"
     },
     "_width_": {
         "type": "ref",
@@ -35,13 +39,9 @@
         }
     },
     "canUpdateUI": true,
-    "centerx": {
-        "type": "string",
-        "value": "50%"
-    },
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lblProfileName",
+    "id": "Label0d2082d6f2d3547",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,7 +55,7 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "acfcc716fd31465ab61136f66973132f",
+    "kuid": "e1b0beaa133943f7b80c584ff3cde1ec",
     "name": "kony.ui.Label",
     "parent": "frmProfile",
     "pf": "frmProfile",
