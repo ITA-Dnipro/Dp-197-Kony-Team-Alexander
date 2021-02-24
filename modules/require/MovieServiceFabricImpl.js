@@ -25,7 +25,7 @@ define(function () {
       return obj.name;
     });
   };
-  
+
   var getMovieList = function(successCallback, errorCallback, url) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
@@ -58,7 +58,7 @@ define(function () {
       alert("Error while retrieving genres list");
     });   
   };
-  
+
   var searchMovie = function(successCallback, errorCallback, string) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
@@ -92,7 +92,7 @@ define(function () {
       alert("Error while retrieving genres list");
     });   
   };
-  
+
   var getMovieDetails = function(successCallback, errorCallback, id) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
@@ -123,7 +123,7 @@ define(function () {
       }
     });   
   };
-  
+
   var getSimilarMovieList = function(successCallback, errorCallback, mId) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
@@ -150,23 +150,23 @@ define(function () {
       }
     }); 
   };
-  
+
   var getMovieCredits = function(successCallback, errorCallback, movieId) {
-     var sdk = kony.sdk.getCurrentInstance();
+    var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = { movieId: movieId };
-    AlexanderMovieListService.invokeOperation("getSimilarMovieList", headers, body, function(response) {
+    AlexanderMovieListService.invokeOperation("getMovieCredits", headers, body, function(response) {
       if (successCallback) {
         var castList = response.cast.map(function(c) {
           return {
             id: c.id,
-            name: c.original_name, 
+            name: c.name, 
             img: "https://image.tmdb.org/t/p/w200/" + c.profile_path, 
-            character: c.character, 
+            character: c.character
           };
         });
-        
+
         var director = response.crew.filter(function(c) {
           if (c.job === "Director") {
             return {
@@ -175,7 +175,7 @@ define(function () {
             };
           }
         });
-        
+
         successCallback({
           cast: castList,
           director: director.length > 0 ? director : ["unknown"] 
@@ -187,9 +187,9 @@ define(function () {
       }
     });
   };
-  
+
   var getRecommendedMovieList = function(successCallback, errorCallback, mId) {
-     var sdk = kony.sdk.getCurrentInstance();
+    var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = { id: mId };
