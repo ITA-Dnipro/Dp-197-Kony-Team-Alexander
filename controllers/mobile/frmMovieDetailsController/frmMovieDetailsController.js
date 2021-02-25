@@ -263,7 +263,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
             width: "100%",
             height: kony.flex.USE_PREFERRED_SIZE,
             isVisible: true,
-            skin: "sknCastBtnName",
+            skin: "sknBtnCastName",
             onClick: this.onPeopleClicked.bind(null, creditsList.cast[i].id)
           }, {
             padding: [0,0,0,0],
@@ -274,7 +274,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
           var lblChar = new kony.ui.Label({
             id: "lblCastCharacter" + i,
             text: creditsList.cast[i].character,
-            skin: "sknCastCharacter",
+            skin: "sknLblCastCharacter",
             top: "5dp",
             left: "0dp",
             width: "100%",

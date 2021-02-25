@@ -36,8 +36,8 @@
         "inpPassword",
         "inpPasswordConfirm",
         "btnCreateAccount",
-        "btnBackToLogin",
-        "lblRegistretionBack"
+        "lblRegistretionBack",
+        "btnBackToLogin"
     ],
     "containerweight": 100,
     "controllerInfo": {

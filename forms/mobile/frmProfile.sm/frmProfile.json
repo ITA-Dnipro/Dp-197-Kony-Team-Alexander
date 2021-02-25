@@ -31,12 +31,14 @@
     "canUpdateUI": true,
     "children": [
         "imgProfilePage",
-        "inpPassword",
-        "inpPasswordConfirm",
         "impProfileName",
         "impProfileLogin",
         "lblChangePassword",
-        "Button0ad2cd504f9cf47"
+        "inpPassword",
+        "inpPasswordConfirm",
+        "btnChangeUserInfo",
+        "lblGoBack",
+        "btnBackToMovieList"
     ],
     "containerweight": 100,
     "controllerInfo": {
@@ -53,6 +55,7 @@
     "displayorientation": 1,
     "enabledforidletimeout": false,
     "id": "frmProfile",
+    "ide_init": "AS_Form_da0e4c479b214f66bb062f7cda283235",
     "info": null,
     "initdone": false,
     "inputaccessoryviewtype": 4,

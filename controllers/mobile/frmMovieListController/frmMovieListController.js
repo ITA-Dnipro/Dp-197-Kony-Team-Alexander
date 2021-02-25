@@ -3,14 +3,12 @@ define(["MovieService"], function(movieService){
     onInitialize: function() {
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
       this.view.btnSearch.onClick = Utility.navigateTo.bind(null, "frmMovieSearch");
-      this.view.btnProfile.onClick = Utility.navigateTo.bind(null, "frmAuthentication");
+      this.view.btnProfile.onClick = Utility.navigateTo.bind(null, "frmProfile");
       this.view.btnPopular.onClick = this.loadMovieList.bind(this, "popular", this.view.btnPopular);
       this.view.btnTopRated.onClick = this.loadMovieList.bind(this, "top_rated", this.view.btnTopRated);
       this.view.btnInTheatres.onClick = this.loadMovieList.bind(this, "now_playing", this.view.btnInTheatres);
       this.view.btnUpcoming.onClick = this.loadMovieList.bind(this, "upcoming", this.view.btnUpcoming);
-    },
-
-    onNavigate: function() {  
+      
       kony.application.showLoadingScreen();
       
       movieService.getMovieList(function(movieList) {

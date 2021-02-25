@@ -3,7 +3,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "40dp"
+        "value": "50dp"
     },
     "_margin_": [
         0,
@@ -22,7 +22,7 @@
     "_text_": "Viktoria Kuprienko",
     "_top_": {
         "type": "string",
-        "value": "286dp"
+        "value": "220dp"
     },
     "_width_": {
         "type": "string",
