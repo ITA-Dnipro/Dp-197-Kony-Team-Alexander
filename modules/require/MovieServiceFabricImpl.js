@@ -39,10 +39,7 @@ define(function () {
             return new MovieData({
               id: m.id,
               title: m.title, 
-              description: m.overview, 
-              genresId: m.genre_ids, 
               posterPath: m.poster_path,
-              voteAvg: m.vote_average,
               released: m.release_date,
               genreNamesList: getGenreNameById(genreData, m.genre_ids)
             }); 
@@ -72,10 +69,7 @@ define(function () {
             return new MovieData({
               id: m.id,
               title: m.title, 
-              description: m.overview, 
-              genresId: m.genre_ids, 
               posterPath: m.poster_path,
-              voteAvg: m.vote_average,
               released: m.release_date,
               genreNamesList: getGenreNameById(genreData, m.genre_ids)
             }); 
@@ -102,17 +96,17 @@ define(function () {
 
       if (successCallback) {
         var movieDetails = new MovieData({
-          id: response.all.id,
-          title: response.all.title, 
-          description: response.all.overview, 
-          countries: response.all.production_countries, 
-          duration: response.all.runtime, 
-          released: response.all.release_date, 
-          genresId: response.all.genres.map(function(g) { return g.id; }),
-          genreNamesList: response.all.genres.map(function(g) { return g.name; }),
-          voteAvg: response.all.vote_average, 
-          posterPath: response.all.poster_path,
-          backdropPath: response.all.backdrop_path
+          id: response.id,
+          title: response.title, 
+          description: response.overview, 
+          countries: response.production_countries, 
+          duration: response.runtime, 
+          released: response.release_date, 
+          genresId: response.genres.map(function(g) { return g.id; }),
+          genreNamesList: response.genres.map(function(g) { return g.name; }),
+          voteAvg: response.vote_average, 
+          posterPath: response.poster_path,
+          backdropPath: response.backdrop_path
         });   
         successCallback(movieDetails);
 
@@ -135,11 +129,8 @@ define(function () {
           return new MovieData({
             id: m.id,
             title: m.title, 
-            description: m.overview, 
-            genresId: m.genre_ids, 
-            posterPath: m.poster_path,
-            voteAvg: m.vote_average,
-            released: m.release_date,
+            description: m.overview,
+            posterPath: m.poster_path
           }); 
         });
         successCallback(movieList);
