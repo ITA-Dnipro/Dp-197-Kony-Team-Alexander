@@ -1,0 +1,64 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizTextBox2",
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "40dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_padding_": [
+        3,
+        0,
+        0,
+        0
+    ],
+    "_placeholder_": "Fullname",
+    "_skin_": "s98af5bd059f4a4eb02d6f4a238233f2",
+    "_text_": "Viktoria Kuprienko",
+    "_top_": {
+        "type": "string",
+        "value": "286dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "autocapitalize": "none",
+    "autocomplete": false,
+    "autocorrect": false,
+    "autofilter": false,
+    "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "49.07%"
+    },
+    "containerheight": "",
+    "containerheightmode": 1,
+    "containerweight": 100,
+    "contentalignment": 5,
+    "focusskin": "s7b6f61d6f4b44ffac6a15717987ff28",
+    "id": "impProfileName",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": true,
+    "keyboardtype": "A",
+    "kuid": "j7c9c13325b44c16857048b53a57309b",
+    "mode": "A",
+    "name": "kony.ui.TextBox2",
+    "parent": "frmProfile",
+    "pf": "frmProfile",
+    "placeholderskin": "secff3a508fb4d82ab6a08d0e2048493",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "securetextentry": false,
+    "textinputmode": "A",
+    "tooltip": "",
+    "viewtype": "default",
+    "wType": "TextField",
+    "zindex": 1
+}

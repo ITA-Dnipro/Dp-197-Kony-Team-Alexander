@@ -1,6 +1,6 @@
 define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl, httpImpl) {
   
-  var concreteImpl = (fabricImpl) ? fabricImpl : httpImpl;
+  var concreteImpl = (!!fabricImpl) ? fabricImpl : httpImpl;
   
     return {
       getMovieDetails: concreteImpl.getMovieDetails,
