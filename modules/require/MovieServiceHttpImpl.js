@@ -59,10 +59,7 @@ define(function () {
             id: m.id,
             title: m.title, 
             description: m.overview, 
-            genresId: m.genre_ids, 
-            posterPath: m.poster_path,
-            voteAvg: m.vote_average,
-            released: m.release_date,
+            posterPath: m.poster_path
           }); 
         });
          
