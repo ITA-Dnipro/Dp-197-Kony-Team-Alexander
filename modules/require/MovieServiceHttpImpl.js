@@ -255,7 +255,8 @@ define(function () {
         if (personRole === "actor") {
           popularList = credits.cast.sort(function(a, b) {
             return b.popularity - a.popularity;
-          }).slice(0, 9)
+          }).filter(function(m) { return m.title; })
+            .slice(0, 9)
             .map(function(c) {
               return {
                 id: c.id,

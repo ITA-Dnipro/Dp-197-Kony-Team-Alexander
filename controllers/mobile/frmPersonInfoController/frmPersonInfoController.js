@@ -10,6 +10,32 @@ define(["MovieService"], function(movieService){
       //       this.view.btnShowRecommendations.onClick = this.onBtnShowRecommendationsClicked.bind(this);
       //       this.view.btnShowSimilarMovie.onClick = this.onBtnShowSimilarMovieClicked.bind(this);
     },
+    
+    onNavigate: function(personData) {
+      if (personData) {
+        this.personData = personData;
+      }
+      
+//       alert(personData.id);
+      kony.application.showLoadingScreen();
+
+      movieService.getPersonInfo(function(personInfo) {
+        this.onPersonInfoReceived(personInfo);
+        kony.application.dismissLoadingScreen();
+      }.bind(this), function() {
+        alert("Error while retrieving person info");
+        kony.application.dismissLoadingScreen();
+      }, this.personData.id);
+      
+      movieService.getPersonCredits(function(credits) {
+        this.onPersonCreditsReceived(credits);
+        kony.application.dismissLoadingScreen();
+      }.bind(this), function() {
+        alert("Error while retrieving person credits");
+        kony.application.dismissLoadingScreen();
+      }, this.personData.id, this.personData.role);
+      
+    },
 
     onGetClicked: function(personData) {
       alert(personData.id);
@@ -50,14 +76,10 @@ define(["MovieService"], function(movieService){
     },
     
     onPersonCreditsReceived: function(creditsList) {
-//       alert(creditsList.popularList.join("\n"));
       
       this.view.flxBestMoviesCarousel.removeAll();
 
-      //       alert('cast ' + creditsList.cast.length);
-
       if (creditsList.popularList.length === 0) {
-        alert("bad ");
         this.view.flxBestMoviesCarousel.isVisible = false;
         this.view.lblKnownForMovies.isVisible = false;
 
@@ -66,7 +88,6 @@ define(["MovieService"], function(movieService){
         this.view.lblKnownForMovies.isVisible = true;
        
         for (var i = 0; i < creditsList.popularList.length; i++) {
-          alert("for " + creditsList.popularList[i].name);
           var flexBestMovie = new kony.ui.FlexContainer({
             id: "flxBestMovie" + i,
             top: "0dp",
@@ -92,7 +113,7 @@ define(["MovieService"], function(movieService){
             width: "100%",
             height: kony.flex.USE_PREFERRED_SIZE,
             isVisible: true,
-            skin: "sknCastBtnName",
+            skin: "sknBtnCastName",
             onClick: this.onMovieClicked.bind(null, creditsList.popularList[i].id)
           }, {
             padding: [0,0,0,0],
@@ -120,7 +141,7 @@ define(["MovieService"], function(movieService){
     },
     
     onMovieClicked: function(movieId) {
-      alert(movieId);
+      Utility.navigateTo("frmMovieDetails", {id: movieId});
     }
 
     //     onbtnFavoriteClicked: function() {
