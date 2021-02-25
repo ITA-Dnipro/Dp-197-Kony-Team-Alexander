@@ -8,9 +8,7 @@ define(["MovieService"], function(movieService){
       this.view.btnTopRated.onClick = this.loadMovieList.bind(this, "top_rated", this.view.btnTopRated);
       this.view.btnInTheatres.onClick = this.loadMovieList.bind(this, "now_playing", this.view.btnInTheatres);
       this.view.btnUpcoming.onClick = this.loadMovieList.bind(this, "upcoming", this.view.btnUpcoming);
-    },
-
-    onNavigate: function() {  
+      
       kony.application.showLoadingScreen();
       
       movieService.getMovieList(function(movieList) {
