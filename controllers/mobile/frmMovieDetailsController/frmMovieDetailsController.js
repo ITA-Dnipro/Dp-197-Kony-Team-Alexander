@@ -89,6 +89,16 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         alert("Error while retrieving movie credits");
         kony.application.dismissLoadingScreen();
       }, movieId.id);
+      
+      this.view.flxMainScroll.setContentOffset({
+        "x": "0dp",
+        "y": "0dp"
+      }, false);
+
+      this.view.flxCastCarousel.setContentOffset({
+        "x": "0dp",
+        "y": "0dp"
+      }, false);
     },
 
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
