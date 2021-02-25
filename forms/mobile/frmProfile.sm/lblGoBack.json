@@ -21,15 +21,15 @@
         0,
         0
     ],
-    "_skin_": "sbe6324bdf7841038571d0a8b3f73495",
-    "_text_": "Change password",
+    "_skin_": "s2a457f9a1414d9a8a6996a4d60d39db",
+    "_text_": "Go back?",
     "_top_": {
         "type": "string",
-        "value": "330dp"
+        "value": "630dp"
     },
     "_width_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "100dp"
     },
     "_wrapping_": 2,
     "android": {
@@ -40,8 +40,8 @@
     },
     "canUpdateUI": true,
     "containerweight": 100,
-    "contentalignment": 4,
-    "id": "lblChangePassword",
+    "contentalignment": 5,
+    "id": "lblGoBack",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,7 +55,7 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "e1b0beaa133943f7b80c584ff3cde1ec",
+    "kuid": "cd7022ef6e884076976ff0d59bbfb79c",
     "name": "kony.ui.Label",
     "parent": "frmProfile",
     "pf": "frmProfile",

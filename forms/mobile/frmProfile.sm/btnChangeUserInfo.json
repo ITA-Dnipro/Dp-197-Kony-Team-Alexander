@@ -29,7 +29,7 @@
     "_text_": "Change",
     "_top_": {
         "type": "string",
-        "value": "580dp"
+        "value": "510dp"
     },
     "_width_": {
         "type": "ref",
@@ -40,7 +40,7 @@
     "contentalignment": 5,
     "displaytext": true,
     "focusskin": "s13fb70f60444470ad40243457d097d5",
-    "id": "Button0ad2cd504f9cf47",
+    "id": "btnChangeUserInfo",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,

@@ -3,7 +3,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "40dp"
+        "value": "50dp"
     },
     "_margin_": [
         0,
@@ -22,7 +22,7 @@
     "_text_": "kup",
     "_top_": {
         "type": "string",
-        "value": "350dp"
+        "value": "270dp"
     },
     "_width_": {
         "type": "string",
