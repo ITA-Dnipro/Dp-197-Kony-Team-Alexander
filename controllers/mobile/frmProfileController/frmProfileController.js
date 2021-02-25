@@ -1,5 +1,5 @@
-define({ 
-
- //Type your controller code here 
-
- });
+define({
+    onInitialize: function() {
+      this.view.btnBackToMovieList.onClick = Utility.navigateTo.bind(null, "frmMovieList");
+    }
+});
