@@ -3,11 +3,11 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "50dp"
+        "value": "45dp"
     },
     "_left_": {
         "type": "string",
-        "value": "15dp"
+        "value": "10dp"
     },
     "_margin_": [
         6,
@@ -22,10 +22,10 @@
         0
     ],
     "_skin_": "s290f36e41224c0181bb7d7281a29182",
-    "_text_": "Similar Movies",
+    "_text_": "Writing   ",
     "_top_": {
         "type": "string",
-        "value": "5dp"
+        "value": "0dp"
     },
     "_width_": {
         "type": "string",
@@ -35,12 +35,12 @@
     "containerweight": 100,
     "contentalignment": 4,
     "displaytext": true,
-    "focusskin": "s7bca4c3362040f68461b75e6d8bcc14",
-    "id": "btnShowSimilarMovie",
+    "focusskin": "s86defdac6d148249d47f30bd9cfa412",
+    "id": "btnShowWriting",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "d417f2159adc447fb180c48eeb550bfc",
+    "kuid": "fc514c0e8c5443fd81bd6b75340112e7",
     "name": "kony.ui.Button",
     "parent": "flxMainScroll",
     "pf": "frmPersonInfo",

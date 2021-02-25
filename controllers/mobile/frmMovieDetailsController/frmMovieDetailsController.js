@@ -22,6 +22,10 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       this.view.btnShowRecommendations.skin === "sknBtnRecommendedMovie" ?
         this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovieActive" :
         this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
+      
+      this.view.btnShowRecommendations.text === "Recommendations   \uf078" ? 
+        this.view.btnShowRecommendations.text = "Recommendations   \uf054" :
+        this.view.btnShowRecommendations.text = "Recommendations   \uf078";
         
       var isVisible = this.view.lstRecommendedMovies.isVisible;
       this.view.lstRecommendedMovies.isVisible = !isVisible;
@@ -38,6 +42,10 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovieActive" :
         this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
       
+      this.view.btnShowSimilarMovie.text === "Similar Movies   \uf078" ? 
+        this.view.btnShowSimilarMovie.text = "Similar Movies   \uf054" :
+        this.view.btnShowSimilarMovie.text = "Similar Movies   \uf078";
+      
       var isVisible = this.view.lstSimilarMovies.isVisible;
       this.view.lstSimilarMovies.isVisible = !isVisible;
       
@@ -51,6 +59,8 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     onNavigate: function(movieData) {
       this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
       this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
+      this.view.btnShowRecommendations.text = "Recommendations   \uf078";
+      this.view.btnShowSimilarMovie.text = "Similar Movies   \uf078";
       
       if (movieData) {
         this.movieId = movieData.id;        

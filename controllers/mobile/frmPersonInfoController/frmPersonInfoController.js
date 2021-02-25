@@ -3,20 +3,40 @@ define(["MovieService"], function(movieService){
   return {
     onInitialize: function() {
       this.view.btnGet.onClick = this.onGetClicked.bind(this, {id: 1810, role: "actor"});
+      this.view.btnShowActing.onClick = this.onShowBtnClicked.bind(this, this.view.btnShowActing, "Acting", this.view.lstActingMovies);
       //       this.view.btnBack.onClick = Utility.goBack;
       //       this.view.lstSimilarMovies.onRowClick = this.onSimilarMoviesRowClicked.bind(this);
-      //       this.view.lstRecommendedMovies.onRowClick = this.onSimilarMoviesRowClicked.bind(this);
+      this.view.lstActingMovies.onRowClick = this.onMovieRowClicked.bind(this);
       //       this.view.btnFavorite.onClick = this.onbtnFavoriteClicked.bind(this);
       //       this.view.btnShowRecommendations.onClick = this.onBtnShowRecommendationsClicked.bind(this);
       //       this.view.btnShowSimilarMovie.onClick = this.onBtnShowSimilarMovieClicked.bind(this);
     },
-    
+
+    onShowBtnClicked: function(btn, btnText, list) {
+      btn.skin === "sknBtnRecommendedMovie" ? 
+        btn.skin = "sknBtnRecommendedMovieActive" :
+      btn.skin = "sknBtnRecommendedMovie";
+
+      btn.text === btnText + "   \uf078" ? 
+        btn.text = btnText + "   \uf054" : 
+      btn.text = btnText + "   \uf078";
+
+      list.isVisible = !list.isVisible;
+    },
+
     onNavigate: function(personData) {
-      if (personData) {
+      if (personData !== undefined) {
         this.personData = personData;
       }
       
 //       alert(personData.id);
+
+      this.view.btnShowActing.text = "Acting   \uf078";
+      this.view.btnShowDirecting.text = "Directing   \uf078";
+      this.view.btnShowProduction.text = "Production   \uf078";
+      this.view.btnShowWriting.text = "Writing   \uf078";
+
+      //       alert(personData.id);
       kony.application.showLoadingScreen();
 
       movieService.getPersonInfo(function(personInfo) {
@@ -26,7 +46,7 @@ define(["MovieService"], function(movieService){
         alert("Error while retrieving person info");
         kony.application.dismissLoadingScreen();
       }, this.personData.id);
-      
+
       movieService.getPersonCredits(function(credits) {
         this.onPersonCreditsReceived(credits);
         kony.application.dismissLoadingScreen();
@@ -34,11 +54,15 @@ define(["MovieService"], function(movieService){
         alert("Error while retrieving person credits");
         kony.application.dismissLoadingScreen();
       }, this.personData.id, this.personData.role);
-      
+
+    },
+    
+    onMovieRowClicked: function(widgetRef, sectionIndex, rowIndex) {     
+      Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id});
     },
 
     onGetClicked: function(personData) {
-      alert(personData.id);
+      //       alert(personData.id);
 
       kony.application.showLoadingScreen();
 
@@ -49,7 +73,7 @@ define(["MovieService"], function(movieService){
         alert("Error while retrieving person info");
         kony.application.dismissLoadingScreen();
       }, personData.id);
-      
+
       movieService.getPersonCredits(function(credits) {
         this.onPersonCreditsReceived(credits);
         kony.application.dismissLoadingScreen();
@@ -66,27 +90,26 @@ define(["MovieService"], function(movieService){
       this.view.lblBirthdayInfo.text = personInfo.birthday;
       this.view.lblPlaceOfBirthInfo.text = personInfo.placeOfBirth;
       this.view.lblKnownForInfo.text = personInfo.knownFor;
-      this.view.lblBiographyInfo.text = personInfo.biography;
 
       if (personInfo.deathday) {
+        this.view.flxDeath.isVisible = true;
         this.view.lblDeathInfo.text = personInfo.deathday;
       } else {
         this.view.flxDeath.isVisible = false;
       }
     },
-    
+
     onPersonCreditsReceived: function(creditsList) {
-      
+
       this.view.flxBestMoviesCarousel.removeAll();
 
       if (creditsList.popularList.length === 0) {
         this.view.flxBestMoviesCarousel.isVisible = false;
         this.view.lblKnownForMovies.isVisible = false;
-
       } else {
         this.view.flxBestMoviesCarousel.isVisible = true;
         this.view.lblKnownForMovies.isVisible = true;
-       
+
         for (var i = 0; i < creditsList.popularList.length; i++) {
           var flexBestMovie = new kony.ui.FlexContainer({
             id: "flxBestMovie" + i,
@@ -121,25 +144,27 @@ define(["MovieService"], function(movieService){
             contentAlignment: constants.CONTENT_ALIGN_CENTER,
           });
 
-//           var lblChar = new kony.ui.Label({
-//             id: "lblCastCharacter" + i,
-//             text: creditsList.cast[i].character,
-//             skin: "sknCastCharacter",
-//             top: "5dp",
-//             left: "0dp",
-//             width: "100%",
-//             height: kony.flex.USE_PREFERRED_SIZE,
-//             contentAlignment: constants.CONTENT_ALIGN_CENTER,
-//             wrapping: constants.WIDGET_TEXT_WORD_WRAP
-//           });
-
           flexBestMovie.add(imgBestMovie, btnBestMovieName);
 
           this.view.flxBestMoviesCarousel.add(flexBestMovie);
         }		
       }
+
+      if (creditsList.actingList.length === 0) {
+
+      } else {
+        var actingList = creditsList.actingList.map(function(m) {
+          return {
+            lblYear: String(m.year),
+            id: m.id,
+            lblMovieTitle: m.title,
+            lblRole: m.character            
+          }
+        });
+        this.view.lstActingMovies.setData(actingList);
+      }
     },
-    
+
     onMovieClicked: function(movieId) {
       Utility.navigateTo("frmMovieDetails", {id: movieId});
     }

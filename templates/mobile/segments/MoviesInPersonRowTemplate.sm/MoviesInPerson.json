@@ -1,12 +1,12 @@
 {
     "DNDConfig": null,
     "_height_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "70dp"
     },
     "_left_": {
         "type": "string",
-        "value": "10dp"
+        "value": "0dp"
     },
     "_margin_": [
         0,
@@ -22,44 +22,48 @@
         0
     ],
     "_percent_": true,
-    "_right_": {
-        "type": "string",
-        "value": "10dp"
-    },
     "_skin_": "s76eb47ca2b149bdabc0a625e94b9cf6",
     "_top_": {
         "type": "string",
-        "value": "5dp"
+        "value": "0dp"
     },
     "_width_": {
         "type": "string",
-        "value": "95%"
+        "value": "100%"
     },
     "allboxes": [],
-    "autogrowmode": 1,
+    "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "lblBiography",
-        "lblBiographyInfo"
+        "lblYear",
+        "lblMovieTitle",
+        "lblRole"
     ],
     "clipbounds": true,
+    "containerId": true,
     "containerweight": 100,
+    "controllerInfo": {
+        "default": {
+            "channel": "mobile",
+            "name": "MoviesInPersonController"
+        }
+    },
     "enablescrolling": true,
-    "id": "flxBiography",
+    "id": "MoviesInPerson",
     "info": null,
+    "isTemplate": true,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "fcbd1185e31f4cbba419890b92c5be93",
-    "layouttype": 4,
+    "kuid": "a7bb0b10bbca49c6968e84b44936d526",
+    "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxMainScroll",
-    "pf": "frmPersonInfo",
+    "parent": "MoviesInPersonRowTemplate",
+    "pf": "MoviesInPersonRowTemplate",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
     "snapgridsize": 10,
     "snaptogrid": true,
     "wType": "FlexContainer",
-    "widgetalignment": 1,
-    "zindex": 1
+    "widgetalignment": 1
 }

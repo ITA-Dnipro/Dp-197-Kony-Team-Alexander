@@ -39,11 +39,13 @@
     "children": [
         "flxTempHeader",
         "flxMainInfo",
-        "flxBiography",
         "lblKnownForMovies",
         "flxBestMoviesCarousel",
-        "btnShowRecommendations",
-        "btnShowSimilarMovie"
+        "btnShowActing",
+        "lstActingMovies",
+        "btnShowDirecting",
+        "btnShowProduction",
+        "btnShowWriting"
     ],
     "clipbounds": true,
     "containerweight": 100,

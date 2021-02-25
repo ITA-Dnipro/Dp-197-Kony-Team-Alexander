@@ -220,7 +220,6 @@ define(function () {
           deathday: personInfo.deathday,
           img: "https://image.tmdb.org/t/p/w200/" + personInfo.profile_path, 
           knownFor: personInfo.known_for_department, 
-          biography: personInfo.biography
         };
 
         successCallback(pInfo);
@@ -232,8 +231,10 @@ define(function () {
     var PERSON_URL = "https://api.themoviedb.org/3/person/" + String(personId) + "/combined_credits?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
 
      makeHttpRequest(PERSON_URL, function(credits) {
-       alert("credits ok " + credits.cast[0].popularity);
+
       if (credits.cast && credits.crew && Array.isArray(credits.cast) && Array.isArray(credits.crew)) {
+        alert("cast " + credits.cast.length);
+        alert("crew " + credits.crew.length);
 //         var castList = credits.cast.map(function(c) {
 //           return {
 //             id: c.id,
@@ -268,7 +269,8 @@ define(function () {
         } else {          
           popularList = credits.crew.sort(function(a, b) {
             return b.popularity - a.popularity;
-          }).slice(0, 9)
+          }).filter(function(m) { return m.title; })
+            .slice(0, 9)
             .map(function(c) {
               return {
                 id: c.id,
@@ -279,9 +281,38 @@ define(function () {
           }); 
         }
         
+        
+        var upcomingMoviesList = credits.cast.filter(function(m) { return m.title && m.release_date === ""; })
+          .map(function(m){
+              return {
+                id: m.id,
+                title: m.title,
+                character: m.character,
+    //             year: m.release_date
+                year: "-"
+              }
+          });
+        var sortedList = credits.cast.filter(function(m) { return m.title && m.release_date !== ""; })
+          .sort(function(a, b) {
+            var dateA = new Date(a.release_date).getTime();
+            var dateB = new Date(b.release_date).getTime();
+            
+            return dateB - dateA;
+          })
+          .map(function(m){
+            return {
+              id: m.id,
+              title: m.title,
+              character: m.character,
+  //             year: m.release_date
+              year: (new Date(m.release_date)).getFullYear()
+            }
+          });
+        
 
         successCallback({
           popularList: popularList,
+          actingList: upcomingMoviesList.concat(sortedList)
 //           director: director.length > 0 ? director : ["unknown"] 
         });
       }

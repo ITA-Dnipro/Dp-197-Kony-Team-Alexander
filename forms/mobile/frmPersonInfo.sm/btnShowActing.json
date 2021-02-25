@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "15dp"
+        "value": "10dp"
     },
     "_margin_": [
         6,
@@ -22,28 +22,28 @@
         0
     ],
     "_skin_": "s290f36e41224c0181bb7d7281a29182",
-    "_text_": "Similar Movies   ",
+    "_text_": "Acting   ",
     "_top_": {
         "type": "string",
         "value": "0dp"
     },
     "_width_": {
         "type": "string",
-        "value": "140dp"
+        "value": "165dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 4,
     "displaytext": true,
     "focusskin": "s86defdac6d148249d47f30bd9cfa412",
-    "id": "btnShowSimilarMovie",
+    "id": "btnShowActing",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "eed892432342400db5e9ebe39ef6f036",
+    "kuid": "f29aa9c419314c98a38cbbc7227b1d02",
     "name": "kony.ui.Button",
     "parent": "flxMainScroll",
-    "pf": "frmMovieDetails",
+    "pf": "frmPersonInfo",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",

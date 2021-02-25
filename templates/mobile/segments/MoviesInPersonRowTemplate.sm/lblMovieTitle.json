@@ -1,13 +1,17 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "0dp"
+    },
     "_height_": {
         "type": "string",
-        "value": "30dp"
+        "value": "70dp"
     },
     "_left_": {
         "type": "string",
-        "value": "0dp"
+        "value": "60dp"
     },
     "_margin_": [
         1,
@@ -21,15 +25,15 @@
         0,
         0
     ],
-    "_skin_": "s577d0add4df4f9e84bf76017b33d332",
-    "_text_": "Biography",
+    "_skin_": "s3c7d5e17d43403eb0e8a7c93434594d",
+    "_text_": "Movie Name",
     "_top_": {
         "type": "string",
         "value": "0dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100dp"
+        "value": "225dp"
     },
     "_wrapping_": 2,
     "android": {
@@ -39,9 +43,10 @@
         }
     },
     "canUpdateUI": true,
+    "containerId": true,
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lblBiography",
+    "id": "lblMovieTitle",
     "info": null,
     "ipad": {
         "psp": {
@@ -55,13 +60,15 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "b28408d3a1184917b3c46f6d19435f7d",
+    "kuid": "ec3c3ea626fe4a178356cd70ccee5f97",
+    "maxnumberoflines": 2,
     "name": "kony.ui.Label",
-    "parent": "flxBiography",
-    "pf": "frmPersonInfo",
+    "parent": "MoviesInPerson",
+    "pf": "MoviesInPersonRowTemplate",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},
+    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label",
     "zindex": 1
