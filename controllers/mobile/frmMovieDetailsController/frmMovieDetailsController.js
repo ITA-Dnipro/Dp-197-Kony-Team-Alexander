@@ -26,7 +26,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       var isVisible = this.view.lstRecommendedMovies.isVisible;
       this.view.lstRecommendedMovies.isVisible = !isVisible;
       
-      var y = this.view.flxMainScroll.contentOffsetMeasured.y + 130;      
+      var y = this.view.flxMainScroll.contentOffsetMeasured.y + 150;      
       this.view.flxMainScroll.setContentOffset({
 //         "x": "0dp",
         "y": y + "dp"
@@ -41,7 +41,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       var isVisible = this.view.lstSimilarMovies.isVisible;
       this.view.lstSimilarMovies.isVisible = !isVisible;
       
-      var y = this.view.flxMainScroll.contentOffsetMeasured.y + 130;      
+      var y = this.view.flxMainScroll.contentOffsetMeasured.y + 150;      
       this.view.flxMainScroll.setContentOffset({
 //         "x": "0dp",
         "y": y + "dp"
@@ -288,8 +288,6 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
           this.view.flxCastCarousel.add(flexCast);
         }		
       }
-
-
     },
 
     onPeopleClicked: function(id) {

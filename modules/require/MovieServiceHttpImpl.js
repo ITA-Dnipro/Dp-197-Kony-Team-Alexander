@@ -5,15 +5,15 @@ define(function () {
 
 
   var makeHttpRequest = function(url, successCallback, errorCallback) {
-    
+
     var httpClient = new kony.net.HttpRequest();
-    
+
     httpClient.open(constants.HTTP_METHOD_GET, url);
     httpClient.onReadyStateChange = function() {
       if(httpClient.readyState !== constants.HTTP_READY_STATE_DONE) {
         return;
       }
-      
+
       if (httpClient.status === HttpResponseCode.OK) {
         successCallback(httpClient.response);
       } else {
@@ -23,11 +23,11 @@ define(function () {
 
     httpClient.send();
   };
-  
+
   var getMovieDetails = function(successCallback, errorCallback, id) {
-    
+
     var MOVIE_DETAILS_URL = MOVIE_BASE_URL + String(id) + "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
-    
+
     makeHttpRequest(MOVIE_DETAILS_URL, function(m) {
       if (m) {
         var movieDetails = new MovieData({
@@ -48,10 +48,10 @@ define(function () {
       }
     }, errorCallback);    
   };
-  
+
   var getSimilarMovieList = function(successCallback, errorCallback, mId) {
     var SIMILAR_MOVIE_URL = MOVIE_BASE_URL + String(mId) + "/similar?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
-    
+
     makeHttpRequest(SIMILAR_MOVIE_URL, function(movies) {
       if (movies.results && Array.isArray(movies.results)) {
         var movieList = movies.results.map(function(m) {
@@ -65,15 +65,15 @@ define(function () {
             released: m.release_date,
           }); 
         });
-         
+
         successCallback(movieList);
       }
     }, errorCallback);  
   };
-  
-   var getRecommendedMovieList = function(successCallback, errorCallback, mId) {
+
+  var getRecommendedMovieList = function(successCallback, errorCallback, mId) {
     var SIMILAR_MOVIE_URL = MOVIE_BASE_URL + String(mId) + "/recommendations?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
-    
+
     makeHttpRequest(SIMILAR_MOVIE_URL, function(movies) {
       if (movies.results && Array.isArray(movies.results)) {
         var movieList = movies.results.map(function(m) {
@@ -87,35 +87,35 @@ define(function () {
             released: m.release_date,
           }); 
         });
-         
+
         successCallback(movieList);
       }
     }, errorCallback);  
   };
-      
+
   var loadGenreList = function(successCallback, errorCallback) {
     var GENRE_URL = "https://api.themoviedb.org/3/genre/movie/list?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
-    
-     makeHttpRequest(GENRE_URL, function(genresList) {
+
+    makeHttpRequest(GENRE_URL, function(genresList) {
       if (genresList.genres && Array.isArray(genresList.genres)) {
         successCallback(genresList.genres);
       }      
-     }, errorCallback);
+    }, errorCallback);
   };
- 
+
   var getGenreNameById = function(allGenreList, currGenreList) {
     var currGenres = allGenreList.filter(function(obj){
       return currGenreList.indexOf(obj.id) !== -1;
     });
-    
+
     return currGenres.map(function(obj){
       return obj.name;
     });
   };
-      
+
   var getMovieList = function(successCallback, errorCallback, url) {
     var MOVIE_LIST_URL = MOVIE_BASE_URL + url + "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
-    
+
     loadGenreList(function(genreData){
       if (genreData && Array.isArray(genreData)) {
         makeHttpRequest(MOVIE_LIST_URL, function(movies) {
@@ -143,12 +143,12 @@ define(function () {
       alert("Error while retrieving genres list");
     });     
   };
-   
+
   var searchMovie = function(successCallback, errorCallback, string) {
     string = string.replace(/\s+/g, " ").replace(/\s+/g, "%20");
-    
+
     var SEARCH_MOVIE_URL = SEARCH_BASE_URL + API_KEY + "&language=en-US&query=" + string + "&page=1";
-    
+
     loadGenreList(function(genreData){
       if (genreData && Array.isArray(genreData)) {
         makeHttpRequest(SEARCH_MOVIE_URL, function(movies) {
@@ -176,10 +176,10 @@ define(function () {
       alert("Error while retrieving genres list");
     });     
   };
-  
+
   var getMovieCredits = function(successCallback, errorCallback, movieId) {
     var MOVIE_CREDITS_URL = MOVIE_BASE_URL + String(movieId) + "/credits?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
-    
+
     makeHttpRequest(MOVIE_CREDITS_URL, function(credits) {
       if (credits.cast && credits.crew && Array.isArray(credits.cast) && Array.isArray(credits.crew)) {
         var castList = credits.cast.map(function(c) {
@@ -190,7 +190,7 @@ define(function () {
             character: c.character, 
           };
         });
-          
+
         var director = credits.crew.filter(function(c) {
           if (c.job === "Director") {
             return {
@@ -199,7 +199,7 @@ define(function () {
             };
           }
         });
-         
+
         successCallback({
           cast: castList,
           director: director.length > 0 ? director : ["unknown"] 
@@ -207,13 +207,94 @@ define(function () {
       }
     }, errorCallback);  
   };
+
+  var getPersonInfo = function(successCallback, errorCallback, personId) {
+    var PERSON_URL = "https://api.themoviedb.org/3/person/" + String(personId) + "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
+
+    makeHttpRequest(PERSON_URL, function(personInfo) {
+      if (personInfo) {
+        var pInfo = {
+          name: personInfo.name,
+          birthday: personInfo.birthday,
+          placeOfBirth: personInfo.place_of_birth,
+          deathday: personInfo.deathday,
+          img: "https://image.tmdb.org/t/p/w200/" + personInfo.profile_path, 
+          knownFor: personInfo.known_for_department, 
+          biography: personInfo.biography
+        };
+
+        successCallback(pInfo);
+      }
+    }, errorCallback); 
+  };
   
+  var getPersonCredits = function(successCallback, errorCallback, personId, personRole) {
+    var PERSON_URL = "https://api.themoviedb.org/3/person/" + String(personId) + "/combined_credits?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
+
+     makeHttpRequest(PERSON_URL, function(credits) {
+       alert("credits ok " + credits.cast[0].popularity);
+      if (credits.cast && credits.crew && Array.isArray(credits.cast) && Array.isArray(credits.crew)) {
+//         var castList = credits.cast.map(function(c) {
+//           return {
+//             id: c.id,
+//             name: c.original_name, 
+//             img: "https://image.tmdb.org/t/p/w200/" + c.profile_path, 
+//             character: c.character, 
+//           };
+//         });
+
+//         var director = credits.crew.filter(function(c) {
+//           if (c.job === "Director") {
+//             return {
+//               id: c.id,
+//               name: c.name
+//             };
+//           }
+//         });
+        var popularList = [];
+        if (personRole === "actor") {
+          popularList = credits.cast.sort(function(a, b) {
+            return b.popularity - a.popularity;
+          }).slice(0, 9)
+            .map(function(c) {
+              return {
+                id: c.id,
+                name: c.title, 
+                img: "https://image.tmdb.org/t/p/w200/" + c.poster_path, 
+                popularity: c.popularity, 
+              };
+          }); 
+        } else {          
+          popularList = credits.crew.sort(function(a, b) {
+            return b.popularity - a.popularity;
+          }).slice(0, 9)
+            .map(function(c) {
+              return {
+                id: c.id,
+                name: c.title, 
+                img: "https://image.tmdb.org/t/p/w200/" + c.poster_path, 
+                popularity: c.popularity, 
+              };
+          }); 
+        }
+        
+
+        successCallback({
+          popularList: popularList,
+//           director: director.length > 0 ? director : ["unknown"] 
+        });
+      }
+    }, errorCallback);  
+  };
+
   return {
     getMovieDetails: getMovieDetails,
     getSimilarMovieList: getSimilarMovieList,  
     getRecommendedMovieList: getRecommendedMovieList,
     getMovieList: getMovieList,
     searchMovie: searchMovie,
-    getMovieCredits: getMovieCredits
+    getMovieCredits: getMovieCredits,
+    getPersonInfo: getPersonInfo,
+    getPersonCredits: getPersonCredits
   };
 });

@@ -1,0 +1,51 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizButton",
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "50dp"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "15dp"
+    },
+    "_margin_": [
+        6,
+        6,
+        6,
+        6
+    ],
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_skin_": "s290f36e41224c0181bb7d7281a29182",
+    "_text_": "Recommendations",
+    "_top_": {
+        "type": "string",
+        "value": "5dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "180dp"
+    },
+    "canUpdateUI": true,
+    "containerweight": 100,
+    "contentalignment": 4,
+    "displaytext": true,
+    "focusskin": "s7bca4c3362040f68461b75e6d8bcc14",
+    "id": "btnShowRecommendations",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "edc59ef29b52441d84d410400c3c9fea",
+    "name": "kony.ui.Button",
+    "parent": "flxMainScroll",
+    "pf": "frmPersonInfo",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "wType": "Button",
+    "zindex": 2
+}
