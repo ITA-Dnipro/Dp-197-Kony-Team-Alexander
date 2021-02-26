@@ -6,8 +6,8 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       this.view.lstSimilarMovies.onRowClick = this.onSimilarMoviesRowClicked.bind(this);
       this.view.lstRecommendedMovies.onRowClick = this.onSimilarMoviesRowClicked.bind(this);
       this.view.btnFavorite.onClick = this.onbtnFavoriteClicked.bind(this);
-      this.view.btnShowRecommendations.onClick = this.onBtnShowRecommendationsClicked.bind(this);
-      this.view.btnShowSimilarMovie.onClick = this.onBtnShowSimilarMovieClicked.bind(this);
+      this.view.btnShowRecommendations.onClick = this.onBtnShowClicked.bind(this, this.view.btnShowRecommendations, "Recommendations", this.view.lstRecommendedMovies);
+      this.view.btnShowSimilarMovie.onClick = this.onBtnShowClicked.bind(this, this.view.btnShowSimilarMovie, "Similar Movies", this.view.lstSimilarMovies);
     },
 
     onbtnFavoriteClicked: function() {
@@ -16,44 +16,27 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         this.view.btnFavorite.skin = "sknBtnFavorite";
 
       dbService.toggleMovieFavorites(this.movieId);
+      alert(this.movieId);
     },
 
-    onBtnShowRecommendationsClicked: function() {
-      this.view.btnShowRecommendations.skin === "sknBtnRecommendedMovie" ?
-        this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovieActive" :
-        this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
-      
-      this.view.btnShowRecommendations.text === "Recommendations   \uf078" ? 
-        this.view.btnShowRecommendations.text = "Recommendations   \uf054" :
-        this.view.btnShowRecommendations.text = "Recommendations   \uf078";
+    onBtnShowClicked: function(btn, text, list) {
+      if (btn.skin === "sknBtnRecommendedMovie") {
+        btn.skin = "sknBtnRecommendedMovieActive";
+        btn.text = text + "   \uf054";
+        list.isVisible = true;
         
-      var isVisible = this.view.lstRecommendedMovies.isVisible;
-      this.view.lstRecommendedMovies.isVisible = !isVisible;
-      
-      var y = this.view.flxMainScroll.contentOffsetMeasured.y + 150;      
-      this.view.flxMainScroll.setContentOffset({
-//         "x": "0dp",
-        "y": y + "dp"
-      }, true);
-    },
-    
-    onBtnShowSimilarMovieClicked: function() {
-      this.view.btnShowSimilarMovie.skin === "sknBtnRecommendedMovie" ?
-        this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovieActive" :
-        this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
-      
-      this.view.btnShowSimilarMovie.text === "Similar Movies   \uf078" ? 
-        this.view.btnShowSimilarMovie.text = "Similar Movies   \uf054" :
-        this.view.btnShowSimilarMovie.text = "Similar Movies   \uf078";
-      
-      var isVisible = this.view.lstSimilarMovies.isVisible;
-      this.view.lstSimilarMovies.isVisible = !isVisible;
-      
-      var y = this.view.flxMainScroll.contentOffsetMeasured.y + 150;      
-      this.view.flxMainScroll.setContentOffset({
-//         "x": "0dp",
-        "y": y + "dp"
-      }, true);
+        var y = this.view.flxMainScroll.contentOffsetMeasured.y + 150; 
+        if (y < 500) {
+          this.view.flxMainScroll.setContentOffset({
+            "x": "0dp",
+            "y": y + "dp"
+          }, true);
+        }        
+      } else {
+        btn.skin = "sknBtnRecommendedMovie";
+        btn.text = text + "   \uf078";
+        list.isVisible = false;
+      }
     },
 
     onNavigate: function(movieData) {
@@ -66,8 +49,6 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         this.movieId = movieData.id;        
       }
 
-//       alert(movieData);
-
       kony.application.showLoadingScreen();
 
       movieService.getMovieDetails(function(movieDetails) {
@@ -76,7 +57,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       }.bind(this), function() {
         alert("Error while retrieving movie details");
         kony.application.dismissLoadingScreen();
-      }, movieData.id);
+      }, this.movieId);
 
       movieService.getSimilarMovieList(function(movieList) {
         this.onSimilarMovieListReceived(movieList);
@@ -84,7 +65,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       }.bind(this), function() {
         alert("Error while retrieving similar movie list");
         kony.application.dismissLoadingScreen();
-      }, movieData.id);
+      }, this.movieId);
       
       movieService.getRecommendedMovieList(function(movieList) {
         this.onRecommendedMovieListReceived(movieList);
@@ -92,7 +73,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       }.bind(this), function() {
         alert("Error while retrieving recommended movie list");
         kony.application.dismissLoadingScreen();
-      }, movieData.id);
+      }, this.movieId);
 
       movieService.getMovieCredits(function(creditsList) {
         this.onMovieCreditsReceived(creditsList);
@@ -100,7 +81,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       }.bind(this), function() {
         alert("Error while retrieving movie credits");
         kony.application.dismissLoadingScreen();
-      }, movieData.id);
+      }, this.movieId);
       
       this.view.flxMainScroll.setContentOffset({
         "x": "0dp",
@@ -114,7 +95,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     },
 
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-      alert(widgetRef.data[rowIndex].id);
+//       alert(widgetRef.data[rowIndex].id);
 
       this.movieId = widgetRef.data[rowIndex].id;
       
@@ -125,13 +106,13 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         this.onMovieDetailsReceived(movieDetails);
       }.bind(this), function() {
         alert("Error while retrieving movie details");
-      }, widgetRef.data[rowIndex].id);
+      }, this.movieId);
 
       movieService.getSimilarMovieList(function(movieList) {
         this.onSimilarMovieListReceived(movieList);
       }.bind(this), function() {
         alert("Error while retrieving similar movie list");
-      }, widgetRef.data[rowIndex].id);
+      }, this.movieId);
       
        movieService.getRecommendedMovieList(function(movieList) {
         this.onRecommendedMovieListReceived(movieList);
@@ -139,7 +120,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       }.bind(this), function() {
         alert("Error while retrieving recommended movie list");
         kony.application.dismissLoadingScreen();
-      }, widgetRef.data[rowIndex].id);
+      },this.movieId);
 
       movieService.getMovieCredits(function(creditsList) {
         this.onMovieCreditsReceived(creditsList);
@@ -147,7 +128,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       }.bind(this), function() {
         alert("Error while retrieving similar movie list");
         kony.application.dismissLoadingScreen();
-      }, widgetRef.data[rowIndex].id);
+      }, this.movieId);
 
       this.view.flxMainScroll.setContentOffset({
         "x": "0dp",
@@ -179,8 +160,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       }			
     },
     
-    onRecommendedMovieListReceived: function(movieList) {
-    
+    onRecommendedMovieListReceived: function(movieList) {    
       if (movieList.length === 0) {
         this.view.btnShowRecommendations.isVisible = false;
         this.view.lstRecommendedMovies.setData({});
@@ -200,14 +180,11 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     },
 
     onMovieDetailsReceived: function(movieData) {  
-
       if (dbService.isMovieInFavoriteList(movieData.id)) {
         this.view.btnFavorite.skin = "sknBtnFavoriteActive";
       } else {
         this.view.btnFavorite.skin = "sknBtnFavorite";        
       }
-
-      //       alert('country ' + movieData.countriesList);
 
       this.view.lblCountryInfo.text = movieData.countriesList.join(', ');
       this.view.lblDurationInfo.text = movieData.duration;
@@ -224,9 +201,6 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       this.view.lblDirectorInfo.text = creditsList.director.map(function(d){ return d.name; }).join(", ");
       this.view.flxCastCarousel.removeAll();
 
-
-      //       alert('cast ' + creditsList.cast.length);
-
       if (creditsList.cast.length === 0) {
         this.view.flxCastCarousel.isVisible = false;
         this.view.lblTopCast.isVisible = false;
@@ -242,10 +216,6 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
             left: "5dp",
             width: "130dp",
             height: kony.flex.USE_PREFERRED_SIZE,
-            //           onClick: function(){
-            //             alert("container ");
-            //           },
-            //           onClick: this.onPeopleClicked.bind(null, creditsList.cast[i].id),
             layoutType: kony.flex.FLOW_VERTICAL
           });
 
@@ -255,17 +225,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
             top: "0dp",
             width: "100%",
             height: "130dp",
-
-            //           onTouchEnd: function() {
-            //             alert("touch end " + creditsList.cast[i].id);
-            //           } 
           });
-
-          //         imgCast.addGestureRecognizer(1, { fingers: 1, taps: 1 }, onActorImageTap);
-
-          //         var onActorImageTap = function() {
-          //           alert("img tap " + creditsList.cast[i].id);
-          //         };
 
           var btnName = new kony.ui.Button({
             id: "lblCastName" + i,
@@ -303,7 +263,6 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     },
 
     onPersonClicked: function(personId) {
-//       alert("actor " + personId);
       Utility.navigateTo("frmPersonInfo", {id: personId, role: "actor"});
     }
   }

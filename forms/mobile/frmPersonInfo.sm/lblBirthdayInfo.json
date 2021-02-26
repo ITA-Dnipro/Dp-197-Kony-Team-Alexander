@@ -57,7 +57,7 @@
     "isvisible": true,
     "kuid": "ebd4e30cceb548a98d28a288ccaaee44",
     "name": "kony.ui.Label",
-    "parent": "flxDetailsItem3",
+    "parent": "flxBirthday",
     "pf": "frmPersonInfo",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

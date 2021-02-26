@@ -5,7 +5,6 @@ define(function () {
 
 
   var makeHttpRequest = function(url, successCallback, errorCallback) {
-
     var httpClient = new kony.net.HttpRequest();
 
     httpClient.open(constants.HTTP_METHOD_GET, url);
@@ -25,7 +24,6 @@ define(function () {
   };
 
   var getMovieDetails = function(successCallback, errorCallback, id) {
-
     var MOVIE_DETAILS_URL = MOVIE_BASE_URL + String(id) + "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
 
     makeHttpRequest(MOVIE_DETAILS_URL, function(m) {
@@ -208,6 +206,26 @@ define(function () {
     }, errorCallback);  
   };
 
+  var calculateAge = function(birthday, deathday) {
+    var age;
+    var ageDifMs;
+    var ageDate;
+    
+    if (deathday) {
+      ageDifMs = new Date(deathday).getTime() - new Date(birthday).getTime();
+      ageDate = new Date(ageDifMs);
+
+      age = Math.abs(ageDate.getUTCFullYear() - 1970);
+    } else {
+      ageDifMs = new Date() - new Date(birthday).getTime();
+      ageDate = new Date(ageDifMs);
+
+      age = Math.abs(ageDate.getUTCFullYear() - 1970);
+    }
+    
+    return age;
+  };
+
   var getPersonInfo = function(successCallback, errorCallback, personId) {
     var PERSON_URL = "https://api.themoviedb.org/3/person/" + String(personId) + "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
 
@@ -218,6 +236,7 @@ define(function () {
           birthday: personInfo.birthday,
           placeOfBirth: personInfo.place_of_birth,
           deathday: personInfo.deathday,
+          age: calculateAge(personInfo.birthday, personInfo.deathday),
           img: "https://image.tmdb.org/t/p/w200/" + personInfo.profile_path, 
           knownFor: personInfo.known_for_department, 
         };
@@ -226,32 +245,16 @@ define(function () {
       }
     }, errorCallback); 
   };
-  
+
   var getPersonCredits = function(successCallback, errorCallback, personId, personRole) {
     var PERSON_URL = "https://api.themoviedb.org/3/person/" + String(personId) + "/combined_credits?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
 
-     makeHttpRequest(PERSON_URL, function(credits) {
+    makeHttpRequest(PERSON_URL, function(credits) {
 
       if (credits.cast && credits.crew && Array.isArray(credits.cast) && Array.isArray(credits.crew)) {
-        alert("cast " + credits.cast.length);
-        alert("crew " + credits.crew.length);
-//         var castList = credits.cast.map(function(c) {
-//           return {
-//             id: c.id,
-//             name: c.original_name, 
-//             img: "https://image.tmdb.org/t/p/w200/" + c.profile_path, 
-//             character: c.character, 
-//           };
-//         });
+//         alert("cast " + credits.cast.length);
+//         alert("crew " + credits.crew.length);
 
-//         var director = credits.crew.filter(function(c) {
-//           if (c.job === "Director") {
-//             return {
-//               id: c.id,
-//               name: c.name
-//             };
-//           }
-//         });
         var popularList = [];
         if (personRole === "actor") {
           popularList = credits.cast.sort(function(a, b) {
@@ -259,12 +262,12 @@ define(function () {
           }).filter(function(m) { return m.title; })
             .slice(0, 9)
             .map(function(c) {
-              return {
-                id: c.id,
-                name: c.title, 
-                img: "https://image.tmdb.org/t/p/w200/" + c.poster_path, 
-                popularity: c.popularity, 
-              };
+            return {
+              id: c.id,
+              name: c.title, 
+              img: "https://image.tmdb.org/t/p/w200/" + c.poster_path, 
+              popularity: c.popularity, 
+            };
           }); 
         } else {          
           popularList = credits.crew.sort(function(a, b) {
@@ -272,48 +275,45 @@ define(function () {
           }).filter(function(m) { return m.title; })
             .slice(0, 9)
             .map(function(c) {
-              return {
-                id: c.id,
-                name: c.title, 
-                img: "https://image.tmdb.org/t/p/w200/" + c.poster_path, 
-                popularity: c.popularity, 
-              };
+            return {
+              id: c.id,
+              name: c.title, 
+              img: "https://image.tmdb.org/t/p/w200/" + c.poster_path, 
+              popularity: c.popularity, 
+            };
           }); 
         }
-        
-        
+
         var upcomingMoviesList = credits.cast.filter(function(m) { return m.title && m.release_date === ""; })
-          .map(function(m){
-              return {
-                id: m.id,
-                title: m.title,
-                character: m.character,
-    //             year: m.release_date
-                year: "-"
-              }
-          });
+        .map(function(m){
+          return {
+            id: m.id,
+            title: m.title,
+            character: m.character,
+            year: "-"
+          }
+        });
         var sortedList = credits.cast.filter(function(m) { return m.title && m.release_date !== ""; })
-          .sort(function(a, b) {
-            var dateA = new Date(a.release_date).getTime();
-            var dateB = new Date(b.release_date).getTime();
-            
-            return dateB - dateA;
-          })
-          .map(function(m){
-            return {
-              id: m.id,
-              title: m.title,
-              character: m.character,
-  //             year: m.release_date
-              year: (new Date(m.release_date)).getFullYear()
-            }
-          });
-        
+        .sort(function(a, b) {
+          var dateA = new Date(a.release_date).getTime();
+          var dateB = new Date(b.release_date).getTime();
+
+          return dateB - dateA;
+        })
+        .map(function(m){
+          return {
+            id: m.id,
+            title: m.title,
+            character: m.character,
+            year: (new Date(m.release_date)).getFullYear()
+          }
+        });
+
 
         successCallback({
           popularList: popularList,
           actingList: upcomingMoviesList.concat(sortedList)
-//           director: director.length > 0 ? director : ["unknown"] 
+          //           director: director.length > 0 ? director : ["unknown"] 
         });
       }
     }, errorCallback);  

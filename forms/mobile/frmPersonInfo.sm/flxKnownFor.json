@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "30dp"
+        "value": "28dp"
     },
     "_left_": {
         "type": "string",
@@ -25,7 +25,7 @@
     "_skin_": "s76eb47ca2b149bdabc0a625e94b9cf6",
     "_top_": {
         "type": "string",
-        "value": "0dp"
+        "value": "8dp"
     },
     "_width_": {
         "type": "string",
@@ -35,17 +35,17 @@
     "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "lblBirthday",
-        "lblBirthdayInfo"
+        "lblKnownFor",
+        "lblKnownForInfo"
     ],
     "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxDetailsItem3",
+    "id": "flxKnownFor",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "h980e9fbb63d428c9de983be0d19c688",
+    "kuid": "d9b99776998543239d41ae66b9e31564",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
     "parent": "flxPeopleInfo",
