@@ -3,36 +3,22 @@ define(["MovieService"], function(movieService){
   return {
     onInitialize: function() {
       this.view.btnGet.onClick = this.onGetClicked.bind(this, {id: 1810, role: "actor"});
-      this.view.btnShowActing.onClick = this.onShowBtnClicked.bind(this, this.view.btnShowActing, "Acting", this.view.lstActingMovies);
+//       this.view.btnShowActing.onClick = this.onShowBtnClicked.bind(this, this.view.btnShowActing, "Acting", this.view.lstActingMovies);
       //       this.view.btnBack.onClick = Utility.goBack;
-      //       this.view.lstSimilarMovies.onRowClick = this.onSimilarMoviesRowClicked.bind(this);
-      this.view.lstActingMovies.onRowClick = this.onMovieRowClicked.bind(this);
-      //       this.view.btnFavorite.onClick = this.onbtnFavoriteClicked.bind(this);
-      //       this.view.btnShowRecommendations.onClick = this.onBtnShowRecommendationsClicked.bind(this);
-      //       this.view.btnShowSimilarMovie.onClick = this.onBtnShowSimilarMovieClicked.bind(this);
+      this.view.ActingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
     },
 
-    onShowBtnClicked: function(btn, btnText, list) {
-      btn.skin === "sknBtnRecommendedMovie" ? 
-        btn.skin = "sknBtnRecommendedMovieActive" :
-        btn.skin = "sknBtnRecommendedMovie";
 
-      btn.text === btnText + "   \uf078" ? 
-        btn.text = btnText + "   \uf054" : 
-        btn.text = btnText + "   \uf078";
-
-      list.isVisible = !list.isVisible;
-    },
 
     onNavigate: function(personData) {
-      if (personData !== undefined) {
+      if (personData) {
         this.personData = personData;
       }
 
-      this.view.btnShowActing.text = "Acting   \uf078";
-      this.view.btnShowDirecting.text = "Directing   \uf078";
-      this.view.btnShowProduction.text = "Production   \uf078";
-      this.view.btnShowWriting.text = "Writing   \uf078";
+//       this.view.btnShowActing.text = "Acting   \uf078";
+//       this.view.btnShowDirecting.text = "Directing   \uf078";
+//       this.view.btnShowProduction.text = "Production   \uf078";
+//       this.view.btnShowWriting.text = "Writing   \uf078";
 
       kony.application.showLoadingScreen();
 
@@ -84,7 +70,6 @@ define(["MovieService"], function(movieService){
     onPersonInfoReceived: function(personInfo) {
       this.view.imgPeople.src = personInfo.img; 
       this.view.lblName.text = personInfo.name;
-//       this.view.lblBirthdayInfo.text = personInfo.age;
       this.view.lblBirthdayInfo.text = personInfo.birthday;
       this.view.lblPlaceOfBirthInfo.text = personInfo.placeOfBirth;
       this.view.lblKnownForInfo.text = personInfo.knownFor;
@@ -135,7 +120,7 @@ define(["MovieService"], function(movieService){
             width: "100%",
             height: kony.flex.USE_PREFERRED_SIZE,
             isVisible: true,
-            skin: "sknBtnCastName",
+            skin: "sknBtnTitleInPerson",
             onClick: this.onMovieClicked.bind(null, creditsList.popularList[i].id)
           }, {
             padding: [0,0,0,0],
@@ -150,6 +135,7 @@ define(["MovieService"], function(movieService){
       }
 
       if (creditsList.actingList.length === 0) {
+        this.view.ActingList.isVisible = false;
 
       } else {
         var actingList = creditsList.actingList.map(function(m) {
@@ -160,7 +146,8 @@ define(["MovieService"], function(movieService){
             lblRole: m.character            
           };
         });
-        this.view.lstActingMovies.setData(actingList);
+        this.view.ActingList.lstMovies.setData(actingList);
+        this.view.ActingList.lstMovies.isVisible = false;
       }
     },
 

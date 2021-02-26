@@ -41,7 +41,7 @@
     ],
     "_top_": {
         "type": "string",
-        "value": "0dp"
+        "value": "20dp"
     },
     "_width_": {
         "type": "string",
@@ -55,7 +55,7 @@
     "focuseditem": null,
     "groupcells": false,
     "hasSections": false,
-    "id": "lstActingMovies",
+    "id": "lstMovies",
     "info": null,
     "ipad": {
         "psp": {
@@ -70,8 +70,34 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "dbc57a5edd6542bba4d9bf17aedbc8f0",
+    "kuid": "i95ec1a55bcb420e9dcc488e6b3fa5a4",
     "masterdata": {},
+    "mobile": {
+        "_data_": [
+            {
+                "lblMovieTitle": {
+                    "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                    "text": "Label"
+                },
+                "lblRole": {
+                    "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                    "text": "Label"
+                },
+                "lblYear": {
+                    "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                    "text": "Label"
+                }
+            }
+        ],
+        "rowTemplateId": "g0762c2eb3b445e2888185e94aedcf45",
+        "rowtemplate": "MoviesInPerson",
+        "widgetdatamap": {
+            "MoviesInPerson": "MoviesInPerson",
+            "lblMovieTitle": "lblMovieTitle",
+            "lblRole": "lblRole",
+            "lblYear": "lblYear"
+        }
+    },
     "name": "kony.ui.SegmentedUI2",
     "needpageindicator": true,
     "pageoffdotimage": "pageoffdot.png",
@@ -79,16 +105,14 @@
     "paginationconfig": {
         "position": "bottom"
     },
-    "parent": "flxMainScroll",
-    "pf": "frmPersonInfo",
+    "parent": "MovieList",
+    "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainselection": false,
-    "rowTemplateId": "g0762c2eb3b445e2888185e94aedcf45",
     "rowcounter": 0,
     "rowfocusskin": "s6e752e59eba428eacd51b1841f1d35b",
     "rowskin": "s9501f97f5314fad82e11a368a1c159b",
-    "rowtemplate": "MoviesInPerson",
     "screenlevelwidget": false,
     "seccounter": 0,
     "sectionheaderskin": "sda2044e3a144e2c852fa1cc8e91bf0c",

@@ -3,7 +3,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "45dp"
+        "value": "30dp"
     },
     "_left_": {
         "type": "string",
@@ -36,14 +36,15 @@
     "contentalignment": 4,
     "displaytext": true,
     "focusskin": "s86defdac6d148249d47f30bd9cfa412",
-    "id": "btnShowActing",
+    "id": "btnShow",
+    "ide_onClick": "AS_Button_bba3a9d217c64ce2a1b63023330fd3ca",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "f29aa9c419314c98a38cbbc7227b1d02",
+    "kuid": "c3c354b495bb4ff38d702ebc88e7fa69",
     "name": "kony.ui.Button",
-    "parent": "flxMainScroll",
-    "pf": "frmPersonInfo",
+    "parent": "MovieList",
+    "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",
