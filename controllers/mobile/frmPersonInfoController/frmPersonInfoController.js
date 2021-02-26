@@ -14,11 +14,10 @@ define(["MovieService"], function(movieService){
       if (personData) {
         this.personData = personData;
       }
-
-//       this.view.btnShowActing.text = "Acting   \uf078";
-//       this.view.btnShowDirecting.text = "Directing   \uf078";
-//       this.view.btnShowProduction.text = "Production   \uf078";
-//       this.view.btnShowWriting.text = "Writing   \uf078";
+      this.view.ActingList.text = "Acting   \uf078";
+      this.view.DirectingList.text = "Directing   \uf078";
+      this.view.ProductionList.text = "Production   \uf078";
+      this.view.WritingList.text = "Writing   \uf078";
 
       kony.application.showLoadingScreen();
 
@@ -133,12 +132,34 @@ define(["MovieService"], function(movieService){
           this.view.flxBestMoviesCarousel.add(flexBestMovie);
         }		
       }
+      
+      this.addDataToMovieList(creditsList.actingList, this.view.ActingList);
+      this.addDataToMovieList(creditsList.actingList, this.view.DirectingList);
+      this.addDataToMovieList(creditsList.actingList, this.view.ProductionList);
+      this.addDataToMovieList(creditsList.actingList, this.view.WritingList);
 
-      if (creditsList.actingList.length === 0) {
-        this.view.ActingList.isVisible = false;
-
+//       if (creditsList.actingList.length === 0) {
+//         this.view.ActingList.isVisible = false;
+//       } else {
+//         var actingList = creditsList.actingList.map(function(m) {
+//           return {
+//             lblYear: String(m.year),
+//             id: m.id,
+//             lblMovieTitle: m.title,
+//             lblRole: m.character            
+//           };
+//         });
+//         this.view.ActingList.lstMovies.setData(actingList);
+//         this.view.ActingList.lstMovies.isVisible = false;
+//       }
+    },
+    
+    addDataToMovieList: function(movieList, viewComp) {
+      if (movieList.length === 0) {
+        viewComp.isVisible = false;
       } else {
-        var actingList = creditsList.actingList.map(function(m) {
+        viewComp.isVisible = true;
+        var readyMovieList = movieList.map(function(m) {
           return {
             lblYear: String(m.year),
             id: m.id,
@@ -146,9 +167,9 @@ define(["MovieService"], function(movieService){
             lblRole: m.character            
           };
         });
-        this.view.ActingList.lstMovies.setData(actingList);
-        this.view.ActingList.lstMovies.isVisible = false;
-      }
+        viewComp.lstMovies.setData(readyMovieList);
+        viewComp.lstMovies.isVisible = false;
+      }      
     },
 
     onMovieClicked: function(movieId) {

@@ -209,7 +209,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       } else {
         this.view.flxCastCarousel.isVisible = true;
         this.view.lblTopCast.isVisible = true;
-        // creditsList.cast.length
+
         for (var i = 0; i < 20; i++) {
           var flexCast = new kony.ui.FlexContainer({
             id: "flxCast" + i,

@@ -1,0 +1,96 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "DNDConfig": null,
+    "_children_": [],
+    "_height_": {
+        "type": "ref",
+        "value": "preferred"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 1,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_skin_": "s76eb47ca2b149bdabc0a625e94b9cf6",
+    "_top_": {
+        "type": "string",
+        "value": "10dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "areflexpropsreferenced": false,
+    "autogrowmode": 1,
+    "canUpdateUI": true,
+    "clipbounds": true,
+    "containerweight": 0,
+    "dataDiffs": {
+        "MovieList": {
+            "__events__": {},
+            "__info__": {
+                "isRoot": true,
+                "kuid": "ccaa9d60bd3d49d699b952651fc027b8",
+                "srcKUID": "j8b105f317194b2dab03a66b332d2d7f",
+                "wType": "FlexContainer"
+            },
+            "top": {
+                "Default": {
+                    "type": "string",
+                    "value": "10dp"
+                }
+            }
+        },
+        "btnShow": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "d74f8b5fcec24ebca2df1e1bf59b3383",
+                "srcKUID": "c3c354b495bb4ff38d702ebc88e7fa69",
+                "wType": "Button"
+            },
+            "text": "Directing   "
+        },
+        "lstMovies": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "a3d8633dc8ca41c19b3be4a82f330f6f",
+                "srcKUID": "i95ec1a55bcb420e9dcc488e6b3fa5a4",
+                "wType": "Segment"
+            }
+        }
+    },
+    "enablescrolling": true,
+    "id": "DirectingList",
+    "info": null,
+    "iscustomlayout": false,
+    "isdatareferenced": false,
+    "issegmentchild": false,
+    "isvisible": true,
+    "kuid": "ccaa9d60bd3d49d699b952651fc027b8",
+    "layouttype": 2,
+    "masterType": 0,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "flxMainScroll",
+    "pf": "frmPersonInfo",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "sourceUserWidget": "j8b105f317194b2dab03a66b332d2d7f",
+    "wType": "UserWidgetInstance",
+    "zindex": 2
+}

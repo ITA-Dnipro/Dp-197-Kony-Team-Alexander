@@ -42,9 +42,9 @@
         "lblKnownForMovies",
         "flxBestMoviesCarousel",
         "ActingList",
-        "btnShowDirecting",
-        "btnShowProduction",
-        "btnShowWriting"
+        "DirectingList",
+        "ProductionList",
+        "WritingList"
     ],
     "clipbounds": true,
     "containerweight": 100,

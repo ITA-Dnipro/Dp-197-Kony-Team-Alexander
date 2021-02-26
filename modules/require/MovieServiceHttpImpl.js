@@ -73,6 +73,7 @@ define(function () {
     var SIMILAR_MOVIE_URL = MOVIE_BASE_URL + String(mId) + "/recommendations?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
 
     makeHttpRequest(SIMILAR_MOVIE_URL, function(movies) {
+      alert("rec ok");
       if (movies.results && Array.isArray(movies.results)) {
         var movieList = movies.results.map(function(m) {
           return new MovieData({
