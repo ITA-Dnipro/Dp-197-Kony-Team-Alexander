@@ -73,7 +73,7 @@ define(function () {
     var SIMILAR_MOVIE_URL = MOVIE_BASE_URL + String(mId) + "/recommendations?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
 
     makeHttpRequest(SIMILAR_MOVIE_URL, function(movies) {
-      alert("rec ok");
+      
       if (movies.results && Array.isArray(movies.results)) {
         var movieList = movies.results.map(function(m) {
           return new MovieData({
@@ -285,7 +285,7 @@ define(function () {
           }); 
         }
 
-        var upcomingMoviesList = credits.cast.filter(function(m) { return m.title && m.release_date === ""; })
+        var actingUpcomingMoviesList = credits.cast.filter(function(m) { return m.title && m.release_date === ""; })
         .map(function(m){
           return {
             id: m.id,
@@ -294,7 +294,7 @@ define(function () {
             year: "-"
           }
         });
-        var sortedList = credits.cast.filter(function(m) { return m.title && m.release_date !== ""; })
+        var actingSortedList = credits.cast.filter(function(m) { return m.title && m.release_date !== ""; })
         .sort(function(a, b) {
           var dateA = new Date(a.release_date).getTime();
           var dateB = new Date(b.release_date).getTime();
@@ -307,14 +307,48 @@ define(function () {
             title: m.title,
             character: m.character,
             year: (new Date(m.release_date)).getFullYear()
-          }
+          };
         });
+        
+        var actingList = actingUpcomingMoviesList.concat(actingSortedList);
+        
+        var productionList = credits.crew.filter(function(m) { return m.job === "Producer" || m.job === "Executive Producer"; })
+          .map(function(m){
+            return {
+              id: m.id,
+              title: m.title,
+              character: m.character,
+              year: (new Date(m.release_date)).getFullYear()
+            };
+          });
+        
+        var directingList = credits.crew.filter(function(m) { return m.job === "Director"; })
+          .map(function(m){
+            return {
+              id: m.id,
+              title: m.title,
+              character: m.character,
+              year: (new Date(m.release_date)).getFullYear()
+            };
+          });
+        
+        var writingList = credits.crew.filter(function(m) { return m.job === "Screenplay" || m.job === "Writer"; })
+          .map(function(m){
+            return {
+              id: m.id,
+              title: m.title,
+              character: m.character,
+              year: (new Date(m.release_date)).getFullYear()
+            };
+          });
 
 
         successCallback({
           popularList: popularList,
-          actingList: upcomingMoviesList.concat(sortedList)
-          //           director: director.length > 0 ? director : ["unknown"] 
+          actingList: actingList,
+          productionList: productionList,   
+          directingList: directingList,
+          writingList: writingList
         });
       }
     }, errorCallback);  

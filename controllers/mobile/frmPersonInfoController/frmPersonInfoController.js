@@ -14,10 +14,15 @@ define(["MovieService"], function(movieService){
       if (personData) {
         this.personData = personData;
       }
-      this.view.ActingList.text = "Acting   \uf078";
-      this.view.DirectingList.text = "Directing   \uf078";
-      this.view.ProductionList.text = "Production   \uf078";
-      this.view.WritingList.text = "Writing   \uf078";
+      this.view.ActingList.btnShow.text = "Acting   \uf078";
+      this.view.DirectingList.btnShow.text = "Directing   \uf078";
+      this.view.ProductionList.btnShow.text = "Production   \uf078";
+      this.view.WritingList.btnShow.text = "Writing   \uf078";
+      
+      this.view.ActingList.btnShow.skin = "sknBtnRecommendedMovie";
+      this.view.DirectingList.btnShow.skin = "sknBtnRecommendedMovie";
+      this.view.ProductionList.btnShow.skin = "sknBtnRecommendedMovie";
+      this.view.WritingList.btnShow.skin = "sknBtnRecommendedMovie";
 
       kony.application.showLoadingScreen();
 
@@ -132,11 +137,12 @@ define(["MovieService"], function(movieService){
           this.view.flxBestMoviesCarousel.add(flexBestMovie);
         }		
       }
-      
+     
+      // change list
       this.addDataToMovieList(creditsList.actingList, this.view.ActingList);
-      this.addDataToMovieList(creditsList.actingList, this.view.DirectingList);
-      this.addDataToMovieList(creditsList.actingList, this.view.ProductionList);
-      this.addDataToMovieList(creditsList.actingList, this.view.WritingList);
+      this.addDataToMovieList(creditsList.directingList, this.view.DirectingList);
+      this.addDataToMovieList(creditsList.productionList, this.view.ProductionList);
+      this.addDataToMovieList(creditsList.writingList, this.view.WritingList);
 
 //       if (creditsList.actingList.length === 0) {
 //         this.view.ActingList.isVisible = false;
