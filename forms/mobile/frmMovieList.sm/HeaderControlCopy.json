@@ -1,0 +1,70 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "DNDConfig": null,
+    "_children_": [],
+    "_height_": {
+        "type": "string",
+        "value": "70dp"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 1,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_render_": true,
+    "_skin_": "s5d848893e374898b08a9036a2671fd7",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "autogrowmode": 0,
+    "canUpdateUI": true,
+    "clipbounds": true,
+    "containerweight": 0,
+    "data": {
+        "defaultUnits": "dp",
+        "destroyPreviousFormOnBack": false,
+        "dropDownList": "[{\"id\":\"123\", \"name\":\"btnProfile\"}, {\"id\": 1234, \"name\": \"btnIntresting\"}, {\"id\": \"12345\",\"name\": \"btnLogOut\"}]",
+        "dropDownWidth": "250dp",
+        "isBackVisible": false,
+        "isDropVisible": true,
+        "listItemSkin": "CopysknHeaderControl",
+        "separatorSize": "1dp"
+    },
+    "enablescrolling": true,
+    "id": "HeaderControlCopy",
+    "info": null,
+    "iscustomlayout": false,
+    "issegmentchild": false,
+    "isvisible": true,
+    "kuid": "ad25f431242a40aea9085fe4df3650b1",
+    "layouttype": 2,
+    "masterType": 1,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "frmMovieList",
+    "pf": "frmMovieList",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "sourceUserWidget": "ud67671a017e40df8fbb01f6117944e3",
+    "wType": "UserWidgetInstance"
+}

@@ -3,7 +3,11 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "50dp"
+        "value": "45dp"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "211dp"
     },
     "_margin_": [
         6,
@@ -17,35 +21,31 @@
         0,
         0
     ],
-    "_right_": {
-        "type": "string",
-        "value": "10dp"
-    },
     "_skin_": "s6198266184e4feab1a160b6be637b4c",
-    "_text_": "",
+    "_text_": "Р",
     "_top_": {
         "type": "string",
         "value": "10dp"
     },
     "_width_": {
         "type": "string",
-        "value": "50dp"
+        "value": "45dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "sfd6b89ca14c40e081fa2924798397a9",
+    "focusskin": "s13fb70f60444470ad40243457d097d5",
     "id": "btnProfile",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "cd1af4bb71b642e180734c61f446a9ca",
+    "kuid": "g23a7f254512427883d76e0380188d32",
     "name": "kony.ui.Button",
-    "parent": "flxHeader",
+    "parent": "frmMovieList",
     "pf": "frmMovieList",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",
-    "zindex": 1
+    "zindex": 20
 }
