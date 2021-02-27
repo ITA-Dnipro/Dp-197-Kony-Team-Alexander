@@ -47,8 +47,11 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       this.view.btnShowSimilarMovie.text = "Similar Movies   \uf078";
       
       if (movieData) {
-        this.movieId = movieData.id;        
+        this.movieId = movieData.id;  
+        this.type = movieData.type
       }
+      
+//       alert(this.type); "movie" "tv" не удаляйте этот коммент
 
       kony.application.showLoadingScreen();
 
@@ -99,6 +102,9 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
 //       alert(widgetRef.data[rowIndex].id);
 
       this.movieId = widgetRef.data[rowIndex].id;
+      this.type = widgetRef.data[rowIndex].type;
+      
+      alert(this.type);
       
       this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
       this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
@@ -153,6 +159,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
             lblMovieDescription: m.description,
             imgMoviePoster: m.poster,
             id: m.id,
+            type: m.type
           };
         });
         this.view.btnShowSimilarMovie.isVisible = true;
@@ -172,6 +179,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
             lblMovieDescription: m.description,
             imgMoviePoster: m.poster,
             id: m.id,
+            type: m.type,
           };
         });
         this.view.btnShowRecommendations.isVisible = true;

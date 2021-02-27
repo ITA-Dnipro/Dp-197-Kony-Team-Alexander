@@ -6,6 +6,9 @@ define(["MovieService"], function(movieService){
 //       this.view.btnShowActing.onClick = this.onShowBtnClicked.bind(this, this.view.btnShowActing, "Acting", this.view.lstActingMovies);
       //       this.view.btnBack.onClick = Utility.goBack;
       this.view.ActingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
+      this.view.DirectingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
+      this.view.ProductionList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
+      this.view.WritingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
     },
 
 
@@ -14,6 +17,8 @@ define(["MovieService"], function(movieService){
       if (personData) {
         this.personData = personData;
       }
+      
+      alert(this.personData.id);
       this.view.ActingList.btnShow.text = "Acting   \uf078";
       this.view.DirectingList.btnShow.text = "Directing   \uf078";
       this.view.ProductionList.btnShow.text = "Production   \uf078";
@@ -45,7 +50,7 @@ define(["MovieService"], function(movieService){
     },
     
     onMovieRowClicked: function(widgetRef, sectionIndex, rowIndex) {     
-      Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id});
+      Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id, type: widgetRef.data[rowIndex].type});
     },
 
     onGetClicked: function(personData) {
@@ -125,7 +130,7 @@ define(["MovieService"], function(movieService){
             height: kony.flex.USE_PREFERRED_SIZE,
             isVisible: true,
             skin: "sknBtnTitleInPerson",
-            onClick: this.onMovieClicked.bind(null, creditsList.popularList[i].id)
+            onClick: this.onMovieClicked.bind(null, creditsList.popularList[i].id, creditsList.popularList[i].type)
           }, {
             padding: [0,0,0,0],
             margin: [0,0,0,0],
@@ -169,8 +174,9 @@ define(["MovieService"], function(movieService){
           return {
             lblYear: String(m.year),
             id: m.id,
+            type: m.type,
             lblMovieTitle: m.title,
-            lblRole: m.character            
+            lblRole: m.additionalInfo            
           };
         });
         viewComp.lstMovies.setData(readyMovieList);
@@ -178,8 +184,8 @@ define(["MovieService"], function(movieService){
       }      
     },
 
-    onMovieClicked: function(movieId) {
-      Utility.navigateTo("frmMovieDetails", {id: movieId});
+    onMovieClicked: function(movieId, type) {
+      Utility.navigateTo("frmMovieDetails", {id: movieId, type: type});
     },
   };
 });

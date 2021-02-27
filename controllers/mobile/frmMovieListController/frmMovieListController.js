@@ -40,7 +40,7 @@ define(["MovieService"], function(movieService){
     },
 
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-      Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id});
+      Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id, type: widgetRef.data[rowIndex].type});
     },
 
     onMovieListReceived: function(movieList) {
@@ -51,6 +51,7 @@ define(["MovieService"], function(movieService){
           lblMovieYear: String(m.released),
           imgMoviePoster: m.poster,
           id: m.id,
+          type: m.type
         };
       });
   
