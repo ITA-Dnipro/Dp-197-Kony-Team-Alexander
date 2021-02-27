@@ -9,7 +9,7 @@ define(function() {
   var _separatorSize = "1dp";
   var _listItemSkin = "defBtnNormal";
 
-  var DEFAULT_OFFSET = "20dp";
+  var DEFAULT_OFFSET = "70dp";
   
   var BACKDROP_ZINDEX = 1000;
   
