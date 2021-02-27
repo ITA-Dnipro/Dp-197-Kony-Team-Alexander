@@ -24,6 +24,8 @@ define(["MovieService"], function(movieService){
       if (personData) {
         this.personData = personData;
       }
+      
+      alert(JSON.stringify(this.personData));
 
       //       alert(this.personData.id);
       this.view.ActingList.btnShow.text = "Acting   \uf078";
@@ -62,10 +64,12 @@ define(["MovieService"], function(movieService){
         btn.skin = "sknBtnRecommendedMovieActive";
         btn.text = btn.text.slice(0, btn.text.length - 1) + "\uf054";
 
-        var y = this.view.flxMainScroll.contentOffsetMeasured.y + 150; 
+        var y = this.view.flxMainScroll.contentOffsetMeasured.y; 
+        alert(y + " h: " + this.view.flxMainScroll.height);
+       
         this.view.flxMainScroll.setContentOffset({
           "x": "0dp",
-          "y": y + "dp"
+          "y": y + 70 + "dp"
         }, true);
       } else {
         btn.skin = "sknBtnRecommendedMovie";
@@ -123,7 +127,7 @@ define(["MovieService"], function(movieService){
           });
 
           var btnBestMovieName = new kony.ui.Button({
-            id: "lblBestMovieName" + i,
+            id: "btnBestMovieName" + i,
             text: creditsList.popularList[i].name,
             top: "5dp",
             left: "0dp",

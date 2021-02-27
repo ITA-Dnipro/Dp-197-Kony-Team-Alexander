@@ -14,7 +14,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     onbtnFavoriteClicked: function() {
       this.view.btnFavorite.skin === "sknBtnFavorite" ?
         this.view.btnFavorite.skin = "sknBtnFavoriteActive" :
-        this.view.btnFavorite.skin = "sknBtnFavorite";
+      this.view.btnFavorite.skin = "sknBtnFavorite";
 
       dbService.toggleMovieFavorites(this.movieId);
       alert(this.movieId);
@@ -25,18 +25,18 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         btn.skin = "sknBtnRecommendedMovieActive";
         btn.text = text + "   \uf054";
         list.isVisible = true;
-        
+
         var y = this.view.flxMainScroll.contentOffsetMeasured.y + 150; 
         this.view.flxMainScroll.setContentOffset({
-            "x": "0dp",
-            "y": y + "dp"
-          }, true);
-//         if (y < 500) {
-//           this.view.flxMainScroll.setContentOffset({
-//             "x": "0dp",
-//             "y": y + "dp"
-//           }, true);
-//         }        
+          "x": "0dp",
+          "y": y + "dp"
+        }, true);
+        //         if (y < 500) {
+        //           this.view.flxMainScroll.setContentOffset({
+        //             "x": "0dp",
+        //             "y": y + "dp"
+        //           }, true);
+        //         }        
       } else {
         btn.skin = "sknBtnRecommendedMovie";
         btn.text = text + "   \uf078";
@@ -49,13 +49,13 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
       this.view.btnShowRecommendations.text = "Recommendations   \uf078";
       this.view.btnShowSimilarMovie.text = "Similar Movies   \uf078";
-      
+
       if (movieData) {
         this.movieId = movieData.id;  
         this.type = movieData.type
       }
-      
-//       alert(this.type); "movie" "tv" не удаляйте этот коммент
+
+      //       alert(this.type); "movie" "tv" не удаляйте этот коммент
 
       kony.application.showLoadingScreen();
 
@@ -74,7 +74,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         alert("Error while retrieving similar movie list");
         kony.application.dismissLoadingScreen();
       }, this.movieId);
-      
+
       movieService.getRecommendedMovieList(function(movieList) {
         this.onRecommendedMovieListReceived(movieList);
         kony.application.dismissLoadingScreen();
@@ -90,7 +90,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         alert("Error while retrieving movie credits");
         kony.application.dismissLoadingScreen();
       }, this.movieId);
-      
+
       this.view.flxMainScroll.setContentOffset({
         "x": "0dp",
         "y": "0dp"
@@ -103,11 +103,11 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     },
 
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-//       alert(widgetRef.data[rowIndex].id);
+      //       alert(widgetRef.data[rowIndex].id);
 
       this.movieId = widgetRef.data[rowIndex].id;
       this.type = widgetRef.data[rowIndex].type;
-      
+
       this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
       this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
 
@@ -122,8 +122,8 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       }.bind(this), function() {
         alert("Error while retrieving similar movie list");
       }, this.movieId);
-      
-       movieService.getRecommendedMovieList(function(movieList) {
+
+      movieService.getRecommendedMovieList(function(movieList) {
         this.onRecommendedMovieListReceived(movieList);
         kony.application.dismissLoadingScreen();
       }.bind(this), function() {
@@ -169,7 +169,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         this.view.lstSimilarMovies.isVisible = false;
       }			
     },
-    
+
     onRecommendedMovieListReceived: function(movieList) {    
       if (movieList.length === 0) {
         this.view.btnShowRecommendations.isVisible = false;
@@ -209,7 +209,30 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     },
 
     onMovieCreditsReceived: function(creditsList) {
-      this.view.lblDirectorInfo.text = creditsList.director.map(function(d){ return d.name; }).join(", ");
+
+      //       this.view.lblDirectorInfo.text = creditsList.director.map(function(d){ return d.name; }).join(", ");
+			this.view.flxDirectorInfo.removeAll();
+      
+      for (var j = 0; j < creditsList.director.length; j++) {
+        var btnDirectorName = new kony.ui.Button({
+          id: "btnDirector" + j,
+          text: creditsList.director[j].name,
+          top: "5dp",
+          left: "0dp",
+          width: "100%",
+          height: kony.flex.USE_PREFERRED_SIZE,
+          isVisible: true,
+          skin: "sknBtnDirector",
+          onClick: this.onPersonClicked.bind(null, creditsList.director[j].id, "crew")
+        }, {
+          padding: [0,0,0,0],
+          margin: [0,0,0,0],
+          contentAlignment: constants.CONTENT_ALIGN_MIDDLE_LEFT
+        });
+
+        this.view.flxDirectorInfo.add(btnDirectorName);
+      }
+
       this.view.flxCastCarousel.removeAll();
 
       if (creditsList.cast.length === 0) {
@@ -239,7 +262,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
           });
 
           var btnName = new kony.ui.Button({
-            id: "lblCastName" + i,
+            id: "btnCastName" + i,
             text: creditsList.cast[i].name,
             top: "5dp",
             left: "0dp",
@@ -247,7 +270,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
             height: kony.flex.USE_PREFERRED_SIZE,
             isVisible: true,
             skin: "sknBtnCastName",
-            onClick: this.onPersonClicked.bind(null, creditsList.cast[i].id)
+            onClick: this.onPersonClicked.bind(null, creditsList.cast[i].id, "cast")
           }, {
             padding: [0,0,0,0],
             margin: [0,0,0,0],
@@ -273,8 +296,8 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       }
     },
 
-    onPersonClicked: function(personId) {
-      Utility.navigateTo("frmPersonInfo", {id: personId, role: "cast"});
+    onPersonClicked: function(personId, role) {
+      Utility.navigateTo("frmPersonInfo", {id: personId, role: role});
     }
   }
 });

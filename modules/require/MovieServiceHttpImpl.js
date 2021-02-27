@@ -280,7 +280,6 @@ define(function () {
     var PERSON_URL = "https://api.themoviedb.org/3/person/" + String(personId) + "/combined_credits?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
 
     makeHttpRequest(PERSON_URL, function(credits) {
-
       if (credits.cast && credits.crew && Array.isArray(credits.cast) && Array.isArray(credits.crew)) {
 
         var popularList = [];
@@ -301,7 +300,14 @@ define(function () {
         } else {          
           popularList = credits.crew.sort(function(a, b) {
             return b.popularity - a.popularity;
-          }).filter(function(m) { return m.title || m.name; })
+          }).filter(function(m, i, arr) {
+              var firstIndex = arr.findIndex(function(el) { return el.id === m.id; });
+
+              if ((m.title || m.name) && firstIndex === i) {
+                return m;
+              }
+
+            })
             .slice(0, 9)
             .map(function(m) {
             return {
@@ -358,7 +364,7 @@ define(function () {
         title: m.title || m.name,
         additionalInfo: m.character || m.job,
         year: "-"
-      }
+      };
     });
 
     var mList = movieList.filter(function(m) { return (m.title || m.name) && (m.release_date || m.first_air_date); })
