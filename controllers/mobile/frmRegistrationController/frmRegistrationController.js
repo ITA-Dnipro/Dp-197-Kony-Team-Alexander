@@ -16,15 +16,15 @@ define(["AuthenticationService"], function(authUser) {
       var fullName = this.view.inpFullName.text;
       var login = this.view.inpUserLogin.text;
       var password = this.view.inpPassword.text;
-//       if (password === this.view.inpPasswordConfirm.text) {
+      if (password === this.view.inpPasswordConfirm.text) {
         authUser.registerUser(fullName, login, password, function() {
           Utility.navigateTo("frmAuthentication");
         }, function() {
           alert("Error while conecting to DB, please check your internet conection.");
         });     
-//       } else {
-//         alert("The password must match confirm password!");
-//       }
+      } else {
+        alert("The password must match confirm password!");
+      }
     }
   };
 });
