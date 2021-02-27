@@ -9,7 +9,7 @@
             "custom": [
                 {
                     "group": "General",
-                    "kuid": "d492675b9b774722afa9925138e1dd42",
+                    "kuid": "g2a3207fa9314da3ac0f7335e48b3a79",
                     "paramList": [],
                     "propertyIndex": 1,
                     "propertyKey": "onBackClicked",
@@ -22,7 +22,7 @@
                 },
                 {
                     "group": "General",
-                    "kuid": "e528ce0539564ccd8ddcade280a2b57b",
+                    "kuid": "a384d777d8bb4aa1895dcdf51f88e870",
                     "paramList": [],
                     "propertyIndex": 2,
                     "propertyKey": "onDropClicked",
@@ -35,7 +35,7 @@
                 },
                 {
                     "group": "General",
-                    "kuid": "e57d24603abe4fb7bbfd645bc27d2f27",
+                    "kuid": "a7c8d308a941444d87b1fb63634bfe14",
                     "paramList": [
                         {
                             "name": "data"

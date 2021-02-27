@@ -40,8 +40,8 @@
     "containerweight": 0,
     "data": {
         "dropDownList": "[{\"id\": \"frmProfile\", \"name\": \"Profile\", \"path\": \"frmProfile\"}, \n {\"id\": \"frmFavouriteList\", \"name\": \"Favourite Movies\", \"path\": \"frmFavouriteList\"},\n {\"id\": \"frmAuthentication\", \"name\": \"Log Out\", \"path\": \"frmAuthentication\"}]",
-        "isBackVisible": false,
-        "separatorSize": "5dp"
+        "isBackVisible": true,
+        "separatorSize": "1dp"
     },
     "enablescrolling": true,
     "id": "HeaderControl",

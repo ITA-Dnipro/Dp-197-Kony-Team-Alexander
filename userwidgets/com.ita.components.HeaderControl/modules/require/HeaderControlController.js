@@ -109,10 +109,10 @@ define(function() {
         isVisible: true,
         text: _dropDownList[i].name,
         onClick: function(data){ 
-          if (this.onListItemClicked) {
-            this.onListItemClicked(data);
-          }
-          Utility.navigateTo.bind(null, _dropDownList[i].id);
+//           if (this.onListItemClicked) {
+//             this.onListItemClicked(data);
+//           }
+          Utility.navigateTo(data.path);
           hideDropDown();
         }.bind(this, _dropDownList[i])
       }, {
