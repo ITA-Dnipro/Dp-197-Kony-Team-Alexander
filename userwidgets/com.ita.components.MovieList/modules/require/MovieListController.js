@@ -6,13 +6,13 @@ define(function() {
 
       var btn = this.view.btnShow;
 
-      btn.skin === "sknBtnRecommendedMovie" ? 
-        btn.skin = "sknBtnRecommendedMovieActive" :
+      if (btn.skin === "sknBtnRecommendedMovie") {
+        btn.skin = "sknBtnRecommendedMovieActive";
+        btn.text = btn.text.slice(0, btn.text.length - 1) + "\uf054";
+      } else {
         btn.skin = "sknBtnRecommendedMovie";
-
-      btn.text.slice(-1) === "\uf078" ? 
-        btn.text = btn.text.slice(0, btn.text.length - 1) + "\uf054":
         btn.text = btn.text.slice(0, btn.text.length - 1) + "\uf078";
+      }
     },
   };
 });

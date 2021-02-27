@@ -27,12 +27,16 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         list.isVisible = true;
         
         var y = this.view.flxMainScroll.contentOffsetMeasured.y + 150; 
-        if (y < 500) {
-          this.view.flxMainScroll.setContentOffset({
+        this.view.flxMainScroll.setContentOffset({
             "x": "0dp",
             "y": y + "dp"
           }, true);
-        }        
+//         if (y < 500) {
+//           this.view.flxMainScroll.setContentOffset({
+//             "x": "0dp",
+//             "y": y + "dp"
+//           }, true);
+//         }        
       } else {
         btn.skin = "sknBtnRecommendedMovie";
         btn.text = text + "   \uf078";

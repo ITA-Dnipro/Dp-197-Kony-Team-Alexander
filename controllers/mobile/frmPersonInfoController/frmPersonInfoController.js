@@ -4,26 +4,33 @@ define(["MovieService"], function(movieService){
     onInitialize: function() {
       this.view.btnBack.onClick = Utility.goBack;
       this.view.btnSearch.onClick = Utility.navigateTo.bind(null, "frmSearch", {searchFor: "people"});
-//       this.view.btnGet.onClick = this.onGetClicked.bind(this, {id: 1810, role: "actor"});
-//       this.view.btnShowActing.onClick = this.onShowBtnClicked.bind(this, this.view.btnShowActing, "Acting", this.view.lstActingMovies);
+      //       this.view.btnGet.onClick = this.onGetClicked.bind(this, {id: 1810, role: "actor"});
+      //       this.view.btnShowActing.onClick = this.onShowBtnClicked.bind(this, this.view.btnShowActing, "Acting", this.view.lstActingMovies);
       //       this.view.btnBack.onClick = Utility.goBack;
       this.view.ActingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
       this.view.DirectingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
       this.view.ProductionList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
       this.view.WritingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
+
+      this.previousCB = this.view.ActingList.btnShow.onClick;
+
+      this.view.ActingList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.ActingList.btnShow, this.view.ActingList.lstMovies);
+      this.view.DirectingList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.DirectingList.btnShow, this.view.DirectingList.lstMovies);
+      this.view.ProductionList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.ProductionList.btnShow, this.view.ProductionList.lstMovies);
+      this.view.WritingList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.WritingList.btnShow, this.view.WritingList.lstMovies);
     },
 
     onNavigate: function(personData) {
       if (personData) {
         this.personData = personData;
       }
-      
-//       alert(this.personData.id);
+
+      //       alert(this.personData.id);
       this.view.ActingList.btnShow.text = "Acting   \uf078";
       this.view.DirectingList.btnShow.text = "Directing   \uf078";
       this.view.ProductionList.btnShow.text = "Production   \uf078";
       this.view.WritingList.btnShow.text = "Writing   \uf078";
-      
+
       this.view.ActingList.btnShow.skin = "sknBtnRecommendedMovie";
       this.view.DirectingList.btnShow.skin = "sknBtnRecommendedMovie";
       this.view.ProductionList.btnShow.skin = "sknBtnRecommendedMovie";
@@ -47,7 +54,25 @@ define(["MovieService"], function(movieService){
         kony.application.dismissLoadingScreen();
       }, this.personData.id, this.personData.role);
     },
-    
+
+    onShowBtnClicked: function(btn, lst) {
+      lst.isVisible = !lst.isVisible;
+
+      if (btn.skin === "sknBtnRecommendedMovie") {
+        btn.skin = "sknBtnRecommendedMovieActive";
+        btn.text = btn.text.slice(0, btn.text.length - 1) + "\uf054";
+
+        var y = this.view.flxMainScroll.contentOffsetMeasured.y + 150; 
+        this.view.flxMainScroll.setContentOffset({
+          "x": "0dp",
+          "y": y + "dp"
+        }, true);
+      } else {
+        btn.skin = "sknBtnRecommendedMovie";
+        btn.text = btn.text.slice(0, btn.text.length - 1) + "\uf078";
+      }
+    },
+
     onMovieRowClicked: function(widgetRef, sectionIndex, rowIndex) {     
       Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id, type: widgetRef.data[rowIndex].type});
     },
@@ -118,29 +143,29 @@ define(["MovieService"], function(movieService){
           this.view.flxBestMoviesCarousel.add(flexBestMovie);
         }		
       }
-     
+
       // change list
       this.addDataToMovieList(creditsList.actingList, this.view.ActingList);
       this.addDataToMovieList(creditsList.directingList, this.view.DirectingList);
       this.addDataToMovieList(creditsList.productionList, this.view.ProductionList);
       this.addDataToMovieList(creditsList.writingList, this.view.WritingList);
 
-//       if (creditsList.actingList.length === 0) {
-//         this.view.ActingList.isVisible = false;
-//       } else {
-//         var actingList = creditsList.actingList.map(function(m) {
-//           return {
-//             lblYear: String(m.year),
-//             id: m.id,
-//             lblMovieTitle: m.title,
-//             lblRole: m.character            
-//           };
-//         });
-//         this.view.ActingList.lstMovies.setData(actingList);
-//         this.view.ActingList.lstMovies.isVisible = false;
-//       }
+      //       if (creditsList.actingList.length === 0) {
+      //         this.view.ActingList.isVisible = false;
+      //       } else {
+      //         var actingList = creditsList.actingList.map(function(m) {
+      //           return {
+      //             lblYear: String(m.year),
+      //             id: m.id,
+      //             lblMovieTitle: m.title,
+      //             lblRole: m.character            
+      //           };
+      //         });
+      //         this.view.ActingList.lstMovies.setData(actingList);
+      //         this.view.ActingList.lstMovies.isVisible = false;
+      //       }
     },
-    
+
     addDataToMovieList: function(movieList, viewComp) {
       if (movieList.length === 0) {
         viewComp.isVisible = false;
