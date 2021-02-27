@@ -43,7 +43,7 @@
     "kuid": "c28c8ae9633f43fd9b20797082d2267c",
     "name": "kony.ui.Button",
     "parent": "flxHeader",
-    "pf": "frmMovieSearch",
+    "pf": "frmSearch",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",

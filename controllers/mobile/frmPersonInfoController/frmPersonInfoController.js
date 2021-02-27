@@ -2,7 +2,9 @@ define(["MovieService"], function(movieService){
 
   return {
     onInitialize: function() {
-      this.view.btnGet.onClick = this.onGetClicked.bind(this, {id: 1810, role: "actor"});
+      this.view.btnBack.onClick = Utility.goBack;
+      this.view.btnSearch.onClick = Utility.navigateTo.bind(null, "frmSearch", {searchFor: "people"});
+//       this.view.btnGet.onClick = this.onGetClicked.bind(this, {id: 1810, role: "actor"});
 //       this.view.btnShowActing.onClick = this.onShowBtnClicked.bind(this, this.view.btnShowActing, "Acting", this.view.lstActingMovies);
       //       this.view.btnBack.onClick = Utility.goBack;
       this.view.ActingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
@@ -11,14 +13,12 @@ define(["MovieService"], function(movieService){
       this.view.WritingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
     },
 
-
-
     onNavigate: function(personData) {
       if (personData) {
         this.personData = personData;
       }
       
-      alert(this.personData.id);
+//       alert(this.personData.id);
       this.view.ActingList.btnShow.text = "Acting   \uf078";
       this.view.DirectingList.btnShow.text = "Directing   \uf078";
       this.view.ProductionList.btnShow.text = "Production   \uf078";
@@ -46,34 +46,10 @@ define(["MovieService"], function(movieService){
         alert("Error while retrieving person credits");
         kony.application.dismissLoadingScreen();
       }, this.personData.id, this.personData.role);
-
     },
     
     onMovieRowClicked: function(widgetRef, sectionIndex, rowIndex) {     
       Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id, type: widgetRef.data[rowIndex].type});
-    },
-
-    onGetClicked: function(personData) {
-      //       alert(personData.id);
-
-      kony.application.showLoadingScreen();
-
-      movieService.getPersonInfo(function(personInfo) {
-        this.onPersonInfoReceived(personInfo);
-        kony.application.dismissLoadingScreen();
-      }.bind(this), function() {
-        alert("Error while retrieving person info");
-        kony.application.dismissLoadingScreen();
-      }, personData.id);
-
-      movieService.getPersonCredits(function(credits) {
-        this.onPersonCreditsReceived(credits);
-        kony.application.dismissLoadingScreen();
-      }.bind(this), function() {
-        alert("Error while retrieving person credits");
-        kony.application.dismissLoadingScreen();
-      }, personData.id, personData.role);
-
     },
 
     onPersonInfoReceived: function(personInfo) {

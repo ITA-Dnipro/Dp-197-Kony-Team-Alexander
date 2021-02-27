@@ -2,7 +2,7 @@ define(["MovieService"], function(movieService){
   return {
     onInitialize: function() {
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
-      this.view.btnSearch.onClick = Utility.navigateTo.bind(null, "frmMovieSearch");
+      this.view.btnSearch.onClick = Utility.navigateTo.bind(null, "frmSearch", {searchFor: "movies"});
       this.view.btnProfile.onClick = Utility.navigateTo.bind(null, "frmProfile");
       this.view.btnPopular.onClick = this.loadMovieList.bind(this, "popular", this.view.btnPopular);
       this.view.btnTopRated.onClick = this.loadMovieList.bind(this, "top_rated", this.view.btnTopRated);

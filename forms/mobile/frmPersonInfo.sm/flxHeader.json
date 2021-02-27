@@ -22,7 +22,7 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s195c51097b945dd945847dfab5d9066",
+    "_skin_": "s5efc9213afe4018b2156c24ac442893",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -36,8 +36,6 @@
     "canUpdateUI": true,
     "children": [
         "btnBack",
-        "inpSearchMovie",
-        "btnDeleteText",
         "btnSearch"
     ],
     "clipbounds": true,
@@ -47,11 +45,11 @@
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "dc6f65ae38024ef78c6c647d161dbb32",
+    "kuid": "bc55bf2fc9714261a5f8cbeb1da371f1",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "frmMovieSearch",
-    "pf": "frmMovieSearch",
+    "parent": "flxMainScroll",
+    "pf": "frmPersonInfo",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

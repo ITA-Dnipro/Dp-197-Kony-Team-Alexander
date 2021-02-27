@@ -104,8 +104,6 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       this.movieId = widgetRef.data[rowIndex].id;
       this.type = widgetRef.data[rowIndex].type;
       
-      alert(this.type);
-      
       this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
       this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
 
@@ -272,7 +270,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
     },
 
     onPersonClicked: function(personId) {
-      Utility.navigateTo("frmPersonInfo", {id: personId, role: "actor"});
+      Utility.navigateTo("frmPersonInfo", {id: personId, role: "cast"});
     }
   }
 });

@@ -22,33 +22,36 @@
         0
     ],
     "_percent_": true,
-    "_right_": {
-        "type": "string",
-        "value": "0dp"
-    },
-    "_skin_": "s5efc9213afe4018b2156c24ac442893",
+    "_skin_": "s195c51097b945dd945847dfab5d9066",
     "_top_": {
         "type": "string",
         "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
     },
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "btnGet"
+        "btnBack",
+        "inpSearch",
+        "btnDeleteText",
+        "btnSearch"
     ],
     "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxTempHeader",
+    "id": "flxHeader",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "be51bb53d16a472f8b786f1458e25e86",
+    "kuid": "dc6f65ae38024ef78c6c647d161dbb32",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxMainScroll",
-    "pf": "frmPersonInfo",
+    "parent": "frmSearch",
+    "pf": "frmSearch",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

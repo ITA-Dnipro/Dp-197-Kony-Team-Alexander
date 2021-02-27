@@ -37,7 +37,7 @@
     "bounces": true,
     "canUpdateUI": true,
     "children": [
-        "flxTempHeader",
+        "flxHeader",
         "flxMainInfo",
         "lblKnownForMovies",
         "flxBestMoviesCarousel",

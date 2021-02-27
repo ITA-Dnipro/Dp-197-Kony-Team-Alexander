@@ -3,11 +3,11 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "70dp"
+        "value": "50dp"
     },
     "_left_": {
         "type": "string",
-        "value": "0dp"
+        "value": "10dp"
     },
     "_margin_": [
         6,
@@ -21,29 +21,29 @@
         0,
         0
     ],
-    "_skin_": "s6dfbaa046dc4421bec25d2a6de3d699",
+    "_skin_": "s6198266184e4feab1a160b6be637b4c",
     "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "0dp"
+        "value": "10dp"
     },
     "_width_": {
         "type": "string",
-        "value": "70dp"
+        "value": "50dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "s560ae4e2bba484dba3c0ab31ea966ab",
+    "focusskin": "sfd6b89ca14c40e081fa2924798397a9",
     "id": "btnBack",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "ge4613022c2347d6bb4cf092e53573d1",
+    "kuid": "a469140c2c174cf2b3db40940eb774c3",
     "name": "kony.ui.Button",
     "parent": "flxHeader",
-    "pf": "frmMovieSearch",
+    "pf": "frmPersonInfo",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",

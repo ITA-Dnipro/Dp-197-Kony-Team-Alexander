@@ -147,38 +147,65 @@ define(function () {
     });     
   };
 
-  var searchMovie = function(successCallback, errorCallback, string) {
+  var searchMovie = function(successCallback, errorCallback, string, searchFor) {
     string = string.replace(/\s+/g, " ").replace(/\s+/g, "%20");
 
-    var SEARCH_MOVIE_URL = SEARCH_BASE_URL + API_KEY + "&language=en-US&query=" + string + "&page=1";
+    var SEARCH_MOVIE_URL;
+    var SEARCH_PEOPLE_URL;
 
-    loadGenreList(function(genreData){
-      if (genreData && Array.isArray(genreData)) {
-        makeHttpRequest(SEARCH_MOVIE_URL, function(movies) {
-          if (movies.results && Array.isArray(movies.results)) {
+    if (searchFor === "movies") {
+      SEARCH_MOVIE_URL = SEARCH_BASE_URL + API_KEY + "&language=en-US&query=" + string + "&page=1";
 
-            var movieList = movies.results.map(function(m) {
-              // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
-              return new MovieData({
-                type: "movie",
-                id: m.id,
-                title: m.title, 
-                description: m.overview, 
-                genresId: m.genre_ids, 
-                posterPath: m.poster_path,
-                voteAvg: m.vote_average,
-                released: m.release_date,
-                genreNamesList: getGenreNameById(genreData, m.genre_ids)
-              }); 
-            });
+      loadGenreList(function(genreData){
+        if (genreData && Array.isArray(genreData)) {
+          makeHttpRequest(SEARCH_MOVIE_URL, function(movies) {
+            if (movies.results && Array.isArray(movies.results)) {
 
-            successCallback(movieList);
-          }
-        }, errorCallback); 
-      }      
-    }, function(){
-      alert("Error while retrieving genres list");
-    });     
+              var movieList = movies.results.map(function(m) {
+                // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
+                return new MovieData({
+                  type: "movie",
+                  id: m.id,
+                  title: m.title, 
+                  description: m.overview, 
+                  genresId: m.genre_ids, 
+                  posterPath: m.poster_path,
+                  voteAvg: m.vote_average,
+                  released: m.release_date,
+                  genreNamesList: getGenreNameById(genreData, m.genre_ids)
+                }); 
+              });
+
+              successCallback(movieList);
+            }
+          }, errorCallback); 
+        }      
+      }, function(){
+        alert("Error while retrieving genres list");
+      }); 
+    } 
+
+    if (searchFor === "people") {
+      SEARCH_PEOPLE_URL = "https://api.themoviedb.org/3/search/person?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&query=" + string + "&page=1";
+
+      makeHttpRequest(SEARCH_PEOPLE_URL, function(people) {
+        if (people.results && Array.isArray(people.results)) {
+
+          var peopleList = people.results.map(function(p) {
+            // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
+            return {
+              type: "person",
+              id: p.id,
+              name: p.name, 
+              knownFor: "Known for: " + p.known_for_department,  
+              poster: "https://image.tmdb.org/t/p/w200/" + p.profile_path,       
+            }; 
+          });
+
+          successCallback(peopleList);
+        }
+      }, errorCallback); 
+    }
   };
 
   var getMovieCredits = function(successCallback, errorCallback, movieId) {
@@ -260,7 +287,7 @@ define(function () {
       if (credits.cast && credits.crew && Array.isArray(credits.cast) && Array.isArray(credits.crew)) {
 
         var popularList = [];
-        if (personRole === "actor") {
+        if (personRole === "cast") {
           popularList = credits.cast.sort(function(a, b) {
             return b.popularity - a.popularity;
           }).filter(function(m) { return m.title || m.name; })
@@ -327,36 +354,36 @@ define(function () {
 
   var sortMovieList = function(movieList) {
     var upcomingList = movieList.filter(function(m) { return (m.title || m.name) && !m.release_date && !m.first_air_date; })
-      .map(function(m){
-        return {
-          id: m.id,
-          type: m.media_type,
-          title: m.title || m.name,
-          additionalInfo: m.character || m.job,
-          year: "-"
-        }
-      });
-    
+    .map(function(m){
+      return {
+        id: m.id,
+        type: m.media_type,
+        title: m.title || m.name,
+        additionalInfo: m.character || m.job,
+        year: "-"
+      }
+    });
+
     var mList = movieList.filter(function(m) { return (m.title || m.name) && (m.release_date || m.first_air_date); })
-      .sort(function(a, b) {
+    .sort(function(a, b) {
 
-        var dateAMs = new Date(a.release_date || a.first_air_date).getTime();
-        var dateBMs = new Date(b.release_date || b.first_air_date).getTime();
+      var dateAMs = new Date(a.release_date || a.first_air_date).getTime();
+      var dateBMs = new Date(b.release_date || b.first_air_date).getTime();
 
-        return dateBMs - dateAMs;
-      })
-      .map(function(m){
-        return {
-          type: m.media_type,
-          id: m.id,
-          title: m.title || m.name,
-          additionalInfo: m.character || m.job,
-          year: (new Date(m.release_date || m.first_air_date)).getFullYear()
-        };
-      });
+      return dateBMs - dateAMs;
+    })
+    .map(function(m){
+      return {
+        type: m.media_type,
+        id: m.id,
+        title: m.title || m.name,
+        additionalInfo: m.character || m.job,
+        year: (new Date(m.release_date || m.first_air_date)).getFullYear()
+      };
+    });
 
     var sortedMovieList = upcomingList.concat(mList);
-    
+
     return sortedMovieList;
 
   };
