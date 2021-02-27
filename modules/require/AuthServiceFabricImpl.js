@@ -50,7 +50,78 @@ define(function () {
     }); 
   };
 
+  var getUserProfile = function(userId, successCB, errorCB) {
+
+    var sdk = kony.sdk.getCurrentInstance();
+    var AlexanderMovieListService = sdk.getIntegrationService("AlexDB");
+    var headers = null;
+    var body = {
+      userId: userId
+    };
+    AlexanderMovieListService.invokeOperation("getUserProfile", headers, body, function(response) {
+      if (response.userLogin && response.userFullName) {
+        successCB(response.userLogin, response.userFullName);
+      } else {
+        alert("User not found");
+      }
+    }, function(error) {
+      if (errorCB) {
+        errorCB(error);
+      }
+    }); 
+  };
+
+  var updateUserProfile = function(userId, fullName, successCB, errorCB) {
+
+    var sdk = kony.sdk.getCurrentInstance();
+    var AlexanderMovieListService = sdk.getIntegrationService("AlexDB");
+    var headers = null;
+    var body = {
+      userId: userId,
+      userFullName: fullName
+    };
+    AlexanderMovieListService.invokeOperation("updateUserProfile", headers, body, function(response) {
+      if (successCB) {
+        successCB(response.userLogin, response.userFullName);
+      } else {
+        alert("User not found");
+      }
+    }, function(error) {
+      if (errorCB) {
+        errorCB(error);
+      }
+    });
+  };
+
+  var getFavouriteMovies = function(userId, fullName, successCB, errorCB) {
+
+    var sdk = kony.sdk.getCurrentInstance();
+    var AlexanderMovieListService = sdk.getIntegrationService("AlexDB");
+    var headers = null;
+    var body = {
+      userId: userId,
+      userFullName: fullName
+    };
+    AlexanderMovieListService.invokeOperation("getFavouriteMovies", headers, body, function(response) {
+      if (successCB) {
+        var movieList = response.records(function(m) {
+          return{
+            id: m.movie_id
+          }; 
+        });
+        successCB(movieList);
+      }
+    }, function(error) {
+      if (errorCB) {
+        errorCB(error);
+      }
+    });
+  };
+
   return {
+    getFavouriteMovies: getFavouriteMovies,
+    updateUserProfile: updateUserProfile,
+    getUserProfile: getUserProfile,
     checkUser: checkUser,
     registerUser: registerUser
   };
