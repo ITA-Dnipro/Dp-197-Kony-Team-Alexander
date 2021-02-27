@@ -5,6 +5,7 @@ var Utility = {
   },
 
   navigateTo: function(frmName, data) {
+    alert(frmName);
     var navigation = new kony.mvc.Navigation(frmName);
 
     navigation.navigate(data);

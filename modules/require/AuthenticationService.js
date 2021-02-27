@@ -1,8 +1,8 @@
-define(["FakeAuthServiceImpl"], function (concreteImpl) {
+define(["FakeAuthServiceImpl", "AuthServiceFabricImpl" ], function (concreteImpl, fake) {
 
   return {
     checkUser: concreteImpl.checkUser,
-    registerUser: concreteImpl.registerUser,
+    registerUser: fake.registerUser,
     toggleMovieFavorites: concreteImpl.toggleMovieFavorites,
     isMovieInFavoriteList: concreteImpl.isMovieInFavoriteList
   };
