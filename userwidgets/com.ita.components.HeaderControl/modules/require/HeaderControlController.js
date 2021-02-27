@@ -1,34 +1,13 @@
-/*
- 1. Cyrus add size value validation function: shoud accept numbers (0-9) + (dp, %, px)
- 
- 2. Cyrus add "separatorSize" property, should affect top of the list item (button)
-    and should use validation function implemented in step 1
-    
- 3. Hannibal change validation in dropDownWidth setter to use validation function implemented in step 1
- 
- 4. Alexander add "defaultUnits" property with only following values allowed: (dp, %, px)
- 
- 5. Alexander create function that will convert _dropDownWidth to appropriate value if _dropDownWidth has Number value
-    This function has to take into consideration "defaultUnits" property value during Number -> Size value conversion
-    
- 6. Hannibal add "listItemSkin" property and use it for list items (buttons)
- 
- 7. Hannibal if there is nothing to show - then skip showing menu (backdrop...)
- 
- 8. Hannibal Integrate changes into component made by Alexander and Cyrus and
-    share final component with all team members
-*/
-
 define(function() {
   var _defaultUnits = "dp";
-  var _isBackVisible = false;
+  var _isBackVisible = true;
   var _isDropVisible = true;
   var _destroyPreviousFormOnBack = true;
   var _dropDownList = [];
   var _dropDownWidth = "350dp";
   var _flexBackdrop = null;
-  var _separatorSize = "10dp";
-  var _listItemSkin = 'defBtnNormal';
+  var _separatorSize = "1dp";
+  var _listItemSkin = "defBtnNormal";
 
   var DEFAULT_OFFSET = "20dp";
   
@@ -36,15 +15,18 @@ define(function() {
   
   var validateSize = function(input) {
     var pattern = /^[0-9]+(dp|px|%)$/;
-    return (pattern.test(input) && typeof input === "string")  ? true : false;
+    return (typeof input === "string" && pattern.test(input));
   };
   
-  var validateByDefaultUnits = function(val, units) {
-    var res = val;
-    if (!isNaN(val)) {
-      res = val + units;
+  var parseSizeValue = function(propName, value) {
+    if (typeof value === 'number' || !isNaN(Number(value))) {
+      value += _defaultUnits;
     }
-    return res;
+    if (!validateSize(value)) {
+      throw new Error(propName + " has to be of valid size value.");
+    }
+    
+    return value;
   };
   
   var validateSkin = function(skin) {
@@ -80,9 +62,6 @@ define(function() {
   };
   
   var showDropDown = function () {
-    if (_dropDownList.length === 0) {
-      return;
-    }
     var form = kony.application.getCurrentForm();
     
     hideDropDown();
@@ -133,10 +112,11 @@ define(function() {
           if (this.onListItemClicked) {
             this.onListItemClicked(data);
           }
+          Utility.navigateTo.bind(null, _dropDownList[i].id);
           hideDropDown();
         }.bind(this, _dropDownList[i])
       }, {
- 		padding: [0, 0, 0, 0],
+        padding: [0, 0, 0, 0],
         margin: [0, 0, 0, 0]        
       });
       
@@ -165,7 +145,7 @@ define(function() {
     
     if (_flexBackdrop) {
       hideDropDown();
-    } else {
+    } else if (_dropDownList.length > 0) {
       showDropDown();
     }
   };
@@ -245,18 +225,11 @@ define(function() {
       });
       
       defineSetter(this, "dropDownWidth", function(val) {
-        if (typeof val === 'number' && val > 0 && isFinite(val)) {
-          _dropDownWidth = validateByDefaultUnits(val, _defaultUnits);
-          return;
-        }
-        if (!validateSize(val)) {
-          throw new Error("dropDownWidth has to be of valid size value.");
-        }
-        _dropDownWidth = val;
+        _dropDownWidth = parseSizeValue("dropDownWidth", val);
       });
       
       defineSetter(this, "separatorSize", function(val) {
-        _separatorSize = validateSize(val)? val : _separatorSize;
+        _separatorSize = parseSizeValue("separatorSize", val);
       });
       
       defineGetter(this, "separatorSize", function() {
@@ -272,9 +245,7 @@ define(function() {
           throw new Error("listItemSkin has to be of valid skin name.");
         }
         _listItemSkin = val;
-
       });
-      
     }
   };
 });

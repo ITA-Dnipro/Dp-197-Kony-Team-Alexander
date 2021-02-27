@@ -32,16 +32,14 @@
     },
     "canUpdateUI": true,
     "children": [
-        "HeaderControlCopy"
+        "HeaderControl"
     ],
     "containerweight": 100,
     "currentLocale": "default",
     "device": "iPhone11",
     "displayorientation": 3,
     "enabledforidletimeout": false,
-    "globalUserWidgetRefs": [
-        "ue0559e979214f068a474109b6d96a17"
-    ],
+    "globalUserWidgetRefs": [],
     "id": "userwidgetmodel",
     "info": null,
     "initdone": false,
@@ -51,7 +49,7 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "uede6adfe5634c2b998f3a68e80bd84e",
+    "kuid": "u03fdbcdbda947b8b25ed65466c6b3ae",
     "layouttype": 2,
     "masterType": 1,
     "name": "kony.ui.Form2",

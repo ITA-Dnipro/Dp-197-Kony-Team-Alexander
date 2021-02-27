@@ -5,6 +5,10 @@
         "type": "string",
         "value": "0dp"
     },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
     "_margin_": [
         6,
         6,
@@ -17,12 +21,8 @@
         0,
         0
     ],
-    "_right_": {
-        "type": "string",
-        "value": "0dp"
-    },
-    "_skin_": "sed8dfbda9f7491fa693b4a0a264de37",
-    "_text_": "☰",
+    "_skin_": "s864575b28824ee68a416d78742b7f9d",
+    "_text_": "",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -35,14 +35,14 @@
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "s767cfae4b03459f8dee293bae5c1ce4",
-    "id": "btnDrop",
+    "focusskin": "s3ee36d494a74ababb01bcd012ec14b8",
+    "id": "btnBack",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "uc4bf4b5bb0143d7ac7a6a692307c3a3",
+    "kuid": "c41b0fa3e5ec4d3591f1f6b464316661",
     "name": "kony.ui.Button",
-    "parent": "HeaderControlCopy",
+    "parent": "HeaderControl",
     "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

@@ -25,7 +25,7 @@
         "type": "string",
         "value": "70dp"
     },
-    "_skin_": "s646af490e124035bbc1039f0ad28760",
+    "_skin_": "sde5e9af686d4d32ae801bd5bafb3078",
     "_text_": "Header",
     "_top_": {
         "type": "string",
@@ -55,10 +55,10 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "uedeb2cfd130499ebf1bf668a1e42181",
+    "kuid": "de2cc65cded04eae9987d83fed2eeac5",
     "maxnumberoflines": 2,
     "name": "kony.ui.Label",
-    "parent": "HeaderControlCopy",
+    "parent": "HeaderControl",
     "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

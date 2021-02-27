@@ -33,8 +33,7 @@
         "lstMovies",
         "flxNavContainer",
         "btnSearch",
-        "HeaderControlCopy",
-        "btnProfile"
+        "HeaderControl"
     ],
     "containerweight": 100,
     "controllerInfo": {

@@ -25,7 +25,7 @@
     ],
     "_percent_": true,
     "_render_": true,
-    "_skin_": "s5d848893e374898b08a9036a2671fd7",
+    "_skin_": "s1cafa00372c4865beba81b3f3ca86dc",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -39,22 +39,17 @@
     "clipbounds": true,
     "containerweight": 0,
     "data": {
-        "defaultUnits": "dp",
-        "destroyPreviousFormOnBack": false,
-        "dropDownList": "[{\"id\":\"123\", \"name\":\"btnProfile\"}, {\"id\": 1234, \"name\": \"btnIntresting\"}, {\"id\": \"12345\",\"name\": \"btnLogOut\"}]",
-        "dropDownWidth": "250dp",
+        "dropDownList": "[{\"id\": \"frmProfile\", \"name\": \"Profile\", \"path\": \"frmProfile\"}, \n {\"id\": \"frmFavouriteList\", \"name\": \"Favourite Movies\", \"path\": \"frmFavouriteList\"},\n {\"id\": \"frmAuthentication\", \"name\": \"Log Out\", \"path\": \"frmAuthentication\"}]",
         "isBackVisible": false,
-        "isDropVisible": true,
-        "listItemSkin": "CopysknHeaderControl",
-        "separatorSize": "1dp"
+        "separatorSize": "5dp"
     },
     "enablescrolling": true,
-    "id": "HeaderControlCopy",
+    "id": "HeaderControl",
     "info": null,
     "iscustomlayout": false,
     "issegmentchild": false,
     "isvisible": true,
-    "kuid": "ad25f431242a40aea9085fe4df3650b1",
+    "kuid": "a6a3bce0e5f943f8b89159ed33bc2bcf",
     "layouttype": 2,
     "masterType": 1,
     "name": "kony.ui.UserWidgetInstance",
@@ -65,6 +60,6 @@
     "retainflowhorizontalalignment": false,
     "snapgridsize": 10,
     "snaptogrid": true,
-    "sourceUserWidget": "ud67671a017e40df8fbb01f6117944e3",
+    "sourceUserWidget": "ga92824bedfc4e4aa2641a03c8eada20",
     "wType": "UserWidgetInstance"
 }

@@ -1,5 +1,5 @@
 {
-    "classname": "HeaderControlCopy",
+    "classname": "HeaderControl",
     "definitions": {
         "apis": {
             "custom": [],
@@ -9,7 +9,7 @@
             "custom": [
                 {
                     "group": "General",
-                    "kuid": "a444ad03c1cd42f8891a270ec26edd15",
+                    "kuid": "d492675b9b774722afa9925138e1dd42",
                     "paramList": [],
                     "propertyIndex": 1,
                     "propertyKey": "onBackClicked",
@@ -17,12 +17,12 @@
                         "displayName": "onBackClicked",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "ud67671a017e40df8fbb01f6117944e3",
+                    "srcWgtKUID": "ga92824bedfc4e4aa2641a03c8eada20",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "i73f2fc68ad448608df2c3cf1a5f389b",
+                    "kuid": "e528ce0539564ccd8ddcade280a2b57b",
                     "paramList": [],
                     "propertyIndex": 2,
                     "propertyKey": "onDropClicked",
@@ -30,12 +30,12 @@
                         "displayName": "onDropClicked",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "ud67671a017e40df8fbb01f6117944e3",
+                    "srcWgtKUID": "ga92824bedfc4e4aa2641a03c8eada20",
                     "type": "event"
                 },
                 {
                     "group": "General",
-                    "kuid": "b29a9395454e43ccb76f78ef03eaf251",
+                    "kuid": "e57d24603abe4fb7bbfd645bc27d2f27",
                     "paramList": [
                         {
                             "name": "data"
@@ -47,7 +47,7 @@
                         "displayName": "onListItemClicked",
                         "uiRepresentation": "Label-Label-Button-Button"
                     },
-                    "srcWgtKUID": "ud67671a017e40df8fbb01f6117944e3",
+                    "srcWgtKUID": "ga92824bedfc4e4aa2641a03c8eada20",
                     "type": "event"
                 }
             ],
@@ -65,7 +65,7 @@
                     "access": "Write",
                     "defaultValue": true,
                     "group": "General",
-                    "kuid": "a63f0d1dcee64ddda5aa39fcb1c4c6a5",
+                    "kuid": "fc5279713a4c4d35b781be45309e043c",
                     "originalPropertyKey": "isBackVisible",
                     "propertyIndex": 7,
                     "propertyKey": "isBackVisible",
@@ -74,7 +74,7 @@
                         "displayName": "Back Button Visible",
                         "uiRepresentation": "Label-Radiobuttongroup"
                     },
-                    "srcWgtKUID": "ud67671a017e40df8fbb01f6117944e3",
+                    "srcWgtKUID": "ga92824bedfc4e4aa2641a03c8eada20",
                     "type": "boolean",
                     "value": "true/false"
                 },
@@ -82,7 +82,7 @@
                     "access": "Write",
                     "defaultValue": true,
                     "group": "General",
-                    "kuid": "jca55158062e47f48849ca558376c153",
+                    "kuid": "bdcac72f030c4f178fd5b2665b1ba9a9",
                     "originalPropertyKey": "isDropVisible",
                     "propertyIndex": 8,
                     "propertyKey": "isDropVisible",
@@ -91,7 +91,7 @@
                         "displayName": "Drop Button Visible",
                         "uiRepresentation": "Label-Radiobuttongroup"
                     },
-                    "srcWgtKUID": "ud67671a017e40df8fbb01f6117944e3",
+                    "srcWgtKUID": "ga92824bedfc4e4aa2641a03c8eada20",
                     "type": "boolean",
                     "value": "true/false"
                 },
@@ -99,7 +99,7 @@
                     "access": "Write",
                     "defaultValue": true,
                     "group": "General",
-                    "kuid": "b83ddd943290461da0f92b80a3ea124a",
+                    "kuid": "d54c4303fa5844b884987a407c05c939",
                     "originalPropertyKey": "destroyPreviousFormOnBack",
                     "propertyIndex": 9,
                     "propertyKey": "destroyPreviousFormOnBack",
@@ -108,7 +108,7 @@
                         "displayName": "Destroy Previos Form On Back",
                         "uiRepresentation": "Label-Radiobuttongroup"
                     },
-                    "srcWgtKUID": "ud67671a017e40df8fbb01f6117944e3",
+                    "srcWgtKUID": "ga92824bedfc4e4aa2641a03c8eada20",
                     "type": "boolean",
                     "value": "true/false"
                 },
@@ -116,7 +116,7 @@
                     "access": "Write",
                     "defaultValue": "[]",
                     "group": "General",
-                    "kuid": "ja2632b489bf428eabde69724065ccd6",
+                    "kuid": "e48547d80a5e497a82384c19cfa37c9f",
                     "originalPropertyKey": "dropDownList",
                     "propertyIndex": 10,
                     "propertyKey": "dropDownList",
@@ -133,15 +133,15 @@
                         },
                         "uiRepresentation": "Label-Button"
                     },
-                    "srcWgtKUID": "ud67671a017e40df8fbb01f6117944e3",
+                    "srcWgtKUID": "ga92824bedfc4e4aa2641a03c8eada20",
                     "type": "json",
                     "value": ""
                 },
                 {
                     "access": "Write",
-                    "defaultValue": "px",
+                    "defaultValue": "dp",
                     "group": "General",
-                    "kuid": "b3dac2f87e4d4f1d81ac1d57215e1858",
+                    "kuid": "be70a75f17194b6b863ff10d559ffde6",
                     "originalPropertyKey": "defaultUnits",
                     "propertyIndex": 12,
                     "propertyKey": "defaultUnits",
@@ -150,7 +150,7 @@
                         "displayName": "Default Units",
                         "uiRepresentation": "Label-Combobox"
                     },
-                    "srcWgtKUID": "ud67671a017e40df8fbb01f6117944e3",
+                    "srcWgtKUID": "ga92824bedfc4e4aa2641a03c8eada20",
                     "type": "list selector",
                     "value": [
                         "dp",
@@ -160,26 +160,9 @@
                 },
                 {
                     "access": "Write",
-                    "defaultValue": "100",
-                    "group": "General",
-                    "kuid": "ebe99b7928a24de6a12e77f5f9ab35ba",
-                    "originalPropertyKey": "dropDownWidth",
-                    "propertyIndex": 13,
-                    "propertyKey": "dropDownWidth",
-                    "pw": {
-                        "dependencyConditions": {},
-                        "displayName": "Dropdown Width",
-                        "uiRepresentation": "Label-Textbox"
-                    },
-                    "srcWgtKUID": "ud67671a017e40df8fbb01f6117944e3",
-                    "type": "string",
-                    "value": ""
-                },
-                {
-                    "access": "Write",
                     "defaultValue": "defBtnNormal",
                     "group": "General",
-                    "kuid": "g0c7506b18a74efa9aacd7aea72cf9bd",
+                    "kuid": "b7ff21a38ae84465835de17f9e1c4b17",
                     "originalPropertyKey": "listItemSkin",
                     "propertyIndex": 12,
                     "propertyKey": "listItemSkin",
@@ -188,15 +171,32 @@
                         "displayName": "List Item Skin",
                         "uiRepresentation": "Label-Textbox"
                     },
-                    "srcWgtKUID": "ud67671a017e40df8fbb01f6117944e3",
+                    "srcWgtKUID": "ga92824bedfc4e4aa2641a03c8eada20",
                     "type": "string",
                     "value": ""
                 },
                 {
                     "access": "Write",
-                    "defaultValue": "10dp",
+                    "defaultValue": "250dp",
                     "group": "General",
-                    "kuid": "ce54ce2875d044abbb23ec14794ef429",
+                    "kuid": "h8a047205a834317914720a12e4d689d",
+                    "originalPropertyKey": "dropDownWidth",
+                    "propertyIndex": 13,
+                    "propertyKey": "dropDownWidth",
+                    "pw": {
+                        "dependencyConditions": {},
+                        "displayName": "Dropdown Width",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "ga92824bedfc4e4aa2641a03c8eada20",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "access": "Write",
+                    "defaultValue": "1dp",
+                    "group": "General",
+                    "kuid": "f2dbf093ee504f6e93ad82920d8328ef",
                     "originalPropertyKey": "separatorSize",
                     "propertyIndex": 13,
                     "propertyKey": "separatorSize",
@@ -205,7 +205,7 @@
                         "displayName": "Separator Size",
                         "uiRepresentation": "Label-Textbox"
                     },
-                    "srcWgtKUID": "ud67671a017e40df8fbb01f6117944e3",
+                    "srcWgtKUID": "ga92824bedfc4e4aa2641a03c8eada20",
                     "type": "string",
                     "value": ""
                 }
@@ -214,7 +214,7 @@
                 {
                     "access": "Enable",
                     "group": "General",
-                    "kuid": "f631ac9579374d378f9e034f3ca73b7b",
+                    "kuid": "db940ec209404f69a96dd3ca3e8c11b9",
                     "originalPropertyKey": "skin",
                     "propertyIndex": 1,
                     "propertyKey": "skinBackNormal",
@@ -233,7 +233,7 @@
                 {
                     "access": "Enable",
                     "group": "General",
-                    "kuid": "e7d4957f6fcb4803bb1b043210e26e03",
+                    "kuid": "f80baf5795d640848e2863eb3edfb75d",
                     "originalPropertyKey": "focusSkin",
                     "propertyIndex": 2,
                     "propertyKey": "skinBackFocus",
@@ -252,7 +252,7 @@
                 {
                     "access": "Enable",
                     "group": "General",
-                    "kuid": "b11be7df5b3a4eff9a28ccfcd42f5dee",
+                    "kuid": "ff0fa9d6ea4c4be2ac52ebd80692c86d",
                     "originalPropertyKey": "text",
                     "propertyIndex": 3,
                     "propertyKey": "text",
@@ -268,12 +268,12 @@
                         "uiRepresentation": "Label-Textbox",
                         "wType": "Label"
                     },
-                    "srcWgtKUID": "uedeb2cfd130499ebf1bf668a1e42181"
+                    "srcWgtKUID": "de2cc65cded04eae9987d83fed2eeac5"
                 },
                 {
                     "access": "Enable",
                     "group": "General",
-                    "kuid": "dbab3dbbe4234551bffeb9c600884945",
+                    "kuid": "aad43054c6494b6f979222e8be25581c",
                     "originalPropertyKey": "skin",
                     "propertyIndex": 4,
                     "propertyKey": "skinText",
@@ -287,12 +287,12 @@
                         "srcWidget": "lblCaption",
                         "wType": "Label"
                     },
-                    "srcWgtKUID": "uedeb2cfd130499ebf1bf668a1e42181"
+                    "srcWgtKUID": "de2cc65cded04eae9987d83fed2eeac5"
                 },
                 {
                     "access": "Enable",
                     "group": "General",
-                    "kuid": "h1ffcadfe56d4c019640a2deb4ed0b10",
+                    "kuid": "i5bbd82bc7624d918e796946f832252c",
                     "originalPropertyKey": "skin",
                     "propertyIndex": 5,
                     "propertyKey": "skinDropNormal",
@@ -306,12 +306,12 @@
                         "srcWidget": "btnDrop",
                         "wType": "Button"
                     },
-                    "srcWgtKUID": "uc4bf4b5bb0143d7ac7a6a692307c3a3"
+                    "srcWgtKUID": "i1bf7b8542c3453883f6f7962e342044"
                 },
                 {
                     "access": "Enable",
                     "group": "General",
-                    "kuid": "h1e4ca87cc22495dba56153d31b67dd9",
+                    "kuid": "jc28e2077bd3441e9b9a4f7e1234caa2",
                     "originalPropertyKey": "focusSkin",
                     "propertyIndex": 6,
                     "propertyKey": "skinDropFocus",
@@ -325,7 +325,7 @@
                         "srcWidget": "btnDrop",
                         "wType": "Button"
                     },
-                    "srcWgtKUID": "uc4bf4b5bb0143d7ac7a6a692307c3a3"
+                    "srcWgtKUID": "i1bf7b8542c3453883f6f7962e342044"
                 }
             ]
         },
