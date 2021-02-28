@@ -49,26 +49,29 @@ define(function () {
   };
   
   var getTvDetails = function(successCallback, errorCallback, id) {
-    var TV_DETAILS_URL = MOVIE_BASE_URL + String(id) + "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
+    var TV_DETAILS_URL = "https://api.themoviedb.org/3/tv/" + String(id) + "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
 
     makeHttpRequest(TV_DETAILS_URL, function(m) {
       if (m) {
-        var movieDetails = new MovieData({
-          type: "movie",
+        var tvDetails = new TvData({
+          type: "tv",
           id: m.id,
-          title: m.title, 
+          title: m.name, 
           description: m.overview, 
           countries: m.production_countries, 
-          duration: m.runtime, 
-          released: m.release_date, 
+          duration: m.episode_run_time, 
           genresId: m.genres.map(function(g) { return g.id; }),
           genreNamesList: m.genres.map(function(g) { return g.name; }),
           voteAvg: m.vote_average, 
           posterPath: m.poster_path,
-          backdropPath: m.backdrop_path
+          backdropPath: m.backdrop_path,
+          createdBy: m.created_by,
+          numOfseasons: m.number_of_seasons,
+          firstAirDate: m.first_air_date, 
+          lastAirDate: m.last_air_date, 
         });   
 
-        successCallback(movieDetails);
+        successCallback(tvDetails);
       }
     }, errorCallback);    
   };
@@ -94,21 +97,43 @@ define(function () {
   };
   
   var getSimilarTvList = function(successCallback, errorCallback, mId) {
-    var SIMILAR_TV_URL = MOVIE_BASE_URL + String(mId) + "/similar?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
+    var SIMILAR_TV_URL = "https://api.themoviedb.org/3/tv/" + String(mId) + "/similar?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
 
     makeHttpRequest(SIMILAR_TV_URL, function(movies) {
+
       if (movies.results && Array.isArray(movies.results)) {
-        var movieList = movies.results.map(function(m) {
-          return new MovieData({
-            type: "movie",
+        var tvList = movies.results.map(function(m) {
+          return {
+            type: "tv",
             id: m.id,
-            title: m.title, 
+            title: m.name, 
             description: m.overview, 
-            posterPath: m.poster_path
-          }); 
+            poster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
+          };
         });
 
-        successCallback(movieList);
+        successCallback(tvList);
+      }
+    }, errorCallback);  
+  };
+  
+  var getRecommendedTvList = function(successCallback, errorCallback, mId) {
+    var RECOMMENDED_TV_URL = "https://api.themoviedb.org/3/tv/" + String(mId) + "/recommendations?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
+
+    makeHttpRequest(RECOMMENDED_TV_URL, function(movies) {
+
+      if (movies.results && Array.isArray(movies.results)) {
+        var tvList = movies.results.map(function(m) {
+          return {
+            type: "tv",
+            id: m.id,
+            title: m.name, 
+            description: m.overview, 
+            poster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
+          };
+        });
+
+        successCallback(tvList);
       }
     }, errorCallback);  
   };
@@ -258,7 +283,7 @@ define(function () {
         var castList = credits.cast.map(function(c) {
           return {
             id: c.id,
-            name: c.original_name, 
+            name: c.name, 
             img: "https://image.tmdb.org/t/p/w200/" + c.profile_path, 
             character: c.character, 
           };
@@ -276,6 +301,27 @@ define(function () {
         successCallback({
           cast: castList,
           director: director.length > 0 ? director : ["unknown"] 
+        });
+      }
+    }, errorCallback);  
+  };
+  
+  var getTvCredits = function(successCallback, errorCallback, movieId) {
+    var TV_CREDITS_URL = "https://api.themoviedb.org/3/tv/" + String(movieId) + "/aggregate_credits?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
+
+    makeHttpRequest(TV_CREDITS_URL, function(credits) {
+      if (credits.cast && credits.crew && Array.isArray(credits.cast) && Array.isArray(credits.crew)) {
+        var castList = credits.cast.map(function(c) {
+          return {
+            id: c.id,
+            name: c.name, 
+            img: "https://image.tmdb.org/t/p/w200/" + c.profile_path, 
+            character: c.roles.map(function(r){ return r.character; }).join(', '), 
+          };
+        });
+
+        successCallback({
+          cast: castList,
         });
       }
     }, errorCallback);  
@@ -438,14 +484,16 @@ define(function () {
 
   return {
     getMovieDetails: getMovieDetails,
-    getTvDetails: getTvDetails,
     getSimilarMovieList: getSimilarMovieList,  
-    getSimilarTvList: getSimilarTvList,
     getRecommendedMovieList: getRecommendedMovieList,
     getMovieList: getMovieList,
     searchMovie: searchMovie,
     getMovieCredits: getMovieCredits,
     getPersonInfo: getPersonInfo,
-    getPersonCredits: getPersonCredits
+    getPersonCredits: getPersonCredits,
+    getTvDetails: getTvDetails,
+    getTvCredits: getTvCredits,
+    getSimilarTvList: getSimilarTvList,
+    getRecommendedTvList: getRecommendedTvList
   };
 });

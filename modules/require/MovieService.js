@@ -5,14 +5,16 @@ define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl,
   
     return {
       getMovieDetails: concreteImpl.getMovieDetails,
-      getTvDetails: concreteImpl.getTvDetails,
       getSimilarMovieList: concreteImpl.getSimilarMovieList,
-      getSimilarTvList: concreteImpl.getSimilarTvList,
       getMovieList: concreteImpl.getMovieList,
       getRecommendedMovieList: concreteImpl.getRecommendedMovieList,
       searchMovie: concreteImpl.searchMovie,
       getMovieCredits: concreteImpl.getMovieCredits,
       getPersonInfo: concreteImpl.getPersonInfo,
-      getPersonCredits: concreteImpl.getPersonCredits
+      getPersonCredits: concreteImpl.getPersonCredits,
+      getTvDetails: concreteImpl.getTvDetails,
+      getTvCredits: concreteImpl.getTvCredits,
+      getSimilarTvList: concreteImpl.getSimilarTvList,
+      getRecommendedTvList: concreteImpl.getRecommendedTvList
     };
 });
