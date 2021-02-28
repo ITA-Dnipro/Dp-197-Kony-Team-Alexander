@@ -14,7 +14,8 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
     onbtnFavoriteClicked: function() {
       this.view.btnFavorite.skin === "sknBtnFavorite" ?
         this.view.btnFavorite.skin = "sknBtnFavoriteActive" :
-      this.view.btnFavorite.skin = "sknBtnFavorite";
+<<<<<<< HEAD
+        this.view.btnFavorite.skin = "sknBtnFavorite";
       
       movieService.getMovieDetails(function(movieDetails) {
         favouriteService.createFavouriteList(UserId, movieDetails, function() {
@@ -25,6 +26,12 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       }.bind(this), function() {
         alert("Error while retrieving movie details");
       }, this.movieId);
+=======
+      this.view.btnFavorite.skin = "sknBtnFavorite";
+
+      dbService.toggleMovieFavorites(this.movieId);
+      alert(this.movieId);
+>>>>>>> 242e910eaf2008fdffc996f9811253702c1c6c34
     },
 
     onBtnShowClicked: function(btn, text, list) {
@@ -59,8 +66,14 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
 
       if (movieData) {
         this.movieId = movieData.id;  
-        this.type = movieData.type;
+        this.type = movieData.type
       }
+
+<<<<<<< HEAD
+      alert(movieId.id);
+=======
+      //       alert(this.type); "movie" "tv" не удаляйте этот коммент
+>>>>>>> 242e910eaf2008fdffc996f9811253702c1c6c34
 
       kony.application.showLoadingScreen();
 
