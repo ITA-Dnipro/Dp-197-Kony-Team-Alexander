@@ -1,9 +1,12 @@
-define(["FakeAuthServiceImpl"], function (concreteImpl) {
+define(["FakeAuthServiceImpl", "AuthServiceFabricImpl" ], function (fake, fabricImpl) {
 
   return {
-    checkUser: concreteImpl.checkUser,
-    registerUser: concreteImpl.registerUser,
-    toggleMovieFavorites: concreteImpl.toggleMovieFavorites,
-    isMovieInFavoriteList: concreteImpl.isMovieInFavoriteList
+    getFavouriteMovies: fabricImpl.getFavouriteMovies,
+    checkUser: fabricImpl.checkUser,
+    updateUserProfile: fabricImpl.updateUserProfile,
+    registerUser: fabricImpl.registerUser,
+    toggleMovieFavorites: fake.toggleMovieFavorites,
+    getUserProfile: fabricImpl.getUserProfile,
+    isMovieInFavoriteList: fake.isMovieInFavoriteList
   };
 });

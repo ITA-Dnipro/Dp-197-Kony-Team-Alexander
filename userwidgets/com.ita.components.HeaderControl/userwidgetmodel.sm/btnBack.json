@@ -1,13 +1,13 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizButton",
     "DNDConfig": null,
-    "_height_": {
+    "_bottom_": {
         "type": "string",
-        "value": "50dp"
+        "value": "0dp"
     },
     "_left_": {
         "type": "string",
-        "value": "10dp"
+        "value": "0dp"
     },
     "_margin_": [
         6,
@@ -21,31 +21,31 @@
         0,
         0
     ],
-    "_skin_": "s6198266184e4feab1a160b6be637b4c",
-    "_text_": "",
+    "_skin_": "s864575b28824ee68a416d78742b7f9d",
+    "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "10dp"
+        "value": "0dp"
     },
     "_width_": {
         "type": "string",
-        "value": "50dp"
+        "value": "70dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "sfd6b89ca14c40e081fa2924798397a9",
-    "id": "btnSearch",
+    "focusskin": "s3ee36d494a74ababb01bcd012ec14b8",
+    "id": "btnBack",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "b66993167fb94924be630af735b89b32",
+    "kuid": "c41b0fa3e5ec4d3591f1f6b464316661",
     "name": "kony.ui.Button",
-    "parent": "frmMovieList",
-    "pf": "frmMovieList",
+    "parent": "HeaderControl",
+    "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",
-    "zindex": 20
+    "zindex": 1
 }
