@@ -15,11 +15,19 @@
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
                 "src": ""
             },
-            "lblMovieDescription": {
+            "lblMovieGenres": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": ""
+            },
+            "lblMovieReleasDate": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
                 "text": ""
             },
             "lblMovieTitle": {
+                "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
+                "text": ""
+            },
+            "lblMovieType": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
                 "text": ""
             }
@@ -101,7 +109,7 @@
     "selectedindex": null,
     "selectedindices": null,
     "selecteditems": null,
-    "selectedsectionindex": null,
+    "selectedsectionindex": 0,
     "selectionbehavior": "default",
     "separatorcolor": "aaaaaa00",
     "separatorrequired": true,
@@ -115,8 +123,10 @@
         "btnDeleteMoviFromList": "btnDeleteMoviFromList",
         "favouritRow": "favouritRow",
         "imgMoviePoster": "imgMoviePoster",
-        "lblMovieDescription": "lblMovieDescription",
-        "lblMovieTitle": "lblMovieTitle"
+        "lblMovieGenres": "lblMovieGenres",
+        "lblMovieReleasDate": "lblMovieReleasDate",
+        "lblMovieTitle": "lblMovieTitle",
+        "lblMovieType": "lblMovieType"
     },
     "zindex": 1
 }

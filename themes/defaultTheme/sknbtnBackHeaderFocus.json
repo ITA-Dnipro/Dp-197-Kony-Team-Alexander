@@ -1,6 +1,6 @@
 {
   "android": {
-    "font_name": "default"
+    "font_name": "FontAwesome"
   },
   "androidwearos": {
     "font_name": "default"
@@ -31,13 +31,13 @@
   },
   "kuid": "sb4bcded52654b759c34238cfe7e56b9",
   "spaan": {
-    "font_name": "Helvetica"
+    "font_name": "FontAwesome"
   },
   "spaandroidtablet": {
     "font_name": "Helvetica"
   },
   "spaip": {
-    "font_name": "Helvetica"
+    "font_name": "FontAwesome"
   },
   "spaipad": {
     "font_name": "Helvetica"
@@ -46,7 +46,7 @@
     "font_name": "Helvetica"
   },
   "spawinphone8": {
-    "font_name": "Helvetica"
+    "font_name": "FontAwesome"
   },
   "tabrcandroid": {
     "font_name": "default"
@@ -59,6 +59,6 @@
     "font_name": "None"
   },
   "winphone8": {
-    "font_name": "None"
+    "font_name": "FontAwesome"
   }
 }

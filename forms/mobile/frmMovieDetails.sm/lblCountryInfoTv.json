@@ -1,13 +1,17 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
-    "_height_": {
+    "_bottom_": {
         "type": "string",
-        "value": "110dp"
+        "value": "0dp"
+    },
+    "_height_": {
+        "type": "ref",
+        "value": "preferred"
     },
     "_left_": {
         "type": "string",
-        "value": "120dp"
+        "value": "130dp"
     },
     "_margin_": [
         1,
@@ -22,18 +26,14 @@
         0
     ],
     "_right_": {
-        "type": "number",
-        "value": "10"
+        "type": "string",
+        "value": "10dp"
     },
-    "_skin_": "sbe6324bdf7841038571d0a8b3f73495",
-    "_text_": "",
+    "_skin_": "s7768e2aed3544f4a68e12fc220445cc",
+    "_text_": "Label",
     "_top_": {
         "type": "string",
-        "value": "70dp"
-    },
-    "_width_": {
-        "type": "ref",
-        "value": "preferred"
+        "value": "0dp"
     },
     "_wrapping_": 2,
     "android": {
@@ -43,10 +43,9 @@
         }
     },
     "canUpdateUI": true,
-    "containerId": true,
     "containerweight": 100,
-    "contentalignment": 1,
-    "id": "lblMovieDescription",
+    "contentalignment": 4,
+    "id": "lblCountryInfoTv",
     "info": null,
     "ipad": {
         "psp": {
@@ -60,15 +59,13 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "d81d05a44f6e40c189e44e5cc19c3eb5",
-    "maxnumberoflines": 4,
+    "kuid": "j448d98466f6460392515aa5e67958ed",
     "name": "kony.ui.Label",
-    "parent": "favouritRow",
-    "pf": "FavouriteRowTemplate",
+    "parent": "flxDetailsItemTv",
+    "pf": "frmMovieDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},
-    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label",
     "zindex": 1

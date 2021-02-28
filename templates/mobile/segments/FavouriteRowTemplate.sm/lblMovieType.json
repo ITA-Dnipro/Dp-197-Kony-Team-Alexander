@@ -3,7 +3,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "50dp"
+        "value": "40dp"
     },
     "_left_": {
         "type": "string",
@@ -23,13 +23,13 @@
     ],
     "_right_": {
         "type": "number",
-        "value": "51"
+        "value": "0"
     },
-    "_skin_": "s61964816e054e76bd3ede8872dc4c13",
+    "_skin_": "sbe6324bdf7841038571d0a8b3f73495",
     "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "10dp"
+        "value": "100dp"
     },
     "_width_": {
         "type": "ref",
@@ -45,8 +45,8 @@
     "canUpdateUI": true,
     "containerId": true,
     "containerweight": 100,
-    "contentalignment": 4,
-    "id": "lblMovieTitle",
+    "contentalignment": 1,
+    "id": "lblMovieType",
     "info": null,
     "ipad": {
         "psp": {
@@ -60,8 +60,8 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "a1bc2faf53034d33822d91a46c5a3dad",
-    "maxnumberoflines": 1,
+    "kuid": "cae9785fc5ab4592ae643f9fe9332a0a",
+    "maxnumberoflines": 4,
     "name": "kony.ui.Label",
     "parent": "favouritRow",
     "pf": "FavouriteRowTemplate",

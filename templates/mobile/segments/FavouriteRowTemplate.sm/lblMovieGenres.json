@@ -2,8 +2,8 @@
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
     "_height_": {
-        "type": "string",
-        "value": "50dp"
+        "type": "ref",
+        "value": "preferred"
     },
     "_left_": {
         "type": "string",
@@ -23,13 +23,13 @@
     ],
     "_right_": {
         "type": "number",
-        "value": "51"
+        "value": "0"
     },
-    "_skin_": "s61964816e054e76bd3ede8872dc4c13",
+    "_skin_": "sbe6324bdf7841038571d0a8b3f73495",
     "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "10dp"
+        "value": "140dp"
     },
     "_width_": {
         "type": "ref",
@@ -45,8 +45,8 @@
     "canUpdateUI": true,
     "containerId": true,
     "containerweight": 100,
-    "contentalignment": 4,
-    "id": "lblMovieTitle",
+    "contentalignment": 1,
+    "id": "lblMovieGenres",
     "info": null,
     "ipad": {
         "psp": {
@@ -60,8 +60,8 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "a1bc2faf53034d33822d91a46c5a3dad",
-    "maxnumberoflines": 1,
+    "kuid": "g7e47ebc27924daaadd169a72d85402b",
+    "maxnumberoflines": 4,
     "name": "kony.ui.Label",
     "parent": "favouritRow",
     "pf": "FavouriteRowTemplate",

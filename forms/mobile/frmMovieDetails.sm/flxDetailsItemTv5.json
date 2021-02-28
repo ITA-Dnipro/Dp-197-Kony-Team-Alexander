@@ -1,8 +1,8 @@
 {
     "DNDConfig": null,
     "_height_": {
-        "type": "string",
-        "value": "220dp"
+        "type": "ref",
+        "value": "preferred"
     },
     "_left_": {
         "type": "string",
@@ -22,51 +22,44 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s89bf0183bc34859adf8d17b8b69b5ce",
-    "_top_": {
+    "_right_": {
         "type": "string",
         "value": "0dp"
+    },
+    "_skin_": "s76eb47ca2b149bdabc0a625e94b9cf6",
+    "_top_": {
+        "type": "string",
+        "value": "3dp"
     },
     "_width_": {
         "type": "string",
         "value": "100%"
     },
     "allboxes": [],
-    "autogrowmode": 0,
+    "autogrowmode": 1,
     "canUpdateUI": true,
     "children": [
-        "imgMoviePoster",
-        "lblMovieTitle",
-        "lblMovieReleasDate",
-        "lblMovieType",
-        "lblMovieGenres",
-        "btnDeleteMoviFromList"
+        "lblCreatedBy",
+        "flxCreatedBy"
     ],
     "clipbounds": true,
-    "containerId": true,
     "containerweight": 100,
-    "controllerInfo": {
-        "default": {
-            "channel": "mobile",
-            "name": "favouritRowController"
-        }
-    },
     "enablescrolling": true,
-    "id": "favouritRow",
+    "id": "flxDetailsItemTv5",
     "info": null,
-    "isTemplate": true,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "a573645b055c4475945b4e79f1bbbb6c",
+    "kuid": "aabe8f8ad9d24a7bb6d3deab3e7b3166",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "FavouriteRowTemplate",
-    "pf": "FavouriteRowTemplate",
+    "parent": "flxTvDetails",
+    "pf": "frmMovieDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
     "snapgridsize": 10,
     "snaptogrid": true,
     "wType": "FlexContainer",
-    "widgetalignment": 1
+    "widgetalignment": 1,
+    "zindex": 1
 }

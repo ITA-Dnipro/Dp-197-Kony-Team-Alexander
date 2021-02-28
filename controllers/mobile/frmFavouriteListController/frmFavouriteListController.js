@@ -2,15 +2,16 @@ define(["FavouriteListService"], function(favouriteListService){
   return {
     onInitialize: function() {
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
-      this.view.btnBack.onClick = Utility.navigateTo.bind(null, "frmMovieList");
+      this.view.btnBack.onClick = Utility.goBack;
+//       this.view.btnBack.onClick = Utility.navigateTo.bind(null, "frmMovieList");
+      
+      this.view.onDeviceBack = Utility.goBack;
     },
 
     onNavigate: function() {  
       kony.application.showLoadingScreen();
-      alert(UserId);
 
       favouriteListService.getFavouriteMovies(UserId, function(movieList) {
-        alert("1: " + movieList);
         this.onMovieListReceived(movieList);
       }.bind(this), function() {
         alert("Error while retrieving movie list");
@@ -21,22 +22,31 @@ define(["FavouriteListService"], function(favouriteListService){
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
       Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id});
     },
-      
+
     onMovieListReceived: function(movieList) {
-      alert(movieList);
-            var lst = this.view.lstMovies;
+      var lst = this.view.lstMovies;
       var movieListData = movieList.map(function(m) {
         return {
           lblMovieTitle: m.title,
-//           lblMovieDescription: m.genreNamesList.join(', '),
-          lblMovieDescription: m.genres,
-//           lblMovieYear: String(m.released),
+          lblMovieGenres: m.genres,
+          lblMovieReleasDate: m.released,
+          lblMovieType: m.media_type,
           imgMoviePoster: m.poster_path,
           id: m.id,
           btnDeleteMoviFromList: {
             text: "\uf00d",
             onClick: function() {
-              lst.removeAt(arguments[1].rowIndex);
+              var rowIndex = arguments[1].rowIndex;
+              lst.removeAt(rowIndex);
+              favouriteListService.getFavouriteMovies(UserId, function(favList) {
+                favouriteListService.deleteFavouriteList(favList[rowIndex].dbId, function() {
+                  alert("Deleted");
+                }, function() {
+                alert("Error while deleting favourite movie list");
+              });
+              }, function() {
+                alert("Error while retrieving favourite movie list");
+              });
             }
           }
         };

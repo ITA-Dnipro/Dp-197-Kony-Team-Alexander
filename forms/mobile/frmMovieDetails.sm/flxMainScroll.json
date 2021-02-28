@@ -39,6 +39,7 @@
     "children": [
         "flxMovieDetailsHeader",
         "flxMovieDetails",
+        "flxTvDetails",
         "lblTopCast",
         "flxCastCarousel",
         "btnShowRecommendations",

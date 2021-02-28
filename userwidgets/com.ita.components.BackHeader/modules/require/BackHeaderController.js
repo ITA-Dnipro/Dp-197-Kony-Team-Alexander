@@ -6,6 +6,7 @@ define(function() {
       if (form){
         (new kony.mvc.Navigation(form.id)).navigate();
       }
+//       Utility.goBack();
     }
 	};
 });
