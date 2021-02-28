@@ -1,4 +1,4 @@
-define(["MovieService", "AuthenticationService"], function(movieService, dbService){ 
+define(["MovieService", "AuthenticationService", "FavouriteListService"], function(movieService, dbService, favouriteService){ 
 
   return {
     onInitialize: function() {
@@ -14,8 +14,16 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       this.view.btnFavorite.skin === "sknBtnFavorite" ?
         this.view.btnFavorite.skin = "sknBtnFavoriteActive" :
         this.view.btnFavorite.skin = "sknBtnFavorite";
-
-      dbService.toggleMovieFavorites(this.movieId);
+      
+      movieService.getMovieDetails(function(movieDetails) {
+        favouriteService.createFavouriteList(UserId, movieDetails, "tv", function() {
+          alert("create!");
+        }, function() {
+          alert("Error while retrieving movie details 2");
+        });
+      }.bind(this), function() {
+        alert("Error while retrieving movie details");
+      }, this.movieId);
     },
 
     onBtnShowRecommendationsClicked: function() {
@@ -54,7 +62,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       
       this.movieId = movieId.id;
 
-      alert(movieId);
+//       alert(this.movieId);
 
       kony.application.showLoadingScreen();
 
@@ -64,7 +72,7 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       }.bind(this), function() {
         alert("Error while retrieving movie details");
         kony.application.dismissLoadingScreen();
-      }, movieId.id);
+      }, this.movieId);
 
       movieService.getSimilarMovieList(function(movieList) {
         this.onSimilarMovieListReceived(movieList);

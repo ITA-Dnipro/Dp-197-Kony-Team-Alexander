@@ -7,10 +7,8 @@ define(["FavouriteListService"], function(favouriteListService){
 
     onNavigate: function() {  
       kony.application.showLoadingScreen();
-      alert(UserId);
 
       favouriteListService.getFavouriteMovies(UserId, function(movieList) {
-        alert("1: " + movieList);
         this.onMovieListReceived(movieList);
       }.bind(this), function() {
         alert("Error while retrieving movie list");
@@ -21,16 +19,15 @@ define(["FavouriteListService"], function(favouriteListService){
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
       Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id});
     },
-      
+
     onMovieListReceived: function(movieList) {
-      alert(movieList);
-            var lst = this.view.lstMovies;
+      var lst = this.view.lstMovies;
       var movieListData = movieList.map(function(m) {
         return {
           lblMovieTitle: m.title,
-//           lblMovieDescription: m.genreNamesList.join(', '),
+          //           lblMovieDescription: m.genreNamesList.join(', '),
           lblMovieDescription: m.genres,
-//           lblMovieYear: String(m.released),
+          lblMovieYear: String(m.released),
           imgMoviePoster: m.poster_path,
           id: m.id,
           btnDeleteMoviFromList: {
