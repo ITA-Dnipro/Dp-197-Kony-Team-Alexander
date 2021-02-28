@@ -22,14 +22,14 @@
         0
     ],
     "_skin_": "s05760ff3c734edc8b6470a9c784ec3a",
-    "_text_": "",
+    "_text_": "",
     "_top_": {
         "type": "string",
         "value": "10dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100dp"
+        "value": "80dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,

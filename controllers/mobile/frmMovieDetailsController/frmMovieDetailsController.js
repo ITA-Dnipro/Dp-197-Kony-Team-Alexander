@@ -1,4 +1,4 @@
-define(["MovieService", "AuthenticationService"], function(movieService, dbService){ 
+define(["MovieService", "AuthenticationService", "FavouriteListService"], function(movieService, dbService, favouriteService){ 
 
   return {
     onInitialize: function() {
@@ -15,9 +15,16 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
       this.view.btnFavorite.skin === "sknBtnFavorite" ?
         this.view.btnFavorite.skin = "sknBtnFavoriteActive" :
       this.view.btnFavorite.skin = "sknBtnFavorite";
-
-      dbService.toggleMovieFavorites(this.movieId);
-      alert(this.movieId);
+      
+      movieService.getMovieDetails(function(movieDetails) {
+        favouriteService.createFavouriteList(UserId, movieDetails, function() {
+          alert("create!");
+        }, function() {
+          alert("Error while add movie to favourits");
+        });
+      }.bind(this), function() {
+        alert("Error while retrieving movie details");
+      }, this.movieId);
     },
 
     onBtnShowClicked: function(btn, text, list) {
@@ -55,7 +62,6 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
         this.type = movieData.type;
       }
 
-//             alert(this.type + " id " + this.movieId); // "movie" "tv" не удаляйте этот коммент
       
       if (this.type === "movie") {
         
