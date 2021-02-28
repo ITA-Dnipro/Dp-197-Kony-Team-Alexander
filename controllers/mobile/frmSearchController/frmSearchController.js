@@ -3,7 +3,9 @@ define(["MovieService"], function(movieService){
     onInitialize: function() {
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
       //       this.view.btnSearch.onClick = this.loadResultList.bind(this);
-      this.view.btnBack.onClick = Utility.navigateTo.bind(null, "frmMovieList");
+      this.view.btnBack.onClick = Utility.goBack
+      
+//       this.view.btnBack.onClick = Utility.navigateTo.bind(null, "frmMovieList");
       this.view.btnDeleteText.onClick = this.onBtnDeleteTextClicked.bind(this);
       this.view.inpSearch.onBeginEditing = this.showBtnDeleteText.bind(this);
       this.view.inpSearch.onEndEditing = this.hideBtnDeleteText.bind(this);
@@ -11,6 +13,8 @@ define(["MovieService"], function(movieService){
       this.view.inpSearch.keyboardActionLabel = constants.TEXTBOX_KEYBOARD_LABEL_SEARCH;
 
       //       this.view.btnUpcoming.onClick = this.loadResultList.bind(this, "upcoming", this.view.btnUpcoming);
+      
+      this.view.onDeviceBack = Utility.goBack;
     },
 
     onNavigate: function(data) {  

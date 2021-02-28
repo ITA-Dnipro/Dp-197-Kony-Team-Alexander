@@ -3,6 +3,8 @@ define(["AuthenticationService"], function(authUser) {
     onInitialize: function() {
       this.view.btnCreateAccount.onClick = this.onBtnCreateAccount.bind(this);
       this.view.btnBackToLogin.onClick = Utility.goBack;
+      
+      this.view.onDeviceBack = Utility.goBack;
     },
 
     onNavigate: function() {

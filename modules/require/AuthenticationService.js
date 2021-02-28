@@ -1,11 +1,20 @@
 define(["FakeAuthServiceImpl", "AuthServiceFabricImpl" ], function (fake, fabricImpl) {
 
   return {
-    checkUser: fabricImpl.checkUser,
-    updateUserProfile: fabricImpl.updateUserProfile,
-    registerUser: fabricImpl.registerUser,
+    checkUser: fake.checkUser,
+    updateUserProfile: fake.updateUserProfile,
+    registerUser: fake.registerUser,
     toggleMovieFavorites: fake.toggleMovieFavorites,
-    getUserProfile: fabricImpl.getUserProfile,
+    getUserProfile: fake.getUserProfile,
     isMovieInFavoriteList: fake.isMovieInFavoriteList
   };
+  
+//   return {
+//     checkUser: fabricImpl.checkUser,
+//     updateUserProfile: fabricImpl.updateUserProfile,
+//     registerUser: fabricImpl.registerUser,
+//     toggleMovieFavorites: fake.toggleMovieFavorites,
+//     getUserProfile: fabricImpl.getUserProfile,
+//     isMovieInFavoriteList: fake.isMovieInFavoriteList
+//   };
 });

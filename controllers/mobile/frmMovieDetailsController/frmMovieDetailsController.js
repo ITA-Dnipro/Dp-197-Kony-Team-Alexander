@@ -52,44 +52,82 @@ define(["MovieService", "AuthenticationService"], function(movieService, dbServi
 
       if (movieData) {
         this.movieId = movieData.id;  
-        this.type = movieData.type
+        this.type = movieData.type;
       }
 
-      //       alert(this.type); "movie" "tv" не удаляйте этот коммент
+            alert(this.type + " id " + this.movieId); // "movie" "tv" не удаляйте этот коммент
+      
+      if (this.type === "movie") {
+        
+        kony.application.showLoadingScreen();
 
-      kony.application.showLoadingScreen();
+        movieService.getMovieDetails(function(movieDetails) {
+          this.onMovieDetailsReceived(movieDetails);
+          kony.application.dismissLoadingScreen();
+        }.bind(this), function() {
+          alert("Error while retrieving movie details");
+          kony.application.dismissLoadingScreen();
+        }, this.movieId);
 
-      movieService.getMovieDetails(function(movieDetails) {
-        this.onMovieDetailsReceived(movieDetails);
-        kony.application.dismissLoadingScreen();
-      }.bind(this), function() {
-        alert("Error while retrieving movie details");
-        kony.application.dismissLoadingScreen();
-      }, this.movieId);
+        movieService.getSimilarMovieList(function(movieList) {
+          this.onSimilarMovieListReceived(movieList);
+          kony.application.dismissLoadingScreen();
+        }.bind(this), function() {
+          alert("Error while retrieving similar movie list");
+          kony.application.dismissLoadingScreen();
+        }, this.movieId);
 
-      movieService.getSimilarMovieList(function(movieList) {
-        this.onSimilarMovieListReceived(movieList);
-        kony.application.dismissLoadingScreen();
-      }.bind(this), function() {
-        alert("Error while retrieving similar movie list");
-        kony.application.dismissLoadingScreen();
-      }, this.movieId);
+        movieService.getRecommendedMovieList(function(movieList) {
+          this.onRecommendedMovieListReceived(movieList);
+          kony.application.dismissLoadingScreen();
+        }.bind(this), function() {
+          alert("Error while retrieving recommended movie list");
+          kony.application.dismissLoadingScreen();
+        }, this.movieId);
 
-      movieService.getRecommendedMovieList(function(movieList) {
-        this.onRecommendedMovieListReceived(movieList);
-        kony.application.dismissLoadingScreen();
-      }.bind(this), function() {
-        alert("Error while retrieving recommended movie list");
-        kony.application.dismissLoadingScreen();
-      }, this.movieId);
+        movieService.getMovieCredits(function(creditsList) {
+          this.onMovieCreditsReceived(creditsList);
+          kony.application.dismissLoadingScreen();
+        }.bind(this), function() {
+          alert("Error while retrieving movie credits");
+          kony.application.dismissLoadingScreen();
+        }, this.movieId);        
+      } else {
+        
+//         kony.application.showLoadingScreen();
 
-      movieService.getMovieCredits(function(creditsList) {
-        this.onMovieCreditsReceived(creditsList);
-        kony.application.dismissLoadingScreen();
-      }.bind(this), function() {
-        alert("Error while retrieving movie credits");
-        kony.application.dismissLoadingScreen();
-      }, this.movieId);
+//         movieService.getTvDetails(function(tvDetails) {
+//           this.onMovieDetailsReceived(tvDetails);
+//           kony.application.dismissLoadingScreen();
+//         }.bind(this), function() {
+//           alert("Error while retrieving movie details");
+//           kony.application.dismissLoadingScreen();
+//         }, this.movieId);
+
+//         movieService.getSimilarTvList(function(tvList) {
+//           this.onSimilarMovieListReceived(tvList);
+//           kony.application.dismissLoadingScreen();
+//         }.bind(this), function() {
+//           alert("Error while retrieving similar movie list");
+//           kony.application.dismissLoadingScreen();
+//         }, this.movieId);
+
+//         movieService.getRecommendedTvList(function(movieList) {
+//           this.onRecommendedMovieListReceived(movieList);
+//           kony.application.dismissLoadingScreen();
+//         }.bind(this), function() {
+//           alert("Error while retrieving recommended movie list");
+//           kony.application.dismissLoadingScreen();
+//         }, this.movieId);
+
+//         movieService.getMovieCredits(function(creditsList) {
+//           this.onMovieCreditsReceived(creditsList);
+//           kony.application.dismissLoadingScreen();
+//         }.bind(this), function() {
+//           alert("Error while retrieving movie credits");
+//           kony.application.dismissLoadingScreen();
+//         }, this.movieId);
+      }
 
       this.view.flxMainScroll.setContentOffset({
         "x": "0dp",

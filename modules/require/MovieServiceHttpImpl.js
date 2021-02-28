@@ -47,11 +47,56 @@ define(function () {
       }
     }, errorCallback);    
   };
+  
+  var getTvDetails = function(successCallback, errorCallback, id) {
+    var TV_DETAILS_URL = MOVIE_BASE_URL + String(id) + "?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US";
+
+    makeHttpRequest(TV_DETAILS_URL, function(m) {
+      if (m) {
+        var movieDetails = new MovieData({
+          type: "movie",
+          id: m.id,
+          title: m.title, 
+          description: m.overview, 
+          countries: m.production_countries, 
+          duration: m.runtime, 
+          released: m.release_date, 
+          genresId: m.genres.map(function(g) { return g.id; }),
+          genreNamesList: m.genres.map(function(g) { return g.name; }),
+          voteAvg: m.vote_average, 
+          posterPath: m.poster_path,
+          backdropPath: m.backdrop_path
+        });   
+
+        successCallback(movieDetails);
+      }
+    }, errorCallback);    
+  };
 
   var getSimilarMovieList = function(successCallback, errorCallback, mId) {
     var SIMILAR_MOVIE_URL = MOVIE_BASE_URL + String(mId) + "/similar?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
 
     makeHttpRequest(SIMILAR_MOVIE_URL, function(movies) {
+      if (movies.results && Array.isArray(movies.results)) {
+        var movieList = movies.results.map(function(m) {
+          return new MovieData({
+            type: "movie",
+            id: m.id,
+            title: m.title, 
+            description: m.overview, 
+            posterPath: m.poster_path
+          }); 
+        });
+
+        successCallback(movieList);
+      }
+    }, errorCallback);  
+  };
+  
+  var getSimilarTvList = function(successCallback, errorCallback, mId) {
+    var SIMILAR_TV_URL = MOVIE_BASE_URL + String(mId) + "/similar?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&page=1";
+
+    makeHttpRequest(SIMILAR_TV_URL, function(movies) {
       if (movies.results && Array.isArray(movies.results)) {
         var movieList = movies.results.map(function(m) {
           return new MovieData({
@@ -393,7 +438,9 @@ define(function () {
 
   return {
     getMovieDetails: getMovieDetails,
+    getTvDetails: getTvDetails,
     getSimilarMovieList: getSimilarMovieList,  
+    getSimilarTvList: getSimilarTvList,
     getRecommendedMovieList: getRecommendedMovieList,
     getMovieList: getMovieList,
     searchMovie: searchMovie,

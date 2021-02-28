@@ -2,7 +2,10 @@ define(["FavouriteListService"], function(favouriteListService){
   return {
     onInitialize: function() {
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
-      this.view.btnBack.onClick = Utility.navigateTo.bind(null, "frmMovieList");
+      this.view.btnBack.onClick = Utility.goBack;
+//       this.view.btnBack.onClick = Utility.navigateTo.bind(null, "frmMovieList");
+      
+      this.view.onDeviceBack = Utility.goBack;
     },
 
     onNavigate: function() {  
