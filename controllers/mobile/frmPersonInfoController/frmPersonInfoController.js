@@ -65,7 +65,7 @@ define(["MovieService"], function(movieService){
         btn.text = btn.text.slice(0, btn.text.length - 1) + "\uf054";
 
         var y = this.view.flxMainScroll.contentOffsetMeasured.y; 
-        alert(y + " h: " + this.view.flxMainScroll.height);
+//         alert(y + " h: " + this.view.flxMainScroll.height);
        
         this.view.flxMainScroll.setContentOffset({
           "x": "0dp",
