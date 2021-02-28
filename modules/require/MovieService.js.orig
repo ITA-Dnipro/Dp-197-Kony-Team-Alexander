@@ -1,0 +1,18 @@
+define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl, httpImpl) {
+  
+<<<<<<< HEAD
+  var concreteImpl = (fabricImpl) ? fabricImpl : httpImpl;
+//   var concreteImpl = httpImpl;
+=======
+  var concreteImpl = (!!fabricImpl) ? fabricImpl : httpImpl;
+>>>>>>> origin/master
+  
+    return {
+      getMovieDetails: concreteImpl.getMovieDetails,
+      getSimilarMovieList: concreteImpl.getSimilarMovieList,
+      getMovieList: concreteImpl.getMovieList,
+      getRecommendedMovieList: concreteImpl.getRecommendedMovieList,
+      searchMovie: concreteImpl.searchMovie,
+      getMovieCredits: concreteImpl.getMovieCredits
+    };
+});

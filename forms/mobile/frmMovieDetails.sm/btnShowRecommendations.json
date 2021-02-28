@@ -3,7 +3,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "50dp"
+        "value": "45dp"
     },
     "_left_": {
         "type": "string",
@@ -22,10 +22,10 @@
         0
     ],
     "_skin_": "s290f36e41224c0181bb7d7281a29182",
-    "_text_": "Recommendations",
+    "_text_": "Recommendations   ",
     "_top_": {
         "type": "string",
-        "value": "5dp"
+        "value": "0dp"
     },
     "_width_": {
         "type": "string",
@@ -35,7 +35,7 @@
     "containerweight": 100,
     "contentalignment": 4,
     "displaytext": true,
-    "focusskin": "s7bca4c3362040f68461b75e6d8bcc14",
+    "focusskin": "s86defdac6d148249d47f30bd9cfa412",
     "id": "btnShowRecommendations",
     "info": null,
     "iscustomlayout": false,

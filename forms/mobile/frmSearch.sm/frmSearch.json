@@ -31,13 +31,14 @@
     "canUpdateUI": true,
     "children": [
         "flxHeader",
-        "lstMovies"
+        "lstMovies",
+        "lblNotFound"
     ],
     "containerweight": 100,
     "controllerInfo": {
         "default": {
             "channel": "mobile",
-            "name": "frmMovieSearchController"
+            "name": "frmSearchController"
         }
     },
     "currentLocale": "default",
@@ -47,7 +48,7 @@
     "device": "iPhone11",
     "displayorientation": 1,
     "enabledforidletimeout": false,
-    "id": "frmMovieSearch",
+    "id": "frmSearch",
     "ide_init": "AS_Form_c2966ac0833442e28ee6a6ef800bd0c6",
     "info": null,
     "initdone": false,

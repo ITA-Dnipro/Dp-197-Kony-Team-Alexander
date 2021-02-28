@@ -82,8 +82,8 @@
     "paginationconfig": {
         "position": "bottom"
     },
-    "parent": "frmMovieSearch",
-    "pf": "frmMovieSearch",
+    "parent": "frmSearch",
+    "pf": "frmSearch",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainselection": false,

@@ -7,7 +7,7 @@
             "name": "eventobject"
         }],
         "contextObj": {
-            "name": "frmMovieSearch",
+            "name": "frmSearch",
             "type": "forms",
             "platform": null,
             "KUID": "f99271ee27b14c1a9fbd6d0957789887"

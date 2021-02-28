@@ -1,0 +1,89 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "DNDConfig": null,
+    "_children_": [],
+    "_height_": {
+        "type": "ref",
+        "value": "preferred"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 1,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_skin_": "s76eb47ca2b149bdabc0a625e94b9cf6",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "areflexpropsreferenced": false,
+    "autogrowmode": 1,
+    "canUpdateUI": true,
+    "clipbounds": true,
+    "containerweight": 0,
+    "dataDiffs": {
+        "MovieList": {
+            "__events__": {},
+            "__info__": {
+                "isRoot": true,
+                "kuid": "ca198c2d19264c078b130646335300b3",
+                "srcKUID": "j8b105f317194b2dab03a66b332d2d7f",
+                "wType": "FlexContainer"
+            }
+        },
+        "btnShow": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "b9ca43d76c204d1e8d7ae97322b6b6cf",
+                "srcKUID": "c3c354b495bb4ff38d702ebc88e7fa69",
+                "wType": "Button"
+            }
+        },
+        "lstMovies": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "ba6ad8c157be49a598007304ddef5d4c",
+                "srcKUID": "i95ec1a55bcb420e9dcc488e6b3fa5a4",
+                "wType": "Segment"
+            }
+        }
+    },
+    "enablescrolling": true,
+    "id": "ActingList",
+    "info": null,
+    "iscustomlayout": false,
+    "isdatareferenced": false,
+    "issegmentchild": false,
+    "isvisible": true,
+    "kuid": "ca198c2d19264c078b130646335300b3",
+    "layouttype": 2,
+    "masterType": 0,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "flxMainScroll",
+    "pf": "frmPersonInfo",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "sourceUserWidget": "j8b105f317194b2dab03a66b332d2d7f",
+    "wType": "UserWidgetInstance",
+    "zindex": 2
+}
