@@ -40,7 +40,7 @@
     "canUpdateUI": true,
     "children": [
         "lblDirector",
-        "lblDirectorInfo"
+        "flxDirectorInfo"
     ],
     "clipbounds": true,
     "containerweight": 100,

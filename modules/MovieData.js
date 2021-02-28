@@ -22,6 +22,7 @@ function MovieData(d) {
     this.countriesList = countriesList.length > 0 ? countriesList : ["unknown"];
   }
  
+  this.type = d.type || "unknown";
   this.id = d.id || "unknown";
   this.title = d.title || "unknown";
   this.description = d.description || "unknown";

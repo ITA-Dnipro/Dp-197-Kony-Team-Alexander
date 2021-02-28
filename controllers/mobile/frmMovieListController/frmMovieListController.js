@@ -2,7 +2,7 @@ define(["MovieService"], function(movieService){
   return {
     onInitialize: function() {
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
-      this.view.btnSearch.onClick = Utility.navigateTo.bind(null, "frmMovieSearch");
+      this.view.btnSearch.onClick = Utility.navigateTo.bind(null, "frmSearch", {searchFor: "movies"});
       this.view.btnPopular.onClick = this.loadMovieList.bind(this, "popular", this.view.btnPopular);
       this.view.btnTopRated.onClick = this.loadMovieList.bind(this, "top_rated", this.view.btnTopRated);
       this.view.btnInTheatres.onClick = this.loadMovieList.bind(this, "now_playing", this.view.btnInTheatres);
@@ -39,7 +39,7 @@ define(["MovieService"], function(movieService){
     },
 
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-      Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id});
+      Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id, type: widgetRef.data[rowIndex].type});
     },
 
     onMovieListReceived: function(movieList) {
@@ -50,6 +50,7 @@ define(["MovieService"], function(movieService){
           lblMovieYear: String(m.released),
           imgMoviePoster: m.poster,
           id: m.id,
+          type: m.type
         };
       });
   

@@ -5,6 +5,10 @@
         "type": "string",
         "value": "70dp"
     },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
     "_margin_": [
         6,
         6,
@@ -17,33 +21,29 @@
         0,
         0
     ],
-    "_right_": {
-        "type": "string",
-        "value": "70dp"
-    },
-    "_skin_": "s4015fdea16c4ae09a697f2db70e0734",
-    "_text_": "",
+    "_skin_": "s6dfbaa046dc4421bec25d2a6de3d699",
+    "_text_": "",
     "_top_": {
         "type": "string",
         "value": "0dp"
     },
     "_width_": {
         "type": "string",
-        "value": "40dp"
+        "value": "70dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "s84b861a921544519885977ef6f044d1",
-    "id": "btnDeleteText",
+    "focusskin": "s560ae4e2bba484dba3c0ab31ea966ab",
+    "id": "btnBack",
     "info": null,
     "iscustomlayout": false,
-    "isvisible": false,
-    "kuid": "b08d937cbc87469399a2c3f12e90924f",
+    "isvisible": true,
+    "kuid": "ge4613022c2347d6bb4cf092e53573d1",
     "name": "kony.ui.Button",
     "parent": "flxHeader",
-    "pf": "frmMovieSearch",
+    "pf": "frmSearch",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",

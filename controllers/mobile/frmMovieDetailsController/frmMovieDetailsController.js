@@ -6,14 +6,15 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       this.view.lstSimilarMovies.onRowClick = this.onSimilarMoviesRowClicked.bind(this);
       this.view.lstRecommendedMovies.onRowClick = this.onSimilarMoviesRowClicked.bind(this);
       this.view.btnFavorite.onClick = this.onbtnFavoriteClicked.bind(this);
-      this.view.btnShowRecommendations.onClick = this.onBtnShowRecommendationsClicked.bind(this);
-      this.view.btnShowSimilarMovie.onClick = this.onBtnShowSimilarMovieClicked.bind(this);
+      this.view.onDeviceBack = Utility.goBack;
+      this.view.btnShowRecommendations.onClick = this.onBtnShowClicked.bind(this, this.view.btnShowRecommendations, "Recommendations", this.view.lstRecommendedMovies);
+      this.view.btnShowSimilarMovie.onClick = this.onBtnShowClicked.bind(this, this.view.btnShowSimilarMovie, "Similar Movies", this.view.lstSimilarMovies);
     },
 
     onbtnFavoriteClicked: function() {
       this.view.btnFavorite.skin === "sknBtnFavorite" ?
         this.view.btnFavorite.skin = "sknBtnFavoriteActive" :
-        this.view.btnFavorite.skin = "sknBtnFavorite";
+      this.view.btnFavorite.skin = "sknBtnFavorite";
       
       movieService.getMovieDetails(function(movieDetails) {
         favouriteService.createFavouriteList(UserId, movieDetails, function() {
@@ -26,41 +27,40 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       }, this.movieId);
     },
 
-    onBtnShowRecommendationsClicked: function() {
-      this.view.btnShowRecommendations.skin === "sknBtnRecommendedMovie" ?
-        this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovieActive" :
-        this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
-        
-      var isVisible = this.view.lstRecommendedMovies.isVisible;
-      this.view.lstRecommendedMovies.isVisible = !isVisible;
-      
-      var y = this.view.flxMainScroll.contentOffsetMeasured.y + 130;      
-      this.view.flxMainScroll.setContentOffset({
-//         "x": "0dp",
-        "y": y + "dp"
-      }, true);
-    },
-    
-    onBtnShowSimilarMovieClicked: function() {
-      this.view.btnShowSimilarMovie.skin === "sknBtnRecommendedMovie" ?
-        this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovieActive" :
-        this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
-      
-      var isVisible = this.view.lstSimilarMovies.isVisible;
-      this.view.lstSimilarMovies.isVisible = !isVisible;
-      
-      var y = this.view.flxMainScroll.contentOffsetMeasured.y + 130;      
-      this.view.flxMainScroll.setContentOffset({
-//         "x": "0dp",
-        "y": y + "dp"
-      }, true);
+    onBtnShowClicked: function(btn, text, list) {
+      if (btn.skin === "sknBtnRecommendedMovie") {
+        btn.skin = "sknBtnRecommendedMovieActive";
+        btn.text = text + "   \uf054";
+        list.isVisible = true;
+
+        var y = this.view.flxMainScroll.contentOffsetMeasured.y + 150; 
+        this.view.flxMainScroll.setContentOffset({
+          "x": "0dp",
+          "y": y + "dp"
+        }, true);
+        //         if (y < 500) {
+        //           this.view.flxMainScroll.setContentOffset({
+        //             "x": "0dp",
+        //             "y": y + "dp"
+        //           }, true);
+        //         }        
+      } else {
+        btn.skin = "sknBtnRecommendedMovie";
+        btn.text = text + "   \uf078";
+        list.isVisible = false;
+      }
     },
 
-    onNavigate: function(movieId) {
+    onNavigate: function(movieData) {
       this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
       this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
-      
-      this.movieId = movieId.id;
+      this.view.btnShowRecommendations.text = "Recommendations   \uf078";
+      this.view.btnShowSimilarMovie.text = "Similar Movies   \uf078";
+
+      if (movieData) {
+        this.movieId = movieData.id;  
+        this.type = movieData.type
+      }
 
       alert(movieId.id);
 
@@ -72,7 +72,7 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       }.bind(this), function() {
         alert("Error while retrieving movie details");
         kony.application.dismissLoadingScreen();
-      }, movieId.id);
+      }, this.movieId);
 
       movieService.getSimilarMovieList(function(movieList) {
         this.onSimilarMovieListReceived(movieList);
@@ -80,15 +80,15 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       }.bind(this), function() {
         alert("Error while retrieving similar movie list");
         kony.application.dismissLoadingScreen();
-      }, movieId.id);
-      
+      }, this.movieId);
+
       movieService.getRecommendedMovieList(function(movieList) {
         this.onRecommendedMovieListReceived(movieList);
         kony.application.dismissLoadingScreen();
       }.bind(this), function() {
         alert("Error while retrieving recommended movie list");
         kony.application.dismissLoadingScreen();
-      }, movieId.id);
+      }, this.movieId);
 
       movieService.getMovieCredits(function(creditsList) {
         this.onMovieCreditsReceived(creditsList);
@@ -96,14 +96,25 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       }.bind(this), function() {
         alert("Error while retrieving movie credits");
         kony.application.dismissLoadingScreen();
-      }, movieId.id);
+      }, this.movieId);
+
+      this.view.flxMainScroll.setContentOffset({
+        "x": "0dp",
+        "y": "0dp"
+      }, false);
+
+      this.view.flxCastCarousel.setContentOffset({
+        "x": "0dp",
+        "y": "0dp"
+      }, false);
     },
 
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-      alert(widgetRef.data[rowIndex].id);
+      //       alert(widgetRef.data[rowIndex].id);
 
       this.movieId = widgetRef.data[rowIndex].id;
-      
+      this.type = widgetRef.data[rowIndex].type;
+
       this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
       this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
 
@@ -111,21 +122,21 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
         this.onMovieDetailsReceived(movieDetails);
       }.bind(this), function() {
         alert("Error while retrieving movie details");
-      }, widgetRef.data[rowIndex].id);
+      }, this.movieId);
 
       movieService.getSimilarMovieList(function(movieList) {
         this.onSimilarMovieListReceived(movieList);
       }.bind(this), function() {
         alert("Error while retrieving similar movie list");
-      }, widgetRef.data[rowIndex].id);
-      
-       movieService.getRecommendedMovieList(function(movieList) {
+      }, this.movieId);
+
+      movieService.getRecommendedMovieList(function(movieList) {
         this.onRecommendedMovieListReceived(movieList);
         kony.application.dismissLoadingScreen();
       }.bind(this), function() {
         alert("Error while retrieving recommended movie list");
         kony.application.dismissLoadingScreen();
-      }, widgetRef.data[rowIndex].id);
+      },this.movieId);
 
       movieService.getMovieCredits(function(creditsList) {
         this.onMovieCreditsReceived(creditsList);
@@ -133,7 +144,7 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       }.bind(this), function() {
         alert("Error while retrieving similar movie list");
         kony.application.dismissLoadingScreen();
-      }, widgetRef.data[rowIndex].id);
+      }, this.movieId);
 
       this.view.flxMainScroll.setContentOffset({
         "x": "0dp",
@@ -157,6 +168,7 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
             lblMovieDescription: m.description,
             imgMoviePoster: m.poster,
             id: m.id,
+            type: m.type
           };
         });
         this.view.btnShowSimilarMovie.isVisible = true;
@@ -164,9 +176,8 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
         this.view.lstSimilarMovies.isVisible = false;
       }			
     },
-    
-    onRecommendedMovieListReceived: function(movieList) {
-    
+
+    onRecommendedMovieListReceived: function(movieList) {    
       if (movieList.length === 0) {
         this.view.btnShowRecommendations.isVisible = false;
         this.view.lstRecommendedMovies.setData({});
@@ -177,6 +188,7 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
             lblMovieDescription: m.description,
             imgMoviePoster: m.poster,
             id: m.id,
+            type: m.type,
           };
         });
         this.view.btnShowRecommendations.isVisible = true;
@@ -186,14 +198,11 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
     },
 
     onMovieDetailsReceived: function(movieData) {  
-
       if (dbService.isMovieInFavoriteList(movieData.id)) {
         this.view.btnFavorite.skin = "sknBtnFavoriteActive";
       } else {
         this.view.btnFavorite.skin = "sknBtnFavorite";        
       }
-
-      //       alert('country ' + movieData.countriesList);
 
       this.view.lblCountryInfo.text = movieData.countriesList.join(', ');
       this.view.lblDurationInfo.text = movieData.duration;
@@ -207,11 +216,31 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
     },
 
     onMovieCreditsReceived: function(creditsList) {
-      this.view.lblDirectorInfo.text = creditsList.director.map(function(d){ return d.name; }).join(", ");
+
+      //       this.view.lblDirectorInfo.text = creditsList.director.map(function(d){ return d.name; }).join(", ");
+			this.view.flxDirectorInfo.removeAll();
+      
+      for (var j = 0; j < creditsList.director.length; j++) {
+        var btnDirectorName = new kony.ui.Button({
+          id: "btnDirector" + j,
+          text: creditsList.director[j].name,
+          top: "5dp",
+          left: "0dp",
+          width: "100%",
+          height: kony.flex.USE_PREFERRED_SIZE,
+          isVisible: true,
+          skin: "sknBtnDirector",
+          onClick: this.onPersonClicked.bind(null, creditsList.director[j].id, "crew")
+        }, {
+          padding: [0,0,0,0],
+          margin: [0,0,0,0],
+          contentAlignment: constants.CONTENT_ALIGN_MIDDLE_LEFT
+        });
+
+        this.view.flxDirectorInfo.add(btnDirectorName);
+      }
+
       this.view.flxCastCarousel.removeAll();
-
-
-      //       alert('cast ' + creditsList.cast.length);
 
       if (creditsList.cast.length === 0) {
         this.view.flxCastCarousel.isVisible = false;
@@ -220,7 +249,7 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       } else {
         this.view.flxCastCarousel.isVisible = true;
         this.view.lblTopCast.isVisible = true;
-        // creditsList.cast.length
+
         for (var i = 0; i < 20; i++) {
           var flexCast = new kony.ui.FlexContainer({
             id: "flxCast" + i,
@@ -228,10 +257,6 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
             left: "5dp",
             width: "130dp",
             height: kony.flex.USE_PREFERRED_SIZE,
-            //           onClick: function(){
-            //             alert("container ");
-            //           },
-            //           onClick: this.onPeopleClicked.bind(null, creditsList.cast[i].id),
             layoutType: kony.flex.FLOW_VERTICAL
           });
 
@@ -241,20 +266,10 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
             top: "0dp",
             width: "100%",
             height: "130dp",
-
-            //           onTouchEnd: function() {
-            //             alert("touch end " + creditsList.cast[i].id);
-            //           } 
           });
 
-          //         imgCast.addGestureRecognizer(1, { fingers: 1, taps: 1 }, onActorImageTap);
-
-          //         var onActorImageTap = function() {
-          //           alert("img tap " + creditsList.cast[i].id);
-          //         };
-
           var btnName = new kony.ui.Button({
-            id: "lblCastName" + i,
+            id: "btnCastName" + i,
             text: creditsList.cast[i].name,
             top: "5dp",
             left: "0dp",
@@ -262,7 +277,7 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
             height: kony.flex.USE_PREFERRED_SIZE,
             isVisible: true,
             skin: "sknBtnCastName",
-            onClick: this.onPeopleClicked.bind(null, creditsList.cast[i].id)
+            onClick: this.onPersonClicked.bind(null, creditsList.cast[i].id, "cast")
           }, {
             padding: [0,0,0,0],
             margin: [0,0,0,0],
@@ -286,12 +301,10 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
           this.view.flxCastCarousel.add(flexCast);
         }		
       }
-
-
     },
 
-    onPeopleClicked: function(id) {
-      alert("actor " + id);
+    onPersonClicked: function(personId, role) {
+      Utility.navigateTo("frmPersonInfo", {id: personId, role: role});
     }
   }
 });

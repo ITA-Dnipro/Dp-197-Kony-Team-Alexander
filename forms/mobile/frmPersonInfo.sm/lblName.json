@@ -11,7 +11,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "120dp"
+        "value": "0dp"
     },
     "_margin_": [
         1,
@@ -25,15 +25,15 @@
         0,
         0
     ],
-    "_right_": {
-        "type": "string",
-        "value": "10dp"
-    },
-    "_skin_": "s7768e2aed3544f4a68e12fc220445cc",
-    "_text_": "Label",
+    "_skin_": "s29fa37568f84dfe9a5b8a49a7680d50",
+    "_text_": "People Name",
     "_top_": {
         "type": "string",
         "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
     },
     "_wrapping_": 2,
     "android": {
@@ -45,7 +45,7 @@
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "lblDirectorInfo",
+    "id": "lblName",
     "info": null,
     "ipad": {
         "psp": {
@@ -59,10 +59,10 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "e89a7a91ee774817ba3c9078f5865999",
+    "kuid": "a2c06e0a0ee24d0fa0bf203e4eeb743f",
     "name": "kony.ui.Label",
-    "parent": "flxDetailsItem5",
-    "pf": "frmMovieDetails",
+    "parent": "flxName",
+    "pf": "frmPersonInfo",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},

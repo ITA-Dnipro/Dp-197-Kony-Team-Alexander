@@ -1,6 +1,7 @@
 define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl, httpImpl) {
   
-  var concreteImpl = (!!fabricImpl) ? fabricImpl : httpImpl;
+//   var concreteImpl = (fabricImpl) ? fabricImpl : httpImpl;
+  var concreteImpl = httpImpl;
   
     return {
       getMovieDetails: concreteImpl.getMovieDetails,
@@ -8,6 +9,8 @@ define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl,
       getMovieList: concreteImpl.getMovieList,
       getRecommendedMovieList: concreteImpl.getRecommendedMovieList,
       searchMovie: concreteImpl.searchMovie,
-      getMovieCredits: concreteImpl.getMovieCredits
+      getMovieCredits: concreteImpl.getMovieCredits,
+      getPersonInfo: concreteImpl.getPersonInfo,
+      getPersonCredits: concreteImpl.getPersonCredits
     };
 });
