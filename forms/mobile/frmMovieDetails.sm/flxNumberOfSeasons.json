@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "100%"
+        "value": "35dp"
     },
     "_left_": {
         "type": "string",
@@ -22,7 +22,7 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "sb213c56a6984faaa98c67c079ac462c",
+    "_skin_": "s76eb47ca2b149bdabc0a625e94b9cf6",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -32,46 +32,30 @@
         "value": "100%"
     },
     "allboxes": [],
-    "allowhorizontalbounce": false,
-    "allowverticalbounce": true,
-    "bounces": true,
+    "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "flxMovieDetailsHeader",
-        "flxMovieDetails",
-        "flxTvDetails",
-        "lblTopCast",
-        "flxCastCarousel",
-        "btnShowRecommendations",
-        "lstRecommendedMovies",
-        "btnShowSimilarMovie",
-        "lstSimilarMovies"
+        "lblNumberOfSeasons",
+        "lblNumberOfSeasonsInfo"
     ],
     "clipbounds": true,
     "containerweight": 100,
-    "decelerat": false,
-    "dragg": false,
     "enablescrolling": true,
-    "horizontalscrollindicator": true,
-    "id": "flxMainScroll",
+    "id": "flxNumberOfSeasons",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "e9341c9366484ed1a5808f111ada76f1",
-    "layouttype": 4,
-    "name": "kony.ui.FlexScrollContainer",
-    "pagingenabled": false,
-    "parent": "frmMovieDetails",
+    "kuid": "fbb4381b530f4ee6b50c704f3e6b49d2",
+    "layouttype": 2,
+    "name": "kony.ui.FlexContainer",
+    "parent": "flxTvDetails",
     "pf": "frmMovieDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
-    "scrolldirection": 2,
     "snapgridsize": 10,
     "snaptogrid": true,
-    "track": false,
-    "verticalscrollindicator": true,
-    "wType": "FlexScrollContainer",
+    "wType": "FlexContainer",
     "widgetalignment": 1,
     "zindex": 1
 }

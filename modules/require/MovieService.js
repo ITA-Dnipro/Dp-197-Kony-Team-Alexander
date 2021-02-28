@@ -11,6 +11,10 @@ define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl,
       searchMovie: concreteImpl.searchMovie,
       getMovieCredits: concreteImpl.getMovieCredits,
       getPersonInfo: concreteImpl.getPersonInfo,
-      getPersonCredits: concreteImpl.getPersonCredits
+      getPersonCredits: concreteImpl.getPersonCredits,
+      getTvDetails: concreteImpl.getTvDetails,
+      getTvCredits: concreteImpl.getTvCredits,
+      getSimilarTvList: concreteImpl.getSimilarTvList,
+      getRecommendedTvList: concreteImpl.getRecommendedTvList
     };
 });

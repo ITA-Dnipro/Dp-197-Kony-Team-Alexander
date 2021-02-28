@@ -18,6 +18,8 @@ define(["MovieService"], function(movieService){
       this.view.DirectingList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.DirectingList.btnShow, this.view.DirectingList.lstMovies);
       this.view.ProductionList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.ProductionList.btnShow, this.view.ProductionList.lstMovies);
       this.view.WritingList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.WritingList.btnShow, this.view.WritingList.lstMovies);
+      
+      this.view.onDeviceBack = Utility.goBack;
     },
 
     onNavigate: function(personData) {
