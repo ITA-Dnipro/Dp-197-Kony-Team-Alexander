@@ -2,7 +2,7 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "180dp"
+        "value": "220dp"
     },
     "_left_": {
         "type": "string",
@@ -37,7 +37,9 @@
     "children": [
         "imgMoviePoster",
         "lblMovieTitle",
-        "lblMovieDescription",
+        "lblMovieReleasDate",
+        "lblMovieType",
+        "lblMovieGenres",
         "btnDeleteMoviFromList"
     ],
     "clipbounds": true,

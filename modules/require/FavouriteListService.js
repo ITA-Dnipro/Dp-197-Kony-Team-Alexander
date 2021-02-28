@@ -48,7 +48,7 @@ define(function () {
     });
   };
 
-  var createFavouriteList = function(userId, movieDetails, mediaType, successCB, errorCB) {
+  var createFavouriteList = function(userId, movieDetails, successCB, errorCB) {
 
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("AlexDB");
@@ -60,7 +60,7 @@ define(function () {
       release_date: movieDetails.released,
       title: movieDetails.title,
       poster_path:  movieDetails.poster,
-      media_type: mediaType
+      media_type: movieDetails.type || "movie"
     };
     AlexanderMovieListService.invokeOperation("createFavouriteList", headers, body, function() {
       if (successCB) {

@@ -25,9 +25,9 @@ define(["FavouriteListService"], function(favouriteListService){
       var movieListData = movieList.map(function(m) {
         return {
           lblMovieTitle: m.title,
-          //           lblMovieDescription: m.genreNamesList.join(', '),
-          lblMovieDescription: m.genres,
-          lblMovieYear: String(m.released),
+          lblMovieGenres: m.genres,
+          lblMovieReleasDate: m.released,
+          lblMovieType: m.media_type,
           imgMoviePoster: m.poster_path,
           id: m.id,
           btnDeleteMoviFromList: {

@@ -16,10 +16,10 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
         this.view.btnFavorite.skin = "sknBtnFavorite";
       
       movieService.getMovieDetails(function(movieDetails) {
-        favouriteService.createFavouriteList(UserId, movieDetails, "tv", function() {
+        favouriteService.createFavouriteList(UserId, movieDetails, function() {
           alert("create!");
         }, function() {
-          alert("Error while retrieving movie details 2");
+          alert("Error while add movie to favourits");
         });
       }.bind(this), function() {
         alert("Error while retrieving movie details");
