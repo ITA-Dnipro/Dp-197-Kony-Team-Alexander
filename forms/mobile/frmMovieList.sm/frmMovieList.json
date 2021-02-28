@@ -30,9 +30,10 @@
     },
     "canUpdateUI": true,
     "children": [
-        "flxHeader",
         "lstMovies",
-        "flxNavContainer"
+        "flxNavContainer",
+        "btnSearch",
+        "HeaderControl"
     ],
     "containerweight": 100,
     "controllerInfo": {

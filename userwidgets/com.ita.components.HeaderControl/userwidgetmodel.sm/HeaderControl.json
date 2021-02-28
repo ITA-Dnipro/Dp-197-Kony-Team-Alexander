@@ -22,7 +22,7 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s5efc9213afe4018b2156c24ac442893",
+    "_skin_": "s1cafa00372c4865beba81b3f3ca86dc",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -35,27 +35,27 @@
     "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "btnProfile",
-        "btnSearch"
+        "btnBack",
+        "lblCaption",
+        "btnDrop"
     ],
     "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flxHeader",
+    "id": "HeaderControl",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "fdc5045203024154bb22acdd74e5ea07",
+    "kuid": "ga92824bedfc4e4aa2641a03c8eada20",
     "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "frmMovieList",
-    "pf": "frmMovieList",
+    "parent": "userwidgetmodel",
+    "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
     "snapgridsize": 10,
     "snaptogrid": true,
     "wType": "FlexContainer",
-    "widgetalignment": 1,
-    "zindex": 1
+    "widgetalignment": 1
 }
