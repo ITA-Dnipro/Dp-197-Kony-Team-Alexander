@@ -19,13 +19,13 @@
     ],
     "_right_": {
         "type": "string",
-        "value": "60dp"
+        "value": "121dp"
     },
-    "_skin_": "s90d17b5ab6f4b758d8bed6f4503ab07",
-    "_text_": "Back",
+    "_skin_": "s6dfbaa046dc4421bec25d2a6de3d699",
+    "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "630dp"
+        "value": "737dp"
     },
     "_width_": {
         "type": "string",

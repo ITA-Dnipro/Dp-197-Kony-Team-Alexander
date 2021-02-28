@@ -3,11 +3,11 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "50dp"
+        "value": "70dp"
     },
     "_left_": {
         "type": "string",
-        "value": "60dp"
+        "value": "0dp"
     },
     "_margin_": [
         6,
@@ -21,33 +21,30 @@
         0,
         0
     ],
-    "_right_": {
-        "type": "string",
-        "value": "60dp"
-    },
-    "_skin_": "s36c5183d44940ba8d38f8cc9480595c",
-    "_text_": "Change",
+    "_skin_": "s85d7ecf4deb438e9bd979cc23e2bdcb",
+    "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "510dp"
+        "value": "0dp"
     },
     "_width_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "70dp"
     },
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "s13fb70f60444470ad40243457d097d5",
-    "id": "btnChangeUserInfo",
+    "focusskin": "sb4bcded52654b759c34238cfe7e56b9",
+    "id": "btnBackHeader",
+    "ide_onClick": "AS_Button_b94ca1f882454b198a0c603ee00874cf",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "ab4b6d4edd8e4cfba1886cf928f70f1a",
+    "kuid": "eb8b2fefeb384e2bb6dc73e5da8e7622",
     "name": "kony.ui.Button",
-    "parent": "frmProfile",
-    "pf": "frmProfile",
+    "parent": "BackHeader",
+    "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",
