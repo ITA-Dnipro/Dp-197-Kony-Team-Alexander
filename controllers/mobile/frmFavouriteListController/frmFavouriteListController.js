@@ -1,4 +1,4 @@
-define(["MovieService"], function(movieService){
+define(["FavouriteListService"], function(favouriteListService){
   return {
     onInitialize: function() {
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
@@ -7,38 +7,31 @@ define(["MovieService"], function(movieService){
 
     onNavigate: function() {  
       kony.application.showLoadingScreen();
+      alert(UserId);
 
-      movieService.getMovieList(function(movieList) {
+      favouriteListService.getFavouriteMovies(UserId, function(movieList) {
+        alert("1: " + movieList);
         this.onMovieListReceived(movieList);
       }.bind(this), function() {
         alert("Error while retrieving movie list");
         kony.application.dismissLoadingScreen();
-      }, "popular");
-    },
-
-    loadMovieList: function(url) {
-      kony.application.showLoadingScreen();
-
-      movieService.getMovieList(function(movieList) {
-        this.onMovieListReceived(movieList);
-      }.bind(this), function() {
-        alert("Error while retrieving movie list");
-        kony.application.dismissLoadingScreen();
-      }, url);
+      });
     },
 
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
       Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id});
     },
-
+      
     onMovieListReceived: function(movieList) {
+      alert(movieList);
             var lst = this.view.lstMovies;
       var movieListData = movieList.map(function(m) {
         return {
           lblMovieTitle: m.title,
-          lblMovieDescription: m.genreNamesList.join(', '),
-          lblMovieYear: String(m.released),
-          imgMoviePoster: m.poster,
+//           lblMovieDescription: m.genreNamesList.join(', '),
+          lblMovieDescription: m.genres,
+//           lblMovieYear: String(m.released),
+          imgMoviePoster: m.poster_path,
           id: m.id,
           btnDeleteMoviFromList: {
             text: "\uf00d",
@@ -51,11 +44,6 @@ define(["MovieService"], function(movieService){
 
       this.view.lstMovies.setData(movieListData);
       kony.application.dismissLoadingScreen();
-    },
-    
-//     deleteRow: function(rowIndex) {
-//       alert(rowIndex);
-//       this.view.lstMovies.removeAt(rowIndex);
-//     }
+    }
   };
 });
