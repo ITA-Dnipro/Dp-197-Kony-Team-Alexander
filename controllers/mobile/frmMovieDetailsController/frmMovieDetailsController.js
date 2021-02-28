@@ -62,7 +62,7 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       
       this.movieId = movieId.id;
 
-//       alert(this.movieId);
+      alert(movieId.id);
 
       kony.application.showLoadingScreen();
 
@@ -72,7 +72,7 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       }.bind(this), function() {
         alert("Error while retrieving movie details");
         kony.application.dismissLoadingScreen();
-      }, this.movieId);
+      }, movieId.id);
 
       movieService.getSimilarMovieList(function(movieList) {
         this.onSimilarMovieListReceived(movieList);

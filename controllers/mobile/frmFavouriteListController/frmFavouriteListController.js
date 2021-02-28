@@ -33,7 +33,17 @@ define(["FavouriteListService"], function(favouriteListService){
           btnDeleteMoviFromList: {
             text: "\uf00d",
             onClick: function() {
-              lst.removeAt(arguments[1].rowIndex);
+              var rowIndex = arguments[1].rowIndex;
+              lst.removeAt(rowIndex);
+              favouriteListService.getFavouriteMovies(UserId, function(favList) {
+                favouriteListService.deleteFavouriteList(favList[rowIndex].dbId, function() {
+                  alert("Deleted");
+                }, function() {
+                alert("Error while deleting favourite movie list");
+              });
+              }, function() {
+                alert("Error while retrieving favourite movie list");
+              });
             }
           }
         };

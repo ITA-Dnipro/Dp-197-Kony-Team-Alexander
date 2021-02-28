@@ -11,6 +11,7 @@ define(function () {
       if (successCB) {
         var movieList = response.records.map(function(m) {
           return{
+            dbId: m.id,
             id: m.movie_id || "",
             genres: m.movie_genre || "",
             released: m.release_date || "",
