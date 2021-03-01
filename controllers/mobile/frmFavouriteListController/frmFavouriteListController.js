@@ -20,7 +20,7 @@ define(["FavouriteListService"], function(favouriteListService){
     },
 
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-      Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id});
+      Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id, type: widgetRef.data[rowIndex].type});
     },
 
     onMovieListReceived: function(movieList) {
@@ -30,9 +30,10 @@ define(["FavouriteListService"], function(favouriteListService){
           lblMovieTitle: m.title,
           lblMovieGenres: m.genres,
           lblMovieReleasDate: m.released,
-          lblMovieType: m.media_type,
+          lblMovieType: m.type,
           imgMoviePoster: m.poster_path,
           id: m.id,
+          type: m.type,
           btnDeleteMoviFromList: {
             text: "\uf00d",
             onClick: function() {
