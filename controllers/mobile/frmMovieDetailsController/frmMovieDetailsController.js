@@ -76,6 +76,8 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
         this.type = movieData.type;
       }
       
+      alert('id ' + this.movieId);
+      
       if (this.type === "movie") {
         
         kony.application.showLoadingScreen();
@@ -166,6 +168,8 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
 
       this.movieId = widgetRef.data[rowIndex].id;
       this.type = widgetRef.data[rowIndex].type;
+      
+      alert('id ' + this.movieId);
 
       this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
       this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
@@ -341,25 +345,33 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       
       this.view.flxCreatedBy.removeAll();
       
-      for (var j = 0; j < tvData.createdBy.length; j++) {
-        var btnCreatorName = new kony.ui.Button({
-          id: "btnCreator" + j,
-          text: tvData.createdBy[j].name,
-          top: "5dp",
-          left: "0dp",
-          width: "100%",
-          height: kony.flex.USE_PREFERRED_SIZE,
-          isVisible: true,
-          skin: "sknBtnDirector",
-          onClick: this.onPersonClicked.bind(null, tvData.createdBy[j].id, "crew")
-        }, {
-          padding: [0,0,0,0],
-          margin: [0,0,0,0],
-          contentAlignment: constants.CONTENT_ALIGN_MIDDLE_LEFT
-        });
+      if (tvData.createdBy) {
+        this.view.flxCreatedByContainer.isVisible = true;
+        
+        for (var j = 0; j < tvData.createdBy.length; j++) {
+          var btnCreatorName = new kony.ui.Button({
+            id: "btnCreator" + j,
+            text: tvData.createdBy[j].name,
+            top: "5dp",
+            left: "0dp",
+            width: "100%",
+            height: kony.flex.USE_PREFERRED_SIZE,
+            isVisible: true,
+            skin: "sknBtnDirector",
+            onClick: this.onPersonClicked.bind(null, tvData.createdBy[j].id, "crew")
+          }, {
+            padding: [0,0,0,0],
+            margin: [0,0,0,0],
+            contentAlignment: constants.CONTENT_ALIGN_MIDDLE_LEFT
+          });
 
-        this.view.flxCreatedBy.add(btnCreatorName);
+          this.view.flxCreatedBy.add(btnCreatorName);
+        }
+      } else {
+        this.view.flxCreatedByContainer.isVisible = false;
       }
+      
+      
     },
 
     onMovieCreditsReceived: function(creditsList) {

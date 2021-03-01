@@ -59,7 +59,7 @@ define(function () {
           title: m.name, 
           description: m.overview, 
           countries: m.production_countries, 
-          duration: m.episode_run_time, 
+          duration: m.episode_run_time.length > 0 ? m.episode_run_time : null, 
           genresId: m.genres.map(function(g) { return g.id; }),
           genreNamesList: m.genres.map(function(g) { return g.name; }),
           voteAvg: m.vote_average, 
@@ -103,13 +103,20 @@ define(function () {
 
       if (movies.results && Array.isArray(movies.results)) {
         var tvList = movies.results.map(function(m) {
-          return {
+          return new TvData({
             type: "tv",
             id: m.id,
             title: m.name, 
             description: m.overview, 
-            poster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
-          };
+            posterPath: m.poster_path
+          });
+//           return {
+//             type: "tv",
+//             id: m.id,
+//             title: m.name, 
+//             description: m.overview, 
+//             poster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
+//           };
         });
 
         successCallback(tvList);
@@ -124,13 +131,20 @@ define(function () {
 
       if (movies.results && Array.isArray(movies.results)) {
         var tvList = movies.results.map(function(m) {
-          return {
+          return new TvData({
             type: "tv",
             id: m.id,
             title: m.name, 
             description: m.overview, 
-            poster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
-          };
+            posterPath: m.poster_path
+          });
+//           return {
+//             type: "tv",
+//             id: m.id,
+//             title: m.name, 
+//             description: m.overview, 
+//             poster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
+//           };
         });
 
         successCallback(tvList);
@@ -350,13 +364,13 @@ define(function () {
     makeHttpRequest(PERSON_URL, function(personInfo) {
       if (personInfo) {
         var pInfo = {
-          name: personInfo.name,
-          birthday: personInfo.birthday,
-          placeOfBirth: personInfo.place_of_birth,
+          name: personInfo.name || "unknown",
+          birthday: personInfo.birthday || "unknown",
+          placeOfBirth: personInfo.place_of_birth || "unknown",
           deathday: personInfo.deathday,
-          age: calculateAge(personInfo.birthday, personInfo.deathday),
+          age: personInfo.birthday ? calculateAge(personInfo.birthday, personInfo.deathday) : null,
           img: "https://image.tmdb.org/t/p/w200/" + personInfo.profile_path, 
-          knownFor: personInfo.known_for_department, 
+          knownFor: personInfo.known_for_department || "unknown", 
         };
 
         successCallback(pInfo);

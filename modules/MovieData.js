@@ -8,9 +8,19 @@ function MovieData(d) {
     var movieDurationMinutes = d.duration % 60;
     var duration;
     
-    movieDurationHours > 0 ?
-      duration = movieDurationHours + "h " + movieDurationMinutes + "m" :
+    if (movieDurationHours > 0) {
+      if (movieDurationMinutes > 0) {
+        duration = movieDurationHours + "h " + movieDurationMinutes + "m";        
+      } else {
+        duration = movieDurationHours + "h";
+      }
+    } else {
       duration = movieDurationMinutes + "m";
+    }
+    
+//     movieDurationHours > 0 ?
+//       duration = movieDurationHours + "h " + movieDurationMinutes + "m" :
+//       duration = movieDurationMinutes + "m";
     
     this.duration = duration;
   } else {
