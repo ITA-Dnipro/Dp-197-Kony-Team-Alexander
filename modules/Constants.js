@@ -3,4 +3,3 @@ var HttpResponseCode = {
 };
 
 var UserId;
-var database = [];
