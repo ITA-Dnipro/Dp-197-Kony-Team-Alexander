@@ -214,65 +214,62 @@ define(function () {
     });     
   };
 
-  var searchMovie = function(successCallback, errorCallback, string, searchFor) {
+  var searchMovie = function(successCallback, errorCallback, string) {
     string = string.replace(/\s+/g, " ").replace(/\s+/g, "%20");
 
-    var SEARCH_MOVIE_URL;
-    var SEARCH_PEOPLE_URL;
+    var SEARCH_MOVIE_URL = SEARCH_BASE_URL + API_KEY + "&language=en-US&query=" + string + "&page=1";
 
-    if (searchFor === "movies") {
-      SEARCH_MOVIE_URL = SEARCH_BASE_URL + API_KEY + "&language=en-US&query=" + string + "&page=1";
+    loadGenreList(function(genreData){
+      if (genreData && Array.isArray(genreData)) {
+        makeHttpRequest(SEARCH_MOVIE_URL, function(movies) {
+          if (movies.results && Array.isArray(movies.results)) {
 
-      loadGenreList(function(genreData){
-        if (genreData && Array.isArray(genreData)) {
-          makeHttpRequest(SEARCH_MOVIE_URL, function(movies) {
-            if (movies.results && Array.isArray(movies.results)) {
+            var movieList = movies.results.map(function(m) {
+              // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
+              return new MovieData({
+                type: "movie",
+                id: m.id,
+                title: m.title, 
+                description: m.overview, 
+                genresId: m.genre_ids, 
+                posterPath: m.poster_path,
+                voteAvg: m.vote_average,
+                released: m.release_date,
+                genreNamesList: getGenreNameById(genreData, m.genre_ids)
+              }); 
+            });
 
-              var movieList = movies.results.map(function(m) {
-                // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
-                return new MovieData({
-                  type: "movie",
-                  id: m.id,
-                  title: m.title, 
-                  description: m.overview, 
-                  genresId: m.genre_ids, 
-                  posterPath: m.poster_path,
-                  voteAvg: m.vote_average,
-                  released: m.release_date,
-                  genreNamesList: getGenreNameById(genreData, m.genre_ids)
-                }); 
-              });
+            successCallback(movieList);
+          }
+        }, errorCallback); 
+      }      
+    }, function(){
+      alert("Error while retrieving genres list");
+    }); 
+  };
+  
+  var searchPeople = function(successCallback, errorCallback, string) {
+    string = string.replace(/\s+/g, " ").replace(/\s+/g, "%20");    
 
-              successCallback(movieList);
-            }
-          }, errorCallback); 
-        }      
-      }, function(){
-        alert("Error while retrieving genres list");
-      }); 
-    } 
+    var SEARCH_PEOPLE_URL = "https://api.themoviedb.org/3/search/person?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&query=" + string + "&page=1";
 
-    if (searchFor === "people") {
-      SEARCH_PEOPLE_URL = "https://api.themoviedb.org/3/search/person?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&query=" + string + "&page=1";
+    makeHttpRequest(SEARCH_PEOPLE_URL, function(people) {
+      if (people.results && Array.isArray(people.results)) {
 
-      makeHttpRequest(SEARCH_PEOPLE_URL, function(people) {
-        if (people.results && Array.isArray(people.results)) {
+        var peopleList = people.results.map(function(p) {
+          // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
+          return {
+            type: "person",
+            id: p.id,
+            name: p.name, 
+            knownFor: "Known for: " + p.known_for_department,  
+            poster: "https://image.tmdb.org/t/p/w200/" + p.profile_path,       
+          }; 
+        });
 
-          var peopleList = people.results.map(function(p) {
-            // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
-            return {
-              type: "person",
-              id: p.id,
-              name: p.name, 
-              knownFor: "Known for: " + p.known_for_department,  
-              poster: "https://image.tmdb.org/t/p/w200/" + p.profile_path,       
-            }; 
-          });
-
-          successCallback(peopleList);
-        }
-      }, errorCallback); 
-    }
+        successCallback(peopleList);
+      }
+    }, errorCallback); 
   };
 
   var getMovieCredits = function(successCallback, errorCallback, movieId) {
@@ -491,6 +488,7 @@ define(function () {
     getMovieCredits: getMovieCredits,
     getPersonInfo: getPersonInfo,
     getPersonCredits: getPersonCredits,
+    searchPeople: searchPeople,
     getTvDetails: getTvDetails,
     getTvCredits: getTvCredits,
     getSimilarTvList: getSimilarTvList,

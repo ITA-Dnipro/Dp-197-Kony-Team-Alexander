@@ -61,7 +61,6 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
         this.movieId = movieData.id;  
         this.type = movieData.type;
       }
-
       
       if (this.type === "movie") {
         
@@ -98,7 +97,9 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
           alert("Error while retrieving movie credits");
           kony.application.dismissLoadingScreen();
         }, this.movieId);        
-      } else {
+      } 
+      
+      if (this.type === "tv") {
         
         kony.application.showLoadingScreen();
 

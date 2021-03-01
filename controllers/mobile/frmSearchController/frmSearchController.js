@@ -37,23 +37,40 @@ define(["MovieService"], function(movieService){
       }
       kony.application.showLoadingScreen();
       this.view.lstMovies.isVisible = true;
+      
+      if (searchFor === "movies") {
+        movieService.searchMovie(function(resultList) {
+          this.onResultListReceived(resultList);
+        }.bind(this), function() {
+          this.view.lstMovies.isVisible = false;
+          alert("Error while retrieving search movie list");
+          kony.application.dismissLoadingScreen();
+        }, this.view.inpSearch.text.trim());
+      }
+      
+      if (searchFor === "people") {
+        movieService.searchPeople(function(resultList) {
+          this.onResultListReceived(resultList);
+        }.bind(this), function() {
+          this.view.lstMovies.isVisible = false;
+          alert("Error while retrieving search people list");
+          kony.application.dismissLoadingScreen();
+        }, this.view.inpSearch.text.trim());
+      }
 
-      movieService.searchMovie(function(resultList) {
-        this.onResultListReceived(resultList);
-      }.bind(this), function() {
-        this.view.lstMovies.isVisible = false;
-        alert("Error while retrieving search result list");
-        kony.application.dismissLoadingScreen();
-      }, this.view.inpSearch.text.trim(), searchFor);
+      
     },
 
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
+//       alert('type ' + widgetRef.data[rowIndex].type);
+//       alert('id ' + widgetRef.data[rowIndex].id);
+      
       if (widgetRef.data[rowIndex].type === "person") {
         Utility.navigateTo("frmPersonInfo", {id: widgetRef.data[rowIndex].id, role: widgetRef.data[rowIndex].role});
       }
       
       if (widgetRef.data[rowIndex].type === "movie") {
-        Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id});        
+        Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id, type: widgetRef.data[rowIndex].type});        
       }      
     },
 
