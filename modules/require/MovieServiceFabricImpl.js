@@ -90,7 +90,6 @@ define(function () {
   };
 
   var searchPeople = function(successCallback, errorCallback, string) {
-    //     string = string.replace(/\s+/g, " ").replace(/\s+/g, "%20");   
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
@@ -105,14 +104,6 @@ define(function () {
             knownFor: "Known for: " + p.known_for_department,  
             poster: "https://image.tmdb.org/t/p/w200/" + p.profile_path,       
           }; 
-          //            return new MovieData({
-          //              type: "movie",
-          //              id: m.id,
-          //              title: m.title, 
-          //              posterPath: m.poster_path,
-          //              released: m.release_date,
-          //              genreNamesList: getGenreNameById(genreData, m.genre_ids)
-          //            }); 
         });
         successCallback(movieList);
       }
@@ -121,9 +112,6 @@ define(function () {
         errorCallback(error);
       }
     });
-
-
-    //     var SEARCH_PEOPLE_URL = "https://api.themoviedb.org/3/search/person?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&query=" + string + "&page=1";
   };
 
   var getMovieDetails = function(successCallback, errorCallback, id) {
@@ -159,6 +147,54 @@ define(function () {
       }
     });   
   };
+  
+  var calculateAge = function(birthday, deathday) {
+    var age;
+    var ageDifMs;
+    var ageDate;
+
+    if (deathday) {
+      ageDifMs = new Date(deathday).getTime() - new Date(birthday).getTime();
+      ageDate = new Date(ageDifMs);
+
+      age = Math.abs(ageDate.getUTCFullYear() - 1970);
+    } else {
+      ageDifMs = new Date() - new Date(birthday).getTime();
+      ageDate = new Date(ageDifMs);
+
+      age = Math.abs(ageDate.getUTCFullYear() - 1970);
+    }
+
+    return age;
+  };
+  
+  var getPersonInfo = function(successCallback, errorCallback, id) {
+    var sdk = kony.sdk.getCurrentInstance();
+    var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
+    var headers = null;
+//     alert('id ' + id);
+    var body = { personId: id };
+
+    AlexanderMovieListService.invokeOperation("getPersonInfo", headers, body, function(response) {
+      if (successCallback) {
+        var personInfo = {         
+          name: response.name || "unknown",
+          birthday: response.birthday || "unknown",
+          placeOfBirth: response.place_of_birth || "unknown",
+          deathday: response.deathday,
+          age: response.birthday ? calculateAge(response.birthday, response.deathday) : null,
+          img: "https://image.tmdb.org/t/p/w200/" + response.profile_path, 
+          knownFor: response.known_for_department || "unknown", 
+        };   
+
+        successCallback(personInfo);
+      }
+    }, function(error) {
+      if (errorCallback) {
+        errorCallback(error);
+      }
+    });   
+  }; 
 
   var getSimilarMovieList = function(successCallback, errorCallback, mId) {
     var sdk = kony.sdk.getCurrentInstance();
@@ -258,6 +294,7 @@ define(function () {
     searchMovie: searchMovie,
     getMovieCredits: getMovieCredits,
 
-    searchPeople: searchPeople
+    searchPeople: searchPeople,
+    getPersonInfo: getPersonInfo,
   };
 });
