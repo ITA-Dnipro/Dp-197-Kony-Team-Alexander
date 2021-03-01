@@ -38,12 +38,7 @@
     "focusskin": "s747492020ab41db9e0293bb9b7d40ac",
     "id": "btnTopRated",
     "info": null,
-    "iphone": {
-        "bottom": {
-            "type": "string",
-            "value": "0dp"
-        }
-    },
+    "iphone": {},
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "c812ea1f550743beb704e599d73f55cd",

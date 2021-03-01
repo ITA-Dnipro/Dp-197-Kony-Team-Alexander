@@ -1,0 +1,80 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "DNDConfig": null,
+    "_children_": [],
+    "_height_": {
+        "type": "string",
+        "value": "70dp"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 1,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_skin_": "s15c3f2f7d664d2f9ef4d5be6dcd33c5",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "areflexpropsreferenced": false,
+    "autogrowmode": 0,
+    "canUpdateUI": true,
+    "clipbounds": true,
+    "containerweight": 0,
+    "dataDiffs": {
+        "BackHeader": {
+            "__events__": {},
+            "__info__": {
+                "isRoot": true,
+                "kuid": "jf175d996d33454c8993d495f0f7fd11",
+                "srcKUID": "i5086ef5f1814815b2b00982d931db88",
+                "wType": "FlexContainer"
+            }
+        },
+        "btnBackHeader": {
+            "__events__": {},
+            "__info__": {
+                "kuid": "j4ff4849a7f842359f714845dd5c316a",
+                "srcKUID": "eb8b2fefeb384e2bb6dc73e5da8e7622",
+                "wType": "Button"
+            }
+        }
+    },
+    "enablescrolling": true,
+    "id": "BackHeader",
+    "info": null,
+    "iscustomlayout": false,
+    "isdatareferenced": false,
+    "issegmentchild": false,
+    "isvisible": true,
+    "kuid": "jf175d996d33454c8993d495f0f7fd11",
+    "layouttype": 2,
+    "masterType": 0,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "frmProfile",
+    "pf": "frmProfile",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "sourceUserWidget": "i5086ef5f1814815b2b00982d931db88",
+    "wType": "UserWidgetInstance"
+}

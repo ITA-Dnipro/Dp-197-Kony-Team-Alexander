@@ -33,12 +33,8 @@
         "imgProfilePage",
         "impProfileName",
         "impProfileLogin",
-        "lblChangePassword",
-        "inpPassword",
-        "inpPasswordConfirm",
-        "btnChangeUserInfo",
-        "lblGoBack",
-        "btnBackToMovieList"
+        "btnBackToMovieList",
+        "BackHeader"
     ],
     "containerweight": 100,
     "controllerInfo": {
