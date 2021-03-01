@@ -7,15 +7,30 @@ function TvData(d) {
     var movieDurationMinutes = d.duration[0] % 60;
     var duration;
     
-    if (movieDurationHours > 0) {
-      if (movieDurationMinutes > 0) {
-        duration = movieDurationHours + "h " + movieDurationMinutes + "m";        
-      } else {
-        duration = movieDurationHours + "h";
+    switch (true) {
+      case movieDurationHours > 0 && movieDurationMinutes > 0: {
+        duration = movieDurationHours + "h " + movieDurationMinutes + "m";  
+        break;
       }
-    } else {
-      duration = movieDurationMinutes + "m";
+      case movieDurationHours > 0 && movieDurationMinutes === 0: {
+        duration = movieDurationHours + "h";
+        break;
+      }
+      case movieDurationHours === 0 && movieDurationMinutes > 0: {
+        duration = movieDurationMinutes + "m";
+        break;
+      }
     }
+    
+//     if (movieDurationHours > 0) {
+//       if (movieDurationMinutes > 0) {
+//         duration = movieDurationHours + "h " + movieDurationMinutes + "m";        
+//       } else {
+//         duration = movieDurationHours + "h";
+//       }
+//     } else {
+//       duration = movieDurationMinutes + "m";
+//     }
     
     this.duration = duration;
   } else {
