@@ -89,6 +89,43 @@ define(function () {
     });   
   };
 
+  var searchPeople = function(successCallback, errorCallback, string) {
+    //     string = string.replace(/\s+/g, " ").replace(/\s+/g, "%20");   
+    var sdk = kony.sdk.getCurrentInstance();
+    var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
+    var headers = null;
+    var body = { query: string };
+    AlexanderMovieListService.invokeOperation("searchPeople", headers, body, function(response) {
+      if (successCallback) {
+        var movieList = response.results.map(function(p) {
+          return {
+            type: "person",
+            id: p.id,
+            name: p.name, 
+            knownFor: "Known for: " + p.known_for_department,  
+            poster: "https://image.tmdb.org/t/p/w200/" + p.profile_path,       
+          }; 
+          //            return new MovieData({
+          //              type: "movie",
+          //              id: m.id,
+          //              title: m.title, 
+          //              posterPath: m.poster_path,
+          //              released: m.release_date,
+          //              genreNamesList: getGenreNameById(genreData, m.genre_ids)
+          //            }); 
+        });
+        successCallback(movieList);
+      }
+    }, function(error) {
+      if (errorCallback) {
+        errorCallback(error);
+      }
+    });
+
+
+    //     var SEARCH_PEOPLE_URL = "https://api.themoviedb.org/3/search/person?api_key=69f776e126f6211fe76798c6c4b786f9&language=en-US&query=" + string + "&page=1";
+  };
+
   var getMovieDetails = function(successCallback, errorCallback, id) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
@@ -219,6 +256,8 @@ define(function () {
     getRecommendedMovieList: getRecommendedMovieList,
     getMovieList: getMovieList,
     searchMovie: searchMovie,
-    getMovieCredits: getMovieCredits
+    getMovieCredits: getMovieCredits,
+
+    searchPeople: searchPeople
   };
 });

@@ -23,20 +23,6 @@ function MovieData(d) {
       }
     }
     
-//     if (movieDurationHours > 0) {
-//       if (movieDurationMinutes > 0) {
-//         duration = movieDurationHours + "h " + movieDurationMinutes + "m";        
-//       } else {
-//         duration = movieDurationHours + "h";
-//       }
-//     } else {
-//       duration = movieDurationMinutes + "m";
-//     }
-    
-//     movieDurationHours > 0 ?
-//       duration = movieDurationHours + "h " + movieDurationMinutes + "m" :
-//       duration = movieDurationMinutes + "m";
-    
     this.duration = duration;
   } else {
     this.duration = "unknown";

@@ -110,13 +110,6 @@ define(function () {
             description: m.overview, 
             posterPath: m.poster_path
           });
-//           return {
-//             type: "tv",
-//             id: m.id,
-//             title: m.name, 
-//             description: m.overview, 
-//             poster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
-//           };
         });
 
         successCallback(tvList);
@@ -138,13 +131,6 @@ define(function () {
             description: m.overview, 
             posterPath: m.poster_path
           });
-//           return {
-//             type: "tv",
-//             id: m.id,
-//             title: m.name, 
-//             description: m.overview, 
-//             poster: "https://image.tmdb.org/t/p/w200/" + m.poster_path
-//           };
         });
 
         successCallback(tvList);
