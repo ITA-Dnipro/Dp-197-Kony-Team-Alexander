@@ -16,15 +16,29 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
         this.view.btnFavorite.skin = "sknBtnFavoriteActive" :
       this.view.btnFavorite.skin = "sknBtnFavorite";
       
-      movieService.getMovieDetails(function(movieDetails) {
-        favouriteService.createFavouriteList(UserId, movieDetails, function() {
-          alert("create!");
-        }, function() {
-          alert("Error while add movie to favourits");
-        });
-      }.bind(this), function() {
-        alert("Error while retrieving movie details");
-      }, this.movieId);
+      if (this.type === "movie") {
+        movieService.getMovieDetails(function(movieDetails) {
+          favouriteService.createFavouriteList(UserId, movieDetails, function() {
+            alert("create!");
+          }, function() {
+            alert("Error while add movie to favourits");
+          });
+        }.bind(this), function() {
+          alert("Error while retrieving movie details");
+        }, this.movieId);
+      }
+      
+      if (this.type === "tv") {
+        movieService.getTvDetails(function(tvDetails) {
+          favouriteService.createFavouriteList(UserId, tvDetails, function() {
+            alert("create!");
+          }, function() {
+            alert("Error while add tv to favourits");
+          });
+        }.bind(this), function() {
+          alert("Error while retrieving tv details");
+        }, this.movieId);
+      }    
     },
 
     onBtnShowClicked: function(btn, text, list) {

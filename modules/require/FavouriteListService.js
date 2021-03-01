@@ -17,7 +17,7 @@ define(function () {
             released: m.release_date || "",
             title: m.title || "",
             poster_path: m.poster_path || "",
-            media_type: m.media_type || ""
+            type: m.media_type || ""
           }; 
         });
         successCB(movieList);
@@ -49,6 +49,9 @@ define(function () {
   };
 
   var createFavouriteList = function(userId, movieDetails, successCB, errorCB) {
+    
+//     alert(movieDetails.type);
+//     alert(JSON.stringify(movieDetails));
 
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("AlexDB");
@@ -57,7 +60,7 @@ define(function () {
       user_id: userId,
       movie_id: movieDetails.id,
       movie_genre: movieDetails.genreNamesList.join(", "),
-      release_date: movieDetails.released,
+      release_date: movieDetails.released || (new Date(movieDetails.firstAirDate)).getFullYear(),
       title: movieDetails.title,
       poster_path:  movieDetails.poster,
       media_type: movieDetails.type || "movie"
