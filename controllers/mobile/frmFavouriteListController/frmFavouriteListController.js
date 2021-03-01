@@ -41,7 +41,7 @@ define(["FavouriteListService"], function(favouriteListService){
               lst.removeAt(rowIndex);
               favouriteListService.getFavouriteMovies(UserId, function(favList) {
                 favouriteListService.deleteFavouriteList(favList[rowIndex].dbId, function() {
-                  alert("Deleted");
+                  alert("Deleted movie from favourite list");
                 }, function() {
                 alert("Error while deleting favourite movie list");
               });

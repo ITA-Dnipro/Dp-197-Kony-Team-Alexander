@@ -49,9 +49,6 @@ define(function () {
   };
 
   var createFavouriteList = function(userId, movieDetails, successCB, errorCB) {
-    
-//     alert(movieDetails.type);
-//     alert(JSON.stringify(movieDetails));
 
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("AlexDB");
@@ -75,8 +72,20 @@ define(function () {
       }
     });
   };
+  
+  var isMovieInFavoriteList = function(movieId, successCB) {
+    getFavouriteMovies(UserId, function(movieList) {
+      var movieInFavorite = movieList.find(function(m) {
+        return Number(movieId) === Number(m.id); 
+      });
+      successCB(Boolean(movieInFavorite));
+    }, function() {
+      alert("Error while retrieving favourite list");
+    });
+  };
 
   return {
+    isMovieInFavoriteList: isMovieInFavoriteList,
     getFavouriteMovies: getFavouriteMovies,
     deleteFavouriteList: deleteFavouriteList,
     createFavouriteList: createFavouriteList

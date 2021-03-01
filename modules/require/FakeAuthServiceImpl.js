@@ -1,4 +1,4 @@
-define(function () {
+define(["FavouriteListService"], function (fabricImpl) {
   var checkUser = function(login, password, successCB, errorCB) {
 
     var users = [];
@@ -63,18 +63,21 @@ define(function () {
       database = firstArr.concat(secondArr);
     } else {
       database.push({
-        userId: 22,
+        userId: UserId,
         movieId: movieId
       });    
     }
   };
   
-  var isMovieInFavoriteList = function(movieId, callback) {
-    var movieInFavorite = database.find(function(m) {
-        return Number(movieId) === Number(m.movieId); 
+  var isMovieInFavoriteList = function(movieId, successCB) {
+    fabricImpl.getFavouriteMovies(UserId, function(movieList) {
+      var movieInFavorite = movieList.find(function(m) {
+        return Number(movieId) === Number(m.id); 
+      });
+      successCB(Boolean(movieInFavorite));
+    }, function() {
+      alert("Error while retrieving favourite list");
     });
-    
-    return Boolean(movieInFavorite);
   };
 
   return {
