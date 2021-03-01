@@ -30,7 +30,6 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       
       if (this.type === "movie" && this.view.btnFavorite.skin === "sknBtnFavorite") {
         favouriteService.getFavouriteMovies(UserId, function(movieList) {
-          alert(movieList);
           var movieId = this.movieId;
           var movieInFavorite = movieList.find(function(m) {
             return Number(movieId) === Number(m.id); 
