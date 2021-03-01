@@ -37,6 +37,7 @@ define(function () {
         if (successCallback) {
           var movieList = response.results.map(function(m) {
             return new MovieData({
+              type: "movie",
               id: m.id,
               title: m.title, 
               posterPath: m.poster_path,
@@ -67,6 +68,7 @@ define(function () {
         if (successCallback) {
           var movieList = response.results.map(function(m) {
             return new MovieData({
+              type: "movie",
               id: m.id,
               title: m.title, 
               posterPath: m.poster_path,
@@ -92,10 +94,12 @@ define(function () {
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = { movieId: id };
+
     AlexanderMovieListService.invokeOperation("getMovieDetails", headers, body, function(response) {
 
       if (successCallback) {
         var movieDetails = new MovieData({
+          type: "movie",
           id: response.id,
           title: response.title, 
           description: response.overview, 
@@ -108,6 +112,7 @@ define(function () {
           posterPath: response.poster_path,
           backdropPath: response.backdrop_path
         });   
+
         successCallback(movieDetails);
 
       }
@@ -127,6 +132,7 @@ define(function () {
       if (successCallback) {
         var movieList = response.results.map(function(m) {
           return new MovieData({
+            type: "movie",
             id: m.id,
             title: m.title, 
             description: m.overview,
@@ -188,6 +194,7 @@ define(function () {
       if (successCallback) {
         var movieList = response.results.map(function(m) {
           return new MovieData({
+            type: "movie",
             id: m.id,
             title: m.title, 
             description: m.overview, 
