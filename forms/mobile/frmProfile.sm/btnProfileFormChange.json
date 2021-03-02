@@ -1,0 +1,55 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizButton",
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "50dp"
+    },
+    "_left_": {
+        "type": "number",
+        "value": "0"
+    },
+    "_margin_": [
+        6,
+        6,
+        6,
+        6
+    ],
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_skin_": "s36c5183d44940ba8d38f8cc9480595c",
+    "_text_": "Change",
+    "_top_": {
+        "type": "string",
+        "value": "387dp"
+    },
+    "_width_": {
+        "type": "string",
+        "value": "150dp"
+    },
+    "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
+    "containerweight": 100,
+    "contentalignment": 5,
+    "displaytext": true,
+    "focusskin": "s13fb70f60444470ad40243457d097d5",
+    "id": "btnProfileFormChange",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "h31837b1da244d6ba9d1937de5949b5e",
+    "name": "kony.ui.Button",
+    "parent": "frmProfile",
+    "pf": "frmProfile",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "wType": "Button",
+    "zindex": 1
+}
