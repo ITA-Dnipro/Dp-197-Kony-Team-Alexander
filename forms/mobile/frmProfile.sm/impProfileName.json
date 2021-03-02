@@ -5,6 +5,10 @@
         "type": "string",
         "value": "50dp"
     },
+    "_left_": {
+        "type": "string",
+        "value": "60dp"
+    },
     "_margin_": [
         0,
         0,
@@ -18,25 +22,21 @@
         0
     ],
     "_placeholder_": "Fullname",
-    "_skin_": "s98af5bd059f4a4eb02d6f4a238233f2",
+    "_right_": {
+        "type": "string",
+        "value": "60dp"
+    },
+    "_skin_": "sb2fe2e2364742dba984057ccebc1652",
     "_text_": "Viktoria Kuprienko",
     "_top_": {
         "type": "string",
         "value": "250dp"
-    },
-    "_width_": {
-        "type": "string",
-        "value": "100%"
     },
     "autocapitalize": "none",
     "autocomplete": false,
     "autocorrect": false,
     "autofilter": false,
     "canUpdateUI": true,
-    "centerx": {
-        "type": "string",
-        "value": "49.07%"
-    },
     "containerheight": "",
     "containerheightmode": 1,
     "containerweight": 100,

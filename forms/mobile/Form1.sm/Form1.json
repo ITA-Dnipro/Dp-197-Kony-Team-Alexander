@@ -15,7 +15,7 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s49da28ebb7642d3a05cff3845c99d69",
+    "_skin_": "sf4e890e1a014adfa66d2be1408baecf",
     "_title_": null,
     "addWidgetsdone": false,
     "allboxes": [],
@@ -29,30 +29,20 @@
         "needAppMenu": false
     },
     "canUpdateUI": true,
-    "children": [
-        "imgProfilePage",
-        "impProfileName",
-        "impProfileLogin",
-        "btnBackToMovieList",
-        "BackHeader",
-        "btnProfileFormChange"
-    ],
+    "children": [],
     "containerweight": 100,
     "controllerInfo": {
         "default": {
             "channel": "mobile",
-            "name": "frmProfileController"
+            "name": "Form1Controller"
         }
     },
-    "currentLocale": "default",
     "desktopweb": {
         "needAppMenu": false
     },
-    "device": "GalaxyNote9",
     "displayorientation": 1,
     "enabledforidletimeout": false,
-    "id": "frmProfile",
-    "ide_init": "AS_Form_da0e4c479b214f66bb062f7cda283235",
+    "id": "Form1",
     "info": null,
     "initdone": false,
     "inputaccessoryviewtype": 4,
@@ -70,7 +60,7 @@
             "titleBarAttributes": {
                 "barStyle": 0,
                 "hidesBackButton": false,
-                "kuid": "ea6b4828e1e94d83a5487f31cc8a7f96",
+                "kuid": "g8f5e280b4ca40e4a3f59753451d41bd",
                 "leftBarButtonItems": [],
                 "leftItemsSupplementBackButton": true,
                 "prompt": "",
@@ -81,7 +71,7 @@
                         "info": {
                             "title": "Edit"
                         },
-                        "kuid": "c503a753dec0411ea8950ffe311c971b",
+                        "kuid": "g50d0ff1e8ec4c6bbb20642bf4574763",
                         "style": 0,
                         "tintColor": "4b88f100",
                         "type": 1
@@ -98,18 +88,14 @@
     "kiosk": {
         "needAppMenu": false
     },
-    "kuid": "f7e6a4c2fd134e8ea0e080c340dd236a",
+    "kuid": "f2f8431f85d64af8aec25bd1aeba3b88",
     "layouttype": 2,
     "name": "kony.ui.Form2",
     "needappmenu": false,
     "paddinginpixel": false,
-    "platform": "android",
-    "prevDevice": "Pixel3",
-    "prevPlatform": "spaan",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainscrollposition": false,
-    "shellCSS": "and_GalaxyNote9",
     "snapgridsize": 10,
     "snaptogrid": true,
     "spaan": {
