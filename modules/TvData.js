@@ -7,9 +7,20 @@ function TvData(d) {
     var movieDurationMinutes = d.duration[0] % 60;
     var duration;
     
-    movieDurationHours > 0 ?
-      duration = movieDurationHours + "h " + movieDurationMinutes + "m" :
-      duration = movieDurationMinutes + "m";
+    switch (true) {
+      case movieDurationHours > 0 && movieDurationMinutes > 0: {
+        duration = movieDurationHours + "h " + movieDurationMinutes + "m";  
+        break;
+      }
+      case movieDurationHours > 0 && movieDurationMinutes === 0: {
+        duration = movieDurationHours + "h";
+        break;
+      }
+      case movieDurationHours === 0 && movieDurationMinutes > 0: {
+        duration = movieDurationMinutes + "m";
+        break;
+      }
+    }
     
     this.duration = duration;
   } else {
@@ -19,6 +30,11 @@ function TvData(d) {
   if (d.countries) {
     var countriesList = d.countries.map(function(c) { return c.name; });
     this.countriesList = countriesList.length > 0 ? countriesList : ["unknown"];
+  }
+  
+  if (d.createdBy) {
+    var createByList = d.createdBy.map(function(c) { return {id: c.id, name: c.name}; });
+    this.createdBy = createByList.length > 0 ? createByList : null;
   }
  
   this.type = d.type || "unknown";
@@ -30,7 +46,6 @@ function TvData(d) {
   this.voteAvg = d.voteAvg || 0;
   this.poster = poster;
   this.backdrop = backdrop;
-  this.createdBy = d.createdBy.map(function(c) { return {id: c.id, name: c.name}; });
   this.firstAirDate = d.firstAirDate || "unknown";
   this.lastAirDate = d.lastAirDate || "-"; 
   this.numOfseasons = d.numOfseasons || "unknown";

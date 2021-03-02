@@ -66,9 +66,7 @@ define(["MovieService"], function(movieService){
         btn.skin = "sknBtnRecommendedMovieActive";
         btn.text = btn.text.slice(0, btn.text.length - 1) + "\uf054";
 
-        var y = this.view.flxMainScroll.contentOffsetMeasured.y; 
-//         alert(y + " h: " + this.view.flxMainScroll.height);
-       
+        var y = this.view.flxMainScroll.contentOffsetMeasured.y;        
         this.view.flxMainScroll.setContentOffset({
           "x": "0dp",
           "y": y + 70 + "dp"
@@ -89,7 +87,13 @@ define(["MovieService"], function(movieService){
       this.view.lblBirthdayInfo.text = personInfo.birthday;
       this.view.lblPlaceOfBirthInfo.text = personInfo.placeOfBirth;
       this.view.lblKnownForInfo.text = personInfo.knownFor;
-      this.view.lblAgeInfo.text = "(" + String(personInfo.age) + " years old)";
+      if (personInfo.age) {
+        this.view.flxAge.isVisible = true;
+        this.view.lblAgeInfo.text = "(" + String(personInfo.age) + " years old)";
+      } else {
+        this.view.flxAge.isVisible = false;
+      }
+      
 
       if (personInfo.deathday) {
         this.view.flxDeath.isVisible = true;

@@ -45,7 +45,7 @@
     "kuid": "b57fca25155c4796b8cc6f6adc0f588b",
     "layouttype": 4,
     "name": "kony.ui.FlexContainer",
-    "parent": "flxDetailsItem5",
+    "parent": "flxDirectorContainer",
     "pf": "frmMovieDetails",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
