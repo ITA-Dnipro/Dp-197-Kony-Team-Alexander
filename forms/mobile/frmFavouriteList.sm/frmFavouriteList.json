@@ -31,7 +31,8 @@
     "canUpdateUI": true,
     "children": [
         "flxHeader",
-        "lstMovies"
+        "lstMovies",
+        "lblIsEmpty"
     ],
     "containerweight": 100,
     "controllerInfo": {
