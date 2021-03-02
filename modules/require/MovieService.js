@@ -1,15 +1,14 @@
 define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl, httpImpl) {
-  
-//   var concreteImpl = (fabricImpl) ? fabricImpl : httpImpl;
-  var concreteImpl = fabricImpl;
-  
-    return {
-      getMovieDetails: concreteImpl.getMovieDetails,
+
+  var concreteImpl = (fabricImpl) ? fabricImpl : httpImpl;
+
+  return {
+    getMovieDetails: concreteImpl.getMovieDetails,
 //       getSimilarMovieList: concreteImpl.getSimilarMovieList,
-      getMovieList: concreteImpl.getMovieList,
+    getMovieList: concreteImpl.getMovieList,
 //       getRecommendedMovieList: concreteImpl.getRecommendedMovieList,
-      searchMovie: concreteImpl.searchMovie,
-      getMovieCredits: concreteImpl.getMovieCredits,
+    searchMovie: concreteImpl.searchMovie,
+    getMovieCredits: concreteImpl.getMovieCredits,
       searchPeople: concreteImpl.searchPeople,
       getPersonInfo: concreteImpl.getPersonInfo,
       getPersonCredits: concreteImpl.getPersonCredits,
@@ -17,7 +16,7 @@ define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl,
       getTvCredits: concreteImpl.getTvCredits,
       getRecommendedList: concreteImpl.getRecommendedList,
 //       getRecommendedTvList: concreteImpl.getRecommendedList,
-      
+
 //       searchPeople: httpImpl.searchPeople,
 //       getPersonInfo: httpImpl.getPersonInfo,
 //       getPersonCredits: httpImpl.getPersonCredits,
@@ -25,5 +24,5 @@ define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl,
 //       getTvCredits: httpImpl.getTvCredits,
 //       getSimilarTvList: httpImpl.getSimilarTvList,
 //       getRecommendedTvList: httpImpl.getRecommendedTvList
-    };
+  };
 });

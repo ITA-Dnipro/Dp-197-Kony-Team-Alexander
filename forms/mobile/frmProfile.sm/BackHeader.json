@@ -54,7 +54,8 @@
                 "kuid": "j4ff4849a7f842359f714845dd5c316a",
                 "srcKUID": "eb8b2fefeb384e2bb6dc73e5da8e7622",
                 "wType": "Button"
-            }
+            },
+            "text": ""
         }
     },
     "enablescrolling": true,

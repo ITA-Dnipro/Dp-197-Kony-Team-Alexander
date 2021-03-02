@@ -1,11 +1,9 @@
-define(["FakeAuthServiceImpl", "AuthServiceFabricImpl" ], function (fake, fabricImpl) {
+define(["AuthServiceFabricImpl" ], function (fabricImpl) {
   
   return {
     checkUser: fabricImpl.checkUser,
     updateUserProfile: fabricImpl.updateUserProfile,
     registerUser: fabricImpl.registerUser,
-    toggleMovieFavorites: fake.toggleMovieFavorites,
-    getUserProfile: fabricImpl.getUserProfile,
-    isMovieInFavoriteList: fake.isMovieInFavoriteList
+    getUserProfile: fabricImpl.getUserProfile
   };
 });

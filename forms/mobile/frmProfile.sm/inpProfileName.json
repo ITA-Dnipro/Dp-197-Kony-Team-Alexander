@@ -5,6 +5,10 @@
         "type": "string",
         "value": "50dp"
     },
+    "_left_": {
+        "type": "string",
+        "value": "60dp"
+    },
     "_margin_": [
         0,
         0,
@@ -17,42 +21,39 @@
         0,
         0
     ],
-    "_placeholder_": "Username",
-    "_skin_": "s2cf8faf668a4b549290e89ea2938573",
-    "_text_": "kup",
+    "_placeholder_": "Full name",
+    "_right_": {
+        "type": "string",
+        "value": "60dp"
+    },
+    "_skin_": "sb2fe2e2364742dba984057ccebc1652",
+    "_text_": "",
     "_top_": {
         "type": "string",
-        "value": "300dp"
+        "value": "250dp"
     },
-    "_width_": {
-        "type": "string",
-        "value": "100%"
-    },
+    "android": {},
     "autocapitalize": "none",
     "autocomplete": false,
     "autocorrect": false,
     "autofilter": false,
     "canUpdateUI": true,
-    "centerx": {
-        "type": "string",
-        "value": "49.98%"
-    },
     "containerheight": "",
     "containerheightmode": 1,
     "containerweight": 100,
     "contentalignment": 5,
-    "focusskin": "s7b6f61d6f4b44ffac6a15717987ff28",
-    "id": "impProfileLogin",
+    "focusskin": "s4734f0881c94d2bbab46f9e5c3d6379",
+    "id": "inpProfileName",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
     "keyboardtype": "A",
-    "kuid": "h2bd0213bf564540af01238c6f354c3c",
+    "kuid": "j7c9c13325b44c16857048b53a57309b",
     "mode": "A",
     "name": "kony.ui.TextBox2",
     "parent": "frmProfile",
     "pf": "frmProfile",
-    "placeholderskin": "secff3a508fb4d82ab6a08d0e2048493",
+    "placeholderskin": "scbf2221cc0b4111a5fcc8552811377f",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "securetextentry": false,

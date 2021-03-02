@@ -30,11 +30,11 @@
     },
     "canUpdateUI": true,
     "children": [
+        "BackHeader",
         "imgProfilePage",
-        "impProfileName",
-        "impProfileLogin",
-        "btnBackToMovieList",
-        "BackHeader"
+        "inpProfileName",
+        "inpProfileLogin",
+        "btnProfileFormChange"
     ],
     "containerweight": 100,
     "controllerInfo": {
