@@ -3,3 +3,5 @@ var HttpResponseCode = {
 };
 
 var UserId;
+var UserLogin;
+var UserFullName;
