@@ -33,11 +33,20 @@ define(["MovieService"], function(movieService){
       this.view.lstMovies.isVisible = true;
       
       if (searchFor === "movies") {
-        movieService.searchMovie(function(resultList) {
+//         movieService.searchMovie(function(resultList) {
+//           this.onResultListReceived(resultList);
+//         }.bind(this), function() {
+//           this.view.lstMovies.isVisible = false;
+//           alert("Error while retrieving search movie list");
+//           kony.application.dismissLoadingScreen();
+//         }, this.view.inpSearch.text.trim());
+        
+        
+        movieService.searchTvShows(function(resultList) {
           this.onResultListReceived(resultList);
         }.bind(this), function() {
           this.view.lstMovies.isVisible = false;
-          alert("Error while retrieving search movie list");
+          alert("Error while retrieving search tv list");
           kony.application.dismissLoadingScreen();
         }, this.view.inpSearch.text.trim());
       }
@@ -54,17 +63,19 @@ define(["MovieService"], function(movieService){
     },
 
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
+//       alert('type ' + widgetRef.data[rowIndex].type);
       
       if (widgetRef.data[rowIndex].type === "person") {
         Utility.navigateTo("frmPersonInfo", {id: widgetRef.data[rowIndex].id, role: widgetRef.data[rowIndex].role});
       }
       
-      if (widgetRef.data[rowIndex].type === "movie") {
+      if (widgetRef.data[rowIndex].type === "movie" || widgetRef.data[rowIndex].type === "tv") {
         Utility.navigateTo("frmMovieDetails", {id: widgetRef.data[rowIndex].id, type: widgetRef.data[rowIndex].type});        
-      }      
+      }
     },
 
     onResultListReceived: function(resultList) {
+     
       
       if (resultList.length === 0) {
         this.view.lstMovies.isVisible = false;
