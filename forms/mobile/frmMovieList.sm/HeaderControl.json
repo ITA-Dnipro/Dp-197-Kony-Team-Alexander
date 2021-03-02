@@ -39,7 +39,7 @@
     "clipbounds": true,
     "containerweight": 0,
     "data": {
-        "dropDownList": "[{\"id\": \"frmProfile\", \"name\": \"Profile\", \"path\": \"frmProfile\"}, \n {\"id\": \"frmFavouriteList\", \"name\": \"Favourite Movies\", \"path\": \"frmFavouriteList\"},\n {\"id\": \"frmAuthentication\", \"name\": \"Log Out\", \"path\": \"frmAuthentication\"}]",
+        "dropDownList": "[{\"id\": \"frmProfile\", \"name\": \"Profile\", \"path\": \"frmProfile\"}, \n {\"id\": \"frmFavouriteList\", \"name\": \"Favourite List\", \"path\": \"frmFavouriteList\"},\n {\"id\": \"frmAuthentication\", \"name\": \"Log Out\", \"path\": \"frmAuthentication\"}]",
         "isBackVisible": false,
         "listItemSkin": "sknBtnDropdown",
         "separatorSize": "1dp"

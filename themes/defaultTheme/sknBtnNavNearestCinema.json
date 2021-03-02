@@ -1,97 +1,98 @@
 {
   "android": {
     "font_name": "FontAwesome",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "androidwearos": {
     "font_name": "default",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
-  "background_color": "00000000",
+  "background_color": "1f1f1fff",
   "bg_type": "one",
-  "border_color": "424242ff",
-  "border_style": "plain",
+  "border_color": "00000089",
+  "border_radius": 0,
+  "border_style": "custom",
   "border_type": 0,
-  "border_width": 0,
+  "border_width": 1,
   "desktopweb": {
     "font_name": "Helvetica",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "fontSizeInPx": false,
-  "font_color": "667db6ff",
+  "font_color": "1991d1b2",
   "font_name": "iphoneSystem",
-  "font_size": 220,
+  "font_size": 300,
   "font_style": "normal",
   "font_weight": "400",
   "ipad": {
     "font_name": "System",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "iphone": {
     "font_name": "FontAwesome",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "isDefaultSkin": false,
   "kiosk": {
     "font_name": "None",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
-  "kuid": "sde5e9af686d4d32ae801bd5bafb3078",
+  "kuid": "s3691b801012412d9fbd0499395a7484",
   "spaan": {
     "font_name": "Helvetica",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "spaandroidtablet": {
     "font_name": "Helvetica",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "spaip": {
     "font_name": "Helvetica",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "spaipad": {
     "font_name": "Helvetica",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "spawindowstablet": {
     "font_name": "Helvetica",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "spawinphone8": {
     "font_name": "Helvetica",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "tabrcandroid": {
     "font_name": "default",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
-  "wType": "Label",
+  "wType": "Button",
   "watchos": {
     "font_name": "System",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "windows8": {
     "font_name": "None",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   },
   "winphone8": {
     "font_name": "FontAwesome",
-    "font_size": 220,
+    "font_size": 300,
     "isForked": false
   }
 }

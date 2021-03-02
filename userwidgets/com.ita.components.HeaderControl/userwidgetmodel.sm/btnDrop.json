@@ -21,7 +21,7 @@
         "type": "string",
         "value": "0dp"
     },
-    "_skin_": "sfb3f8467d5847068e3db2934c1fe435",
+    "_skin_": "sea35ee31d934612bee3a2f1fc501184",
     "_text_": "☰",
     "_top_": {
         "type": "string",
@@ -35,7 +35,7 @@
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "s27e54252ceb41b4a987edaa28be424d",
+    "focusskin": "sb7ada1006a942caa187067463d8f32b",
     "id": "btnDrop",
     "info": null,
     "iscustomlayout": false,

@@ -8,13 +8,21 @@ define(["UserProfileService"], function(userProfile) {
       userProfile.getUserProfile(UserId, function(login, fullName) {
         this.view.inpProfileName.text = fullName;
         this.view.inpProfileLogin.text = login;
+        UserFullName = fullName;
+        UserLogin = login;
       }.bind(this), function() {
 					alert("Error while conecting to DB, please check your internet conection.");
       });
     },
 
     onUserProfileChange: function() {
-      userProfile.updateUserProfile(UserId, this.view.inpProfileName.text, this.view.inpProfileLogin.text, function() {
+      if (UserFullName === this.view.inpProfileName.text && UserLogin === this.view.inpProfileLogin.text) {
+        return;
+      } else {
+        UserFullName = this.view.inpProfileName.text;
+        UserLogin = this.view.inpProfileLogin.text;
+      }
+      userProfile.updateUserProfile(UserId, UserFullName, UserLogin, function() {
         alert("User profile successfuly changed!");
       }.bind(this), function() {
 					alert("Error while conecting to DB, please check your internet conection.");

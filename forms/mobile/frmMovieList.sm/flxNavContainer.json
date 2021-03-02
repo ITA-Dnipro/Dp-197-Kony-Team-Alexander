@@ -35,10 +35,10 @@
     "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "btnPopular",
-        "btnTopRated",
+        "btnMovie",
+        "btnTVShow",
         "btnInTheatres",
-        "btnUpcoming"
+        "btnGoToNearestCinemas"
     ],
     "clipbounds": true,
     "containerweight": 100,

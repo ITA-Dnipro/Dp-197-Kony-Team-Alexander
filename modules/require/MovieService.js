@@ -3,6 +3,7 @@ define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl,
   var concreteImpl = (fabricImpl) ? fabricImpl : httpImpl;
 
   return {
+    getTVShowList: concreteImpl.getTVShowList,
     getMovieDetails: concreteImpl.getMovieDetails,
 //       getSimilarMovieList: concreteImpl.getSimilarMovieList,
     getMovieList: concreteImpl.getMovieList,

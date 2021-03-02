@@ -3,10 +3,10 @@ define(["MovieService"], function(movieService){
     onInitialize: function() {
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
       this.view.btnSearch.onClick = Utility.navigateTo.bind(null, "frmSearch", {searchFor: "movies"});
-      this.view.btnPopular.onClick = this.loadMovieList.bind(this, "popular", this.view.btnPopular);
-      this.view.btnTopRated.onClick = this.loadMovieList.bind(this, "top_rated", this.view.btnTopRated);
+      this.view.btnMovie.onClick = this.loadMovieList.bind(this, "popular", this.view.btnMovie);
+      this.view.btnTVShow.onClick = this.loadTVShowList.bind(this);
       this.view.btnInTheatres.onClick = this.loadMovieList.bind(this, "now_playing", this.view.btnInTheatres);
-      this.view.btnUpcoming.onClick = this.loadMovieList.bind(this, "upcoming", this.view.btnUpcoming);
+      this.view.btnGoToNearestCinemas.onClick = Utility.navigateTo.bind(null, "frmSearch", {searchFor: "movies"});
       
       kony.application.showLoadingScreen();
       
@@ -16,10 +16,9 @@ define(["MovieService"], function(movieService){
         alert("Error while retrieving movie list");
         kony.application.dismissLoadingScreen();
       }, "popular");
-      this.view.btnPopular.skin = "sknBtnNavigateActive";
-      this.view.btnTopRated.skin = "sknBtnNavigateInActive";
+      this.view.btnMovie.skin = "sknBtnNavigateActive";
+      this.view.btnTVShow.skin = "sknBtnNavigateInActive";
       this.view.btnInTheatres.skin = "sknBtnNavigateInActive";
-      this.view.btnUpcoming.skin = "sknBtnNavigateInActive";
     },
     
     loadMovieList: function(url, btn) {  
@@ -31,11 +30,24 @@ define(["MovieService"], function(movieService){
         alert("Error while retrieving movie list");
         kony.application.dismissLoadingScreen();
       }, url);
-      this.view.btnPopular.skin = "sknBtnNavigateInActive";
-      this.view.btnTopRated.skin = "sknBtnNavigateInActive";
+      this.view.btnMovie.skin = "sknBtnNavigateInActive";
+      this.view.btnTVShow.skin = "sknBtnNavigateInActive";
       this.view.btnInTheatres.skin = "sknBtnNavigateInActive";
-      this.view.btnUpcoming.skin = "sknBtnNavigateInActive";
       btn.skin = "sknBtnNavigateActive";
+    },
+    
+    loadTVShowList: function() {  
+      kony.application.showLoadingScreen();
+      
+      movieService.getTVShowList(function(TVShowList) {
+        this.onMovieListReceived(TVShowList);
+      }.bind(this), function() {
+        alert("Error while retrieving TV show list");
+        kony.application.dismissLoadingScreen();
+      });
+      this.view.btnMovie.skin = "sknBtnNavigateInActive";
+      this.view.btnInTheatres.skin = "sknBtnNavigateInActive";
+      this.view.btnTVShow.skin = "sknBtnNavigateActive";
     },
 
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {

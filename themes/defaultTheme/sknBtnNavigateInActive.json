@@ -1,6 +1,6 @@
 {
   "android": {
-    "font_name": "Helvetica",
+    "font_name": "FontAwesome",
     "font_size": 130,
     "isForked": false
   },
@@ -33,7 +33,7 @@
     "isForked": false
   },
   "iphone": {
-    "font_name": "Helvetica",
+    "font_name": "FontAwesome",
     "font_size": 130,
     "isForked": false
   },
