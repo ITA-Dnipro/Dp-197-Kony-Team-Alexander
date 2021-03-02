@@ -26,7 +26,7 @@
         "value": "70dp"
     },
     "_skin_": "sde5e9af686d4d32ae801bd5bafb3078",
-    "_text_": "Header",
+    "_text_": "TMDB Application",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -40,7 +40,7 @@
     },
     "canUpdateUI": true,
     "containerweight": 100,
-    "contentalignment": 4,
+    "contentalignment": 5,
     "id": "lblCaption",
     "info": null,
     "ipad": {

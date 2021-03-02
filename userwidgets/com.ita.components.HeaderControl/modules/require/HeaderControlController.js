@@ -104,7 +104,7 @@ define(function() {
         right: "0dp",
         width: "100%",
         skin: _listItemSkin,
-        height: kony.flex.USE_PREFERRED_SIZE,
+        height: "50dp",
         top: _separatorSize,
         isVisible: true,
         text: _dropDownList[i].name,
@@ -115,9 +115,6 @@ define(function() {
           Utility.navigateTo(data.path);
           hideDropDown();
         }.bind(this, _dropDownList[i])
-      }, {
-        padding: [0, 0, 0, 0],
-        margin: [0, 0, 0, 0]        
       });
       
       flexScroll.add(button);
