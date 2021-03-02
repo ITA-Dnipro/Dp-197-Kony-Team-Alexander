@@ -2,18 +2,11 @@ define(["MovieService"], function(movieService){
   return {
     onInitialize: function() {
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
-      //       this.view.btnSearch.onClick = this.loadResultList.bind(this);
-      this.view.btnBack.onClick = Utility.goBack
-      
-//       this.view.btnBack.onClick = Utility.navigateTo.bind(null, "frmMovieList");
+      this.view.btnBack.onClick = Utility.goBack;
       this.view.btnDeleteText.onClick = this.onBtnDeleteTextClicked.bind(this);
       this.view.inpSearch.onBeginEditing = this.showBtnDeleteText.bind(this);
-      this.view.inpSearch.onEndEditing = this.hideBtnDeleteText.bind(this);
-      //       this.view.inpSearch.onDone = this.loadResultList.bind(this);
+      this.view.inpSearch.onTextChange = this.showBtnDeleteText.bind(this);
       this.view.inpSearch.keyboardActionLabel = constants.TEXTBOX_KEYBOARD_LABEL_SEARCH;
-
-      //       this.view.btnUpcoming.onClick = this.loadResultList.bind(this, "upcoming", this.view.btnUpcoming);
-      
       this.view.onDeviceBack = Utility.goBack;
     },
 
@@ -24,6 +17,7 @@ define(["MovieService"], function(movieService){
         this.searchFor = data.searchFor;
         this.view.lstMovies.setData({});
       }
+      
       this.view.inpSearch.placeholder = "Search for " + this.searchFor;
       this.view.lblNotFound.isVisible = false;
 
@@ -57,13 +51,9 @@ define(["MovieService"], function(movieService){
           kony.application.dismissLoadingScreen();
         }, this.view.inpSearch.text.trim());
       }
-
-      
     },
 
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-//       alert('type ' + widgetRef.data[rowIndex].type);
-//       alert('id ' + widgetRef.data[rowIndex].id);
       
       if (widgetRef.data[rowIndex].type === "person") {
         Utility.navigateTo("frmPersonInfo", {id: widgetRef.data[rowIndex].id, role: widgetRef.data[rowIndex].role});
@@ -103,14 +93,12 @@ define(["MovieService"], function(movieService){
 
     onBtnDeleteTextClicked: function() {
       this.view.inpSearch.text = "";
+      this.view.btnDeleteText.isVisible = false;
     },
 
     showBtnDeleteText: function() {
       this.view.btnDeleteText.isVisible = true;
-    },
-
-    hideBtnDeleteText: function() {
-      this.view.btnDeleteText.isVisible = false;
     }
+
   };
 });
