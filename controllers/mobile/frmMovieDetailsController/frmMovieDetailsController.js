@@ -51,13 +51,7 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
         this.view.flxMainScroll.setContentOffset({
           "x": "0dp",
           "y": y + "dp"
-        }, true);
-        //         if (y < 500) {
-        //           this.view.flxMainScroll.setContentOffset({
-        //             "x": "0dp",
-        //             "y": y + "dp"
-        //           }, true);
-        //         }        
+        }, true);      
       } else {
         btn.skin = "sknBtnRecommendedMovie";
         btn.text = text + "   \uf078";
@@ -164,7 +158,6 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
     },
 
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-      //       alert(widgetRef.data[rowIndex].id);
 
       this.movieId = widgetRef.data[rowIndex].id;
       this.type = widgetRef.data[rowIndex].type;
@@ -370,33 +363,38 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       } else {
         this.view.flxCreatedByContainer.isVisible = false;
       }
-      
-      
     },
 
     onMovieCreditsReceived: function(creditsList) {
+//       alert('cred ' + JSON.stringify(creditsList));
+//       alert('dir ' + creditsList.director.map(function(m){return JSON.stringify(m);}).join('\n'));
       
-      if (creditsList.director) {
-        this.view.flxDirectorInfo.removeAll();
-      
-        for (var j = 0; j < creditsList.director.length; j++) {
-          var btnDirectorName = new kony.ui.Button({
-            id: "btnDirector" + j,
-            text: creditsList.director[j].name,
-            top: "5dp",
-            left: "0dp",
-            width: "100%",
-            height: kony.flex.USE_PREFERRED_SIZE,
-            isVisible: true,
-            skin: "sknBtnDirector",
-            onClick: this.onPersonClicked.bind(null, creditsList.director[j].id, "crew")
-          }, {
-            padding: [0,0,0,0],
-            margin: [0,0,0,0],
-            contentAlignment: constants.CONTENT_ALIGN_MIDDLE_LEFT
-          });
+      if (creditsList.director) {       
+        if (creditsList.director.length === 0) {
+          this.view.flxDirectorContainer.isVisible = false;
+        } else {
+          this.view.flxDirectorInfo.removeAll();
+          this.view.flxDirectorContainer.isVisible = true;
+          
+          for (var j = 0; j < creditsList.director.length; j++) {
+            var btnDirectorName = new kony.ui.Button({
+              id: "btnDirector" + j,
+              text: creditsList.director[j].name,
+              top: "5dp",
+              left: "0dp",
+              width: "100%",
+              height: kony.flex.USE_PREFERRED_SIZE,
+              isVisible: true,
+              skin: "sknBtnDirector",
+              onClick: this.onPersonClicked.bind(null, creditsList.director[j].id, "crew")
+            }, {
+              padding: [0,0,0,0],
+              margin: [0,0,0,0],
+              contentAlignment: constants.CONTENT_ALIGN_MIDDLE_LEFT
+            });
 
-          this.view.flxDirectorInfo.add(btnDirectorName);
+            this.view.flxDirectorInfo.add(btnDirectorName);
+          }        
         }        
       }
 			

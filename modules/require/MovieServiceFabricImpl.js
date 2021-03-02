@@ -172,7 +172,6 @@ define(function () {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
-//     alert('id ' + id);
     var body = { personId: id };
 
     AlexanderMovieListService.invokeOperation("getPersonInfo", headers, body, function(response) {
@@ -236,19 +235,15 @@ define(function () {
             character: c.character
           };
         });
-
-        var director = response.crew.filter(function(c) {
-          if (c.job === "Director") {
-            return {
-              id: c.id,
-              name: c.name
-            };
-          }
-        });
+   
+        var director = [];
+        if (response.crew) {
+          director = response.crew;
+        }
 
         successCallback({
           cast: castList,
-          director: director.length > 0 ? director : ["unknown"] 
+          director: director
         });
       }
     }, function(error) {
@@ -256,6 +251,177 @@ define(function () {
         errorCallback(error);
       }
     });
+  };
+  
+  var getPersonCredits = function(successCallback, errorCallback, personId, personRole) {
+    var sdk = kony.sdk.getCurrentInstance();
+    var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
+    var headers = null;
+    var body = { personId: personId };
+    AlexanderMovieListService.invokeOperation("getPersonCredits", headers, body, function(response) {
+      if (successCallback) { 
+        var newCast = response.cast.map(function(i){
+          return i.itemCast;
+        });
+        
+        var newCrew = response.crew.map(function(i){
+          return i.itemCrew;
+        });
+        
+        var popularList = [];
+        if (personRole === "cast") {
+          
+          popularList = newCast.filter(function(m) { return m.title || m.name; })
+            .sort(function(a, b) {
+            
+            return b.vote_count - a.vote_count;
+//             return b.popularity - a.popularity;
+            })
+            .slice(0, 9)
+            .map(function(m) {
+              return {
+                type: m.media_type,              
+                id: m.id,
+                name: m.title || m.name, 
+                img: "https://image.tmdb.org/t/p/w200/" + m.poster_path, 
+                popularity: m.popularity, 
+             };
+         }); 
+        } else {          
+          popularList = newCrew.filter(function(m, i, arr) {
+              var firstIndex = arr.findIndex(function(el) { return el.id === m.id; });
+
+              if ((m.title || m.name) && firstIndex === i) {
+                return m;
+              }
+            })
+            .sort(function(a, b) {
+             return b.vote_count - a.vote_count;
+            //             return b.popularity - a.popularity;
+            })
+            .slice(0, 9)
+            .map(function(m) {
+              return {
+                type: m.media_type,
+                id: m.id,
+                name: m.title || m.name, 
+                img: "https://image.tmdb.org/t/p/w200/" + m.poster_path, 
+                popularity: m.popularity, 
+              };
+          }); 
+        }
+//         if (personRole === "cast") {
+          
+//           popularList = response.cast.filter(function(m) { return m.title || m.name; })
+//             .sort(function(a, b) {
+//             return b.popularity - a.popularity;
+//             })
+//             .slice(0, 9)
+//             .map(function(m) {
+//               return {
+//                 type: m.media_type,              
+//                 id: m.id,
+//                 name: m.title || m.name, 
+//                 img: "https://image.tmdb.org/t/p/w200/" + m.poster_path, 
+//                 popularity: m.popularity, 
+//              };
+//          }); 
+//         } else {          
+//           popularList = response.crew.filter(function(m, i, arr) {
+//               var firstIndex = arr.findIndex(function(el) { return el.id === m.id; });
+
+//               if ((m.title || m.name) && firstIndex === i) {
+//                 return m;
+//               }
+
+//             })
+//             .sort(function(a, b) {
+//              return b.popularity - a.popularity;
+//             })
+//             .slice(0, 9)
+//             .map(function(m) {
+//               return {
+//                 type: m.media_type,
+//                 id: m.id,
+//                 name: m.title || m.name, 
+//                 img: "https://image.tmdb.org/t/p/w200/" + m.poster_path, 
+//                 popularity: m.popularity, 
+//               };
+//           }); 
+//         }
+
+        var productionList = [];
+        var directingList = [];
+        var writingList = [];
+
+
+        for (var i = 0; i < newCrew.length; i++) {
+          switch (newCrew[i].job) {
+            case "Producer": 
+            case "Executive Producer": {
+              productionList.push(newCrew[i]);
+              break;
+            }
+            case "Screenplay":
+            case "Writer": {
+              writingList.push(newCrew[i]);
+              break;              
+            }
+            case "Director": {
+              directingList.push(newCrew[i]);
+              break;  
+            } 
+          }
+        }
+
+        successCallback({
+          popularList: popularList,
+          actingList: sortMovieList(newCast),
+          productionList: sortMovieList(productionList),   
+          directingList: sortMovieList(directingList),
+          writingList: sortMovieList(writingList)
+        });
+      }
+    }, function(error) {
+      if (errorCallback) {
+        errorCallback(error);
+      }       
+    });
+  };
+       
+  var sortMovieList = function(movieList) {
+    var upcomingList = movieList.filter(function(m) { return (m.title || m.name) && !m.release_date && !m.first_air_date; })
+    .map(function(m){
+      return {
+        id: m.id,
+        type: m.media_type,
+        title: m.title || m.name,
+        additionalInfo: m.character || m.job,
+        year: "-"
+      };
+    });
+
+    var mList = movieList.filter(function(m) { return (m.title || m.name) && (m.release_date || m.first_air_date); })
+    .sort(function(a, b) {
+
+      var dateAMs = new Date(a.release_date || a.first_air_date).getTime();
+      var dateBMs = new Date(b.release_date || b.first_air_date).getTime();
+
+      return dateBMs - dateAMs;
+    })
+    .map(function(m){
+      return {
+        type: m.media_type,
+        id: m.id,
+        title: m.title || m.name,
+        additionalInfo: m.character || m.job,
+        year: (new Date(m.release_date || m.first_air_date)).getFullYear()
+      };
+    });
+
+    var sortedMovieList = upcomingList.concat(mList);
+
+    return sortedMovieList;
   };
 
   var getRecommendedMovieList = function(successCallback, errorCallback, mId) {
@@ -296,5 +462,6 @@ define(function () {
 
     searchPeople: searchPeople,
     getPersonInfo: getPersonInfo,
+    getPersonCredits: getPersonCredits,
   };
 });
