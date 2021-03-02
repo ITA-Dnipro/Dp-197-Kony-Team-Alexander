@@ -230,30 +230,30 @@ define(function () {
     });   
   }; 
 
-  var getSimilarMovieList = function(successCallback, errorCallback, mId) {
-    var sdk = kony.sdk.getCurrentInstance();
-    var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
-    var headers = null;
-    var body = { id: mId };
-    AlexanderMovieListService.invokeOperation("getSimilarMovieList", headers, body, function(response) {
-      if (successCallback) {
-        var movieList = response.results.map(function(m) {
-          return new MovieData({
-            type: "movie",
-            id: m.id,
-            title: m.title, 
-            description: m.overview,
-            posterPath: m.poster_path
-          }); 
-        });
-        successCallback(movieList);
-      }
-    }, function(error) {
-      if (errorCallback) {
-        errorCallback(error);
-      }
-    }); 
-  };
+//   var getSimilarMovieList = function(successCallback, errorCallback, mId) {
+//     var sdk = kony.sdk.getCurrentInstance();
+//     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
+//     var headers = null;
+//     var body = { id: mId };
+//     AlexanderMovieListService.invokeOperation("getSimilarMovieList", headers, body, function(response) {
+//       if (successCallback) {
+//         var movieList = response.results.map(function(m) {
+//           return new MovieData({
+//             type: "movie",
+//             id: m.id,
+//             title: m.title, 
+//             description: m.overview,
+//             posterPath: m.poster_path
+//           }); 
+//         });
+//         successCallback(movieList);
+//       }
+//     }, function(error) {
+//       if (errorCallback) {
+//         errorCallback(error);
+//       }
+//     }); 
+//   };
 
   var getMovieCredits = function(successCallback, errorCallback, movieId) {
     var sdk = kony.sdk.getCurrentInstance();
@@ -447,38 +447,83 @@ define(function () {
     return sortedMovieList;
   };
 
-  var getRecommendedMovieList = function(successCallback, errorCallback, mId) {
+//   var getRecommendedMovieList = function(successCallback, errorCallback, mId) {
+//     var sdk = kony.sdk.getCurrentInstance();
+//     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
+//     var headers = null;
+//     var body = { id: mId };
+//     AlexanderMovieListService.invokeOperation("getRecommendedMovieList", headers, body, function(response) {
+//       if (successCallback) {
+//         var movieList = response.results.map(function(m) {
+//           return new MovieData({
+//             type: "movie",
+//             id: m.id,
+//             title: m.title, 
+//             description: m.overview, 
+//             genresId: m.genre_ids, 
+//             posterPath: m.poster_path,
+//             voteAvg: m.vote_average,
+//             released: m.release_date,
+//           }); 
+//         });
+//         successCallback(movieList);
+//       }
+//     }, function(error) {
+//       if (errorCallback) {
+//         errorCallback(error);
+//       }
+//     }); 
+//   };
+  
+  var getRecommendedList = function(successCallback, errorCallback, id, listType, mediaType) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
-    var body = { id: mId };
-    AlexanderMovieListService.invokeOperation("getRecommendedMovieList", headers, body, function(response) {
+    var body = { id: id, listType: listType, mediaType: mediaType };
+    AlexanderMovieListService.invokeOperation("getRecommendedList", headers, body, function(response) {
       if (successCallback) {
-        var movieList = response.results.map(function(m) {
-          return new MovieData({
-            type: "movie",
-            id: m.id,
-            title: m.title, 
-            description: m.overview, 
-            genresId: m.genre_ids, 
-            posterPath: m.poster_path,
-            voteAvg: m.vote_average,
-            released: m.release_date,
-          }); 
-        });
+        var movieList = [];
+        
+        if (mediaType === "tv") {
+          movieList = response.results.map(function(m) {
+            return new TvData({
+              type: "tv",
+              id: m.id,
+              title: m.name, 
+              description: m.overview, 
+              posterPath: m.poster_path
+            });
+          });
+        }
+        
+        if (mediaType === "movie") {
+          movieList = response.results.map(function(m) {
+            return new MovieData({
+              type: "movie",
+              id: m.id,
+              title: m.title, 
+              description: m.overview, 
+              genresId: m.genre_ids, 
+              posterPath: m.poster_path,
+              voteAvg: m.vote_average,
+              released: m.release_date,
+            }); 
+          });
+        }
+        
         successCallback(movieList);
       }
     }, function(error) {
       if (errorCallback) {
         errorCallback(error);
       }
-    }); 
+    });  
   };
 
   return {
     getMovieDetails: getMovieDetails,
-    getSimilarMovieList: getSimilarMovieList,
-    getRecommendedMovieList: getRecommendedMovieList,
+//     getSimilarMovieList: getSimilarMovieList,
+//     getRecommendedMovieList: getRecommendedMovieList,
     getMovieList: getMovieList,
     searchMovie: searchMovie,
     getMovieCredits: getMovieCredits,
@@ -488,5 +533,6 @@ define(function () {
     getPersonCredits: getPersonCredits,
     getTvDetails: getTvDetails,
     getTvCredits: getTvCredits,
+    getRecommendedList: getRecommendedList,
   };
 });

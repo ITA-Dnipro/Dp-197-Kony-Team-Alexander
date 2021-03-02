@@ -72,8 +72,7 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       
       alert('id ' + this.movieId);
       
-      if (this.type === "movie") {
-        
+      if (this.type === "movie") {        
         kony.application.showLoadingScreen();
 
         movieService.getMovieDetails(function(movieDetails) {
@@ -84,21 +83,21 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
           kony.application.dismissLoadingScreen();
         }, this.movieId);
 
-        movieService.getSimilarMovieList(function(movieList) {
+        movieService.getRecommendedList(function(movieList) {
           this.onSimilarMovieListReceived(movieList);
           kony.application.dismissLoadingScreen();
         }.bind(this), function() {
           alert("Error while retrieving similar movie list");
           kony.application.dismissLoadingScreen();
-        }, this.movieId);
+        }, this.movieId, "similar", this.type);
 
-        movieService.getRecommendedMovieList(function(movieList) {
+        movieService.getRecommendedList(function(movieList) {
           this.onRecommendedMovieListReceived(movieList);
           kony.application.dismissLoadingScreen();
         }.bind(this), function() {
           alert("Error while retrieving recommended movie list");
           kony.application.dismissLoadingScreen();
-        }, this.movieId);
+        }, this.movieId, "recommendations", this.type);
 
         movieService.getMovieCredits(function(creditsList) {
           this.onMovieCreditsReceived(creditsList);
@@ -121,21 +120,21 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
           kony.application.dismissLoadingScreen();
         }, this.movieId);
 
-        movieService.getSimilarTvList(function(tvList) {
+        movieService.getRecommendedList(function(tvList) {
           this.onSimilarMovieListReceived(tvList);
           kony.application.dismissLoadingScreen();
         }.bind(this), function() {
           alert("Error while retrieving similar movie list");
           kony.application.dismissLoadingScreen();
-        }, this.movieId);
+        }, this.movieId, "similar", this.type);
 
-        movieService.getRecommendedTvList(function(movieList) {
+        movieService.getRecommendedList(function(movieList) {
           this.onRecommendedMovieListReceived(movieList);
           kony.application.dismissLoadingScreen();
         }.bind(this), function() {
           alert("Error while retrieving recommended movie list");
           kony.application.dismissLoadingScreen();
-        }, this.movieId);
+        }, this.movieId, "recommendations", this.type);
 
         movieService.getTvCredits(function(creditsList) {
           this.onMovieCreditsReceived(creditsList);
@@ -169,8 +168,7 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
       this.view.btnShowRecommendations.text = "Recommendations   \uf078";
       this.view.btnShowSimilarMovie.text = "Similar Movies   \uf078";
       
-      if (this.type === "movie") {
-        
+       if (this.type === "movie") {        
         kony.application.showLoadingScreen();
 
         movieService.getMovieDetails(function(movieDetails) {
@@ -181,21 +179,21 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
           kony.application.dismissLoadingScreen();
         }, this.movieId);
 
-        movieService.getSimilarMovieList(function(movieList) {
+        movieService.getRecommendedList(function(movieList) {
           this.onSimilarMovieListReceived(movieList);
           kony.application.dismissLoadingScreen();
         }.bind(this), function() {
           alert("Error while retrieving similar movie list");
           kony.application.dismissLoadingScreen();
-        }, this.movieId);
+        }, this.movieId, "similar", this.type);
 
-        movieService.getRecommendedMovieList(function(movieList) {
+        movieService.getRecommendedList(function(movieList) {
           this.onRecommendedMovieListReceived(movieList);
           kony.application.dismissLoadingScreen();
         }.bind(this), function() {
           alert("Error while retrieving recommended movie list");
           kony.application.dismissLoadingScreen();
-        }, this.movieId);
+        }, this.movieId, "recommendations", this.type);
 
         movieService.getMovieCredits(function(creditsList) {
           this.onMovieCreditsReceived(creditsList);
@@ -204,7 +202,9 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
           alert("Error while retrieving movie credits");
           kony.application.dismissLoadingScreen();
         }, this.movieId);        
-      } else {
+      } 
+      
+      if (this.type === "tv") {
         
         kony.application.showLoadingScreen();
 
@@ -216,21 +216,21 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
           kony.application.dismissLoadingScreen();
         }, this.movieId);
 
-        movieService.getSimilarTvList(function(tvList) {
+        movieService.getRecommendedList(function(tvList) {
           this.onSimilarMovieListReceived(tvList);
           kony.application.dismissLoadingScreen();
         }.bind(this), function() {
           alert("Error while retrieving similar movie list");
           kony.application.dismissLoadingScreen();
-        }, this.movieId);
+        }, this.movieId, "similar", this.type);
 
-        movieService.getRecommendedTvList(function(movieList) {
+        movieService.getRecommendedList(function(movieList) {
           this.onRecommendedMovieListReceived(movieList);
           kony.application.dismissLoadingScreen();
         }.bind(this), function() {
           alert("Error while retrieving recommended movie list");
           kony.application.dismissLoadingScreen();
-        }, this.movieId);
+        }, this.movieId, "recommendations", this.type);
 
         movieService.getTvCredits(function(creditsList) {
           this.onMovieCreditsReceived(creditsList);
@@ -366,8 +366,6 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
     },
 
     onMovieCreditsReceived: function(creditsList) {
-//       alert('cred ' + JSON.stringify(creditsList));
-//       alert('dir ' + creditsList.director.map(function(m){return JSON.stringify(m);}).join('\n'));
       
       if (creditsList.director) {       
         if (creditsList.director.length === 0) {
@@ -464,5 +462,5 @@ define(["MovieService", "AuthenticationService", "FavouriteListService"], functi
     onPersonClicked: function(personId, role) {
       Utility.navigateTo("frmPersonInfo", {id: personId, role: role});
     }
-  }
+  };
 });
