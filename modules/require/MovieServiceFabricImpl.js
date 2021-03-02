@@ -155,9 +155,6 @@ define(function () {
     var body = { movieId: id };
 
     AlexanderMovieListService.invokeOperation("getTvDetails", headers, body, function(response) {
-      
-//       alert('tv ' + JSON.stringify(response));
-
       if (successCallback) {
         var tvDetails = new TvData({
           type: "tv",
@@ -282,6 +279,33 @@ define(function () {
         successCallback({
           cast: castList,
           director: director
+        });
+      }
+    }, function(error) {
+      if (errorCallback) {
+        errorCallback(error);
+      }
+    });
+  };
+  
+  var getTvCredits = function(successCallback, errorCallback, tvId) {
+    var sdk = kony.sdk.getCurrentInstance();
+    var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
+    var headers = null;
+    var body = { movieId: tvId };
+    AlexanderMovieListService.invokeOperation("getTvCredits", headers, body, function(response) {
+      if (successCallback) {
+        var castList = response.cast.map(function(c) {
+          return {
+            id: c.id,
+            name: c.name, 
+            img: "https://image.tmdb.org/t/p/w200/" + c.profile_path, 
+            character: c.roles.map(function(r){ return r.character; }).join(', '), 
+          };
+        });
+
+        successCallback({
+          cast: castList,
         });
       }
     }, function(error) {
@@ -462,6 +486,7 @@ define(function () {
     searchPeople: searchPeople,
     getPersonInfo: getPersonInfo,
     getPersonCredits: getPersonCredits,
-    getTvDetails: getTvDetails
+    getTvDetails: getTvDetails,
+    getTvCredits: getTvCredits,
   };
 });

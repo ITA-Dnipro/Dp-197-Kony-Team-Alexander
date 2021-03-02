@@ -14,12 +14,14 @@ define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl,
       getPersonInfo: concreteImpl.getPersonInfo,
       getPersonCredits: concreteImpl.getPersonCredits,
       getTvDetails: concreteImpl.getTvDetails,
+      getTvCredits: concreteImpl.getTvCredits,
+//       getSimilarTvList: concreteImpl.getRecommendedList,
       
 //       searchPeople: httpImpl.searchPeople,
 //       getPersonInfo: httpImpl.getPersonInfo,
 //       getPersonCredits: httpImpl.getPersonCredits,
 //       getTvDetails: httpImpl.getTvDetails,
-      getTvCredits: httpImpl.getTvCredits,
+//       getTvCredits: httpImpl.getTvCredits,
       getSimilarTvList: httpImpl.getSimilarTvList,
       getRecommendedTvList: httpImpl.getRecommendedTvList
     };
