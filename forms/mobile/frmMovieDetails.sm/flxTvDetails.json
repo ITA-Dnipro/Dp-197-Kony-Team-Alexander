@@ -45,7 +45,7 @@
         "flxLastAirDate",
         "flxNumberOfSeasons",
         "flxDetailsItemTv4",
-        "flxDetailsItemTv5",
+        "flxCreatedByContainer",
         "flxDetailsItemTv6"
     ],
     "clipbounds": true,
