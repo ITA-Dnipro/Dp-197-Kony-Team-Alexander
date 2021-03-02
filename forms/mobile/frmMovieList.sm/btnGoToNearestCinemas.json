@@ -25,8 +25,8 @@
         0,
         0
     ],
-    "_skin_": "sd86a5ebc0f0478d85a27fb92b4234a3",
-    "_text_": "Popular",
+    "_skin_": "sfac05d8c22a4bedb058f7d521872590",
+    "_text_": "",
     "_width_": {
         "type": "string",
         "value": "25%"
@@ -36,11 +36,11 @@
     "contentalignment": 5,
     "displaytext": true,
     "focusskin": "s747492020ab41db9e0293bb9b7d40ac",
-    "id": "btnPopular",
+    "id": "btnGoToNearestCinemas",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "cc75002e4bde430e95733209a51b68ec",
+    "kuid": "ge19e98cf3ab42209eac7150c4650225",
     "name": "kony.ui.Button",
     "parent": "flxNavContainer",
     "pf": "frmMovieList",

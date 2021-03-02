@@ -2,8 +2,8 @@
     "@class": "com.kony.gen.viz.model.component.KVizButton",
     "DNDConfig": null,
     "_bottom_": {
-        "type": "string",
-        "value": "0dp"
+        "type": "number",
+        "value": "0"
     },
     "_height_": {
         "type": "string",
@@ -26,7 +26,7 @@
         0
     ],
     "_skin_": "sfac05d8c22a4bedb058f7d521872590",
-    "_text_": "Upcoming",
+    "_text_": "TV show",
     "_width_": {
         "type": "string",
         "value": "25%"
@@ -36,11 +36,12 @@
     "contentalignment": 5,
     "displaytext": true,
     "focusskin": "s747492020ab41db9e0293bb9b7d40ac",
-    "id": "btnUpcoming",
+    "id": "btnTVShow",
     "info": null,
+    "iphone": {},
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "ge19e98cf3ab42209eac7150c4650225",
+    "kuid": "c812ea1f550743beb704e599d73f55cd",
     "name": "kony.ui.Button",
     "parent": "flxNavContainer",
     "pf": "frmMovieList",

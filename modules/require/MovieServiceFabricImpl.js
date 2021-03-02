@@ -56,6 +56,37 @@ define(function () {
       alert("Error while retrieving genres list");
     });   
   };
+  
+   var getTVShowList = function(successCallback, errorCallback) {
+    var sdk = kony.sdk.getCurrentInstance();
+    var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
+    var headers = null;
+    var body = {};
+    loadGenreList(function(genreData){
+      AlexanderMovieListService.invokeOperation("getTVShowList", headers, body, function(response) {
+
+        if (successCallback) {
+          var movieList = response.results.map(function(m) {
+            return new MovieData({
+              type: "tv",
+              id: m.id,
+              title: m.name, 
+              posterPath: m.poster_path,
+              released: m.first_air_date,
+              genreNamesList: getGenreNameById(genreData, m.genre_ids)
+            }); 
+          });
+          successCallback(movieList);
+        }
+      }, function(error) {
+        if (errorCallback) {
+          errorCallback(error);
+        }
+      });
+    }, function(){
+      alert("Error while retrieving genres list");
+    });   
+  };
 
   var searchMovie = function(successCallback, errorCallback, string) {
     var sdk = kony.sdk.getCurrentInstance();
@@ -214,6 +245,7 @@ define(function () {
   };
 
   return {
+    getTVShowList: getTVShowList,
     getMovieDetails: getMovieDetails,
     getSimilarMovieList: getSimilarMovieList,
     getRecommendedMovieList: getRecommendedMovieList,
