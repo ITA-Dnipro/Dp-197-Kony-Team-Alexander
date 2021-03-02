@@ -5,6 +5,10 @@
         "type": "string",
         "value": "50dp"
     },
+    "_left_": {
+        "type": "string",
+        "value": "60dp"
+    },
     "_margin_": [
         0,
         0,
@@ -18,15 +22,15 @@
         0
     ],
     "_placeholder_": "Username",
-    "_skin_": "s2cf8faf668a4b549290e89ea2938573",
+    "_right_": {
+        "type": "string",
+        "value": "60dp"
+    },
+    "_skin_": "sb2fe2e2364742dba984057ccebc1652",
     "_text_": "kup",
     "_top_": {
         "type": "string",
-        "value": "300dp"
-    },
-    "_width_": {
-        "type": "string",
-        "value": "100%"
+        "value": "310dp"
     },
     "autocapitalize": "none",
     "autocomplete": false,
