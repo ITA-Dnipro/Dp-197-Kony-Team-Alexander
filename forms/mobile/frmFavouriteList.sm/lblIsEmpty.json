@@ -1,9 +1,9 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
-    "_height_": {
+    "_bottom_": {
         "type": "string",
-        "value": "70dp"
+        "value": "0dp"
     },
     "_left_": {
         "type": "string",
@@ -21,19 +21,15 @@
         0,
         0
     ],
-    "_right_": {
-        "type": "number",
-        "value": "0"
-    },
-    "_skin_": "s2349ecd81944f4b931c13ea3b9cb16d",
-    "_text_": " Favourite ❤",
+    "_skin_": "s29fa37568f84dfe9a5b8a49a7680d50",
+    "_text_": "Favourite list is empty",
     "_top_": {
         "type": "string",
-        "value": "0dp"
+        "value": "70dp"
     },
     "_width_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "100%"
     },
     "_wrapping_": 2,
     "android": {
@@ -45,7 +41,7 @@
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 5,
-    "id": "lblHeader",
+    "id": "lblIsEmpty",
     "info": null,
     "ipad": {
         "psp": {
@@ -59,9 +55,9 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "g4bd30af030241a0a0b67ad9b7c6fd30",
+    "kuid": "f22119d77e2d4f04b3ba6dfd03d1f027",
     "name": "kony.ui.Label",
-    "parent": "flxHeader",
+    "parent": "frmFavouriteList",
     "pf": "frmFavouriteList",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
