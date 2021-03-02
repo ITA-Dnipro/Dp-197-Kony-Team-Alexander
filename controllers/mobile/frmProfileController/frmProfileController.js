@@ -2,6 +2,7 @@ define(["UserProfileService"], function(userProfile) {
   return { 
     onInitialize: function() {
       this.view.btnProfileFormChange.onClick = this.onUserProfileChange.bind(this);
+      this.view.BackHeader.btnBackHeader.onClick = Utility.goBack;
     },
 
     onNavigate: function() {
