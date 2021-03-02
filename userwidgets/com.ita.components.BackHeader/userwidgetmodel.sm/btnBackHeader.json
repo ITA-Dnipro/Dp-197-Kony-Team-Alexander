@@ -21,8 +21,8 @@
         0,
         0
     ],
-    "_skin_": "s85d7ecf4deb438e9bd979cc23e2bdcb",
-    "_text_": "",
+    "_skin_": "s6dfbaa046dc4421bec25d2a6de3d699",
+    "_text_": "",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -35,7 +35,7 @@
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "sb4bcded52654b759c34238cfe7e56b9",
+    "focusskin": "s560ae4e2bba484dba3c0ab31ea966ab",
     "id": "btnBackHeader",
     "ide_onClick": "AS_Button_b94ca1f882454b198a0c603ee00874cf",
     "info": null,

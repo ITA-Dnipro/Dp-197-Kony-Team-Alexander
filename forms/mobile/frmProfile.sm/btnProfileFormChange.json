@@ -6,8 +6,8 @@
         "value": "50dp"
     },
     "_left_": {
-        "type": "number",
-        "value": "0"
+        "type": "string",
+        "value": "60dp"
     },
     "_margin_": [
         6,
@@ -21,15 +21,15 @@
         0,
         0
     ],
+    "_right_": {
+        "type": "string",
+        "value": "60dp"
+    },
     "_skin_": "s36c5183d44940ba8d38f8cc9480595c",
     "_text_": "Change",
     "_top_": {
         "type": "string",
         "value": "387dp"
-    },
-    "_width_": {
-        "type": "string",
-        "value": "150dp"
     },
     "canUpdateUI": true,
     "centerx": {

@@ -21,8 +21,8 @@
         0,
         0
     ],
-    "_skin_": "s864575b28824ee68a416d78742b7f9d",
-    "_text_": "",
+    "_skin_": "s6dfbaa046dc4421bec25d2a6de3d699",
+    "_text_": "",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -35,7 +35,7 @@
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "s3ee36d494a74ababb01bcd012ec14b8",
+    "focusskin": "s560ae4e2bba484dba3c0ab31ea966ab",
     "id": "btnBack",
     "info": null,
     "iscustomlayout": false,
