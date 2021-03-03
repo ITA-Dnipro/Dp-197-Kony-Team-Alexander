@@ -13,11 +13,17 @@ define(["MovieService"], function(movieService){
       this.view.btnMovies.onClick = this.onChangeSearchFor.bind(this, "movies", this.view.btnMovies);
       this.view.btnTVShows.onClick = this.onChangeSearchFor.bind(this, "tv shows", this.view.btnTVShows);
       this.view.btnPeople.onClick = this.onChangeSearchFor.bind(this, "people", this.view.btnPeople);
+      
+      this.view.postShow = this.onPostShow.bind(this);
     },
+    
+    onPostShow: function() {
+      this.view.inpSearch.setFocus(true);      
+    },   
     
     onChangeSearchFor: function(search, btn) {
       this.searchFor = search;
-      alert('curr ' + this.searchFor);
+//       alert('curr ' + this.searchFor);
       this.view.btnMovies.skin = "sknBtnNavigateInActive";
       this.view.btnTVShows.skin = "sknBtnNavigateInActive";
       this.view.btnPeople.skin = "sknBtnNavigateInActive";
@@ -29,7 +35,6 @@ define(["MovieService"], function(movieService){
 
     onNavigate: function(data) {  
       this.view.inpSearch.text = "";
-      this.view.inpSearch.setFocus(true); // it doesn't work
       
       if (data) {
         switch (true) {
@@ -50,7 +55,7 @@ define(["MovieService"], function(movieService){
       }
       
       this.view.lblNotFound.isVisible = false;
-
+      
       this.view.btnSearch.onClick = this.loadResultList.bind(this);
       this.view.inpSearch.onDone = this.loadResultList.bind(this);
     },

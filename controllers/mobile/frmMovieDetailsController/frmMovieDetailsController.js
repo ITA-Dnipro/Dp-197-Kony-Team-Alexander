@@ -106,7 +106,8 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
 
       alert('id ' + this.movieId);
       
-      if (this.type === "movie") {        
+      if (this.type === "movie") {  
+        this.view.cmpHeader.text = "Movie Details";
         kony.application.showLoadingScreen();
 
         movieService.getMovieDetails(function(movieDetails) {
@@ -143,7 +144,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       } 
 
       if (this.type === "tv") {
-
+				this.view.cmpHeader.text = "TV Show Details";
         kony.application.showLoadingScreen();
 
         movieService.getTvDetails(function(tvDetails) {
@@ -191,6 +192,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
     },
 
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
+      // formsStack.push({ id: "frmMovieDetails", data: {id: widgetRef.data[rowIndex].id, type: widgetRef.data[rowIndex].type} });
 
       this.movieId = widgetRef.data[rowIndex].id;
       this.type = widgetRef.data[rowIndex].type;
@@ -202,7 +204,8 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       this.view.btnShowRecommendations.text = "Recommendations   \uf078";
       this.view.btnShowSimilarMovie.text = "Similar Movies   \uf078";
 
-       if (this.type === "movie") {        
+       if (this.type === "movie") {    
+        this.view.cmpHeader.text = "Movie Details";
         kony.application.showLoadingScreen();
 
         movieService.getMovieDetails(function(movieDetails) {
@@ -239,7 +242,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       } 
       
       if (this.type === "tv") {
-
+        this.view.cmpHeader.text = "TV Show Details";
         kony.application.showLoadingScreen();
 
         movieService.getTvDetails(function(tvDetails) {
