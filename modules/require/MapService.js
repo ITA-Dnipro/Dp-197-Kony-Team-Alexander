@@ -2,7 +2,7 @@ define(function () {
   var getNearestCinemas = function(lat, lng, successCB, errorCB) {
 
     var sdk = kony.sdk.getCurrentInstance();
-    var AlexanderMapService = sdk.getIntegrationService("AlexDB");
+    var AlexanderMapService = sdk.getIntegrationService("GooglePlacesAPI");
     var headers = null;
     var body = {
       lat: lat,
@@ -10,20 +10,22 @@ define(function () {
     };
     AlexanderMapService.invokeOperation("searchNearbyCinemas", headers, body, function(response) {
       if (successCB) {
-        var cinemaList = response.results.map(function(m) {
+        var cinemaList = response.results.map(function(m, i) {
           return{
             id: "id" + m.location.lat + m.location.lng,
             name: m.name,
-            vicinity: m.vicinity,
+            desc: "Description " + i,
+//             vicinity: m.vicinity,
             lat: m.location.lat,
-            lng: m.location.lng,
-//             image: {
-//               source: "pin_location.png",
-//               sourceType: kony.map.PIN_IMG_SRC_TYPE_RESOURCES,
-//               anchor: kony.map.PIN_IMG_ANCHOR_BOTTOM_CENTER
-//             },
+            lon: m.location.lng,
+            image: {
+              source: "pinb.png",
+              sourceType: kony.map.PIN_IMG_SRC_TYPE_RESOURCES,
+              anchor: kony.map.PIN_IMG_ANCHOR_BOTTOM_CENTER
+            }
           }; 
         });
+        alert(cinemaList);
         successCB(cinemaList);
       }
     }, function(error) {
