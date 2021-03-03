@@ -1,4 +1,1 @@
 var formsStack = [];
-
-
-var mainGenreData = [];

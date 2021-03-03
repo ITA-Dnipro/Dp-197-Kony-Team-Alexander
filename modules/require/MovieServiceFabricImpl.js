@@ -1,14 +1,24 @@
 define(function () {
-  var loadGenreList = function(successCallback, errorCallback) {
+  var mainGenreData = [];
+  
+  
+  var getGenreList = function(successCallback, errorCallback) {
+    if (mainGenreData && mainGenreData.length > 0) {
+      return successCallback(mainGenreData);      
+    }
+    
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = {};
     AlexanderMovieListService.invokeOperation("getGenreList", headers, body, function(response) {
+      
+//       alert('load genre list');
+      mainGenreData = response.genres;
+      
       if (successCallback) {
         successCallback(response.genres);
       }
-      mainGenreData = response.genres;
     }, function(error) {
 
       if (errorCallback) {
@@ -32,7 +42,7 @@ define(function () {
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = {category: url};
-    loadGenreList(function(genreData){
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("getMovieList", headers, body, function(response) {
 
         if (successCallback) {
@@ -63,7 +73,7 @@ define(function () {
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = {};
-    loadGenreList(function(genreData){
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("getTVShowList", headers, body, function(response) {
 
         if (successCallback) {
@@ -94,7 +104,7 @@ define(function () {
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = { query: string };
-    loadGenreList(function(genreData){
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("searchMovie", headers, body, function(response) {
 
         if (successCallback) {
@@ -126,7 +136,7 @@ define(function () {
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = { query: string };
-    loadGenreList(function(genreData){
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("searchTvShows", headers, body, function(response) {
 
         if (successCallback) {
@@ -547,6 +557,5 @@ define(function () {
     getTvCredits: getTvCredits,
     getRecommendedList: getRecommendedList,
     searchTvShows: searchTvShows,
-//     loadGenreList: loadGenreList
   };
 });
