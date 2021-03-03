@@ -30,9 +30,10 @@
     },
     "canUpdateUI": true,
     "children": [
-        "MapWidget",
+        "mapCinemaWidget",
         "BackHeader",
-        "lblHeader"
+        "lblHeader",
+        "btnGetLocation"
     ],
     "containerweight": 100,
     "controllerInfo": {
