@@ -6,7 +6,7 @@ define(["MapServiceFabricImpl"], function(){
     
     getLocation: function(){
       //Sample code to set the locationData property of a Map widget.
-      frmMap.myMap.locationData = [{
+      frmNearestCinemas.mapWidget.locationData = [{
         lat: "17.445775",
         lon: "78.3731",
         name: "Campus 1",
