@@ -2,13 +2,15 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
 
   return {
     onInitialize: function() {
-      this.view.btnBack.onClick = Utility.goBack;
       this.view.lstSimilarMovies.onRowClick = this.onSimilarMoviesRowClicked.bind(this);
       this.view.lstRecommendedMovies.onRowClick = this.onSimilarMoviesRowClicked.bind(this);
       this.view.btnFavorite.onClick = this.onbtnFavoriteClicked.bind(this);
       this.view.onDeviceBack = Utility.goBack;
       this.view.btnShowRecommendations.onClick = this.onBtnShowClicked.bind(this, this.view.btnShowRecommendations, "Recommendations", this.view.lstRecommendedMovies);
       this.view.btnShowSimilarMovie.onClick = this.onBtnShowClicked.bind(this, this.view.btnShowSimilarMovie, "Similar Movies", this.view.lstSimilarMovies);
+      
+      this.view.cmpHeader.onBackClicked = Utility.goBack;
+//       alert(this.view.cmpHeader.onBtnBack.text);
     },
 
     onbtnFavoriteClicked: function() {
