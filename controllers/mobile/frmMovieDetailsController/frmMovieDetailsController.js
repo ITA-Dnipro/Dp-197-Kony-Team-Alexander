@@ -21,9 +21,9 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       if (this.type === "movie" && this.view.btnFavorite.skin === "sknBtnFavoriteActive") {
         movieService.getMovieDetails(function(movieDetails) {
           favouriteService.createFavouriteList(UserId, movieDetails, function() {
-            alert("Added to favorite list!");
+            alert("The movie is added to favorite list!");
           }, function() {
-            alert("Error while add movie to favourits");
+            alert("Error while adding movie to favourits");
           });
         }.bind(this), function() {
           alert("Error while retrieving movie details");
@@ -37,7 +37,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
             return Number(movieId) === Number(m.id); 
           });
           favouriteService.deleteFavouriteList(movieInFavorite.dbId, function() {
-                  alert("Deleted movie from favourite list");
+                  alert("The movie is deleted from favourite list");
                 }, function() {
                 alert("Error while deleting movie from favourite list");
               });
@@ -49,9 +49,9 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       if (this.type === "tv" && this.view.btnFavorite.skin === "sknBtnFavoriteActive") {
         movieService.getTvDetails(function(tvDetails) {
           favouriteService.createFavouriteList(UserId, tvDetails, function() {
-            alert("create!");
+            alert("The tv show is added to favourite list!");
           }, function() {
-            alert("Error while add tv to favourits");
+            alert("Error while adding tv to favourits");
           });
         }.bind(this), function() {
           alert("Error while retrieving tv details");
@@ -64,7 +64,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
             return Number(this.movieId) === Number(m.id); 
           }.bind(this));
           favouriteService.deleteFavouriteList(movieInFavorite.dbId, function() {
-                  alert("Deleted movie from favourite list");
+                  alert("The tv show is deleted from favourite list");
                 }, function() {
                 alert("Error while deleting tv from favourite list");
               });

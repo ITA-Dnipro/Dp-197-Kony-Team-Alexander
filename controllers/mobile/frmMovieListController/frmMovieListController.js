@@ -12,6 +12,7 @@ define(["MovieService"], function(movieService){
       
       kony.application.showLoadingScreen();
       
+      
       movieService.getMovieList(function(movieList) {
         this.onMovieListReceived(movieList);
       }.bind(this), function() {

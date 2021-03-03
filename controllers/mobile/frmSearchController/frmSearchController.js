@@ -14,10 +14,10 @@ define(["MovieService"], function(movieService){
       this.view.btnTVShows.onClick = this.onChangeSearchFor.bind(this, "tv shows", this.view.btnTVShows);
       this.view.btnPeople.onClick = this.onChangeSearchFor.bind(this, "people", this.view.btnPeople);
       
-      this.view.postShow = this.onPostShow.bind(this);
+      this.view.postShow = this.onFormShowed.bind(this);
     },
     
-    onPostShow: function() {
+    onFormShowed: function() {
       this.view.inpSearch.setFocus(true);      
     },   
     
@@ -37,20 +37,22 @@ define(["MovieService"], function(movieService){
       this.view.inpSearch.text = "";
       
       if (data) {
-        switch (true) {
-          case data.searchFor === "movies": {
-            this.onChangeSearchFor(data.searchFor, this.view.btnMovies);
-            break;
-          }
-          case data.searchFor === "tv shows": {
-            this.onChangeSearchFor(data.searchFor, this.view.btnTVShows);
-            break;
-          }
-          case data.searchFor === "people": {
-            this.onChangeSearchFor(data.searchFor, this.view.btnPeople);
-            break;
-          }            
-        }
+        
+//         switch (true) {
+//           case data.searchFor === "movies": {
+//             this.onChangeSearchFor(data.searchFor, this.view.btnMovies);
+//             break;
+//           }
+//           case data.searchFor === "tv shows": {
+//             this.onChangeSearchFor(data.searchFor, this.view.btnTVShows);
+//             break;
+//           }
+//           case data.searchFor === "people": {
+//             this.onChangeSearchFor(data.searchFor, this.view.btnPeople);
+//             break;
+//           }            
+//         }
+        this.onChangeSearchFor(data.searchFor, this.view.btnMovies);
         this.view.lstMovies.setData({});
       }
       
