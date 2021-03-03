@@ -1,0 +1,28 @@
+{
+    "AS_Form_e13779eb24d14b0daaf971fe7ef391c7": {
+        "id": "AS_Form_e13779eb24d14b0daaf971fe7ef391c7",
+        "type": "ACTION_SEQUENCE",
+        "params": [{
+            "datatype": "collection",
+            "name": "eventobject"
+        }],
+        "contextObj": {
+            "name": "frmNearestCinemas",
+            "type": "forms",
+            "platform": null,
+            "KUID": "a695334b533c41f98f7ea9a75bc70d6d"
+        },
+        "language": "js",
+        "actions": [{
+            "id": "INVOKE_FUNCTION__e329aa018bfc4815b2bc1d9d346e55c0",
+            "type": "INVOKE_FUNCTION",
+            "sequenceKUID": "onInitialize",
+            "display": "onInitialize",
+            "inputparams": [],
+            "parentId": null,
+            "callbackType": null,
+            "disabled": null,
+            "source": "controller"
+        }]
+    }
+}
