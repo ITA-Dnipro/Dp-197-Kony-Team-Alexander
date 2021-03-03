@@ -3,7 +3,7 @@
     "DNDConfig": null,
     "_bottom_": {
         "type": "string",
-        "value": "100dp"
+        "value": "0dp"
     },
     "_left_": {
         "type": "string",
@@ -30,15 +30,11 @@
         "type": "string",
         "value": "70dp"
     },
-    "_width_": {
-        "type": "string",
-        "value": "100%"
-    },
     "calloutwidth": 80,
     "canUpdateUI": true,
     "containerweight": 100,
     "defaultpinimage": "pinb.png",
-    "id": "mapCinemaWidget",
+    "id": "mapControl",
     "info": null,
     "invokedProperty": "maps",
     "iphone": {

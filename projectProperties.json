@@ -417,7 +417,7 @@
         "android": {
             "ACCESS_CHECKIN_PROPERTIES": "false",
             "ACCESS_COARSE_LOCATION": "true",
-            "ACCESS_FINE_LOCATION": "false",
+            "ACCESS_FINE_LOCATION": "true",
             "ACCESS_LOCATION_EXTRA_COMMANDS": "false",
             "ACCESS_MOCK_LOCATION": "false",
             "ACCESS_NETWORK_STATE": "true",

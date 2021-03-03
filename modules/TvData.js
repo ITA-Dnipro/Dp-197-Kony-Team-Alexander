@@ -36,6 +36,10 @@ function TvData(d) {
     var createByList = d.createdBy.map(function(c) { return {id: c.id, name: c.name}; });
     this.createdBy = createByList.length > 0 ? createByList : null;
   }
+  
+  if (d.firstAirDate) {
+    this.released = (new Date(d.firstAirDate)).getFullYear();
+  }
  
   this.type = d.type || "unknown";
   this.id = d.id || "unknown";

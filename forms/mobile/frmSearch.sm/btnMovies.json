@@ -3,15 +3,15 @@
     "DNDConfig": null,
     "_bottom_": {
         "type": "string",
-        "value": "30dp"
+        "value": "10dp"
     },
     "_height_": {
         "type": "string",
         "value": "50dp"
     },
     "_left_": {
-        "type": "string",
-        "value": "70dp"
+        "type": "number",
+        "value": "0"
     },
     "_margin_": [
         6,
@@ -25,25 +25,29 @@
         0,
         0
     ],
-    "_right_": {
+    "_skin_": "sd86a5ebc0f0478d85a27fb92b4234a3",
+    "_text_": "Movies",
+    "_top_": {
         "type": "string",
-        "value": "70dp"
+        "value": "10dp"
     },
-    "_skin_": "s41e22782f764c4bbff241da13c4f851",
-    "_text_": "Get Location",
+    "_width_": {
+        "type": "string",
+        "value": "33%"
+    },
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "s13fb70f60444470ad40243457d097d5",
-    "id": "btnGetLocation",
+    "focusskin": "s747492020ab41db9e0293bb9b7d40ac",
+    "id": "btnMovies",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "bce25711225044c5adf53efcbe0a72a3",
+    "kuid": "db810ff92bbf48409842548940d7532b",
     "name": "kony.ui.Button",
-    "parent": "frmNearestCinemas",
-    "pf": "frmNearestCinemas",
+    "parent": "flxBtnContainer",
+    "pf": "frmSearch",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",
