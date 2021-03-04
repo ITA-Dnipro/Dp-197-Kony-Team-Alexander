@@ -45,7 +45,7 @@
     ],
     "_top_": {
         "type": "string",
-        "value": "140dp"
+        "value": "150dp"
     },
     "_width_": {
         "type": "string",
@@ -73,7 +73,7 @@
     },
     "iscustomlayout": false,
     "isvisible": false,
-    "kuid": "d04cdad655c5424f824f40e5047dd39c",
+    "kuid": "cc148083cc114643b8f861a005ad2f05",
     "masterdata": {},
     "name": "kony.ui.SegmentedUI2",
     "needpageindicator": true,
@@ -94,13 +94,14 @@
     "rowtemplate": "MovieRow",
     "screenlevelwidget": false,
     "seccounter": 0,
+    "sectionHeaderTemplateId": null,
     "sectionheaderskin": "sda2044e3a144e2c852fa1cc8e91bf0c",
     "selectedRows": null,
     "selectedState": false,
     "selectedindex": null,
     "selectedindices": null,
     "selecteditems": null,
-    "selectedsectionindex": 0,
+    "selectedsectionindex": null,
     "selectionbehavior": "default",
     "separatorcolor": "36363600",
     "separatorrequired": true,

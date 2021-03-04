@@ -23,7 +23,6 @@ define(["MovieService"], function(movieService){
     
     onChangeSearchFor: function(search, btn) {
       this.searchFor = search;
-//       alert('curr ' + this.searchFor);
       this.view.btnMovies.skin = "sknBtnNavigateInActive";
       this.view.btnTVShows.skin = "sknBtnNavigateInActive";
       this.view.btnPeople.skin = "sknBtnNavigateInActive";
@@ -37,21 +36,6 @@ define(["MovieService"], function(movieService){
       this.view.inpSearch.text = "";
       
       if (data) {
-        
-//         switch (true) {
-//           case data.searchFor === "movies": {
-//             this.onChangeSearchFor(data.searchFor, this.view.btnMovies);
-//             break;
-//           }
-//           case data.searchFor === "tv shows": {
-//             this.onChangeSearchFor(data.searchFor, this.view.btnTVShows);
-//             break;
-//           }
-//           case data.searchFor === "people": {
-//             this.onChangeSearchFor(data.searchFor, this.view.btnPeople);
-//             break;
-//           }            
-//         }
         this.onChangeSearchFor(data.searchFor, this.view.btnMovies);
         this.view.lstMovies.setData({});
       }
@@ -73,7 +57,6 @@ define(["MovieService"], function(movieService){
         movieService.searchMovie(function(resultList) {
           this.onResultListReceived(resultList);
         }.bind(this), function() {
-          this.view.lstMovies.isVisible = false;
           alert("Error while retrieving search movie list");
           kony.application.dismissLoadingScreen();
         }, this.view.inpSearch.text.trim());
@@ -83,7 +66,6 @@ define(["MovieService"], function(movieService){
         movieService.searchPeople(function(resultList) {
           this.onResultListReceived(resultList);
         }.bind(this), function() {
-          this.view.lstMovies.isVisible = false;
           alert("Error while retrieving search people list");
           kony.application.dismissLoadingScreen();
         }, this.view.inpSearch.text.trim());
@@ -93,7 +75,6 @@ define(["MovieService"], function(movieService){
         movieService.searchTvShows(function(resultList) {
           this.onResultListReceived(resultList);
         }.bind(this), function() {
-          this.view.lstMovies.isVisible = false;
           alert("Error while retrieving search tv list");
           kony.application.dismissLoadingScreen();
         }, this.view.inpSearch.text.trim());
