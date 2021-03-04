@@ -4,9 +4,6 @@ define(["MovieService"], function(movieService){
     onInitialize: function() {
       this.view.cmpHeader.onBackClicked = Utility.goBack;
       this.view.onDeviceBack = Utility.goBack;
-      
-      //       this.view.btnGet.onClick = this.onGetClicked.bind(this, {id: 1810, role: "actor"});
-      //       this.view.btnShowActing.onClick = this.onShowBtnClicked.bind(this, this.view.btnShowActing, "Acting", this.view.lstActingMovies);
 
       this.view.ActingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
       this.view.DirectingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
@@ -124,6 +121,16 @@ define(["MovieService"], function(movieService){
             height: kony.flex.USE_PREFERRED_SIZE,
             layoutType: kony.flex.FLOW_VERTICAL
           });
+          
+          var flexImg = new kony.ui.FlexContainer({
+            id: "flxImg" + i,
+            top: "0dp",
+            width: "100%",
+            height: "130dp",
+//             height: kony.flex.USE_PREFERRED_SIZE,
+//             layoutType: kony.flex.FLOW_VERTICAL,
+            onClick: this.onMovieClicked.bind(null, creditsList.popularList[i].id, creditsList.popularList[i].type)
+          });
 
           var imgBestMovie = new kony.ui.Image2({
             id: "imgBestMovie" + i,
@@ -148,9 +155,9 @@ define(["MovieService"], function(movieService){
             margin: [0,0,0,0],
             contentAlignment: constants.CONTENT_ALIGN_CENTER,
           });
-
-          flexBestMovie.add(imgBestMovie, btnBestMovieName);
-
+          
+          flexImg.add(imgBestMovie);
+          flexBestMovie.add(flexImg, btnBestMovieName);
           this.view.flxBestMoviesCarousel.add(flexBestMovie);
         }		
       }
