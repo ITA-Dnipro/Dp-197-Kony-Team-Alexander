@@ -103,6 +103,8 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
         this.movieId = movieData.id;  
         this.type = movieData.type;
       }
+      
+      this.type === "tv" ? this.view.lblTopCast.text = "Series Cast" : this.view.lblTopCast.text = "Top Billed Cast";
 
       alert('id ' + this.movieId);
       
