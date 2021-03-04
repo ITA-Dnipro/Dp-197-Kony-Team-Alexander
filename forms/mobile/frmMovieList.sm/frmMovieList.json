@@ -46,7 +46,7 @@
     "desktopweb": {
         "needAppMenu": false
     },
-    "device": "iPhone11",
+    "device": "Pixel3",
     "displayorientation": 1,
     "enabledforidletimeout": false,
     "id": "frmMovieList",
@@ -101,13 +101,13 @@
     "name": "kony.ui.Form2",
     "needappmenu": false,
     "paddinginpixel": false,
-    "platform": "iphone",
+    "platform": "android",
     "prevDevice": "iPhone11",
     "prevPlatform": "iphone",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainscrollposition": false,
-    "shellCSS": "iOS_iPhoneXR",
+    "shellCSS": "and_Pixel3",
     "snapgridsize": 10,
     "snaptogrid": true,
     "spaan": {
