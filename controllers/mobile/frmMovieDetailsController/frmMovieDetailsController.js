@@ -103,6 +103,8 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
         this.movieId = movieData.id;  
         this.type = movieData.type;
       }
+      
+      this.type === "tv" ? this.view.lblTopCast.text = "Series Cast" : this.view.lblTopCast.text = "Top Billed Cast";
 
       alert('id ' + this.movieId);
       
@@ -192,8 +194,6 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
     },
 
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
-      // formsStack.push({ id: "frmMovieDetails", data: {id: widgetRef.data[rowIndex].id, type: widgetRef.data[rowIndex].type} });
-
       this.movieId = widgetRef.data[rowIndex].id;
       this.type = widgetRef.data[rowIndex].type;
       
@@ -455,6 +455,16 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
             height: kony.flex.USE_PREFERRED_SIZE,
             layoutType: kony.flex.FLOW_VERTICAL
           });
+          
+          var flexImg = new kony.ui.FlexContainer({
+            id: "flxImg" + i,
+            top: "0dp",
+            width: "100%",
+            height: "130dp",
+//             height: kony.flex.USE_PREFERRED_SIZE,
+//             layoutType: kony.flex.FLOW_VERTICAL,
+            onClick: this.onPersonClicked.bind(null, creditsList.cast[i].id, "cast")
+          });
 
           var imgCast = new kony.ui.Image2({
             id: "imgCast" + i,
@@ -492,7 +502,9 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
             wrapping: constants.WIDGET_TEXT_WORD_WRAP
           });
 
-          flexCast.add(imgCast, btnName, lblChar);
+          flexImg.add(imgCast);
+          flexCast.add(flexImg, btnName, lblChar);
+//           flexCast.add(imgCast, btnName, lblChar);
 
           this.view.flxCastCarousel.add(flexCast);
         }		
