@@ -9,11 +9,10 @@ define(["MapService"], function (nearestCinemas) {
       //         lblDescription: "description",
       //         imgLocation: "image"
       //       };
+      var mapControl = this.view.mapControl;
       kony.location.getCurrentPosition(function(position) {
         nearestCinemas.getNearestCinemas(position.coords.latitude, position.coords.longitude, function(cinemaList){
-//           alert(cinemaList);
-          this.view.mapControl.addPins(cinemaList);
-          alert(cinemaList);
+          mapControl.addPins(cinemaList);
         }, function(){
           alert("Error while retrieving cinemas list");
         }); 

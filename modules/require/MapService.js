@@ -15,7 +15,7 @@ define(function () {
             id: "id" + m.location.lat + m.location.lng,
             name: m.name,
             desc: "Description " + i,
-//             vicinity: m.vicinity,
+            vicinity: m.vicinity,
             lat: m.location.lat,
             lon: m.location.lng,
             image: {
@@ -25,7 +25,6 @@ define(function () {
             }
           }; 
         });
-        alert(cinemaList);
         successCB(cinemaList);
       }
     }, function(error) {
