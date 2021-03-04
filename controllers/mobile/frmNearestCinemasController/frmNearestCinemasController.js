@@ -4,11 +4,11 @@ define(["MapService"], function (nearestCinemas) {
     onInitialize: function () {
       this.view.mapControl.showCurrentLocation = true;
       this.view.BackHeader.btnBackHeader.onClick = Utility.goBack;
-      //       this.view.mapControl.widgetDataMapForCallout = {
-      //         lblName: "name",
-      //         lblDescription: "description",
-      //         imgLocation: "image"
-      //       };
+      this.view.mapControl.widgetDataMapForCallout = {
+              lblCalloutName: "name",
+              lblCalloutVicinity: "vicinity",
+//               imgLocation: "image"
+            };
       var mapControl = this.view.mapControl;
       kony.location.getCurrentPosition(function(position) {
         nearestCinemas.getNearestCinemas(position.coords.latitude, position.coords.longitude, function(cinemaList){

@@ -30,10 +30,11 @@
         "type": "string",
         "value": "70dp"
     },
+    "calloutTemplateId": "ef529b7ff7b148bebf8994a59563da3f",
     "calloutwidth": 80,
     "canUpdateUI": true,
     "containerweight": 100,
-    "defaultpinimage": "pinb.png",
+    "defaultpinimage": "pin.png",
     "id": "mapControl",
     "info": null,
     "invokedProperty": "maps",

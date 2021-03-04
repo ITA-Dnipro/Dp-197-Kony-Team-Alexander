@@ -19,9 +19,14 @@ define(function () {
             lat: m.location.lat,
             lon: m.location.lng,
             image: {
-              source: "pinb.png",
+              source: "pin.png",
               sourceType: kony.map.PIN_IMG_SRC_TYPE_RESOURCES,
               anchor: kony.map.PIN_IMG_ANCHOR_BOTTOM_CENTER
+            },
+            calloutData: {
+              name: m.name,
+              vicinity: m.vicinity
+//               image: "https://ied.eu/wp-content/uploads/2019/01/horizon-europe.jpg"
             }
           }; 
         });
