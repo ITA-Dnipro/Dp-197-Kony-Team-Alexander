@@ -16,7 +16,8 @@ define(["MovieServiceFabricImpl", "MovieServiceHttpImpl"], function (fabricImpl,
     getTvDetails: concreteImpl.getTvDetails,
     getTvCredits: concreteImpl.getTvCredits,
     getRecommendedList: concreteImpl.getRecommendedList,
-    searchTvShows: concreteImpl.searchTvShows
+    searchTvShows: concreteImpl.searchTvShows,
+//     loadGenreList: concreteImpl.loadGenreList
     //       getRecommendedTvList: concreteImpl.getRecommendedList,
 
     //       searchPeople: httpImpl.searchPeople,

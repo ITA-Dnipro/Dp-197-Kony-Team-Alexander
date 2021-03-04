@@ -30,6 +30,7 @@
     },
     "canUpdateUI": true,
     "children": [
+        "cmpHeader",
         "flxMainScroll"
     ],
     "containerweight": 100,

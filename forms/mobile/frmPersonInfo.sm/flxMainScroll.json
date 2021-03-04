@@ -1,8 +1,8 @@
 {
     "DNDConfig": null,
-    "_height_": {
+    "_bottom_": {
         "type": "string",
-        "value": "100%"
+        "value": "0dp"
     },
     "_left_": {
         "type": "string",
@@ -25,7 +25,7 @@
     "_skin_": "sb213c56a6984faaa98c67c079ac462c",
     "_top_": {
         "type": "string",
-        "value": "0dp"
+        "value": "70dp"
     },
     "_width_": {
         "type": "string",
@@ -37,7 +37,6 @@
     "bounces": true,
     "canUpdateUI": true,
     "children": [
-        "flxHeader",
         "flxMainInfo",
         "lblKnownForMovies",
         "flxBestMoviesCarousel",

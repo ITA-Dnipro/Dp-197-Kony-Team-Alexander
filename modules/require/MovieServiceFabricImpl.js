@@ -1,10 +1,21 @@
 define(function () {
-  var loadGenreList = function(successCallback, errorCallback) {
+  var mainGenreData = [];
+  
+  
+  var getGenreList = function(successCallback, errorCallback) {
+    if (mainGenreData && mainGenreData.length > 0) {
+      return successCallback(mainGenreData);      
+    }
+    
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = {};
     AlexanderMovieListService.invokeOperation("getGenreList", headers, body, function(response) {
+      
+//       alert('load genre list');
+      mainGenreData = response.genres;
+      
       if (successCallback) {
         successCallback(response.genres);
       }
@@ -31,7 +42,7 @@ define(function () {
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = {category: url};
-    loadGenreList(function(genreData){
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("getMovieList", headers, body, function(response) {
 
         if (successCallback) {
@@ -62,7 +73,7 @@ define(function () {
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = {};
-    loadGenreList(function(genreData){
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("getTVShowList", headers, body, function(response) {
 
         if (successCallback) {
@@ -93,7 +104,7 @@ define(function () {
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = { query: string };
-    loadGenreList(function(genreData){
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("searchMovie", headers, body, function(response) {
 
         if (successCallback) {
@@ -125,7 +136,7 @@ define(function () {
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = { query: string };
-    loadGenreList(function(genreData){
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("searchTvShows", headers, body, function(response) {
 
         if (successCallback) {
@@ -292,31 +303,6 @@ define(function () {
       }
     });   
   }; 
-
-//   var getSimilarMovieList = function(successCallback, errorCallback, mId) {
-//     var sdk = kony.sdk.getCurrentInstance();
-//     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
-//     var headers = null;
-//     var body = { id: mId };
-//     AlexanderMovieListService.invokeOperation("getSimilarMovieList", headers, body, function(response) {
-//       if (successCallback) {
-//         var movieList = response.results.map(function(m) {
-//           return new MovieData({
-//             type: "movie",
-//             id: m.id,
-//             title: m.title, 
-//             description: m.overview,
-//             posterPath: m.poster_path
-//           }); 
-//         });
-//         successCallback(movieList);
-//       }
-//     }, function(error) {
-//       if (errorCallback) {
-//         errorCallback(error);
-//       }
-//     }); 
-//   };
 
   var getMovieCredits = function(successCallback, errorCallback, movieId) {
     var sdk = kony.sdk.getCurrentInstance();
@@ -509,34 +495,6 @@ define(function () {
 
     return sortedMovieList;
   };
-
-//   var getRecommendedMovieList = function(successCallback, errorCallback, mId) {
-//     var sdk = kony.sdk.getCurrentInstance();
-//     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
-//     var headers = null;
-//     var body = { id: mId };
-//     AlexanderMovieListService.invokeOperation("getRecommendedMovieList", headers, body, function(response) {
-//       if (successCallback) {
-//         var movieList = response.results.map(function(m) {
-//           return new MovieData({
-//             type: "movie",
-//             id: m.id,
-//             title: m.title, 
-//             description: m.overview, 
-//             genresId: m.genre_ids, 
-//             posterPath: m.poster_path,
-//             voteAvg: m.vote_average,
-//             released: m.release_date,
-//           }); 
-//         });
-//         successCallback(movieList);
-//       }
-//     }, function(error) {
-//       if (errorCallback) {
-//         errorCallback(error);
-//       }
-//     }); 
-//   };
   
   var getRecommendedList = function(successCallback, errorCallback, id, listType, mediaType) {
     var sdk = kony.sdk.getCurrentInstance();
@@ -598,6 +556,6 @@ define(function () {
     getTvDetails: getTvDetails,
     getTvCredits: getTvCredits,
     getRecommendedList: getRecommendedList,
-    searchTvShows: searchTvShows
+    searchTvShows: searchTvShows,
   };
 });

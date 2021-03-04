@@ -2,11 +2,12 @@ define(["MovieService"], function(movieService){
 
   return {
     onInitialize: function() {
-      this.view.btnBack.onClick = Utility.goBack;
-      this.view.btnSearch.onClick = Utility.navigateTo.bind(null, "frmSearch", {searchFor: "people"});
+      this.view.cmpHeader.onBackClicked = Utility.goBack;
+      this.view.onDeviceBack = Utility.goBack;
+      
       //       this.view.btnGet.onClick = this.onGetClicked.bind(this, {id: 1810, role: "actor"});
       //       this.view.btnShowActing.onClick = this.onShowBtnClicked.bind(this, this.view.btnShowActing, "Acting", this.view.lstActingMovies);
-      //       this.view.btnBack.onClick = Utility.goBack;
+
       this.view.ActingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
       this.view.DirectingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
       this.view.ProductionList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);

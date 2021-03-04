@@ -8,7 +8,10 @@ define(["MovieService"], function(movieService){
       this.view.btnInTheatres.onClick = this.loadMovieList.bind(this, "now_playing", this.view.btnInTheatres);
       this.view.btnGoToNearestCinemas.onClick = Utility.navigateTo.bind(null, "frmSearch", {searchFor: "movies"});
       
+      this.view.onDeviceBack = Utility.goBack;
+      
       kony.application.showLoadingScreen();
+      
       
       movieService.getMovieList(function(movieList) {
         this.onMovieListReceived(movieList);
