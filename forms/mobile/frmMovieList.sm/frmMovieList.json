@@ -32,7 +32,7 @@
     "children": [
         "btnSearch",
         "HeaderControl",
-        "lstMovies",
+        "flxListContainer",
         "flxNavContainer"
     ],
     "containerweight": 100,

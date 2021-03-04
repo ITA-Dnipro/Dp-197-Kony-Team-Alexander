@@ -37,11 +37,14 @@ define(function () {
     });
   };
 
-  var getMovieList = function(successCallback, errorCallback, url) {
+  var getMovieList = function(successCallback, errorCallback, url, n) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
-    var body = {category: url};
+    var body = {
+      category: url,
+      pageNumber: n
+    };
     getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("getMovieList", headers, body, function(response) {
 
@@ -68,11 +71,11 @@ define(function () {
     });   
   };
   
-   var getTVShowList = function(successCallback, errorCallback) {
+   var getTVShowList = function(successCallback, errorCallback, pageNumber) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
-    var body = {};
+    var body = {pageNumber: pageNumber};
     getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("getTVShowList", headers, body, function(response) {
 
