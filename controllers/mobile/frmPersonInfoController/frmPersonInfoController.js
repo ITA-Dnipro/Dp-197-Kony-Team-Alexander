@@ -127,8 +127,6 @@ define(["MovieService"], function(movieService){
             top: "0dp",
             width: "100%",
             height: "130dp",
-//             height: kony.flex.USE_PREFERRED_SIZE,
-//             layoutType: kony.flex.FLOW_VERTICAL,
             onClick: this.onMovieClicked.bind(null, creditsList.popularList[i].id, creditsList.popularList[i].type)
           });
 
@@ -162,26 +160,10 @@ define(["MovieService"], function(movieService){
         }		
       }
 
-      // change list
       this.addDataToMovieList(creditsList.actingList, this.view.ActingList);
       this.addDataToMovieList(creditsList.directingList, this.view.DirectingList);
       this.addDataToMovieList(creditsList.productionList, this.view.ProductionList);
       this.addDataToMovieList(creditsList.writingList, this.view.WritingList);
-
-      //       if (creditsList.actingList.length === 0) {
-      //         this.view.ActingList.isVisible = false;
-      //       } else {
-      //         var actingList = creditsList.actingList.map(function(m) {
-      //           return {
-      //             lblYear: String(m.year),
-      //             id: m.id,
-      //             lblMovieTitle: m.title,
-      //             lblRole: m.character            
-      //           };
-      //         });
-      //         this.view.ActingList.lstMovies.setData(actingList);
-      //         this.view.ActingList.lstMovies.isVisible = false;
-      //       }
     },
 
     addDataToMovieList: function(movieList, viewComp) {

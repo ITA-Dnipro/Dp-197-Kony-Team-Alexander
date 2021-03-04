@@ -12,7 +12,6 @@ define(function () {
     var headers = null;
     var body = {};
     AlexanderMovieListService.invokeOperation("getGenreList", headers, body, function(response) {
-      
 //       alert('load genre list');
       mainGenreData = response.genres;
       
@@ -382,7 +381,13 @@ define(function () {
         var popularList = [];
         if (personRole === "cast") {
 
-          popularList = newCast.filter(function(m) { return m.title || m.name; })
+          popularList = newCast.filter(function(m, i, arr) {
+            var firstIndex = arr.findIndex(function(el) { return el.id === m.id; });
+
+            if ((m.title || m.name) && firstIndex === i) {
+              return m;
+            }
+          })
             .sort(function(a, b) {
 
             return b.vote_count - a.vote_count;
@@ -425,7 +430,6 @@ define(function () {
         var productionList = [];
         var directingList = [];
         var writingList = [];
-
 
         for (var i = 0; i < newCrew.length; i++) {
           switch (newCrew[i].job) {
