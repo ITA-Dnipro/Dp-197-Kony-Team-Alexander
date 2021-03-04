@@ -9,8 +9,6 @@ var Utility = {
     }    
 
     if (currentForm && previousForm) {
-//       alert('curr ' + currentForm.id);
-//       alert('prev ' + previousForm.id);
 
       var navigation = new kony.mvc.Navigation(previousForm.id);
       navigation.navigate(previousForm.data);

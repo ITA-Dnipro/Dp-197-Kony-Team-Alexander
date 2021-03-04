@@ -1,10 +1,20 @@
 define(function () {
-  var loadGenreList = function(successCallback, errorCallback) {
+  var mainGenreData = [];
+  
+  
+  var getGenreList = function(successCallback, errorCallback) {
+    if (mainGenreData && mainGenreData.length > 0) {
+      return successCallback(mainGenreData);      
+    }
+    
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = {};
     AlexanderMovieListService.invokeOperation("getGenreList", headers, body, function(response) {
+//       alert('load genre list');
+      mainGenreData = response.genres;
+      
       if (successCallback) {
         successCallback(response.genres);
       }
@@ -26,12 +36,15 @@ define(function () {
     });
   };
 
-  var getMovieList = function(successCallback, errorCallback, url) {
+  var getMovieList = function(successCallback, errorCallback, url, n) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
-    var body = {category: url};
-    loadGenreList(function(genreData){
+    var body = {
+      category: url,
+      pageNumber: n
+    };
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("getMovieList", headers, body, function(response) {
 
         if (successCallback) {
@@ -57,12 +70,12 @@ define(function () {
     });   
   };
   
-   var getTVShowList = function(successCallback, errorCallback) {
+   var getTVShowList = function(successCallback, errorCallback, pageNumber) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
-    var body = {};
-    loadGenreList(function(genreData){
+    var body = {pageNumber: pageNumber};
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("getTVShowList", headers, body, function(response) {
 
         if (successCallback) {
@@ -93,7 +106,7 @@ define(function () {
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = { query: string };
-    loadGenreList(function(genreData){
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("searchMovie", headers, body, function(response) {
 
         if (successCallback) {
@@ -125,7 +138,7 @@ define(function () {
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
     var headers = null;
     var body = { query: string };
-    loadGenreList(function(genreData){
+    getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("searchTvShows", headers, body, function(response) {
 
         if (successCallback) {
@@ -293,31 +306,6 @@ define(function () {
     });   
   }; 
 
-//   var getSimilarMovieList = function(successCallback, errorCallback, mId) {
-//     var sdk = kony.sdk.getCurrentInstance();
-//     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
-//     var headers = null;
-//     var body = { id: mId };
-//     AlexanderMovieListService.invokeOperation("getSimilarMovieList", headers, body, function(response) {
-//       if (successCallback) {
-//         var movieList = response.results.map(function(m) {
-//           return new MovieData({
-//             type: "movie",
-//             id: m.id,
-//             title: m.title, 
-//             description: m.overview,
-//             posterPath: m.poster_path
-//           }); 
-//         });
-//         successCallback(movieList);
-//       }
-//     }, function(error) {
-//       if (errorCallback) {
-//         errorCallback(error);
-//       }
-//     }); 
-//   };
-
   var getMovieCredits = function(successCallback, errorCallback, movieId) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
@@ -396,7 +384,13 @@ define(function () {
         var popularList = [];
         if (personRole === "cast") {
 
-          popularList = newCast.filter(function(m) { return m.title || m.name; })
+          popularList = newCast.filter(function(m, i, arr) {
+            var firstIndex = arr.findIndex(function(el) { return el.id === m.id; });
+
+            if ((m.title || m.name) && firstIndex === i) {
+              return m;
+            }
+          })
             .sort(function(a, b) {
 
             return b.vote_count - a.vote_count;
@@ -439,7 +433,6 @@ define(function () {
         var productionList = [];
         var directingList = [];
         var writingList = [];
-
 
         for (var i = 0; i < newCrew.length; i++) {
           switch (newCrew[i].job) {
@@ -509,34 +502,6 @@ define(function () {
 
     return sortedMovieList;
   };
-
-//   var getRecommendedMovieList = function(successCallback, errorCallback, mId) {
-//     var sdk = kony.sdk.getCurrentInstance();
-//     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
-//     var headers = null;
-//     var body = { id: mId };
-//     AlexanderMovieListService.invokeOperation("getRecommendedMovieList", headers, body, function(response) {
-//       if (successCallback) {
-//         var movieList = response.results.map(function(m) {
-//           return new MovieData({
-//             type: "movie",
-//             id: m.id,
-//             title: m.title, 
-//             description: m.overview, 
-//             genresId: m.genre_ids, 
-//             posterPath: m.poster_path,
-//             voteAvg: m.vote_average,
-//             released: m.release_date,
-//           }); 
-//         });
-//         successCallback(movieList);
-//       }
-//     }, function(error) {
-//       if (errorCallback) {
-//         errorCallback(error);
-//       }
-//     }); 
-//   };
   
   var getRecommendedList = function(successCallback, errorCallback, id, listType, mediaType) {
     var sdk = kony.sdk.getCurrentInstance();
@@ -598,6 +563,6 @@ define(function () {
     getTvDetails: getTvDetails,
     getTvCredits: getTvCredits,
     getRecommendedList: getRecommendedList,
-    searchTvShows: searchTvShows
+    searchTvShows: searchTvShows,
   };
 });

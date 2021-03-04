@@ -2,11 +2,9 @@ define(["MovieService"], function(movieService){
 
   return {
     onInitialize: function() {
-      this.view.btnBack.onClick = Utility.goBack;
-      this.view.btnSearch.onClick = Utility.navigateTo.bind(null, "frmSearch", {searchFor: "people"});
-      //       this.view.btnGet.onClick = this.onGetClicked.bind(this, {id: 1810, role: "actor"});
-      //       this.view.btnShowActing.onClick = this.onShowBtnClicked.bind(this, this.view.btnShowActing, "Acting", this.view.lstActingMovies);
-      //       this.view.btnBack.onClick = Utility.goBack;
+      this.view.cmpHeader.onBackClicked = Utility.goBack;
+      this.view.onDeviceBack = Utility.goBack;
+
       this.view.ActingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
       this.view.DirectingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
       this.view.ProductionList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
@@ -123,6 +121,14 @@ define(["MovieService"], function(movieService){
             height: kony.flex.USE_PREFERRED_SIZE,
             layoutType: kony.flex.FLOW_VERTICAL
           });
+          
+          var flexImg = new kony.ui.FlexContainer({
+            id: "flxImg" + i,
+            top: "0dp",
+            width: "100%",
+            height: "130dp",
+            onClick: this.onMovieClicked.bind(null, creditsList.popularList[i].id, creditsList.popularList[i].type)
+          });
 
           var imgBestMovie = new kony.ui.Image2({
             id: "imgBestMovie" + i,
@@ -147,33 +153,17 @@ define(["MovieService"], function(movieService){
             margin: [0,0,0,0],
             contentAlignment: constants.CONTENT_ALIGN_CENTER,
           });
-
-          flexBestMovie.add(imgBestMovie, btnBestMovieName);
-
+          
+          flexImg.add(imgBestMovie);
+          flexBestMovie.add(flexImg, btnBestMovieName);
           this.view.flxBestMoviesCarousel.add(flexBestMovie);
         }		
       }
 
-      // change list
       this.addDataToMovieList(creditsList.actingList, this.view.ActingList);
       this.addDataToMovieList(creditsList.directingList, this.view.DirectingList);
       this.addDataToMovieList(creditsList.productionList, this.view.ProductionList);
       this.addDataToMovieList(creditsList.writingList, this.view.WritingList);
-
-      //       if (creditsList.actingList.length === 0) {
-      //         this.view.ActingList.isVisible = false;
-      //       } else {
-      //         var actingList = creditsList.actingList.map(function(m) {
-      //           return {
-      //             lblYear: String(m.year),
-      //             id: m.id,
-      //             lblMovieTitle: m.title,
-      //             lblRole: m.character            
-      //           };
-      //         });
-      //         this.view.ActingList.lstMovies.setData(actingList);
-      //         this.view.ActingList.lstMovies.isVisible = false;
-      //       }
     },
 
     addDataToMovieList: function(movieList, viewComp) {

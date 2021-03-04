@@ -36,8 +36,7 @@
     "canUpdateUI": true,
     "children": [
         "imgBackground",
-        "flxDetailsHeader",
-        "flxHeader"
+        "flxDetailsHeader"
     ],
     "clipbounds": true,
     "containerweight": 100,

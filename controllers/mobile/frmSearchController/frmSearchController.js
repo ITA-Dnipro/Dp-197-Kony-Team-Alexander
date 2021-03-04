@@ -13,11 +13,16 @@ define(["MovieService"], function(movieService){
       this.view.btnMovies.onClick = this.onChangeSearchFor.bind(this, "movies", this.view.btnMovies);
       this.view.btnTVShows.onClick = this.onChangeSearchFor.bind(this, "tv shows", this.view.btnTVShows);
       this.view.btnPeople.onClick = this.onChangeSearchFor.bind(this, "people", this.view.btnPeople);
+      
+      this.view.postShow = this.onFormShowed.bind(this);
     },
+    
+    onFormShowed: function() {
+      this.view.inpSearch.setFocus(true);      
+    },   
     
     onChangeSearchFor: function(search, btn) {
       this.searchFor = search;
-      alert('curr ' + this.searchFor);
       this.view.btnMovies.skin = "sknBtnNavigateInActive";
       this.view.btnTVShows.skin = "sknBtnNavigateInActive";
       this.view.btnPeople.skin = "sknBtnNavigateInActive";
@@ -29,28 +34,14 @@ define(["MovieService"], function(movieService){
 
     onNavigate: function(data) {  
       this.view.inpSearch.text = "";
-      this.view.inpSearch.setFocus(true); // it doesn't work
       
       if (data) {
-        switch (true) {
-          case data.searchFor === "movies": {
-            this.onChangeSearchFor(data.searchFor, this.view.btnMovies);
-            break;
-          }
-          case data.searchFor === "tv shows": {
-            this.onChangeSearchFor(data.searchFor, this.view.btnTVShows);
-            break;
-          }
-          case data.searchFor === "people": {
-            this.onChangeSearchFor(data.searchFor, this.view.btnPeople);
-            break;
-          }            
-        }
+        this.onChangeSearchFor(data.searchFor, this.view.btnMovies);
         this.view.lstMovies.setData({});
       }
       
       this.view.lblNotFound.isVisible = false;
-
+      
       this.view.btnSearch.onClick = this.loadResultList.bind(this);
       this.view.inpSearch.onDone = this.loadResultList.bind(this);
     },
@@ -66,7 +57,6 @@ define(["MovieService"], function(movieService){
         movieService.searchMovie(function(resultList) {
           this.onResultListReceived(resultList);
         }.bind(this), function() {
-          this.view.lstMovies.isVisible = false;
           alert("Error while retrieving search movie list");
           kony.application.dismissLoadingScreen();
         }, this.view.inpSearch.text.trim());
@@ -76,7 +66,6 @@ define(["MovieService"], function(movieService){
         movieService.searchPeople(function(resultList) {
           this.onResultListReceived(resultList);
         }.bind(this), function() {
-          this.view.lstMovies.isVisible = false;
           alert("Error while retrieving search people list");
           kony.application.dismissLoadingScreen();
         }, this.view.inpSearch.text.trim());
@@ -86,7 +75,6 @@ define(["MovieService"], function(movieService){
         movieService.searchTvShows(function(resultList) {
           this.onResultListReceived(resultList);
         }.bind(this), function() {
-          this.view.lstMovies.isVisible = false;
           alert("Error while retrieving search tv list");
           kony.application.dismissLoadingScreen();
         }, this.view.inpSearch.text.trim());

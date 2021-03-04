@@ -100,7 +100,7 @@ define(function() {
 
     for (var i = 0; i < _dropDownList.length; i++) {
       var button = new kony.ui.Button({
-        id: "flxHeaderControlListItem" + i,
+        id: _dropDownList[i].id,
         right: "0dp",
         width: "100%",
         skin: _listItemSkin,

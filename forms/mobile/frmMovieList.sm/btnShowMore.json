@@ -1,13 +1,17 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizButton",
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "10dp"
+    },
     "_height_": {
         "type": "string",
         "value": "50dp"
     },
     "_left_": {
         "type": "string",
-        "value": "10dp"
+        "value": "0dp"
     },
     "_margin_": [
         6,
@@ -21,29 +25,33 @@
         0,
         0
     ],
-    "_skin_": "s6198266184e4feab1a160b6be637b4c",
-    "_text_": "",
+    "_skin_": "s21eb4d1559e42a1845b6117c88495f9",
+    "_text_": "Show more",
     "_top_": {
         "type": "string",
         "value": "10dp"
     },
     "_width_": {
         "type": "string",
-        "value": "50dp"
+        "value": "200dp"
     },
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "containerweight": 100,
     "contentalignment": 5,
     "displaytext": true,
-    "focusskin": "sfd6b89ca14c40e081fa2924798397a9",
-    "id": "btnBack",
+    "focusskin": "s24ebd934bf34f7d9b8a3426287ab081",
+    "id": "btnShowMore",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "a469140c2c174cf2b3db40940eb774c3",
+    "kuid": "a896831822fe4c569bb7cb4c0643d9ff",
     "name": "kony.ui.Button",
-    "parent": "flxHeader",
-    "pf": "frmPersonInfo",
+    "parent": "flxListContainer",
+    "pf": "frmMovieList",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",
