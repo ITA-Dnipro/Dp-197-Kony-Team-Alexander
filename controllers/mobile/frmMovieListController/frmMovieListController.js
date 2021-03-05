@@ -70,14 +70,6 @@ define(["MovieService"], function(movieService){
         kony.application.dismissLoadingScreen();
       }, TVShowPageNumber);
     },
-    
-    onNavigate: function() {
-      this.view.HeaderControl.dropDownList = [
-        {"id": "frmProfile", "name": "Profile", "path": "frmProfile"},
-        {"id": "frmFavouriteList", "name": "Favourite List", "path": "frmFavouriteList"},
-        {"id": "frmAuthentication", "name": "Log Out", "path": "frmAuthentication"}
-      ];
-    },
 
     loadMovieList: function(url, n) {
 

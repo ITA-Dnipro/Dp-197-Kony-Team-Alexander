@@ -4,7 +4,6 @@ define(["MapService"], function (nearestCinemas) {
     onInitialize: function () {
       this.view.mapControl.showCurrentLocation = true;
       this.view.BackHeader.btnBackHeader.onClick = Utility.goBack;
-      this.view.onDeviceBack = Utility.goBack;
       this.view.mapControl.widgetDataMapForCallout = {
               lblCalloutName: "name",
               lblCalloutVicinity: "vicinity",

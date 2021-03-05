@@ -32,7 +32,7 @@
     "children": [
         "flxHeader",
         "flxBtnContainer",
-        "flxListContainer",
+        "lstMovies",
         "lblNotFound"
     ],
     "containerweight": 100,
