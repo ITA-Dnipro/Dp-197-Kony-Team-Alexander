@@ -12,7 +12,6 @@ define(function () {
     var headers = null;
     var body = {};
     AlexanderMovieListService.invokeOperation("getGenreList", headers, body, function(response) {
-      //       alert('load genre list');
       mainGenreData = response.genres;
 
       if (successCallback) {
@@ -123,7 +122,8 @@ define(function () {
               genreNamesList: getGenreNameById(genreData, m.genre_ids)
             }); 
           });
-          successCallback(movieList, response.total_pages);
+          TotalSearchMoviePages = response.total_pages;
+          successCallback(movieList);
         }
       }, function(error) {
 
@@ -158,7 +158,8 @@ define(function () {
               genreNamesList: getGenreNameById(genreData, m.genre_ids)
             }); 
           });
-          successCallback(movieList, response.total_pages);
+          TotalSearchTVShowPages = response.total_pages;
+          successCallback(movieList);
         }
       }, function(error) {
 
@@ -190,7 +191,8 @@ define(function () {
             poster: "https://image.tmdb.org/t/p/w200/" + p.profile_path,       
           }; 
         });
-        successCallback(movieList, response.total_pages);
+        TotalSearchPeoplePages = response.total_pages;
+        successCallback(movieList);
       }
     }, function(error) {
       if (errorCallback) {

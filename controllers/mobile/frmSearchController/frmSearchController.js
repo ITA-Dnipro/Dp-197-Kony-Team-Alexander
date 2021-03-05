@@ -8,12 +8,12 @@ define(["MovieService"], function(movieService){
       this.view.inpSearch.onBeginEditing = this.showBtnDeleteText.bind(this);
       this.view.inpSearch.onTextChange = this.showBtnDeleteText.bind(this);
       this.view.inpSearch.keyboardActionLabel = constants.TEXTBOX_KEYBOARD_LABEL_SEARCH;
-      this.view.btnShowMore.onClick = this.onSearch.bind(this);
+      this.view.btnShowMore.onClick = this.onShowMoreClicked.bind(this);
 
       this.searchFor = "movie";
       this.view.btnMovies.onClick = this.onBtnMoviesClicked.bind(this, "movies", this.view.btnMovies);
-      this.view.btnTVShows.onClick = this.onBtnPeopleClicked.bind(this, "tv shows", this.view.btnTVShows);
-      this.view.btnPeople.onClick = this.onBtnTVShowsClicked.bind(this, "people", this.view.btnPeople);
+      this.view.btnTVShows.onClick = this.onBtnTVShowsClicked.bind(this, "tv shows", this.view.btnTVShows);
+      this.view.btnPeople.onClick = this.onBtnPeopleClicked.bind(this, "people", this.view.btnPeople);
 
       this.view.postShow = this.onFormShowed.bind(this);
     },
@@ -45,9 +45,11 @@ define(["MovieService"], function(movieService){
       this.view.lstMovies.isVisible = true;
 
       if (this.searchFor === "movies") {
-        movieService.searchMovie(function(resultList, totalPages) {
-          TotalSearchMoviePages = totalPages;
+        movieService.searchMovie(function(resultList) {
           this.onResultListReceived(resultList);
+          if (TotalSearchMoviePages === 1) {
+            this.view.btnShowMore.isVisible = false;
+          }
         }.bind(this), function() {
           alert("Error while retrieving search movie list");
           kony.application.dismissLoadingScreen();
@@ -55,9 +57,11 @@ define(["MovieService"], function(movieService){
       }
 
       if (this.searchFor === "people") {
-        movieService.searchPeople(function(resultList, totalPages) {
-          TotalSearchPeoplePages = totalPages;
+        movieService.searchPeople(function(resultList) {
           this.onResultListReceived(resultList);
+          if (TotalSearchPeoplePages === 1) {
+            this.view.btnShowMore.isVisible = false;
+          }
         }.bind(this), function() {
           alert("Error while retrieving search people list");
           kony.application.dismissLoadingScreen();
@@ -65,9 +69,11 @@ define(["MovieService"], function(movieService){
       }
 
       if (this.searchFor === "tv shows") {
-        movieService.searchTvShows(function(resultList, totalPages) {
-          TotalSearchTVShowPages = totalPages;
+        movieService.searchTvShows(function(resultList) {
           this.onResultListReceived(resultList);
+          if (TotalSearchTVShowPages === 1) {
+            this.view.btnShowMore.isVisible = false;
+          }
         }.bind(this), function() {
           alert("Error while retrieving search tv list");
           kony.application.dismissLoadingScreen();
@@ -85,6 +91,17 @@ define(["MovieService"], function(movieService){
       this.view.lstMovies.setData(SearchPeopleListData);
       this.view.inpSearch.placeholder = "Search for " + this.searchFor;
       this.view.inpSearch.setFocus(true);
+      
+      if (SearchPeopleListData.length === 0 || SearchPeoplePageNumber >= (TotalSearchPeoplePages + 1)) {
+        this.view.btnShowMore.isVisible = false;
+      } else {
+        this.view.btnShowMore.isVisible = true;
+      }
+      
+      this.view.flxListContainer.setContentOffset({
+        "x": "0dp",
+        "y": "0dp"
+      }, false);
     },
 
     onBtnMoviesClicked: function(search, btn) {
@@ -97,6 +114,17 @@ define(["MovieService"], function(movieService){
       this.view.lstMovies.setData(SearchMovieListData);
       this.view.inpSearch.placeholder = "Search for " + this.searchFor;
       this.view.inpSearch.setFocus(true);
+      
+      if (SearchMovieListData.length === 0 || SearchMoviePageNumber >= (TotalSearchMoviePages + 1)) {
+        this.view.btnShowMore.isVisible = false;
+      } else {
+        this.view.btnShowMore.isVisible = true;
+      }
+      
+      this.view.flxListContainer.setContentOffset({
+        "x": "0dp",
+        "y": "0dp"
+      }, false);
     },
 
     onBtnTVShowsClicked: function(search, btn) {
@@ -109,6 +137,17 @@ define(["MovieService"], function(movieService){
       this.view.lstMovies.setData(SearchTVShowData);
       this.view.inpSearch.placeholder = "Search for " + this.searchFor;
       this.view.inpSearch.setFocus(true);
+      
+      if (SearchTVShowData.length === 0 || SearchTVShowPageNumber >= (TotalSearchTVShowPages + 1)) {
+        this.view.btnShowMore.isVisible = false;
+      } else {
+         this.view.btnShowMore.isVisible = true;
+      }
+      
+      this.view.flxListContainer.setContentOffset({
+        "x": "0dp",
+        "y": "0dp"
+      }, false);
     },
 
     onRowClicked: function(widgetRef, sectionIndex, rowIndex) {      
@@ -170,28 +209,28 @@ define(["MovieService"], function(movieService){
       this.view.btnDeleteText.isVisible = false;
     },
 
-    onSearch: function() {
+    onShowMoreClicked: function() {
       var pageNumber;
-			this.view.btnShowMore.isVisible = true;
+
+      this.view.btnShowMore.isVisible = true;
       if (this.view.btnMovies.skin === "sknBtnNavigateActive") {
         pageNumber = SearchMoviePageNumber;
         SearchMoviePageNumber++;
-        if (TotalSearchMoviePages === 1 || SearchMoviePageNumber === TotalSearchMoviePages) {
+        if (SearchMoviePageNumber >= TotalSearchMoviePages) {
           this.view.btnShowMore.isVisible = false;
         }
         this.loadResultList(pageNumber);
       } else if (this.view.btnPeople.skin === "sknBtnNavigateActive") {
         pageNumber = SearchPeoplePageNumber;
         SearchPeoplePageNumber++;
-        if (TotalSearchPeoplePages === 1 || SearchPeoplePageNumber === TotalSearchPeoplePages) {
+        if (SearchPeoplePageNumber >= TotalSearchPeoplePages) {
           this.view.btnShowMore.isVisible = false;
         }
         this.loadResultList(pageNumber);
       } else if (this.view.btnTVShows.skin === "sknBtnNavigateActive") {
         pageNumber = SearchTVShowPageNumber;
         SearchTVShowPageNumber++;
-        alert(Number(TotalSearchTVShowPages) === 1);
-        if (TotalSearchTVShowPages === 1 || SearchTVShowPageNumber === TotalSearchTVShowPages) {
+        if (SearchTVShowPageNumber >= TotalSearchTVShowPages) {
           this.view.btnShowMore.isVisible = false;
         }
         this.loadResultList(pageNumber);
@@ -207,7 +246,28 @@ define(["MovieService"], function(movieService){
         SearchTVShowData = [];
       }
 
-      this.onSearch();
+      var pageNumber;
+
+      this.view.btnShowMore.isVisible = true;
+      if (this.view.btnMovies.skin === "sknBtnNavigateActive") {
+        pageNumber = 1;
+        if (1 >= TotalSearchMoviePages) {
+          this.view.btnShowMore.isVisible = false;
+        }
+        this.loadResultList(pageNumber);
+      } else if (this.view.btnPeople.skin === "sknBtnNavigateActive") {
+        pageNumber = 1;
+        if (1 >= TotalSearchPeoplePages) {
+          this.view.btnShowMore.isVisible = false;
+        }
+        this.loadResultList(pageNumber);
+      } else if (this.view.btnTVShows.skin === "sknBtnNavigateActive") {
+        pageNumber = 1;
+        if (1>= TotalSearchTVShowPages) {
+          this.view.btnShowMore.isVisible = false;
+        }
+        this.loadResultList(pageNumber);
+      }
     },
 
     showBtnDeleteText: function() {
