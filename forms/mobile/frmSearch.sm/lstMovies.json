@@ -1,15 +1,11 @@
 {
     "@class": "com.kony.gen.viz.model.container.KVizSegment2",
     "DNDConfig": null,
-    "_bottom_": {
-        "type": "string",
-        "value": "0dp"
-    },
     "_data_": [
         {
             "imgMoviePoster": {
                 "@class": "com.viz.ide.model.segment.ImageSegmentData",
-                "src": "imagedrag.png"
+                "src": ""
             },
             "lblMovieGenres": {
                 "@class": "com.viz.ide.model.segment.SimpleTextSegmentData",
@@ -25,6 +21,10 @@
             }
         }
     ],
+    "_height_": {
+        "type": "ref",
+        "value": "preferred"
+    },
     "_indicator_": "none",
     "_left_": {
         "type": "string",
@@ -45,13 +45,13 @@
     ],
     "_top_": {
         "type": "string",
-        "value": "150dp"
+        "value": "0dp"
     },
     "_width_": {
         "type": "string",
         "value": "100%"
     },
-    "autogrowmode": 0,
+    "autogrowmode": 1,
     "canUpdateUI": true,
     "containerweight": 100,
     "counter": "00",
@@ -72,8 +72,8 @@
         }
     },
     "iscustomlayout": false,
-    "isvisible": false,
-    "kuid": "cc148083cc114643b8f861a005ad2f05",
+    "isvisible": true,
+    "kuid": "ecf263813edb40a2832a6d83b17ac886",
     "masterdata": {},
     "name": "kony.ui.SegmentedUI2",
     "needpageindicator": true,
@@ -82,7 +82,7 @@
     "paginationconfig": {
         "position": "bottom"
     },
-    "parent": "frmSearch",
+    "parent": "flxListContainer",
     "pf": "frmSearch",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
@@ -94,14 +94,13 @@
     "rowtemplate": "MovieRow",
     "screenlevelwidget": false,
     "seccounter": 0,
-    "sectionHeaderTemplateId": null,
     "sectionheaderskin": "sda2044e3a144e2c852fa1cc8e91bf0c",
     "selectedRows": null,
     "selectedState": false,
     "selectedindex": null,
     "selectedindices": null,
     "selecteditems": null,
-    "selectedsectionindex": null,
+    "selectedsectionindex": 0,
     "selectionbehavior": "default",
     "separatorcolor": "36363600",
     "separatorrequired": true,

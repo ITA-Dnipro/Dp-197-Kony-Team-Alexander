@@ -10,7 +10,7 @@
                     "isStartupForm": true,
                     "key": "je23acaff2fe4b5ba13c0586dee6f6c1",
                     "loc": "188 184.845263671875",
-                    "thumbnailURL": "/assets/Alexander/forms/mobile/frmAuthentication.sm/.thumbs/default.jpeg?"
+                    "thumbnailURL": null
                 },
                 {
                     "formKUID": "d90406b7c4f549dca86192d9f42c675d",
@@ -18,7 +18,7 @@
                     "isStartupForm": false,
                     "key": "d90406b7c4f549dca86192d9f42c675d",
                     "loc": "8 24.845263671875003",
-                    "thumbnailURL": "/assets/Alexander/forms/mobile/frmFavouriteList.sm/.thumbs/default.jpeg?"
+                    "thumbnailURL": null
                 },
                 {
                     "formKUID": "c6d20ea061bf4d53a7c054d91e850c09",
@@ -37,12 +37,44 @@
                     "thumbnailURL": null
                 },
                 {
+                    "formKUID": "a695334b533c41f98f7ea9a75bc70d6d",
+                    "formName": "frmNearestCinemas",
+                    "isStartupForm": false,
+                    "key": "a695334b533c41f98f7ea9a75bc70d6d",
+                    "loc": "8 24.845263671875003",
+                    "thumbnailURL": null
+                },
+                {
+                    "formKUID": "c697f97a0ed44f22810a88f8ded6f24e",
+                    "formName": "frmPersonInfo",
+                    "isStartupForm": false,
+                    "key": "c697f97a0ed44f22810a88f8ded6f24e",
+                    "loc": "188 784.845263671875",
+                    "thumbnailURL": null
+                },
+                {
+                    "formKUID": "f7e6a4c2fd134e8ea0e080c340dd236a",
+                    "formName": "frmProfile",
+                    "isStartupForm": false,
+                    "key": "f7e6a4c2fd134e8ea0e080c340dd236a",
+                    "loc": "188 1384.845263671875",
+                    "thumbnailURL": null
+                },
+                {
                     "formKUID": "d5af17e1fb4a4ee1ad29eb6c69cae32e",
                     "formName": "frmRegistration",
                     "isStartupForm": false,
                     "key": "d5af17e1fb4a4ee1ad29eb6c69cae32e",
                     "loc": "8 624.845263671875",
-                    "thumbnailURL": "/assets/Alexander/forms/mobile/frmRegistration.sm/.thumbs/default.jpeg?"
+                    "thumbnailURL": null
+                },
+                {
+                    "formKUID": "f99271ee27b14c1a9fbd6d0957789887",
+                    "formName": "frmSearch",
+                    "isStartupForm": false,
+                    "key": "f99271ee27b14c1a9fbd6d0957789887",
+                    "loc": "8 1824.845263671875",
+                    "thumbnailURL": null
                 }
             ]
         }
