@@ -11,3 +11,19 @@ var TVShowData = [];
 var MoviePageNumber = 1;
 var InTheatresPageNumber = 1;
 var TVShowPageNumber = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var formsStack = [];

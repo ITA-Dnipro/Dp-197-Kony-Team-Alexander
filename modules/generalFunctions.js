@@ -18,10 +18,7 @@ var Utility = {
   },
 
   navigateTo: function(frmName, data) {
-    // alert(frmName);
-
     if (frmName === "frmAuthentication" && kony.application.getCurrentForm().id !== "frmRegistration") {
-      //       alert('if');
       var confirmAlert = kony.ui.Alert({
         message: "Are you sure you want to log out?",
         alertType: constants.ALERT_TYPE_CONFIRMATION,
@@ -30,17 +27,11 @@ var Utility = {
           if (confirm) {
             var navigation = new kony.mvc.Navigation(frmName);
             navigation.navigate(data);
+            Utility.clearSessionData();
+            
           }       
         },
       }, {});
-
-      //       var alertHandlerCallBck = function(confirm) {
-      //         alert("callback " + confirm);
-      // //         if (confirm) {
-      // //           var navigation = new kony.mvc.Navigation(frmName);
-      // //           navigation.navigate(data);
-      // //         }
-      //       }
 
     } else {
       formsStack.push({ id: frmName, data: data });
@@ -51,5 +42,13 @@ var Utility = {
       navigation.navigate(data);
     }
 
+  },
+  
+  clearSessionData: function(){
+    formsStack = []; 
+    UserId = null;
+    
+    kony.application.destroyForm("frmFavouriteList");
+    kony.application.destroyForm("frmMovieList");
   }
 };

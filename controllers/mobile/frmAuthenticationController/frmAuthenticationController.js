@@ -17,7 +17,7 @@ define(["AuthenticationService"], function(authUser) {
         UserId = userId;
         Utility.navigateTo("frmMovieList");
       }, function() {
-        alert("Error while conecting to DB, please check your internet conection.");
+        alert("Error while connecting to DB, please check your internet conection.");
       }); 
     }
   };

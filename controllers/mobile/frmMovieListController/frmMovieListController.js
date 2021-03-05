@@ -1,6 +1,7 @@
 define(["MovieService"], function(movieService){
   return {
     onInitialize: function() {
+      alert('movie list init');
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
       this.view.btnSearch.onClick = Utility.navigateTo.bind(null, "frmSearch", {searchFor: "movies"});
       this.view.btnMovie.onClick = this.onBtnMovieClicked.bind(this);
