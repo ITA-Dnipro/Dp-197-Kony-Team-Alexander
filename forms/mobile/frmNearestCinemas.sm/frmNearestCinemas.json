@@ -30,27 +30,26 @@
     },
     "canUpdateUI": true,
     "children": [
-        "btnSearch",
-        "HeaderControl",
-        "flxListContainer",
-        "flxNavContainer"
+        "BackHeader",
+        "lblHeader",
+        "mapControl"
     ],
     "containerweight": 100,
     "controllerInfo": {
         "default": {
             "channel": "mobile",
-            "name": "frmMovieListController"
+            "name": "frmNearestCinemasController"
         }
     },
     "currentLocale": "default",
     "desktopweb": {
         "needAppMenu": false
     },
-    "device": "Pixel3",
+    "device": "iPhone11",
     "displayorientation": 1,
     "enabledforidletimeout": false,
-    "id": "frmMovieList",
-    "ide_init": "AS_Form_h8a1f5fd35db40729067e102073920ed",
+    "id": "frmNearestCinemas",
+    "ide_init": "AS_Form_e13779eb24d14b0daaf971fe7ef391c7",
     "info": null,
     "initdone": false,
     "inputaccessoryviewtype": 4,
@@ -68,7 +67,7 @@
             "titleBarAttributes": {
                 "barStyle": 0,
                 "hidesBackButton": false,
-                "kuid": "e14c535cf551448aa1c18d4d86f904a8",
+                "kuid": "af5f3e941b38463caebd02d7631f3b9f",
                 "leftBarButtonItems": [],
                 "leftItemsSupplementBackButton": true,
                 "prompt": "",
@@ -79,7 +78,7 @@
                         "info": {
                             "title": "Edit"
                         },
-                        "kuid": "e95fd23187b44fc5bf649beb9bf9f267",
+                        "kuid": "cfe1e5958e7946949c6150455320c93f",
                         "style": 0,
                         "tintColor": "4b88f100",
                         "type": 1
@@ -96,18 +95,18 @@
     "kiosk": {
         "needAppMenu": false
     },
-    "kuid": "a13d0bf851e142c29748ef19b63af965",
+    "kuid": "a695334b533c41f98f7ea9a75bc70d6d",
     "layouttype": 2,
     "name": "kony.ui.Form2",
     "needappmenu": false,
     "paddinginpixel": false,
-    "platform": "android",
+    "platform": "iphone",
     "prevDevice": "iPhone11",
     "prevPlatform": "iphone",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainscrollposition": false,
-    "shellCSS": "and_Pixel3",
+    "shellCSS": "iOS_iPhoneXR",
     "snapgridsize": 10,
     "snaptogrid": true,
     "spaan": {

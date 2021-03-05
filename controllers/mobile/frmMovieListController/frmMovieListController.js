@@ -6,7 +6,7 @@ define(["MovieService"], function(movieService){
       this.view.btnMovie.onClick = this.onBtnMovieClicked.bind(this);
       this.view.btnTVShow.onClick = this.onBtnTVShowClicked.bind(this);
       this.view.btnInTheatres.onClick = this.onBtnInTheatresClicked.bind(this);
-      this.view.btnGoToNearestCinemas.onClick = Utility.navigateTo.bind(null, "frmSearch", {searchFor: "movies"});
+      this.view.btnGoToNearestCinemas.onClick = Utility.navigateTo.bind(null, "frmNearestCinemas");
       this.view.btnShowMore.onClick = this.onBtnShowMoreClicked.bind(this);
 
       this.view.onDeviceBack = Utility.goBack;

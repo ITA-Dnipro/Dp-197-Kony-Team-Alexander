@@ -1,13 +1,13 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
-    "_height_": {
+    "_bottom_": {
         "type": "string",
-        "value": "40dp"
+        "value": "10dp"
     },
-    "_left_": {
-        "type": "string",
-        "value": "120dp"
+    "_height_": {
+        "type": "ref",
+        "value": "preferred"
     },
     "_margin_": [
         1,
@@ -21,19 +21,15 @@
         0,
         0
     ],
-    "_right_": {
-        "type": "string",
-        "value": "10dp"
-    },
-    "_skin_": "s61964816e054e76bd3ede8872dc4c13",
-    "_text_": "",
+    "_skin_": "se0b3e29e66f40f9815342400e0cad44",
+    "_text_": "Label",
     "_top_": {
         "type": "string",
-        "value": "10dp"
+        "value": "80dp"
     },
     "_width_": {
-        "type": "ref",
-        "value": "preferred"
+        "type": "string",
+        "value": "90%"
     },
     "_wrapping_": 2,
     "android": {
@@ -43,10 +39,14 @@
         }
     },
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "containerId": true,
     "containerweight": 100,
-    "contentalignment": 4,
-    "id": "lblMovieTitle",
+    "contentalignment": 5,
+    "id": "lblCalloutVicinity",
     "info": null,
     "ipad": {
         "psp": {
@@ -60,15 +60,13 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "b804f4fd500a4b0fbcc4b55032bf6903",
-    "maxnumberoflines": 1,
+    "kuid": "b4e7126ee41a42e0930f9a8baac51a87",
     "name": "kony.ui.Label",
-    "parent": "MovieRow",
-    "pf": "MovieRowTemplate",
+    "parent": "flxCallout",
+    "pf": "mapCallout",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},
-    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label",
     "zindex": 1
