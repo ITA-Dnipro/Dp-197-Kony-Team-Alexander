@@ -112,6 +112,7 @@ define(function() {
 //           if (this.onListItemClicked) {
 //             this.onListItemClicked(data);
 //           }
+//           alert();
           Utility.navigateTo(data.path);
           hideDropDown();
         }.bind(this, _dropDownList[i])
