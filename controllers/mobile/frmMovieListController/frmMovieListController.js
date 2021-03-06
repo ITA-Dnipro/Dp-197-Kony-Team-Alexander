@@ -22,8 +22,8 @@ define(["MovieService"], function(movieService){
         var movieListData = movieList.map(function(m) {
           return {
             lblMovieTitle: m.title,
-            lblMovieGenres: m.genreNamesList.join(', '),
-            lblMovieYear: String(m.released),
+            lblMovieGenres: m.genreNamesList.join(', ') || "Unknown",
+            lblMovieYear: String(m.released) || "Unknown",
             imgMoviePoster: m.poster,
             id: m.id,
             type: m.type
@@ -35,8 +35,8 @@ define(["MovieService"], function(movieService){
           var inCinemaListData = inCinemaList.map(function(m) {
             return {
               lblMovieTitle: m.title,
-              lblMovieGenres: m.genreNamesList.join(', '),
-              lblMovieYear: String(m.released),
+              lblMovieGenres: m.genreNamesList.join(', ') || "Unknown",
+              lblMovieYear: String(m.released) || "Unknown",
               imgMoviePoster: m.poster,
               id: m.id,
               type: m.type
@@ -57,8 +57,8 @@ define(["MovieService"], function(movieService){
         var TVShowListData = TVShowList.map(function(m) {
           return {
             lblMovieTitle: m.title,
-            lblMovieGenres: m.genreNamesList.join(', '),
-            lblMovieYear: String(m.released),
+            lblMovieGenres: m.genreNamesList.join(', ') || "Unknown",
+            lblMovieYear: String(m.released) || "Unknown",
             imgMoviePoster: m.poster,
             id: m.id,
             type: m.type
@@ -89,8 +89,8 @@ define(["MovieService"], function(movieService){
         var movieListData = movieList.map(function(m) {
           return {
             lblMovieTitle: m.title,
-            lblMovieGenres: m.genreNamesList.join(', '),
-            lblMovieYear: String(m.released),
+            lblMovieGenres: m.genreNamesList.join(', ') || "Unknown",
+            lblMovieYear: String(m.released) || "Unknown",
             imgMoviePoster: m.poster,
             id: m.id,
             type: m.type
@@ -111,8 +111,8 @@ define(["MovieService"], function(movieService){
         var TVShowListData = TVShowList.map(function(m) {
           return {
             lblMovieTitle: m.title,
-            lblMovieGenres: m.genreNamesList.join(', '),
-            lblMovieYear: String(m.released),
+            lblMovieGenres: m.genreNamesList.join(', ') || "Unknown",
+            lblMovieYear: String(m.released) || "Unknown",
             imgMoviePoster: m.poster,
             id: m.id,
             type: m.type
@@ -148,7 +148,7 @@ define(["MovieService"], function(movieService){
       var pageNumber;
       if (this.view.btnMovie.skin === "sknBtnNavigateActive") {
         url = "popular";
-        n = MoviePageNumber + 1;
+        pageNumber = MoviePageNumber + 1;
         MoviePageNumber++;
         if (MoviePageNumber === 10) {
           this.view.btnShowMore.isVisible = false;
@@ -180,7 +180,7 @@ define(["MovieService"], function(movieService){
       if (InTheatresPageNumber < 10) {
         this.view.btnShowMore.isVisible = true;
       }
-      this.onScroll();
+      this.onScrollUp();
     },
 
     onBtnMovieClicked: function() {
@@ -191,7 +191,7 @@ define(["MovieService"], function(movieService){
       if (MoviePageNumber < 10) {
         this.view.btnShowMore.isVisible = true;
       }
-      this.onScroll();
+      this.onScrollUp();
     },
 
     onBtnTVShowClicked: function() {
@@ -202,10 +202,10 @@ define(["MovieService"], function(movieService){
       if (TVShowPageNumber < 10) {
         this.view.btnShowMore.isVisible = true;
       }
-      this.onScroll();
+      this.onScrollUp();
     },
     
-    onScroll: function() {
+    onScrollUp: function() {
       this.view.flxListContainer.setContentOffset({
         "x": "0dp",
         "y": "0dp"

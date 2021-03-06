@@ -24,12 +24,12 @@ function TvData(d) {
     
     this.duration = duration;
   } else {
-    this.duration = "unknown";
+    this.duration = "Unknown";
   }
 
   if (d.countries) {
     var countriesList = d.countries.map(function(c) { return c.name; });
-    this.countriesList = countriesList.length > 0 ? countriesList : ["unknown"];
+    this.countriesList = countriesList.length > 0 ? countriesList : ["Unknown"];
   }
   
   if (d.createdBy) {
@@ -41,17 +41,17 @@ function TvData(d) {
     this.released = (new Date(d.firstAirDate)).getFullYear();
   }
  
-  this.type = d.type || "unknown";
-  this.id = d.id || "unknown";
-  this.title = d.title || "unknown";
-  this.description = d.description || "unknown";
-  this.genresList = d.genresId || ["unknown"];
-  this.genreNamesList = d.genreNamesList || ["unknown"];
+  this.type = d.type || "Unknown";
+  this.id = d.id || "Unknown";
+  this.title = d.title || "Unknown";
+  this.description = d.description || "Unknown";
+  this.genresList = d.genresId || ["Unknown"];
+  this.genreNamesList = d.genreNamesList || ["Unknown"];
   this.voteAvg = d.voteAvg || 0;
   this.poster = poster;
   this.backdrop = backdrop;
-  this.firstAirDate = d.firstAirDate || "unknown";
+  this.firstAirDate = d.firstAirDate || "Unknown";
   this.lastAirDate = d.lastAirDate || "-"; 
-  this.numOfseasons = d.numOfseasons || "unknown";
+  this.numOfseasons = d.numOfseasons || "Unknown";
 }
 

@@ -25,22 +25,22 @@ function MovieData(d) {
     
     this.duration = duration;
   } else {
-    this.duration = "unknown";
+    this.duration = "Unknown";
   }
 
   if (d.countries) {
     var countriesList = d.countries.map(function(c) { return c.name; });
-    this.countriesList = countriesList.length > 0 ? countriesList : ["unknown"];
+    this.countriesList = countriesList.length > 0 ? countriesList : ["Unknown"];
   }
  
-  this.type = d.type || "unknown";
-  this.id = d.id || "unknown";
-  this.title = d.title || "unknown";
-  this.description = d.description || "unknown";
-  this.genresList = d.genresId || ["unknown"];
+  this.type = d.type || "Unknown";
+  this.id = d.id || "Unknown";
+  this.title = d.title || "Unknown";
+  this.description = d.description || "Unknown";
+  this.genresList = d.genresId || ["Unknown"];
   this.voteAvg = d.voteAvg || 0;
   this.poster = poster;
   this.backdrop = backdrop;
-  this.genreNamesList = d.genreNamesList || ["unknown"];
-  this.released = year || "unknown";  
+  this.genreNamesList = d.genreNamesList || ["Unknown"];
+  this.released = year || "Unknown";  
 }
