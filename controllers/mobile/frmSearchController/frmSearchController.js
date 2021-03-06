@@ -80,7 +80,7 @@ define(["MovieService"], function(movieService){
         }, this.view.inpSearch.text.trim(), pageNumber);
       }
     },
-    
+
     onSearchCategoryChange: function(search, btn) {
       this.searchFor = search;
       this.view.btnMovies.skin = "sknBtnNavigateInActive";
@@ -90,7 +90,8 @@ define(["MovieService"], function(movieService){
 
       this.view.inpSearch.placeholder = "Search for " + this.searchFor;
       this.view.inpSearch.setFocus(true);
-       
+      this.view.lblNotFound.isVisible = false;
+
       this.view.flxListContainer.setContentOffset({
         "x": "0dp",
         "y": "0dp"
@@ -100,7 +101,7 @@ define(["MovieService"], function(movieService){
     onBtnPeopleClicked: function(search, btn) {
       this.onSearchCategoryChange(search, btn);
       this.view.lstMovies.setData(SearchPeopleListData);
-      
+
       if (SearchPeopleListData.length === 0 || SearchPeoplePageNumber >= (TotalSearchPeoplePages + 1)) {
         this.view.btnShowMore.isVisible = false;
       } else {
@@ -111,22 +112,22 @@ define(["MovieService"], function(movieService){
     onBtnMoviesClicked: function(search, btn) {
       this.onSearchCategoryChange(search, btn);
       this.view.lstMovies.setData(SearchMovieListData);
-   
+
       if (SearchMovieListData.length === 0 || SearchMoviePageNumber >= (TotalSearchMoviePages + 1)) {
         this.view.btnShowMore.isVisible = false;
       } else {
         this.view.btnShowMore.isVisible = true;
       }
     },
-    
+
     onBtnTVShowsClicked: function(search, btn) {
       this.onSearchCategoryChange(search, btn);
       this.view.lstMovies.setData(SearchTVShowData);
-      
+
       if (SearchTVShowData.length === 0 || SearchTVShowPageNumber >= (TotalSearchTVShowPages + 1)) {
         this.view.btnShowMore.isVisible = false;
       } else {
-         this.view.btnShowMore.isVisible = true;
+        this.view.btnShowMore.isVisible = true;
       }     
     },
 
@@ -159,6 +160,7 @@ define(["MovieService"], function(movieService){
         SearchMovieListData = SearchMovieListData.concat(resultListData);
         this.view.lstMovies.setData(SearchMovieListData);
         if (SearchMovieListData.length === 0) {
+          this.view.btnShowMore.isVisible = false;
           this.view.lblNotFound.isVisible = true;
         } else {
           this.view.lblNotFound.isVisible = false;
@@ -167,6 +169,7 @@ define(["MovieService"], function(movieService){
         SearchPeopleListData = SearchPeopleListData.concat(resultListData);
         this.view.lstMovies.setData(SearchPeopleListData);
         if (SearchPeopleListData.length === 0) {
+          this.view.btnShowMore.isVisible = false;
           this.view.lblNotFound.isVisible = true;
         } else {
           this.view.lblNotFound.isVisible = false;
@@ -175,6 +178,7 @@ define(["MovieService"], function(movieService){
         SearchTVShowData = SearchTVShowData.concat(resultListData);
         this.view.lstMovies.setData(SearchTVShowData);
         if (SearchTVShowData.length === 0) {
+          this.view.btnShowMore.isVisible = false;
           this.view.lblNotFound.isVisible = true;
         } else {
           this.view.lblNotFound.isVisible = false;
@@ -228,7 +232,7 @@ define(["MovieService"], function(movieService){
         SearchTVShowData = [];
         SearchTVShowPageNumber = 2;
       }
-      
+
       this.view.flxListContainer.setContentOffset({
         "x": "0dp",
         "y": "0dp"
