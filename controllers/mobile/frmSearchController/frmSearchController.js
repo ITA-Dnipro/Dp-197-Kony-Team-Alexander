@@ -240,11 +240,19 @@ define(["MovieService"], function(movieService){
     onSearchClicked: function() {
       if (this.view.btnMovies.skin === "sknBtnNavigateActive") {
         SearchMovieListData = [];
+        SearchMoviePageNumber = 2;
       } else if (this.view.btnPeople.skin === "sknBtnNavigateActive"){
         SearchPeopleListData = [];
+        SearchPeoplePageNumber = 2;
       } else if (this.view.btnTVShows.skin === "sknBtnNavigateActive"){
         SearchTVShowData = [];
+        SearchTVShowPageNumber = 2;
       }
+      
+      this.view.flxListContainer.setContentOffset({
+        "x": "0dp",
+        "y": "0dp"
+      }, false);
 
       var pageNumber;
 
