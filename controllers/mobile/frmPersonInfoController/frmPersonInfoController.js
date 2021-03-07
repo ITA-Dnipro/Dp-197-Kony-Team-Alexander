@@ -24,10 +24,7 @@ define(["MovieService"], function(movieService){
       if (personData) {
         this.personData = personData;
       }
-      
-      alert(JSON.stringify(this.personData));
 
-      //       alert(this.personData.id);
       this.view.ActingList.btnShow.text = "Acting   \uf078";
       this.view.DirectingList.btnShow.text = "Directing   \uf078";
       this.view.ProductionList.btnShow.text = "Production   \uf078";
@@ -90,8 +87,7 @@ define(["MovieService"], function(movieService){
         this.view.lblAgeInfo.text = "(" + String(personInfo.age) + " years old)";
       } else {
         this.view.flxAge.isVisible = false;
-      }
-      
+      }  
 
       if (personInfo.deathday) {
         this.view.flxDeath.isVisible = true;
@@ -102,7 +98,6 @@ define(["MovieService"], function(movieService){
     },
 
     onPersonCreditsReceived: function(creditsList) {
-
       this.view.flxBestMoviesCarousel.removeAll();
 
       if (creditsList.popularList.length === 0) {

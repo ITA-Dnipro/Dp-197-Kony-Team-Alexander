@@ -10,7 +10,6 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       this.view.btnShowSimilarMovie.onClick = this.onBtnShowClicked.bind(this, this.view.btnShowSimilarMovie, "Similar Movies", this.view.lstSimilarMovies);
       
       this.view.cmpHeader.onBackClicked = Utility.goBack;
-//       alert(this.view.cmpHeader.onBtnBack.text);
     },
 
     onbtnFavoriteClicked: function() {
@@ -60,17 +59,18 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       
        if (this.type === "tv" && this.view.btnFavorite.skin === "sknBtnFavorite") {
         favouriteService.getFavouriteMovies(UserId, function(movieList) {
+          var movieId = this.movieId;
           var movieInFavorite = movieList.find(function(m) {
-            return Number(this.movieId) === Number(m.id); 
-          }.bind(this));
+            return Number(movieId) === Number(m.id); 
+          });
           favouriteService.deleteFavouriteList(movieInFavorite.dbId, function() {
                   alert("The tv show is deleted from favourite list");
                 }, function() {
                 alert("Error while deleting tv from favourite list");
               });
-        }, function() {
+        }.bind(this), function() {
           alert("Error while retrieving favourite list");
-        }, this.movieId);
+        });
       }
 
     },
@@ -105,8 +105,6 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       }
       
       this.type === "tv" ? this.view.lblTopCast.text = "Series Cast" : this.view.lblTopCast.text = "Top Billed Cast";
-
-//       alert('id ' + this.movieId);
       
       if (this.type === "movie") {  
         this.view.cmpHeader.text = "Movie Details";
@@ -196,8 +194,6 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
       this.movieId = widgetRef.data[rowIndex].id;
       this.type = widgetRef.data[rowIndex].type;
-      
-      alert('id ' + this.movieId);
 
       this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
       this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
@@ -406,7 +402,6 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
     },
 
     onMovieCreditsReceived: function(creditsList) {
-
       if (creditsList.director) {       
         if (creditsList.director.length === 0) {
           this.view.flxDirectorContainer.isVisible = false;
@@ -461,8 +456,6 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
             top: "0dp",
             width: "100%",
             height: "130dp",
-//             height: kony.flex.USE_PREFERRED_SIZE,
-//             layoutType: kony.flex.FLOW_VERTICAL,
             onClick: this.onPersonClicked.bind(null, creditsList.cast[i].id, "cast")
           });
 
@@ -504,7 +497,6 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
 
           flexImg.add(imgCast);
           flexCast.add(flexImg, btnName, lblChar);
-//           flexCast.add(imgCast, btnName, lblChar);
 
           this.view.flxCastCarousel.add(flexCast);
         }		

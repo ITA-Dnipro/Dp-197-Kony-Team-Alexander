@@ -146,7 +146,7 @@ define(["MovieService"], function(movieService){
         return {
           lblMovieTitle: r.name || r.title,
           lblMovieGenres: r.knownFor || r.genreNamesList.join(', ') || "Unknown",
-          lblMovieYear: r.released !== undefined ? String(r.released) : "Unknown",
+          lblMovieYear: r.released !== undefined ? String(r.released) : "",
           imgMoviePoster: r.poster,
           id: r.id,
           type: r.type,

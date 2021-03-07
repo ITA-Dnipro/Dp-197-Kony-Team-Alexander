@@ -49,6 +49,7 @@
     "device": "Pixel3",
     "displayorientation": 1,
     "enabledforidletimeout": false,
+    "friendlyName": "",
     "id": "frmMovieList",
     "ide_init": "AS_Form_h8a1f5fd35db40729067e102073920ed",
     "info": null,

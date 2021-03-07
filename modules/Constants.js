@@ -25,3 +25,5 @@ var SearchTVShowPageNumber = 2;
 var TotalSearchMoviePages;
 var TotalSearchPeoplePages;
 var TotalSearchTVShowPages;
+
+var formsStack = [];
