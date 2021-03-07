@@ -18,7 +18,8 @@ define(["MapService"], function (nearestCinemas) {
       kony.location.getCurrentPosition(function(position) {
         nearestCinemas.getNearestCinemas(position.coords.latitude, position.coords.longitude, function(cinemaList){
           mapControl.addPins(cinemaList);
-          mapControl.navigateTo(1, false)
+          mapControl.navigateTo(1, false);
+//           mapControl.zoomLevel = 15;
         }, function(){
           alert("Error while retrieving cinemas list");
         }); 
