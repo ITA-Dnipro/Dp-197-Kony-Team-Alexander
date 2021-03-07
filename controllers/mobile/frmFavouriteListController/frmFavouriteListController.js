@@ -54,7 +54,7 @@ define(["FavouriteListService"], function(favouriteListService){
                   }, function() {
                     alert("Error while retrieving favourite movie list");
                   });
-                  alert("Deleted movie from favourite list");
+                  alert("The movie is deleted from favourite list");
                 }, function() {
                   alert("Error while deleting favourite movie list");
                 });

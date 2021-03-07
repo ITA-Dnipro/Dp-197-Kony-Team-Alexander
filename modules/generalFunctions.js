@@ -40,11 +40,26 @@ var Utility = {
     }
 
   },
-  
+
   clearSessionData: function(){
+    MovieListData = [];
+    InTheatresData = [];
+    TVShowData = [];
+
+    SearchMovieListData = [];
+    SearchTVShowData = [];
+    SearchPeopleListData = [];
+
+    MoviePageNumber = 1;
+    InTheatresPageNumber = 1;
+    TVShowPageNumber = 1;
+
+    SearchMoviePageNumber = 2;
+    SearchPeoplePageNumber = 2;
+    SearchTVShowPageNumber = 2;
+
     formsStack = []; 
-    UserId = null;
-    
+
     kony.application.destroyForm("frmFavouriteList");
     kony.application.destroyForm("frmMovieList");
   }

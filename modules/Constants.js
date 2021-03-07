@@ -26,10 +26,4 @@ var TotalSearchMoviePages;
 var TotalSearchPeoplePages;
 var TotalSearchTVShowPages;
 
-
-
-
-
-
-
 var formsStack = [];
