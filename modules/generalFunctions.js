@@ -27,16 +27,13 @@ var Utility = {
           if (confirm) {
             var navigation = new kony.mvc.Navigation(frmName);
             navigation.navigate(data);
-            Utility.clearSessionData();
-            
+            Utility.clearSessionData();  
           }       
         },
       }, {});
 
     } else {
       formsStack.push({ id: frmName, data: data });
-
-      //     alert(formsStack.map(function(f){ return f.id; }).join('\n '));
 
       var navigation = new kony.mvc.Navigation(frmName);
       navigation.navigate(data);

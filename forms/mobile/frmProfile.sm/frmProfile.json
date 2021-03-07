@@ -34,7 +34,8 @@
         "imgProfilePage",
         "inpProfileName",
         "inpProfileLogin",
-        "btnProfileFormChange"
+        "btnProfileFormChange",
+        "lblChangeProfile"
     ],
     "containerweight": 100,
     "controllerInfo": {

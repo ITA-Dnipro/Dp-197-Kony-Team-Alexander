@@ -106,7 +106,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       
       this.type === "tv" ? this.view.lblTopCast.text = "Series Cast" : this.view.lblTopCast.text = "Top Billed Cast";
 
-      alert('id ' + this.movieId);
+//       alert('id ' + this.movieId);
       
       if (this.type === "movie") {  
         this.view.cmpHeader.text = "Movie Details";

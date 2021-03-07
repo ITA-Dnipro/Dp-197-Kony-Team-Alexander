@@ -7,7 +7,7 @@
     },
     "_left_": {
         "type": "string",
-        "value": "120dp"
+        "value": "60dp"
     },
     "_margin_": [
         1,
@@ -23,13 +23,13 @@
     ],
     "_right_": {
         "type": "number",
-        "value": "10"
+        "value": "60"
     },
-    "_skin_": "sbe6324bdf7841038571d0a8b3f73495",
-    "_text_": "",
+    "_skin_": "s6821e2eb4d14bc3b4802349852db586",
+    "_text_": "Change your name or login?",
     "_top_": {
         "type": "string",
-        "value": "95dp"
+        "value": "405dp"
     },
     "_width_": {
         "type": "ref",
@@ -43,10 +43,9 @@
         }
     },
     "canUpdateUI": true,
-    "containerId": true,
     "containerweight": 100,
-    "contentalignment": 4,
-    "id": "lblMovieGenres",
+    "contentalignment": 5,
+    "id": "lblChangeProfile",
     "info": null,
     "ipad": {
         "psp": {
@@ -60,15 +59,13 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "j381464eb3974ceb90c4d78dcd72add5",
-    "maxnumberoflines": 4,
+    "kuid": "ef6b6f73844240718d4dbbc48c374309",
     "name": "kony.ui.Label",
-    "parent": "MovieRow",
-    "pf": "MovieRowTemplate",
+    "parent": "frmProfile",
+    "pf": "frmProfile",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "textstyle": {},
-    "texttruncateposition": 3,
     "tooltip": "",
     "wType": "Label",
     "zindex": 1

@@ -8,8 +8,6 @@ define(function() {
   var _flexBackdrop = null;
   var _separatorSize = "1dp";
   var _listItemSkin = "defBtnNormal";
-
-  var DEFAULT_OFFSET = "70dp";
   
   var BACKDROP_ZINDEX = 1000;
   
@@ -32,16 +30,7 @@ define(function() {
   var validateSkin = function(skin) {
     return typeof skin === 'string' && skin.trim().length > 0;
   };
-  
-  
-  var updateHeaderPosition = function () {
-    var leftOffset = this.view.btnBack.isVisible ? this.view.btnBack.width : DEFAULT_OFFSET;
-    var rightOffset = this.view.btnDrop.isVisible ? this.view.btnDrop.width : DEFAULT_OFFSET;
-    
-    this.view.lblCaption.left = leftOffset;
-    this.view.lblCaption.right = rightOffset;
-  };
-  
+
   var showPreviousForm = function() {
     if (this.onBackClicked) {
       if (!this.onBackClicked()) {
@@ -80,7 +69,7 @@ define(function() {
 
     var flexScroll = new kony.ui.FlexScrollContainer({
       id: "flxHeaderControlScrollList",
-      top: this.view.height,
+      top: "70dp",
       width: _dropDownWidth,
       height: "100%",
       right: "0dp",
@@ -109,10 +98,6 @@ define(function() {
         isVisible: true,
         text: _dropDownList[i].name,
         onClick: function(data){ 
-//           if (this.onListItemClicked) {
-//             this.onListItemClicked(data);
-//           }
-//           alert();
           Utility.navigateTo(data.path);
           hideDropDown();
         }.bind(this, _dropDownList[i])
@@ -150,7 +135,6 @@ define(function() {
   
   return {
     constructor: function(baseConfig, layoutConfig, pspConfig) {
-      updateHeaderPosition = updateHeaderPosition.bind(this);
       hideDropDown = hideDropDown.bind(this);
       showDropDown = showDropDown.bind(this);
       
@@ -167,7 +151,6 @@ define(function() {
         _isBackVisible = !!val;
         
         this.view.btnBack.isVisible = _isBackVisible;
-        updateHeaderPosition();
       });
       
       defineGetter(this, "isDropVisible", function() {
@@ -178,7 +161,6 @@ define(function() {
         _isDropVisible = !!val;
         
         this.view.btnDrop.isVisible = _isDropVisible;
-        updateHeaderPosition();
       });
       
       defineGetter(this, "destroyPreviousFormOnBack", function() {
