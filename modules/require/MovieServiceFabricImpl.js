@@ -299,13 +299,13 @@ define(function () {
     AlexanderMovieListService.invokeOperation("getPersonInfo", headers, body, function(response) {
       if (successCallback) {
         var personInfo = {         
-          name: response.name || "unknown",
-          birthday: response.birthday || "unknown",
-          placeOfBirth: response.place_of_birth || "unknown",
+          name: response.name || "Unknown",
+          birthday: response.birthday || "Unknown",
+          placeOfBirth: response.place_of_birth || "Unknown",
           deathday: response.deathday,
           age: response.birthday ? calculateAge(response.birthday, response.deathday) : null,
           img: "https://image.tmdb.org/t/p/w200/" + response.profile_path, 
-          knownFor: response.known_for_department || "unknown", 
+          knownFor: response.known_for_department || "Unknown", 
         };   
 
         successCallback(personInfo);
