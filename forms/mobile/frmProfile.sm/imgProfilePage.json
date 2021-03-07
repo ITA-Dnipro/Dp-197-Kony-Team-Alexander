@@ -6,10 +6,6 @@
         "type": "string",
         "value": "120dp"
     },
-    "_left_": {
-        "type": "string",
-        "value": "146dp"
-    },
     "_margin_": [
         0,
         0,
@@ -26,13 +22,17 @@
     "_src_": "icons8_test_account_96__1_.png",
     "_top_": {
         "type": "string",
-        "value": "100dp"
+        "value": "130dp"
     },
     "_width_": {
         "type": "string",
         "value": "120dp"
     },
     "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
     "containerweight": 100,
     "id": "imgProfilePage",
     "imagescalemode": 0,
