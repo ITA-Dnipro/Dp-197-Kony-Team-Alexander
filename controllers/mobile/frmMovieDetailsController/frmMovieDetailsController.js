@@ -20,7 +20,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       if (this.type === "movie" && this.view.btnFavorite.skin === "sknBtnFavoriteActive") {
         movieService.getMovieDetails(function(movieDetails) {
           favouriteService.createFavouriteList(UserId, movieDetails, function() {
-            alert("The movie is added to favorite list!");
+            alert("The movie was added to favorite list!");
           }, function() {
             alert("Error while adding movie to favourits");
           });
@@ -36,7 +36,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
             return Number(movieId) === Number(m.id); 
           });
           favouriteService.deleteFavouriteList(movieInFavorite.dbId, function() {
-                  alert("The movie is deleted from favourite list");
+                  alert("The movie was deleted from favourite list");
                 }, function() {
                 alert("Error while deleting movie from favourite list");
               });
@@ -48,7 +48,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       if (this.type === "tv" && this.view.btnFavorite.skin === "sknBtnFavoriteActive") {
         movieService.getTvDetails(function(tvDetails) {
           favouriteService.createFavouriteList(UserId, tvDetails, function() {
-            alert("The tv show is added to favourite list!");
+            alert("The tv show was added to favourite list!");
           }, function() {
             alert("Error while adding tv to favourits");
           });
@@ -64,7 +64,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
             return Number(movieId) === Number(m.id); 
           });
           favouriteService.deleteFavouriteList(movieInFavorite.dbId, function() {
-                  alert("The tv show is deleted from favourite list");
+                  alert("The tv show was deleted from favourite list");
                 }, function() {
                 alert("Error while deleting tv from favourite list");
               });
@@ -194,7 +194,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
       this.movieId = widgetRef.data[rowIndex].id;
       this.type = widgetRef.data[rowIndex].type;
-
+      
       this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
       this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
       this.view.btnShowRecommendations.text = "Recommendations   \uf078";
@@ -286,7 +286,6 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
     },
 
     onSimilarMovieListReceived: function(movieList) {
-
       if (movieList.length === 0) {
         this.view.btnShowSimilarMovie.isVisible = false;
         this.view.lstSimilarMovies.setData({});
@@ -436,12 +435,11 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       if (creditsList.cast.length === 0) {
         this.view.flxCastCarousel.isVisible = false;
         this.view.lblTopCast.isVisible = false;
-
       } else {
         this.view.flxCastCarousel.isVisible = true;
         this.view.lblTopCast.isVisible = true;
 
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 20; i++) {          
           var flexCast = new kony.ui.FlexContainer({
             id: "flxCast" + i,
             top: "0dp",
