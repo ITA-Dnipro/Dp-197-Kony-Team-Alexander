@@ -182,6 +182,7 @@ define(function () {
     AlexanderMovieListService.invokeOperation("searchPeople", headers, body, function(response) {
       if (successCallback) {
         var movieList = response.results.map(function(p) {
+          //////////////////////////////
           return {
             type: "person",
             id: p.id,
@@ -269,26 +270,6 @@ define(function () {
     });   
   };
 
-  var calculateAge = function(birthday, deathday) {
-    var age;
-    var ageDifMs;
-    var ageDate;
-
-    if (deathday) {
-      ageDifMs = new Date(deathday).getTime() - new Date(birthday).getTime();
-      ageDate = new Date(ageDifMs);
-
-      age = Math.abs(ageDate.getUTCFullYear() - 1970);
-    } else {
-      ageDifMs = new Date() - new Date(birthday).getTime();
-      ageDate = new Date(ageDifMs);
-
-      age = Math.abs(ageDate.getUTCFullYear() - 1970);
-    }
-
-    return age;
-  };
-
   var getPersonInfo = function(successCallback, errorCallback, id) {
     var sdk = kony.sdk.getCurrentInstance();
     var AlexanderMovieListService = sdk.getIntegrationService("TMDB_API");
@@ -297,15 +278,23 @@ define(function () {
 
     AlexanderMovieListService.invokeOperation("getPersonInfo", headers, body, function(response) {
       if (successCallback) {
-        var personInfo = {         
-          name: response.name || "Unknown",
-          birthday: response.birthday || "Unknown",
-          placeOfBirth: response.place_of_birth || "Unknown",
+        var personInfo = new PersonInfo({
+          name: response.name,
+          birthday: response.birthday,
+          placeOfBirth: response.place_of_birth,
           deathday: response.deathday,
-          age: response.birthday ? calculateAge(response.birthday, response.deathday) : null,
-          img: "https://image.tmdb.org/t/p/w200" + response.profile_path, 
-          knownFor: response.known_for_department || "Unknown", 
-        };   
+          img: response.profile_path, 
+          knownFor: response.known_for_department, 
+        }); 
+//         var personInfo = {         
+//           name: response.name || "Unknown",
+//           birthday: response.birthday || "Unknown",
+//           placeOfBirth: response.place_of_birth || "Unknown",
+//           deathday: response.deathday,
+//           age: response.birthday ? calculateAge(response.birthday, response.deathday) : null,
+//           img: "https://image.tmdb.org/t/p/w200" + response.profile_path, 
+//           knownFor: response.known_for_department || "Unknown", 
+//         };   
 
         successCallback(personInfo);
       }
@@ -324,13 +313,21 @@ define(function () {
     AlexanderMovieListService.invokeOperation("getMovieCredits", headers, body, function(response) {
       if (successCallback) {
         var castList = response.cast.map(function(c) {
-          return {
+          return new PersonInfo({
             id: c.id,
             name: c.name, 
-            img: "https://image.tmdb.org/t/p/w200" + c.profile_path, 
-            character: c.character
-          };
+            img: c.profile_path, 
+            character: c.character, 
+          });
+//           return {
+//             id: c.id,
+//             name: c.name, 
+//             img: "https://image.tmdb.org/t/p/w200" + c.profile_path, 
+//             character: c.character
+//           };
         });
+        ///////////////////////////////////
+//         alert('castList ' + castList.length);
 
         var director = [];
         if (response.crew) {
@@ -357,12 +354,18 @@ define(function () {
     AlexanderMovieListService.invokeOperation("getTvCredits", headers, body, function(response) {
       if (successCallback) {
         var castList = response.cast.map(function(c) {
-          return {
+          return new PersonInfo({
             id: c.id,
             name: c.name, 
-            img: "https://image.tmdb.org/t/p/w200" + c.profile_path, 
-            character: c.roles.map(function(r){ return r.character; }).join(', '), 
-          };
+            img: c.profile_path, 
+            characterList: c.roles, 
+          });
+//           return {
+//             id: c.id,
+//             name: c.name, 
+//             img: "https://image.tmdb.org/t/p/w200" + c.profile_path, 
+//             character: c.roles.map(function(r){ return r.character; }).join(', '), 
+//           };
         });
 
         successCallback({
