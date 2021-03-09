@@ -23,7 +23,7 @@
         0
     ],
     "_skin_": "se979021c169472194a49723f4746812",
-    "_src_": "imagedrag.png",
+    "_src_": "splash.png",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -36,7 +36,10 @@
     "containerweight": 100,
     "id": "imgBackground",
     "imagescalemode": 0,
+    "imagewhenfailed": "corn.png",
+    "imagewhiledownloading": "splash.png",
     "info": null,
+    "invokedProperty": "imageWhileDownloading",
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "cf81fdb218044f609c9156e23ab71117",

@@ -27,7 +27,7 @@
         0
     ],
     "_skin_": "se979021c169472194a49723f4746812",
-    "_src_": "imagedrag.png",
+    "_src_": "splash.png",
     "_top_": {
         "type": "string",
         "value": "10dp"
@@ -41,7 +41,8 @@
     "containerweight": 100,
     "id": "imgMoviePoster",
     "imagescalemode": 1,
-    "imagewhenfailed": "splash.png",
+    "imagewhenfailed": "moviewithborder.png",
+    "imagewhiledownloading": "loader.gif",
     "info": null,
     "invokedProperty": "imageWhenFailed",
     "iscustomlayout": false,
