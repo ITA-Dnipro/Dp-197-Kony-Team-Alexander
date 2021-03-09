@@ -10,17 +10,20 @@ define(["MovieService"], function(movieService){
       this.view.ProductionList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
       this.view.WritingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
 
-      this.previousCB = this.view.ActingList.btnShow.onClick;
-
       this.view.ActingList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.ActingList.btnShow, this.view.ActingList.lstMovies);
       this.view.DirectingList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.DirectingList.btnShow, this.view.DirectingList.lstMovies);
       this.view.ProductionList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.ProductionList.btnShow, this.view.ProductionList.lstMovies);
-      this.view.WritingList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.WritingList.btnShow, this.view.WritingList.lstMovies);
-      
-      this.view.onDeviceBack = Utility.goBack;
+      this.view.WritingList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.WritingList.btnShow, this.view.WritingList.lstMovies); 
     },
 
     onNavigate: function(personData) {
+      this.view.cmpHeader.dropDownList = [ 
+        {"id": "frmHome", "name": "Home", "path": "frmMovieList"},
+        {"id": "frmProfile", "name": "Profile", "path": "frmProfile"},
+        {"id": "frmFavouriteList", "name": "Favourite List", "path": "frmFavouriteList"},
+        {"id": "frmAuthentication", "name": "Log Out", "path": "frmAuthentication"}
+      ];
+      
       if (personData) {
         this.personData = personData;
       }
@@ -131,6 +134,8 @@ define(["MovieService"], function(movieService){
             top: "0dp",
             width: "100%",
             height: "130dp",
+            imageWhenFailed: "moviewithborder.png",
+            imageWhileDownloading: "loader.gif"
           });
 
           var btnBestMovieName = new kony.ui.Button({
