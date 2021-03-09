@@ -179,20 +179,11 @@ define(function () {
       if (successCallback) {
         var movieList = response.results.map(function(p) {
           return new PersonInfo({
-            type: "person",
             id: p.id,
             name: p.name, 
             knownFor: "Known for: " + p.known_for_department,  
             img: p.profile_path,       
           });
-          //////////////////////////////
-//           return {
-//             type: "person",
-//             id: p.id,
-//             name: p.name, 
-//             knownFor: "Known for: " + p.known_for_department,  
-//             poster: "https://image.tmdb.org/t/p/w200" + p.profile_path,       
-//           }; 
         });
         TotalSearchPeoplePages = response.total_pages;
         successCallback(movieList);

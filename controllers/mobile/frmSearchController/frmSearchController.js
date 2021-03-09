@@ -1,7 +1,6 @@
 define(["MovieService"], function(movieService){
   return {
     onInitialize: function() {
-      this.view.btnShowMore.isVisible = false;
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
       this.view.btnBack.onClick = Utility.goBack;
       this.view.onDeviceBack = Utility.goBack;
@@ -40,7 +39,7 @@ define(["MovieService"], function(movieService){
 
     loadResultList: function(pageNumber) {     
       if (this.view.inpSearch.text.trim().length < 1) {
-        this.view.btnShowMore.isVisible = false;
+//         this.view.btnShowMore.isVisible = false;
         return;
       }
       kony.application.showLoadingScreen();
@@ -165,7 +164,12 @@ define(["MovieService"], function(movieService){
           this.view.btnShowMore.isVisible = false;
           this.view.lblNotFound.isVisible = true;
         } else {
+          this.view.btnShowMore.isVisible = true;
           this.view.lblNotFound.isVisible = false;
+        }
+        
+        if (SearchMoviePageNumber > TotalSearchMoviePages) {
+          this.view.btnShowMore.isVisible = false;
         }
       } else if (this.view.btnPeople.skin === "sknBtnNavigateActive") {
         SearchPeopleListData = SearchPeopleListData.concat(resultListData);
@@ -174,7 +178,12 @@ define(["MovieService"], function(movieService){
           this.view.btnShowMore.isVisible = false;
           this.view.lblNotFound.isVisible = true;
         } else {
+          this.view.btnShowMore.isVisible = true;
           this.view.lblNotFound.isVisible = false;
+        }
+        
+        if (SearchPeoplePageNumber > TotalSearchPeoplePages) {
+          this.view.btnShowMore.isVisible = false;
         }
       } else if (this.view.btnTVShows.skin === "sknBtnNavigateActive") {
         SearchTVShowData = SearchTVShowData.concat(resultListData);
@@ -183,7 +192,12 @@ define(["MovieService"], function(movieService){
           this.view.btnShowMore.isVisible = false;
           this.view.lblNotFound.isVisible = true;
         } else {
+          this.view.btnShowMore.isVisible = true;
           this.view.lblNotFound.isVisible = false;
+        }
+        
+        if (SearchTVShowPageNumber > TotalSearchTVShowPages) {
+          this.view.btnShowMore.isVisible = false;
         }
       }
 
@@ -239,27 +253,17 @@ define(["MovieService"], function(movieService){
         "x": "0dp",
         "y": "0dp"
       }, false);
-
+      
       var pageNumber;
 
-      this.view.btnShowMore.isVisible = true;
       if (this.view.btnMovies.skin === "sknBtnNavigateActive") {
         pageNumber = 1;
-        if (1 >= TotalSearchMoviePages) {
-          this.view.btnShowMore.isVisible = false;
-        }
         this.loadResultList(pageNumber);
       } else if (this.view.btnPeople.skin === "sknBtnNavigateActive") {
         pageNumber = 1;
-        if (1 >= TotalSearchPeoplePages) {
-          this.view.btnShowMore.isVisible = false;
-        }
         this.loadResultList(pageNumber);
       } else if (this.view.btnTVShows.skin === "sknBtnNavigateActive") {
         pageNumber = 1;
-        if (1>= TotalSearchTVShowPages) {
-          this.view.btnShowMore.isVisible = false;
-        }
         this.loadResultList(pageNumber);
       }
     },
