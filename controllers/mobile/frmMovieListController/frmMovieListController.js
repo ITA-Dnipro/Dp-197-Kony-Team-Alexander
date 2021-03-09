@@ -16,6 +16,23 @@ define(["MovieService"], function(movieService){
       this.view.btnInTheatres.skin = "sknBtnNavigateInActive";
 
       kony.application.showLoadingScreen();
+      
+      movieService.getTVShowList(function(TVShowList) {
+        var TVShowListData = TVShowList.map(function(m) {
+          return {
+            lblMovieTitle: m.title,
+            lblMovieGenres: m.genreNamesList.join(', ') || "Unknown",
+            lblMovieYear: String(m.released) || "Unknown",
+            imgMoviePoster: m.poster,
+            id: m.id,
+            type: m.type
+          };
+        });
+        this.onMovieListReceived(TVShowListData, "TVShow");
+      }.bind(this), function() {
+        alert("Error while retrieving TV show list");
+        kony.application.dismissLoadingScreen();
+      }, TVShowPageNumber);
 
       var btnMovieSkin = "sknBtnNavigateInActive";
       movieService.getMovieList(function(movieList) {
@@ -52,23 +69,6 @@ define(["MovieService"], function(movieService){
         alert("Error while retrieving movie list");
         kony.application.dismissLoadingScreen();
       }, "now_playing", MoviePageNumber);
-
-      movieService.getTVShowList(function(TVShowList) {
-        var TVShowListData = TVShowList.map(function(m) {
-          return {
-            lblMovieTitle: m.title,
-            lblMovieGenres: m.genreNamesList.join(', ') || "Unknown",
-            lblMovieYear: String(m.released) || "Unknown",
-            imgMoviePoster: m.poster,
-            id: m.id,
-            type: m.type
-          };
-        });
-        this.onMovieListReceived(TVShowListData, "TVShow");
-      }.bind(this), function() {
-        alert("Error while retrieving TV show list");
-        kony.application.dismissLoadingScreen();
-      }, TVShowPageNumber);
     },
     
     onNavigate: function() {
