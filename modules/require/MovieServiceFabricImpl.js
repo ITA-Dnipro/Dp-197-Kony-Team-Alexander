@@ -1,7 +1,6 @@
 define(function () {
   var mainGenreData = [];
 
-
   var getGenreList = function(successCallback, errorCallback) {
     if (mainGenreData && mainGenreData.length > 0) {
       return successCallback(mainGenreData);      
@@ -188,7 +187,7 @@ define(function () {
             id: p.id,
             name: p.name, 
             knownFor: "Known for: " + p.known_for_department,  
-            poster: "https://image.tmdb.org/t/p/w200/" + p.profile_path,       
+            poster: "https://image.tmdb.org/t/p/w200" + p.profile_path,       
           }; 
         });
         TotalSearchPeoplePages = response.total_pages;
@@ -304,7 +303,7 @@ define(function () {
           placeOfBirth: response.place_of_birth || "Unknown",
           deathday: response.deathday,
           age: response.birthday ? calculateAge(response.birthday, response.deathday) : null,
-          img: "https://image.tmdb.org/t/p/w200/" + response.profile_path, 
+          img: "https://image.tmdb.org/t/p/w200" + response.profile_path, 
           knownFor: response.known_for_department || "Unknown", 
         };   
 
@@ -328,7 +327,7 @@ define(function () {
           return {
             id: c.id,
             name: c.name, 
-            img: "https://image.tmdb.org/t/p/w200/" + c.profile_path, 
+            img: "https://image.tmdb.org/t/p/w200" + c.profile_path, 
             character: c.character
           };
         });
@@ -361,7 +360,7 @@ define(function () {
           return {
             id: c.id,
             name: c.name, 
-            img: "https://image.tmdb.org/t/p/w200/" + c.profile_path, 
+            img: "https://image.tmdb.org/t/p/w200" + c.profile_path, 
             character: c.roles.map(function(r){ return r.character; }).join(', '), 
           };
         });
@@ -375,6 +374,41 @@ define(function () {
         errorCallback(error);
       }
     });
+  };
+  
+  var sortMovieList = function(movieList) {
+    var upcomingList = movieList.filter(function(m) { return (m.title || m.name) && !m.release_date && !m.first_air_date; })
+    .map(function(m){
+      return {
+        id: m.id,
+        type: m.media_type,
+        title: m.title || m.name,
+        additionalInfo: m.character || m.job,
+        year: "-"
+      };
+    });
+
+    var mList = movieList.filter(function(m) { return (m.title || m.name) && (m.release_date || m.first_air_date); })
+    .sort(function(a, b) {
+
+      var dateAMs = new Date(a.release_date || a.first_air_date).getTime();
+      var dateBMs = new Date(b.release_date || b.first_air_date).getTime();
+
+      return dateBMs - dateAMs;
+    })
+    .map(function(m){
+      return {
+        type: m.media_type,
+        id: m.id,
+        title: m.title || m.name,
+        additionalInfo: m.character || m.job,
+        year: (new Date(m.release_date || m.first_air_date)).getFullYear()
+      };
+    });
+
+    var sortedMovieList = upcomingList.concat(mList);
+
+    return sortedMovieList;
   };
 
   var getPersonCredits = function(successCallback, errorCallback, personId, personRole) {
@@ -402,18 +436,14 @@ define(function () {
               return m;
             }
           })
-            .sort(function(a, b) {
-
-            return b.vote_count - a.vote_count;
-            //             return b.popularity - a.popularity;
-          })
+            .sort(function(a, b) { return b.vote_count - a.vote_count; })
             .slice(0, 9)
             .map(function(m) {
             return {
               type: m.media_type,              
               id: m.id,
               name: m.title || m.name, 
-              img: "https://image.tmdb.org/t/p/w200/" + m.poster_path, 
+              img: "https://image.tmdb.org/t/p/w200" + m.poster_path, 
               popularity: m.popularity, 
             };
           }); 
@@ -425,17 +455,14 @@ define(function () {
               return m;
             }
           })
-            .sort(function(a, b) {
-            return b.vote_count - a.vote_count;
-            //             return b.popularity - a.popularity;
-          })
+            .sort(function(a, b) { return b.vote_count - a.vote_count; })
             .slice(0, 9)
             .map(function(m) {
             return {
               type: m.media_type,
               id: m.id,
               name: m.title || m.name, 
-              img: "https://image.tmdb.org/t/p/w200/" + m.poster_path, 
+              img: "https://image.tmdb.org/t/p/w200" + m.poster_path, 
               popularity: m.popularity, 
             };
           }); 
@@ -477,41 +504,6 @@ define(function () {
         errorCallback(error);
       }       
     });
-  };
-
-  var sortMovieList = function(movieList) {
-    var upcomingList = movieList.filter(function(m) { return (m.title || m.name) && !m.release_date && !m.first_air_date; })
-    .map(function(m){
-      return {
-        id: m.id,
-        type: m.media_type,
-        title: m.title || m.name,
-        additionalInfo: m.character || m.job,
-        year: "-"
-      };
-    });
-
-    var mList = movieList.filter(function(m) { return (m.title || m.name) && (m.release_date || m.first_air_date); })
-    .sort(function(a, b) {
-
-      var dateAMs = new Date(a.release_date || a.first_air_date).getTime();
-      var dateBMs = new Date(b.release_date || b.first_air_date).getTime();
-
-      return dateBMs - dateAMs;
-    })
-    .map(function(m){
-      return {
-        type: m.media_type,
-        id: m.id,
-        title: m.title || m.name,
-        additionalInfo: m.character || m.job,
-        year: (new Date(m.release_date || m.first_air_date)).getFullYear()
-      };
-    });
-
-    var sortedMovieList = upcomingList.concat(mList);
-
-    return sortedMovieList;
   };
 
   var getRecommendedList = function(successCallback, errorCallback, id, listType, mediaType) {
@@ -562,8 +554,6 @@ define(function () {
   return {
     getTVShowList: getTVShowList,
     getMovieDetails: getMovieDetails,
-    //     getSimilarMovieList: getSimilarMovieList,
-    //     getRecommendedMovieList: getRecommendedMovieList,
     getMovieList: getMovieList,
     searchMovie: searchMovie,
     getMovieCredits: getMovieCredits,

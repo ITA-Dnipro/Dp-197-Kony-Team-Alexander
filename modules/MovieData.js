@@ -1,6 +1,6 @@
 function MovieData(d) {
-  var poster = "https://image.tmdb.org/t/p/w200/" + d.posterPath;
-  var backdrop = "https://image.tmdb.org/t/p/w200/" + d.backdropPath;
+  var poster = "https://image.tmdb.org/t/p/w200" + d.posterPath;
+  var backdrop = "https://image.tmdb.org/t/p/w200" + d.backdropPath;
   var year = (new Date(d.released)).getFullYear();
   
   if (d.duration) {

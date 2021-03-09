@@ -1,6 +1,6 @@
 function TvData(d) {
-  var poster = "https://image.tmdb.org/t/p/w200/" + d.posterPath;
-  var backdrop = "https://image.tmdb.org/t/p/w200/" + d.backdropPath;
+  var poster = "https://image.tmdb.org/t/p/w200" + d.posterPath;
+  var backdrop = "https://image.tmdb.org/t/p/w200" + d.backdropPath;
   
   if (d.duration) {
     var movieDurationHours = Math.trunc(d.duration[0] / 60);
