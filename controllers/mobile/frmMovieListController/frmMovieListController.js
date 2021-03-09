@@ -7,7 +7,7 @@ define(["MovieService"], function(movieService){
       this.view.btnTVShow.onClick = this.onBtnTVShowClicked.bind(this);
       this.view.btnInTheatres.onClick = this.onBtnInTheatresClicked.bind(this);
       this.view.btnGoToNearestCinemas.onClick = Utility.navigateTo.bind(null, "frmNearestCinemas");
-      this.view.btnShowMore.onClick = this.onBtnShowMoreClicked.bind(this);
+      this.view.btnShowMore.onClick = this.onPageNumberChange.bind(this);
 
       this.view.onDeviceBack = Utility.goBack;
     
@@ -17,25 +17,9 @@ define(["MovieService"], function(movieService){
 
       kony.application.showLoadingScreen();
       
-      movieService.getTVShowList(function(TVShowList) {
-        var TVShowListData = TVShowList.map(function(m) {
-          return {
-            lblMovieTitle: m.title,
-            lblMovieGenres: m.genreNamesList.join(', ') || "Unknown",
-            lblMovieYear: String(m.released) || "Unknown",
-            imgMoviePoster: m.poster,
-            id: m.id,
-            type: m.type
-          };
-        });
-        this.onMovieListReceived(TVShowListData, "TVShow");
-      }.bind(this), function() {
-        alert("Error while retrieving TV show list");
-        kony.application.dismissLoadingScreen();
-      }, TVShowPageNumber);
-
-      var btnMovieSkin = "sknBtnNavigateInActive";
-      movieService.getMovieList(function(movieList) {
+      var btnMovieSkin = this.view.btnMovie.skin;
+      
+       movieService.getMovieList(function(movieList) {
         var movieListData = movieList.map(function(m) {
           return {
             lblMovieTitle: m.title,
@@ -48,27 +32,10 @@ define(["MovieService"], function(movieService){
         });
 
         this.onMovieListReceived(movieListData, btnMovieSkin);
-        movieService.getMovieList(function(inCinemaList) {
-          var inCinemaListData = inCinemaList.map(function(m) {
-            return {
-              lblMovieTitle: m.title,
-              lblMovieGenres: m.genreNamesList.join(', ') || "Unknown",
-              lblMovieYear: String(m.released) || "Unknown",
-              imgMoviePoster: m.poster,
-              id: m.id,
-              type: m.type
-            };
-          });
-          btnMovieSkin = "sknBtnNavigateActive";
-          this.onMovieListReceived(inCinemaListData, btnMovieSkin);
-        }.bind(this), function() {
-          alert("Error while retrieving movie list");
-          kony.application.dismissLoadingScreen();
-        }, "popular", InTheatresPageNumber);
       }.bind(this), function() {
         alert("Error while retrieving movie list");
         kony.application.dismissLoadingScreen();
-      }, "now_playing", MoviePageNumber);
+      }, "popular", MoviePageNumber);
     },
     
     onNavigate: function() {
@@ -143,7 +110,7 @@ define(["MovieService"], function(movieService){
       kony.application.dismissLoadingScreen();
     }, 
 
-    onBtnShowMoreClicked: function() {
+    onPageNumberChange: function() {
       var url;
       var pageNumber;
       if (this.view.btnMovie.skin === "sknBtnNavigateActive") {
@@ -176,10 +143,18 @@ define(["MovieService"], function(movieService){
       this.view.btnMovie.skin = "sknBtnNavigateInActive";
       this.view.btnTVShow.skin = "sknBtnNavigateInActive";
       this.view.btnInTheatres.skin = "sknBtnNavigateActive";
-      this.view.lstMovies.setData(InTheatresData);
+      
+       if (InTheatresData.length >= 1) {
+        this.view.lstMovies.setData(InTheatresData);
+      } else {
+        InTheatresPageNumber--;
+        this.onPageNumberChange();
+      }
+      
       if (InTheatresPageNumber < 10) {
         this.view.btnShowMore.isVisible = true;
       }
+      
       this.onScrollUp();
     },
 
@@ -188,9 +163,11 @@ define(["MovieService"], function(movieService){
       this.view.btnTVShow.skin = "sknBtnNavigateInActive";
       this.view.btnInTheatres.skin = "sknBtnNavigateInActive";
       this.view.lstMovies.setData(MovieListData);
+      
       if (MoviePageNumber < 10) {
         this.view.btnShowMore.isVisible = true;
       }
+      
       this.onScrollUp();
     },
 
@@ -198,10 +175,19 @@ define(["MovieService"], function(movieService){
       this.view.btnMovie.skin = "sknBtnNavigateInActive";
       this.view.btnTVShow.skin = "sknBtnNavigateActive";
       this.view.btnInTheatres.skin = "sknBtnNavigateInActive";
-      this.view.lstMovies.setData(TVShowData);
+      
+      if (TVShowData.length >= 1) {
+        this.view.lstMovies.setData(TVShowData);
+      } else {
+        TVShowPageNumber--;
+        this.onPageNumberChange();
+      }
+      
+      
       if (TVShowPageNumber < 10) {
         this.view.btnShowMore.isVisible = true;
       }
+      
       this.onScrollUp();
     },
     

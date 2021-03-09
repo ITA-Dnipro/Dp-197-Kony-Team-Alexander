@@ -37,7 +37,7 @@
     "id": "imgBackground",
     "imagescalemode": 0,
     "imagewhenfailed": "corn.png",
-    "imagewhiledownloading": "loader_gif.gif",
+    "imagewhiledownloading": "splash.png",
     "info": null,
     "invokedProperty": "imageWhileDownloading",
     "iscustomlayout": false,
