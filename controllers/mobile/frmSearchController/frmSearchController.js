@@ -1,6 +1,7 @@
 define(["MovieService"], function(movieService){
   return {
     onInitialize: function() {
+      this.view.btnShowMore.isVisible = false;
       this.view.lstMovies.onRowClick = this.onRowClicked.bind(this);
       this.view.btnBack.onClick = Utility.goBack;
       this.view.onDeviceBack = Utility.goBack;
@@ -39,6 +40,7 @@ define(["MovieService"], function(movieService){
 
     loadResultList: function(pageNumber) {     
       if (this.view.inpSearch.text.trim().length < 1) {
+        this.view.btnShowMore.isVisible = false;
         return;
       }
       kony.application.showLoadingScreen();
@@ -147,7 +149,7 @@ define(["MovieService"], function(movieService){
           lblMovieTitle: r.name || r.title,
           lblMovieGenres: r.knownFor || r.genreNamesList.join(', ') || "Unknown",
           lblMovieYear: r.released !== undefined ? String(r.released) : "",
-          imgMoviePoster: r.poster,
+          imgMoviePoster: r.poster || r.img,
           id: r.id,
           type: r.type,
           role: r.knownFor === "Known for: Acting" ? "cast" : "crew"

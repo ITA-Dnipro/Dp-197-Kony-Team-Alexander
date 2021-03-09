@@ -10,8 +10,6 @@ define(["MovieService"], function(movieService){
       this.view.ProductionList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
       this.view.WritingList.lstMovies.onRowClick = this.onMovieRowClicked.bind(this);
 
-//       this.previousCB = this.view.ActingList.btnShow.onClick;
-
       this.view.ActingList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.ActingList.btnShow, this.view.ActingList.lstMovies);
       this.view.DirectingList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.DirectingList.btnShow, this.view.DirectingList.lstMovies);
       this.view.ProductionList.btnShow.onClick = this.onShowBtnClicked.bind(this, this.view.ProductionList.btnShow, this.view.ProductionList.lstMovies);

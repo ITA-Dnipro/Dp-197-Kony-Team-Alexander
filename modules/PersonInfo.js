@@ -19,12 +19,10 @@ function calculateAge(birthday, deathday) {
 }
 
 function PersonInfo(d) {
+  this.type = "person";
   this.id = d.id || "Unknown";
-//               alert('id');
   this.img = "https://image.tmdb.org/t/p/w200" + d.img;
-//               alert('img');
   this.name = d.name || "Unknown";
-//               alert('name');
   this.birthday = d.birthday || "Unknown";
   this.placeOfBirth = d.placeOfBirth || "Unknown";
   this.deathday = d.deathday;
@@ -34,20 +32,14 @@ function PersonInfo(d) {
   if (d.characterList) {
     this.character = d.characterList.map(function(r){ return r.character; }).join(', '); 
   }
-              
-//               alert('char list');
   
   if (d.character) {
     this.character = d.character; 
   }
-              
-//               alert('char');
 
   if (d.birthday) {
     this.age = calculateAge(d.birthday, d.deathday);
   } else {
     this.age = null;
   }
-              
-//               alert('birth');
 }

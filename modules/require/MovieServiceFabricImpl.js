@@ -44,7 +44,6 @@ define(function () {
     };
     getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("getMovieList", headers, body, function(response) {
-
         if (successCallback) {
           var movieList = response.results.map(function(m) {
             return new MovieData({
@@ -75,7 +74,6 @@ define(function () {
     var body = {pageNumber: pageNumber};
     getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("getTVShowList", headers, body, function(response) {
-
         if (successCallback) {
           var movieList = response.results.map(function(m) {
             return new MovieData({
@@ -109,7 +107,6 @@ define(function () {
     };
     getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("searchMovie", headers, body, function(response) {
-
         if (successCallback) {
           var movieList = response.results.map(function(m) {
             return new MovieData({
@@ -145,7 +142,6 @@ define(function () {
     };
     getGenreList(function(genreData){
       AlexanderMovieListService.invokeOperation("searchTvShows", headers, body, function(response) {
-
         if (successCallback) {
           var movieList = response.results.map(function(m) {
             return new TvData({
@@ -182,14 +178,21 @@ define(function () {
     AlexanderMovieListService.invokeOperation("searchPeople", headers, body, function(response) {
       if (successCallback) {
         var movieList = response.results.map(function(p) {
-          //////////////////////////////
-          return {
+          return new PersonInfo({
             type: "person",
             id: p.id,
             name: p.name, 
             knownFor: "Known for: " + p.known_for_department,  
-            poster: "https://image.tmdb.org/t/p/w200" + p.profile_path,       
-          }; 
+            img: p.profile_path,       
+          });
+          //////////////////////////////
+//           return {
+//             type: "person",
+//             id: p.id,
+//             name: p.name, 
+//             knownFor: "Known for: " + p.known_for_department,  
+//             poster: "https://image.tmdb.org/t/p/w200" + p.profile_path,       
+//           }; 
         });
         TotalSearchPeoplePages = response.total_pages;
         successCallback(movieList);
@@ -208,7 +211,6 @@ define(function () {
     var body = { movieId: id };
 
     AlexanderMovieListService.invokeOperation("getMovieDetails", headers, body, function(response) {
-
       if (successCallback) {
         var movieDetails = new MovieData({
           type: "movie",
@@ -226,7 +228,6 @@ define(function () {
         });   
 
         successCallback(movieDetails);
-
       }
     }, function(error) {
       if (errorCallback) {
@@ -285,16 +286,7 @@ define(function () {
           deathday: response.deathday,
           img: response.profile_path, 
           knownFor: response.known_for_department, 
-        }); 
-//         var personInfo = {         
-//           name: response.name || "Unknown",
-//           birthday: response.birthday || "Unknown",
-//           placeOfBirth: response.place_of_birth || "Unknown",
-//           deathday: response.deathday,
-//           age: response.birthday ? calculateAge(response.birthday, response.deathday) : null,
-//           img: "https://image.tmdb.org/t/p/w200" + response.profile_path, 
-//           knownFor: response.known_for_department || "Unknown", 
-//         };   
+        });
 
         successCallback(personInfo);
       }
@@ -319,15 +311,7 @@ define(function () {
             img: c.profile_path, 
             character: c.character, 
           });
-//           return {
-//             id: c.id,
-//             name: c.name, 
-//             img: "https://image.tmdb.org/t/p/w200" + c.profile_path, 
-//             character: c.character
-//           };
         });
-        ///////////////////////////////////
-//         alert('castList ' + castList.length);
 
         var director = [];
         if (response.crew) {
@@ -360,12 +344,6 @@ define(function () {
             img: c.profile_path, 
             characterList: c.roles, 
           });
-//           return {
-//             id: c.id,
-//             name: c.name, 
-//             img: "https://image.tmdb.org/t/p/w200" + c.profile_path, 
-//             character: c.roles.map(function(r){ return r.character; }).join(', '), 
-//           };
         });
 
         successCallback({
@@ -431,7 +409,6 @@ define(function () {
 
         var popularList = [];
         if (personRole === "cast") {
-
           popularList = newCast.filter(function(m, i, arr) {
             var firstIndex = arr.findIndex(function(el) { return el.id === m.id; });
 
