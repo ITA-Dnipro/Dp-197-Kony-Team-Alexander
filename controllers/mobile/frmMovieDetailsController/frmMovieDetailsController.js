@@ -473,6 +473,8 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
             top: "0dp",
             width: "100%",
             height: "130dp",
+            imageWhenFailed: "personwithborder.png",
+            imageWhileDownloading: "loader.gif"
           });
 
           var btnName = new kony.ui.Button({

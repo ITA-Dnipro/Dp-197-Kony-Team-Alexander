@@ -36,14 +36,7 @@ define(["MovieService"], function(movieService){
         alert("Error while retrieving movie list");
         kony.application.dismissLoadingScreen();
       }, "popular", MoviePageNumber);
-
-      //       this.view.postShow = this.onFormShowed.bind(this);
-
     },
-
-    //     onFormShowed: function() {
-    //       this.view.btnShowMore.isVisible = false;   
-    //     },
 
     onNavigate: function() {
       this.view.btnShowMore.isVisible = false; 
@@ -105,14 +98,11 @@ define(["MovieService"], function(movieService){
     },
 
     onMovieListReceived: function(movieList, skin) {
-      //       this.view.btnShowMore.isVisible = true;
 
       if (skin === "sknBtnNavigateActive") {
         MovieListData = MovieListData.concat(movieList);
         this.view.lstMovies.setData(MovieListData);
-//         alert(MoviePageNumber);
-//         alert(MoviePageNumber === 3);
-        if (MoviePageNumber >= 3) {
+        if (MoviePageNumber >= 10) {
           this.view.btnShowMore.isVisible = false;
         } else {
           this.view.btnShowMore.isVisible = true;
@@ -120,7 +110,7 @@ define(["MovieService"], function(movieService){
       } else if (skin === "sknBtnNavigateInActive") {
         InTheatresData = InTheatresData.concat(movieList);
         this.view.lstMovies.setData(InTheatresData);
-        if (InTheatresPageNumber >= 3) {
+        if (InTheatresPageNumber >= 10) {
           this.view.btnShowMore.isVisible = false;
         } else {
           this.view.btnShowMore.isVisible = true;
@@ -128,7 +118,7 @@ define(["MovieService"], function(movieService){
       } else if (skin === "TVShow") {
         TVShowData = TVShowData.concat(movieList);
         this.view.lstMovies.setData(TVShowData);
-        if (TVShowPageNumber >= 3) {
+        if (TVShowPageNumber >= 10) {
           this.view.btnShowMore.isVisible = false;
         } else {
           this.view.btnShowMore.isVisible = true;
@@ -144,24 +134,15 @@ define(["MovieService"], function(movieService){
         url = "popular";
         pageNumber = MoviePageNumber + 1;
         MoviePageNumber++;
-        //         if (MoviePageNumber === 10) {
-        //           this.view.btnShowMore.isVisible = false;
-        //         }
         this.loadMovieList(url, pageNumber);
       } else if (this.view.btnInTheatres.skin === "sknBtnNavigateActive") {
         url = "now_playing";
         pageNumber = InTheatresPageNumber + 1;
         InTheatresPageNumber++;
-        //         if (InTheatresPageNumber === 10) {
-        //           this.view.btnShowMore.isVisible = false;
-        //         }
         this.loadMovieList(url, pageNumber);
       } else if (this.view.btnTVShow.skin === "sknBtnNavigateActive") {
         pageNumber = TVShowPageNumber + 1;
         TVShowPageNumber++;
-//         if (TVShowPageNumber === 10) {
-//           this.view.btnShowMore.isVisible = false;
-//         } 
         this.loadTVShowList(pageNumber);
       }
     },

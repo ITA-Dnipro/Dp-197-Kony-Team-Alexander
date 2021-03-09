@@ -18,9 +18,9 @@ var MoviePageNumber = 1;
 var InTheatresPageNumber = 1;
 var TVShowPageNumber = 1;
 
-var SearchMoviePageNumber = 2;
-var SearchPeoplePageNumber = 2;
-var SearchTVShowPageNumber = 2;
+var SearchMoviePageNumber = 1;
+var SearchPeoplePageNumber = 1;
+var SearchTVShowPageNumber = 1;
 
 var TotalSearchMoviePages;
 var TotalSearchPeoplePages;

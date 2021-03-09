@@ -134,6 +134,8 @@ define(["MovieService"], function(movieService){
             top: "0dp",
             width: "100%",
             height: "130dp",
+            imageWhenFailed: "moviewithborder.png",
+            imageWhileDownloading: "loader.gif"
           });
 
           var btnBestMovieName = new kony.ui.Button({
