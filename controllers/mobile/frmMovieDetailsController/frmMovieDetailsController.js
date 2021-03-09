@@ -194,7 +194,7 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
     onSimilarMoviesRowClicked: function(widgetRef, sectionIndex, rowIndex) {
       this.movieId = widgetRef.data[rowIndex].id;
       this.type = widgetRef.data[rowIndex].type;
-
+      
       this.view.btnShowRecommendations.skin = "sknBtnRecommendedMovie";
       this.view.btnShowSimilarMovie.skin = "sknBtnRecommendedMovie";
       this.view.btnShowRecommendations.text = "Recommendations   \uf078";
@@ -286,7 +286,6 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
     },
 
     onSimilarMovieListReceived: function(movieList) {
-
       if (movieList.length === 0) {
         this.view.btnShowSimilarMovie.isVisible = false;
         this.view.lstSimilarMovies.setData({});
@@ -436,12 +435,11 @@ define(["MovieService", "FavouriteListService"], function(movieService, favourit
       if (creditsList.cast.length === 0) {
         this.view.flxCastCarousel.isVisible = false;
         this.view.lblTopCast.isVisible = false;
-
       } else {
         this.view.flxCastCarousel.isVisible = true;
         this.view.lblTopCast.isVisible = true;
 
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 20; i++) {          
           var flexCast = new kony.ui.FlexContainer({
             id: "flxCast" + i,
             top: "0dp",
