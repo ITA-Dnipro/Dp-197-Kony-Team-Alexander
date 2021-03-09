@@ -23,7 +23,7 @@
         0
     ],
     "_skin_": "se979021c169472194a49723f4746812",
-    "_src_": "imagedrag.png",
+    "_src_": "splash.png",
     "_top_": {
         "type": "string",
         "value": "10dp"
@@ -37,7 +37,10 @@
     "containerweight": 100,
     "id": "imgMoviePoster",
     "imagescalemode": 1,
+    "imagewhenfailed": "movie.png",
+    "imagewhiledownloading": "splash.png",
     "info": null,
+    "invokedProperty": "imageWhenFailed",
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "a108bcad9ee7447fb9c3b7d5bd88ccfb",

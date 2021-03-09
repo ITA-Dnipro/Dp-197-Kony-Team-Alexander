@@ -10,7 +10,7 @@ define(["MovieService"], function(movieService){
       this.view.btnShowMore.onClick = this.onBtnShowMoreClicked.bind(this);
 
       this.view.onDeviceBack = Utility.goBack;
-
+    
       this.view.btnMovie.skin = "sknBtnNavigateActive";
       this.view.btnTVShow.skin = "sknBtnNavigateInActive";
       this.view.btnInTheatres.skin = "sknBtnNavigateInActive";

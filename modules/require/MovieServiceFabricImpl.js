@@ -405,7 +405,6 @@ define(function () {
             .sort(function(a, b) {
 
             return b.vote_count - a.vote_count;
-            //             return b.popularity - a.popularity;
           })
             .slice(0, 9)
             .map(function(m) {
@@ -427,7 +426,6 @@ define(function () {
           })
             .sort(function(a, b) {
             return b.vote_count - a.vote_count;
-            //             return b.popularity - a.popularity;
           })
             .slice(0, 9)
             .map(function(m) {
@@ -562,8 +560,6 @@ define(function () {
   return {
     getTVShowList: getTVShowList,
     getMovieDetails: getMovieDetails,
-    //     getSimilarMovieList: getSimilarMovieList,
-    //     getRecommendedMovieList: getRecommendedMovieList,
     getMovieList: getMovieList,
     searchMovie: searchMovie,
     getMovieCredits: getMovieCredits,
