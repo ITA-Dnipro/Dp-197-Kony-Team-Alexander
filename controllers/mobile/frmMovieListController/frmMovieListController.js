@@ -36,10 +36,11 @@ define(["MovieService"], function(movieService){
         alert("Error while retrieving movie list");
         kony.application.dismissLoadingScreen();
       }, "popular", MoviePageNumber);
+      this.view.btnShowMore.isVisible = false; 
     },
 
     onNavigate: function() {
-      this.view.btnShowMore.isVisible = false; 
+      
 
       this.view.HeaderControl.dropDownList = [
         {"id": "frmProfile", "name": "Profile", "path": "frmProfile"},
@@ -159,7 +160,7 @@ define(["MovieService"], function(movieService){
         this.onPageNumberChange();
       }
 
-      if (InTheatresPageNumber > 10) {
+      if (InTheatresPageNumber >= 10) {
         this.view.btnShowMore.isVisible = false;
       }
 
@@ -172,7 +173,7 @@ define(["MovieService"], function(movieService){
       this.view.btnInTheatres.skin = "sknBtnNavigateInActive";
       this.view.lstMovies.setData(MovieListData);
 
-      if (MoviePageNumber > 10) {
+      if (MoviePageNumber >= 10) {
         this.view.btnShowMore.isVisible = false;
       }
 
@@ -191,7 +192,7 @@ define(["MovieService"], function(movieService){
         this.onPageNumberChange();
       }
 
-      if (TVShowPageNumber > 10) {
+      if (TVShowPageNumber >= 10) {
         this.view.btnShowMore.isVisible = false;
       }
 
