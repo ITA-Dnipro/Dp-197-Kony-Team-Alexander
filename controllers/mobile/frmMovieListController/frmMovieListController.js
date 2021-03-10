@@ -159,7 +159,7 @@ define(["MovieService"], function(movieService){
         this.onPageNumberChange();
       }
 
-      if (InTheatresPageNumber > 10) {
+      if (InTheatresPageNumber >= 10) {
         this.view.btnShowMore.isVisible = false;
       }
 
@@ -172,7 +172,7 @@ define(["MovieService"], function(movieService){
       this.view.btnInTheatres.skin = "sknBtnNavigateInActive";
       this.view.lstMovies.setData(MovieListData);
 
-      if (MoviePageNumber > 10) {
+      if (MoviePageNumber >= 10) {
         this.view.btnShowMore.isVisible = false;
       }
 
@@ -191,7 +191,7 @@ define(["MovieService"], function(movieService){
         this.onPageNumberChange();
       }
 
-      if (TVShowPageNumber > 10) {
+      if (TVShowPageNumber >= 10) {
         this.view.btnShowMore.isVisible = false;
       }
 
