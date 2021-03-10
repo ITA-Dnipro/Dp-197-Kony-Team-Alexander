@@ -54,9 +54,9 @@ var Utility = {
     InTheatresPageNumber = 1;
     TVShowPageNumber = 1;
 
-    SearchMoviePageNumber = 2;
-    SearchPeoplePageNumber = 2;
-    SearchTVShowPageNumber = 2;
+    SearchMoviePageNumber = 1;
+    SearchPeoplePageNumber = 1;
+    SearchTVShowPageNumber = 1;
 
     formsStack = []; 
 
