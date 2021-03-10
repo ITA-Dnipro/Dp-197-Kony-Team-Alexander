@@ -26,7 +26,6 @@ define(function () {
             calloutData: {
               name: m.name,
               vicinity: m.vicinity
-//               image: "https://ied.eu/wp-content/uploads/2019/01/horizon-europe.jpg"
             },
             navigateAndZoom : true
           }; 

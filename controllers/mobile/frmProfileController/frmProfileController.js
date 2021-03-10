@@ -25,7 +25,7 @@ define(["UserProfileService"], function(userProfile) {
         UserLogin = this.view.inpProfileLogin.text;
       }
       userProfile.updateUserProfile(UserId, UserFullName, UserLogin, function() {
-        alert("User profile successfuly changed!");
+        alert("User profile is successfuly changed!");
       }.bind(this), function() {
 					alert("Error while conecting to DB, please check your internet conection.");
       });

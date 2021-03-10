@@ -191,7 +191,6 @@ define(function () {
           if (movies.results && Array.isArray(movies.results)) {
 
             var movieList = movies.results.map(function(m) {
-              // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
               return new MovieData({
                 type: "movie",
                 id: m.id,
@@ -225,7 +224,6 @@ define(function () {
           if (movies.results && Array.isArray(movies.results)) {
 
             var movieList = movies.results.map(function(m) {
-              // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
               return new MovieData({
                 type: "movie",
                 id: m.id,
@@ -257,7 +255,6 @@ define(function () {
       if (people.results && Array.isArray(people.results)) {
 
         var peopleList = people.results.map(function(p) {
-          // id, title, description, genresId, posterPath, voteAvg, released, genreNamesList
           return {
             type: "person",
             id: p.id,
