@@ -36,10 +36,11 @@ define(["MovieService"], function(movieService){
         alert("Error while retrieving movie list");
         kony.application.dismissLoadingScreen();
       }, "popular", MoviePageNumber);
+      this.view.btnShowMore.isVisible = false; 
     },
 
     onNavigate: function() {
-      this.view.btnShowMore.isVisible = false; 
+      
 
       this.view.HeaderControl.dropDownList = [
         {"id": "frmProfile", "name": "Profile", "path": "frmProfile"},
